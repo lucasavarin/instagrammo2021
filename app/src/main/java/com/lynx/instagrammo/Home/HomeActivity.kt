@@ -1,7 +1,6 @@
-package com.lynx.instagrammo.HomePage
+package com.lynx.instagrammo.Home
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.lynx.instagrammo.R
 
