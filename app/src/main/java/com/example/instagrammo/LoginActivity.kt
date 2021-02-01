@@ -9,19 +9,20 @@ import response.AuthResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.android.synthetic.main.
-class MainActivity : AppCompatActivity() {
+import kotlinx.android.synthetic.main.activity_main.*
+class LoginActivity : AppCompatActivity() {
+
+val context = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
-
+login_button.setOnClickListener {
+    login()
+}
 
     }
-    fun accedi(){
+    fun login(){
         val authRequest = AuthRequest(
             username = username.text.toString(),
             password = password.text.toString()

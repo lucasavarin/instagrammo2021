@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
 
 <androidx.appcompat.widget.AppCompatImageView
@@ -85,6 +85,7 @@
         android:fontFamily="@font/noto_sans"
         />
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="parent"
