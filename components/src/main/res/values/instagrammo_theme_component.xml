@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="confirm_button_style" parent="@style/Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/confirm_button</item>
+        <item name="android:gravity">center</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="title_header">
+        <item name="android:textColor">@color/sand</item>
+    </style>
+
+</resources>

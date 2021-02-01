@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- EditText -->
+
+    <attr name="confirm_button_style" format="reference" />
+
+
+    <declare-styleable name="edittext_doubleline_style">
+        <attr name="title_header" format="string" />
+    </declare-styleable>
+
+</resources>
