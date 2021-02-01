@@ -59,7 +59,7 @@
             android:fontFamily="serif"
             android:textColor="#2196F3"
             android:backgroundTint="@android:color/darker_gray"
-            />
+            android:inputType="textPassword"/>
 
           <androidx.appcompat.widget.AppCompatCheckBox
               android:id="@id/Checkbox"
@@ -88,7 +88,7 @@
         android:text="Register"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:textColor="#78B8EC"
+        android:textColor="#2196F3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -105,8 +105,8 @@
             android:layout_marginBottom="0dp"
             android:fontFamily="serif"
             android:text="login"
-            android:textColor="#78B8EC"
-            android:backgroundTint="@color/cardview_shadow_end_color"
+            android:textColor="#2196F3"
+            android:backgroundTint=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.976"
