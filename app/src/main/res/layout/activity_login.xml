@@ -10,69 +10,44 @@
     <ImageView
         android:id="@+id/logo_imageView"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="25dp"
         android:src="@mipmap/logo1"
         app:layout_constraintBottom_toTopOf="@+id/username_view"
-        app:layout_constraintDimensionRatio="w,16:9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <!--
-    <com.example.components.edittext.EditTextDoubleLineComponent
-        android:id="@+id/username_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/password_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_imageView"
-        app:title_header="@string/username" />
 
-    <com.example.components.edittext.EditTextDoubleLineComponent
-        android:id="@+id/password_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/reset_password_textview"
-        app:layout_constraintEnd_toEndOf="@+id/rememberme_switch"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_view"
-        app:title_header="@string/password" />
-        -->
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/username_view"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="323dp"
-        android:layout_marginBottom="324dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAccess"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="332dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/fifth"
+        android:hint="@string/username"
+        android:textColor="@color/fifth"
+        android:textColorHint="@color/fifth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947"
         app:title_header="@string/username">
 
     </androidx.appcompat.widget.AppCompatEditText>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/password_view"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/fifth"
+        android:hint="@string/password"
+        android:textColor="@color/fifth"
+        android:textColorHint="@color/fifth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_view"
@@ -84,44 +59,38 @@
         android:id="@+id/rememberme_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="164dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAccess"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_view" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/rememberme_textview"
+        app:layout_constraintEnd_toEndOf="@+id/password_view" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/reset_password_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="152dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="4dp"
         android:text="@string/reset_password"
         android:textAllCaps="true"
         android:textColor="@color/fifth"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnAccess"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/password_view"
+        app:layout_constraintTop_toBottomOf="@+id/password_view" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/rememberme_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="53dp"
         android:text="@string/rememberme"
         android:textColor="@color/fifth"
-        app:layout_constraintBottom_toTopOf="@+id/reset_password_textview"
-        app:layout_constraintEnd_toStartOf="@+id/rememberme_switch"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_view"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="@+id/rememberme_switch"
+        app:layout_constraintTop_toBottomOf="@+id/password_view" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/registration_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="17dp"
         android:text="@string/registrati"
         android:textAllCaps="true"
         android:textColor="@color/fifth"
@@ -137,7 +106,7 @@
         android:layout_marginHorizontal="@dimen/default10"
         android:layout_marginStart="9dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="14dp"
         android:maxHeight="@dimen/default40"
         android:text="@string/accedi"
         android:theme="@style/confirm_button_style"

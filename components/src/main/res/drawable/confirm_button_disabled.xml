@@ -18,6 +18,6 @@
         android:dashWidth="@dimen/default4"-->
 
     <corners
-        android:radius="@dimen/default14"/>
+        android:radius="@dimen/default6"/>
 
 </shape>

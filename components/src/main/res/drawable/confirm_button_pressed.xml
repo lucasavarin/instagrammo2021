@@ -4,8 +4,8 @@
 
     <gradient
         android:angle="90"
-        android:startColor="@color/fifth"
-        android:endColor="@color/darkblue"/>
+        android:startColor="@color/sand"
+        android:endColor="@color/white"/>
 
     <padding
         android:bottom="@dimen/default8"
@@ -20,6 +20,6 @@
         android:dashWidth="@dimen/default4"-->
 
     <corners
-        android:radius="@dimen/default14"/>
+        android:radius="@dimen/default6"/>
 
 </shape>

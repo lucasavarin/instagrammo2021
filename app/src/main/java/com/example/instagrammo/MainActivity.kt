@@ -16,10 +16,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val username : String = username_view.text.toString()
-        val password : String = password_view.text.toString()
+        val username = username_view.text
+        val password = password_view.text
 
-        val request = AuthRequest(username, password)
+        val request = AuthRequest("lsavarin", "lucasava")
 
         btnAccess.setOnClickListener {
             Toast.makeText(this@MainActivity, "il mio username:" + username + "la mia password: " + password, Toast.LENGTH_LONG).show()
