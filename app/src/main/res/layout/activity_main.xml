@@ -33,7 +33,7 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/logo">
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/tv_username"
+        android:id="@+id/et_username"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="@string/str_username"
@@ -55,7 +55,7 @@
        app:layout_constraintRight_toRightOf="parent"
        app:layout_constraintTop_toBottomOf="@id/ti_username">
       <androidx.appcompat.widget.AppCompatEditText
-          android:id="@+id/tv_password"
+          android:id="@+id/et_password"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="@string/password"
