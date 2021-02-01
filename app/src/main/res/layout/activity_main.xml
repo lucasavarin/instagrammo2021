@@ -22,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.7" />
 
+
     <!-- INPUT TEXT USERNAME -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayoutUsername"
@@ -35,6 +36,7 @@
         app:layout_constraintTop_toBottomOf="@id/ingLogo">
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editTextUsername"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/backgroud_log_input"
@@ -48,6 +50,7 @@
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <!-- INPUT TEXT PASSWORD -->
     <com.google.android.material.textfield.TextInputLayout
@@ -64,6 +67,7 @@
         >
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/backgroud_log_input"
@@ -76,6 +80,7 @@
             app:fontFamily="sans-serif-thin" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <!-- BUTTON LOGIN -->
     <androidx.appcompat.widget.AppCompatButton
@@ -166,6 +171,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
 
     <!-- TEXT VIEW ACCESSO FACILITATO -->
     <androidx.appcompat.widget.AppCompatTextView
