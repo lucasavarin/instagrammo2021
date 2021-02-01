@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Instagrammo</string>
+    <string name="str_username">username</string>
+    <string name="password">password</string>
+    <string name="ricordami">Ricordami</string>
+    <string name="login">login</string>
+</resources>
