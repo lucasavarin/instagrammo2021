@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="#052035"
+        tools:ignore="ExtraText">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/instagrammoEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/instagrammo"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.304" />
+
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/userNameEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/instagrammoEditText"
+            android:text="@string/Username"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="serif"
+            android:textColor="#2196F3"
+            android:backgroundTint="@android:color/white"/>
+
+
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userNameEditText"
+            android:text="@string/Password"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="50dp"
+            android:id="@+id/passwordEditText"
+            android:fontFamily="serif"
+            android:textColor="#2196F3"
+            android:backgroundTint="@android:color/white"
+            android:inputType="textPassword"/>
+
+          <androidx.appcompat.widget.AppCompatCheckBox
+              android:id="@id/Checkbox"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              app:layout_constraintRight_toRightOf="parent"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintTop_toBottomOf="@id/passwordEditText"
+              android:text="@string/MostraPassword"
+              android:layout_marginStart="16dp"
+              android:layout_marginEnd="16dp"
+              android:fontFamily="serif"
+              android:textColor="#2196F3"
+              android:backgroundTint="@color/white"
+              android:textColorHighlight="@color/white"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/RegisterButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="732dp"
+        android:background="@color/cardview_dark_background"
+        android:backgroundTint="@color/purple_700"
+        android:fontFamily="serif"
+        android:text="Register"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="#2196F3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="DuplicateIds,MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="0dp"
+            android:fontFamily="serif"
+            android:text="login"
+            android:textColor="#2196F3"
+            android:backgroundTint="@color/purple_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.976"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="130dp"
+            android:background="@color/cardview_dark_background"
+            android:id="@+id/loginButton"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
