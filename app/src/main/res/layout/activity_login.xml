@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <!--
     <com.example.components.edittext.EditTextDoubleLineComponent
         android:id="@+id/username_view"
         android:layout_width="0dp"
@@ -50,6 +50,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_view"
         app:title_header="@string/password" />
+        -->
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/username_view"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="323dp"
+        android:layout_marginBottom="324dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAccess"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.947"
+        app:title_header="@string/username">
+
+    </androidx.appcompat.widget.AppCompatEditText>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/password_view"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_view"
+        app:title_header="@string/password">
+
+    </androidx.appcompat.widget.AppCompatEditText>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/rememberme_switch"
