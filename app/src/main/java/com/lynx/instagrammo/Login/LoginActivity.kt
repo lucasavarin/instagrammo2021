@@ -1,23 +1,25 @@
-package com.lynx.instagrammo
-
+package com.lynx.instagrammo.Login
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.lynx.instagrammo.API.ApiClient
-import com.lynx.instagrammo.HomePage.HomeActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.lynx.instagrammo.AuthRequest
+import com.lynx.instagrammo.AuthResponse
+import com.lynx.instagrammo.Home.HomeActivity
+import com.lynx.instagrammo.R
+import kotlinx.android.synthetic.main.login_activity.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.login_activity)
 
         btnLogin.setOnClickListener {
             doLogin()
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-                val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                 startActivity(intent)
             }
         })
