@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_login"
+    android:padding="15dp"
+    tools:context=".MainActivity">
+
+
+    <!-- LOGO -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ingLogo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/instagrammo"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.7" />
+
+
+    <!-- INPUT TEXT USERNAME -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutUsername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingLogo">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/backgroud_log_input"
+            android:hint="@string/username"
+            android:imeOptions="actionDone"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            app:fontFamily="sans-serif-thin"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- INPUT TEXT PASSWORD -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutUsername"
+
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/backgroud_log_input"
+            android:hint="@string/password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            app:fontFamily="sans-serif-thin" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- BUTTON LOGIN -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/login"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:fontFamily="sans-serif-thin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutPassword"
+
+
+        />
+
+    <!-- &lt;!&ndash; TEXT VIEW USERNAME &ndash;&gt;
+     <androidx.appcompat.widget.AppCompatTextView
+         android:id="@+id/txtUsername"
+         android:layout_width="0dp"
+         android:layout_height="50dp"
+         android:layout_marginTop="10dp"
+         android:text="@string/username"
+         android:textAlignment="center"
+         android:textColor="@color/white"
+         android:textSize="20dp"
+         app:fontFamily="sans-serif-thin"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/ingLogo"
+
+         />
+
+     &lt;!&ndash; EDIT TEXT USERNAME &ndash;&gt;
+     <androidx.appcompat.widget.AppCompatEditText
+         android:id="@+id/edtUsername"
+         android:layout_width="0dp"
+         android:layout_height="50dp"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/txtUsername"
+
+         />
+
+     &lt;!&ndash; TEXT VIEW PASSWORD &ndash;&gt;
+     <androidx.appcompat.widget.AppCompatTextView
+         android:id="@+id/txtPassword"
+         android:layout_width="0dp"
+         android:layout_height="50dp"
+         android:layout_marginTop="10dp"
+         android:text="@string/password"
+         android:textAlignment="center"
+         android:textColor="@color/white"
+         android:textSize="20dp"
+         app:fontFamily="sans-serif-thin"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/edtUsername"
+
+         />
+
+     &lt;!&ndash; EDIT TEXT PASSWORD &ndash;&gt;
+     <androidx.appcompat.widget.AppCompatEditText
+         android:id="@+id/edtPassword"
+         android:layout_width="0dp"
+         android:layout_height="50dp"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+
+         />
+ -->
+    <!-- CHECKBOX -->
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/cbRemeberMe"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:buttonTint="@color/white"
+        android:text="@string/rememberMe"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:fontFamily="sans-serif-thin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+
+    <!-- TEXT VIEW ACCESSO FACILITATO -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtEasyAccess"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/easy_access"
+        android:textColor="@color/white"
+        app:fontFamily="sans-serif-thin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbRemeberMe" />
+
+
+<!--    &lt;!&ndash; LOGO FB &ndash;&gt;-->
+<!--    <androidx.appcompat.widget.AppCompatImageButton-->
+<!--        android:id="@+id/logoFB"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:background="@drawable/fb"-->
+<!--        app:layout_constraintHeight_percent="0.05"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="@id/txtEasyAccess"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/cbRemeberMe"-->
+<!--        app:layout_constraintWidth_percent="0.1" />-->
+
+
+    <!-- SIGN IN BUTTON -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signIn"
+        android:textAlignment="center"
+        android:background="@color/backgroud_log_input"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:fontFamily="sans-serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
