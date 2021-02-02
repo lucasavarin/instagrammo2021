@@ -6,7 +6,6 @@ import com.lynx.instagrammo.R
 
 class HomeActivity : AppCompatActivity(){
 
-    val context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

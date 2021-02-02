@@ -6,4 +6,10 @@
     <string name="rememberMe">Ricordami</string>
     <string name="easy_access">Accedi tramite</string>
     <string name="signIn">Dont have an account? <b>Sign In</b></string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="add">Add</string>
+    <string name="love">Love</string>
+    <string name="profile">Profile</string>
+
 </resources>
