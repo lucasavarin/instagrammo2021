@@ -8,7 +8,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
-    const val BASEURL : String = "http://www.nbarresi.it/"
+    //const val BASEURL : String = "http://www.nbarresi.it/"
+    const val BASEURL : String = "http://192.168.1.10:3001/Instagrammo/"
     val GetClient : ApiInterface
     get(){
         val interceptor = HttpLoggingInterceptor()

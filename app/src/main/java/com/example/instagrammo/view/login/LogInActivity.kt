@@ -1,10 +1,7 @@
-package com.example.instagrammo.view
+package com.example.instagrammo.view.login
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
-import com.example.instagrammo.Prefs
 import com.example.instagrammo.R
 import com.example.instagrammo.prefs
 import com.example.instagrammo.retrofit.ApiClient
@@ -15,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LogIn : AppCompatActivity() {
+class LogInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -32,13 +29,10 @@ class LogIn : AppCompatActivity() {
                     print("Login Fallito")
                 }
 
-                override fun onResponse(
-                    call: Call<AuthResponse>,
-                    response: Response<AuthResponse>
-                ) {
-                       if(!response.body()?.authToken.isNullOrEmpty()){
-                           prefs.rememberToken = response.body()?.authToken.toString();
-                       }
+                override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                    if(!response.body()?.authToken.isNullOrEmpty()){
+                        prefs.rememberToken = response.body()?.authToken.toString();
+                    }
                 }
 
             })

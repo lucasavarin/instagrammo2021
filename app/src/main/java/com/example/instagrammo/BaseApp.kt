@@ -1,16 +1,9 @@
 package com.example.instagrammo
 
 import android.app.Application
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import com.example.instagrammo.retrofit.ApiClient
-import com.example.instagrammo.retrofit.AuthRequest
-import com.example.instagrammo.retrofit.AuthResponse
-import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.instagrammo.view.login.LogInActivity
 
 class BaseApp : Application() {
     companion object {
