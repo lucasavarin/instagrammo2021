@@ -9,13 +9,13 @@ import response.AuthResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.login_activity.*
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.login_activity)
 
         login_button.setOnClickListener {
             login()
@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-                val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
             }
 
