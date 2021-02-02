@@ -7,6 +7,7 @@ import com.lynx.instagrammo.AuthRequest
 import com.lynx.instagrammo.AuthResponse
 import com.lynx.instagrammo.Home.HomeActivity
 import com.lynx.instagrammo.R
+import com.lynx.instagrammo.prefs
 import kotlinx.android.synthetic.main.login_activity.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,10 +17,11 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
+
+        cbRemeberMe.isChecked = prefs.rememberUser
 
         btnLogin.setOnClickListener {
             doLogin()
@@ -39,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+            prefs.rememberUser = cbRemeberMe.isChecked
                 val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                 startActivity(intent)
             }
