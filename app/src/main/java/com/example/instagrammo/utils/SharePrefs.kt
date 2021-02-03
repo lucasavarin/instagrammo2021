@@ -1,9 +1,9 @@
-package com.example.instagrammo
+package com.example.instagrammo.utils
 
 import android.content.Context
 import android.content.SharedPreferences
 
-class Prefs (context: Context){
+class SharePrefs (context: Context){
     private val PREFS_FILENAME = "com.example.instagrammo"
     private val REMEMBER_USER = "remember_user"
     private val REMEMBER_TOKEN = "remember_token"

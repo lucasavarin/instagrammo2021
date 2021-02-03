@@ -23,6 +23,7 @@
     <color name="third">#b99164</color>
     <color name="fourth">#201e21</color>
     <color name="fifth">#f4f3ef</color>
+    <color name="transparent">#00F4F3EF</color>
 
 
 </resources>
