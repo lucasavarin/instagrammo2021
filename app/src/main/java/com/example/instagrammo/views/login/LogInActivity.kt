@@ -9,7 +9,6 @@ import com.example.instagrammo.retrofit.AuthRequest
 import com.example.instagrammo.retrofit.AuthResponse
 import com.example.instagrammo.views.BaseActivity
 import com.example.instagrammo.views.BaseHomeActivity
-import com.example.instagrammo.views.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback

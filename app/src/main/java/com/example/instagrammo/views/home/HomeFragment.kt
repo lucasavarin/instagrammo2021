@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.instagrammo.R
+import com.example.instagrammo.utils.SharePrefs
 import com.example.instagrammo.views.BaseActivity
 
-class HomeActivity : Fragment() {
+class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -16,10 +17,10 @@ class HomeActivity : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
-
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-
+    companion object {
+        var homeFragment : HomeFragment = HomeFragment()
+    }
 }

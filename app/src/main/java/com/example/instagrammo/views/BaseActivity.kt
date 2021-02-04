@@ -37,7 +37,7 @@ abstract class BaseActivity() : AppCompatActivity() {
     }
 
     protected fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { addFragment(fragment, frameId) }
+        supportFragmentManager.inTransaction { add(frameId, fragment) }
     }
 
     protected fun replaceFragment(fragment: Fragment, frameId: Int) {
