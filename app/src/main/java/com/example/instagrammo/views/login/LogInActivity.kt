@@ -1,15 +1,15 @@
-package com.example.instagrammo.view.login
+package com.example.instagrammo.views.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.instagrammo.R
 import com.example.instagrammo.prefs
 import com.example.instagrammo.retrofit.ApiClient
 import com.example.instagrammo.retrofit.AuthRequest
 import com.example.instagrammo.retrofit.AuthResponse
-import com.example.instagrammo.view.BaseActivity
-import com.example.instagrammo.view.home.HomeActivity
+import com.example.instagrammo.views.BaseActivity
+import com.example.instagrammo.views.BaseHomeActivity
+import com.example.instagrammo.views.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,8 +26,6 @@ class LogInActivity : BaseActivity() {
         val request = AuthRequest("lsavarin", "lucasava")
 
         btnAccess.setOnClickListener {
-            val intentLogin = Intent(applicationContext, HomeActivity::class.java)
-            startActivity(intentLogin)
 
             ApiClient.GetClient.doAuth(request).enqueue(object : Callback<AuthResponse> {
 
@@ -36,9 +34,11 @@ class LogInActivity : BaseActivity() {
                 }
 
                 override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-                    if(!response.body()?.authToken.isNullOrEmpty()){
+
                         prefs.rememberToken = response.body()?.authToken.toString()
-                    }
+                        val intentLogin = Intent(applicationContext, BaseHomeActivity::class.java)
+                        startActivity(intentLogin)
+
                 }
 
             })

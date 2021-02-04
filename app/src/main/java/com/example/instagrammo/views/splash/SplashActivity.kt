@@ -1,11 +1,10 @@
-package com.example.instagrammo.view.splash
+package com.example.instagrammo.views.splash
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagrammo.R
-import com.example.instagrammo.view.login.LogInActivity
+import com.example.instagrammo.views.login.LogInActivity
 
 class SplashActivity : AppCompatActivity() {
 

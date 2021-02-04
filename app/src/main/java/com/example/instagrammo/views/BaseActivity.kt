@@ -1,9 +1,6 @@
-package com.example.instagrammo.view
+package com.example.instagrammo.views
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.instagrammo.R
-import com.example.instagrammo.view.login.LogInActivity
 import com.google.android.material.navigation.NavigationView
 
 
