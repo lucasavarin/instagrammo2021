@@ -8,5 +8,7 @@
     <string name="ic_search">Search</string>
     <string name="ic_add">Add</string>
     <string name="ic_like">Like</string>
-    <string name="ic_account">Account</string>
+    <string name="ic_profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -13,8 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Instagrammo"
         android:usesCleartextTraffic="true">
-
-
+        <activity android:name="com.costa.views.LikeActivity"></activity>
+        <activity android:name="com.costa.views.AddActivity" />
+        <activity android:name="com.costa.views.SearchActivity" />
+        <activity android:name="com.costa.views.FragmentHome" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
