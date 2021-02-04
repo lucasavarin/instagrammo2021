@@ -41,7 +41,7 @@ abstract class BaseActivity() : AppCompatActivity() {
     }
 
     protected fun replaceFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { replaceFragment(fragment, frameId) }
+        supportFragmentManager.inTransaction { replace(frameId, fragment) }
     }
 
 }
