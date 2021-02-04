@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/nav_menu"
-        android:background="@color/black"
+        android:background="@color/softBlack"
         app:labelVisibilityMode="unlabeled"
         app:elevation="10dp"
         app:itemIconTint="@color/softWhit"

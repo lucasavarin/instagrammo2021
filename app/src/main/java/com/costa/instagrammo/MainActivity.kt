@@ -16,13 +16,13 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var authToken:String
-    lateinit var userId:String
+    var authToken:String? = null
+    var userId:String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_main)
-
-
+         /* et_username.setText(prefs.username)
+          cb_restaLoggato.isChecked= prefs.rememberUser*/
 
         bt_login.setOnClickListener {
 
@@ -47,15 +47,17 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
 
-               authToken= response.body()!!.authToken.toString()
-                userId=response.body()!!.profileId.toString()
-                //se la ceckbox e ceckata asegno true al valore del rememberUser
-                //TODO: non funziona il prefs
-/*
-                prefs.rememberUser= cb_restaLoggato.isChecked
-*/
 
-                if(!userId.isNullOrEmpty()||!authToken.isNullOrEmpty()) {
+
+                if(!response.body()!!.authToken.isNullOrBlank()||!response.body()!!.profileId.isNullOrBlank()) {
+
+                    authToken= response.body()!!.authToken.toString()
+                    userId=response.body()!!.profileId.toString()
+
+                    //TODO: non funziona il prefs
+                   /* prefs!!.rememberUser= cb_restaLoggato.isChecked
+                    prefs!!.username=if(prefs.rememberUser) et_username.text.toString() else ""*/
+
                     val intent = Intent(this@MainActivity, HomeActivity::class.java)
                  startActivity(intent)
                 }else
