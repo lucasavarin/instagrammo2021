@@ -1,4 +1,4 @@
-package com.example.instagrammo.retrofit
+package com.example.instagrammo.bean
 
 import com.google.gson.annotations.SerializedName
 

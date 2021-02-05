@@ -9,15 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.instagrammo.R
-import com.google.android.material.navigation.NavigationView
 
 
 abstract class BaseActivity() : AppCompatActivity() {
-
-    private val navigationView: NavigationView
-        get() {
-            TODO()
-        }
 
     protected lateinit var context: Context
 
@@ -28,7 +22,6 @@ abstract class BaseActivity() : AppCompatActivity() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = ContextCompat.getColor(this, R.color.darkblue)
     }
-
 
     inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
         val fragmentTransaction = beginTransaction()

@@ -5,8 +5,8 @@ import android.os.Bundle
 import com.example.instagrammo.R
 import com.example.instagrammo.prefs
 import com.example.instagrammo.retrofit.ApiClient
-import com.example.instagrammo.retrofit.AuthRequest
-import com.example.instagrammo.retrofit.AuthResponse
+import com.example.instagrammo.bean.AuthRequest
+import com.example.instagrammo.bean.AuthResponse
 import com.example.instagrammo.views.BaseActivity
 import com.example.instagrammo.views.BaseHomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -37,7 +37,6 @@ class LogInActivity : BaseActivity() {
                         prefs.rememberToken = response.body()?.authToken.toString()
                         val intentLogin = Intent(applicationContext, BaseHomeActivity::class.java)
                         startActivity(intentLogin)
-
                 }
 
             })

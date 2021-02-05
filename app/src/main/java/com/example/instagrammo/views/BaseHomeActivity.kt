@@ -1,14 +1,16 @@
 package com.example.instagrammo.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.example.instagrammo.R
+import com.example.instagrammo.recyclerview.adapter.OnPostItemClickListener
 import com.example.instagrammo.views.follow.FollowFragment
 import com.example.instagrammo.views.home.HomeFragment
 import com.example.instagrammo.views.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_basehome.*
 
-class BaseHomeActivity : BaseActivity(){
+class BaseHomeActivity : BaseActivity(), OnPostItemClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,4 +44,9 @@ class BaseHomeActivity : BaseActivity(){
             }
         }
     }
+
+    override fun onPictureProfileItemListener(string: String) {
+        Log.i("Ciao",string)
+    }
+
 }
