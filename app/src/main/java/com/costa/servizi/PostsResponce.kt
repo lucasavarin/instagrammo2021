@@ -1,11 +1,14 @@
 package com.costa.servizi
 
-import com.costa.beans.FollowerOut
+
+import com.costa.beans.PostOut
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class FollowersResponse(
+class PostsResponce(
         @Expose
         @SerializedName("payload")
-        val payload: List<FollowerOut>?
-) {}
+        val payload: List<PostOut>?
+) {
+
+}

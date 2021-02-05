@@ -19,7 +19,6 @@ class HomeActivity : AppCompatActivity() {
         val profileFragment = ProfileFragment()
 
         esecuzioneFagment(homeFragment)
-
         bottom_nav.setOnNavigationItemReselectedListener {
         when (it.itemId){
             R.id.ic_home -> esecuzioneFagment(homeFragment)

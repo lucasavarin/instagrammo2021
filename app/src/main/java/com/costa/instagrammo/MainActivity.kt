@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_main)
-         /* et_username.setText(prefs.username)
-          cb_restaLoggato.isChecked= prefs.rememberUser*/
+          et_username.setText(prefs.username)
+          cb_restaLoggato.isChecked= prefs.rememberUser
 
         bt_login.setOnClickListener {
 
@@ -55,8 +55,8 @@ class MainActivity : AppCompatActivity() {
                     userId=response.body()!!.profileId.toString()
 
                     //TODO: non funziona il prefs
-                   /* prefs!!.rememberUser= cb_restaLoggato.isChecked
-                    prefs!!.username=if(prefs.rememberUser) et_username.text.toString() else ""*/
+                    prefs!!.rememberUser= cb_restaLoggato.isChecked
+                    prefs!!.username=if(prefs.rememberUser) et_username.text.toString() else ""
 
                     val intent = Intent(this@MainActivity, HomeActivity::class.java)
                  startActivity(intent)
