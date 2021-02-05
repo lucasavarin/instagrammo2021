@@ -7,11 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.costa.instagrammo.R
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddFragment : Fragment() {
 
     override fun onCreateView(

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     tools:context=".HomeActivity">
 
     <FrameLayout
-        android:id="@+id/layout_home_activity"
+        android:id="@+id/home_container_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
@@ -18,14 +19,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/nav_menu"
-        android:background="@color/softBlack"
+        android:background="@color/softWhit"
         app:labelVisibilityMode="unlabeled"
         app:elevation="10dp"
-        app:itemIconTint="@color/softWhit"
-        app:itemTextColor="@color/softWhit"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

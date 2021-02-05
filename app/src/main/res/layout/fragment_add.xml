@@ -1,18 +1,31 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.costa.views.AddFragment">
+    tools:context="com.costa.views.AddFragment"
+    android:padding="16dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:textSize="30sp"
-        android:layout_gravity="center"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- Non funziuona
+        <fragment
+            android:id="@+id/fragment_add"
+            android:name="com.costa.views.AddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        -->
+    </LinearLayout>
+        <TextView
+            android:id="@+id/text_view_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            />
 
 </FrameLayout>
