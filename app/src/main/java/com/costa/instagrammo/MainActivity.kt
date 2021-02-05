@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
                     authToken= response.body()!!.authToken.toString()
                     userId=response.body()!!.profileId.toString()
 
-                    //TODO: non funziona il prefs
                     prefs!!.rememberUser= cb_restaLoggato.isChecked
                     prefs!!.username=if(prefs.rememberUser) et_username.text.toString() else ""
 
