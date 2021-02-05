@@ -9,6 +9,7 @@ import com.example.instagrammo.views.follow.FollowFragment
 import com.example.instagrammo.views.home.HomeFragment
 import com.example.instagrammo.views.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_basehome.*
+import com.example.instagrammo.views.profile.ProfileFragment
 
 class BaseHomeActivity : BaseActivity(), OnPostItemClickListener{
 
