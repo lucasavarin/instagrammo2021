@@ -21,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.login_activity)
 
 
-
         checkbox_Remember.isChecked = prefs!!.rememberUser
 
 
