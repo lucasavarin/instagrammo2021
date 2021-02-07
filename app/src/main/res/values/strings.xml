@@ -7,4 +7,9 @@
     <string name="don_t_remember_password">Don\'t remember password?</string>
     <string name="sign_with_facebook">Sign with Facebook</string>
     <string name="remind_me">Remind me</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="add">Add</string>
+    <string name="follow">Follow</string>
+    <string name="profile">Profile</string>
 </resources>
