@@ -3,8 +3,8 @@ package API
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
-import util.AuthRequest
-import util.AuthResponse
+import utils.AuthRequest
+import utils.AuthResponse
 
 interface ApiInterface {
     @POST("auth.php")
