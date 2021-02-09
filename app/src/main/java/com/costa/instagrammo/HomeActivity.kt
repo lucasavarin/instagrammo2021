@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.costa.views.*
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -13,34 +16,80 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         bottom_nav.background = null
 
-        val homeFragment = HomeFragment()
-        val searchFragment = SearchFragment()
-        val addFragment = AddFragment()
-        val likeFragment = LikeFragment()
-        val profileFragment = ProfileFragment()
 
-        esecuzioneFagment(homeFragment)
+        lateinit var homeFragment: HomeFragment
+        lateinit var searchFragment: SearchFragment
+        lateinit var addFragment: AddFragment
+        lateinit var likeFragment: LikeFragment
+        lateinit var profileFragment: ProfileFragment
 
-        bottom_nav.setOnNavigationItemSelectedListener() {
-        when (it.itemId){
-            R.id.ic_home -> {esecuzioneFagment(homeFragment)
-                true}
-            R.id.ic_search -> {esecuzioneFagment(searchFragment)
-                true}
-            R.id.ic_add -> {esecuzioneFagment(addFragment)
-                true}
-            R.id.ic_like -> {esecuzioneFagment(likeFragment)
-                true}
-            R.id.ic_profile -> {esecuzioneFagment(profileFragment)
-                true}
-            else -> false
+        val bottomNavigation : BottomNavigationView = findViewById(R.id.bottom_nav)
+
+        homeFragment = HomeFragment()
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.home_container_fragment, homeFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit()
+
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+
+                R.id.ic_home -> {
+
+                    homeFragment = HomeFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, homeFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
+                }
+
+                R.id.ic_search -> {
+
+                    searchFragment = SearchFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, searchFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
+                }
+
+                R.id.ic_add -> {
+
+                    addFragment = AddFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, addFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
+                }
+
+                R.id.ic_like -> {
+
+                    likeFragment = LikeFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, likeFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
+                }
+
+                R.id.ic_profile -> {
+
+                    profileFragment = ProfileFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, profileFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
+                }
+            }
+
+            true
+
+
         }
     }
 }
 
-private fun esecuzioneFagment(fragment: Fragment) =
-    supportFragmentManager.beginTransaction().apply{
-        replace(R.id.home_container_fragment, fragment)
-        commit()
-    }
-}
