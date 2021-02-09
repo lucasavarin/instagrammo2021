@@ -2,7 +2,6 @@ package com.example.instagrammo.views
 
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import com.example.instagrammo.R
 import com.example.instagrammo.recyclerview.adapter.OnPostItemClickListener
 import com.example.instagrammo.views.follow.FollowFragment
@@ -40,7 +39,10 @@ class BaseHomeActivity : BaseActivity(), OnPostItemClickListener{
                     replaceFragment(FollowFragment.followFragment, R.id.fragment_container)
                     true
                 }
-                R.id.nav_profile -> {true}
+                R.id.nav_profile -> {
+                    replaceFragment(ProfileFragment.profileFragment, R.id.fragment_container)
+                    true
+                }
                 else -> false
             }
         }

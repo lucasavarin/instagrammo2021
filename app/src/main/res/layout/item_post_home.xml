@@ -3,55 +3,75 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="500dp">
 
 
     <ImageView
         android:id="@+id/profile_image"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="23dp"
-        app:layout_constraintBottom_toTopOf="@+id/post_image"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="44dp"
         app:layout_constraintEnd_toStartOf="@+id/profile_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/profile_name"
-        android:layout_width="0dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="186dp"
-        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_marginEnd="286dp"
+        android:textColor="@color/fifth"
         app:layout_constraintBottom_toBottomOf="@+id/profile_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profile_image"
         app:layout_constraintTop_toTopOf="@+id/profile_image" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/post_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="98dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/like_image"
+        android:layout_marginTop="51dp"
+        android:layout_marginBottom="46dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profile_name"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/like_image"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_post"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="11dp"
+        android:textColor="@color/fifth"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/date_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="143dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/fifth"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/post_image"
-        app:layout_constraintTop_toBottomOf="@+id/post_image"
-        app:srcCompat="@drawable/follow" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/fifth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

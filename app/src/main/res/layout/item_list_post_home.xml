@@ -5,12 +5,11 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_post_recycler"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".views.home.HomeFragment"
         tools:listitem="@layout/item_post_home" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

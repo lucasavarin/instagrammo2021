@@ -1,4 +1,4 @@
-package com.example.instagrammo.bean
+package com.example.instagrammo.beans.auth
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.instagrammo.R
 import com.example.instagrammo.views.home.HomeFragment
+import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.fragment_search.view.*
 
 class SearchFragment : Fragment() {
 
@@ -16,7 +18,10 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        val view = inflater.inflate(R.layout.fragment_search, container, false)
+
+        view.textView4.text = "ciao"
+        return view
     }
 
     companion object {

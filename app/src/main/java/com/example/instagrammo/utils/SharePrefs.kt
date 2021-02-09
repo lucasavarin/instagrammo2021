@@ -14,6 +14,6 @@ class SharePrefs (context: Context){
         set(value) = prefs.edit().putBoolean(REMEMBER_USER, value).apply()
 
     var rememberToken: String?
-        get() = prefs.getString(REMEMBER_TOKEN, null)
-        set(value) = prefs.edit().putString(REMEMBER_USER, value).apply()
+        get() = prefs.getString(REMEMBER_TOKEN, "")
+        set(value) = prefs.edit().putString(REMEMBER_TOKEN, value).apply()
 }

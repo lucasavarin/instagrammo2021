@@ -2,11 +2,13 @@ package com.example.instagrammo.views.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.example.instagrammo.R
 import com.example.instagrammo.prefs
 import com.example.instagrammo.retrofit.ApiClient
-import com.example.instagrammo.bean.AuthRequest
-import com.example.instagrammo.bean.AuthResponse
+import com.example.instagrammo.beans.auth.AuthRequest
+import com.example.instagrammo.beans.auth.AuthResponse
 import com.example.instagrammo.views.BaseActivity
 import com.example.instagrammo.views.BaseHomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -19,12 +21,13 @@ class LogInActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val username = username_view.text
-        val password = password_view.text
-
-        val request = AuthRequest("lsavarin", "lucasava")
 
         btnAccess.setOnClickListener {
+
+            val username = username_view.text.toString()
+            val password = password_view.text.toString()
+
+            val request = AuthRequest(username, password)
 
             ApiClient.GetClient.doAuth(request).enqueue(object : Callback<AuthResponse> {
 
@@ -33,12 +36,11 @@ class LogInActivity : BaseActivity() {
                 }
 
                 override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                    prefs.rememberToken = response.body()?.authToken.toString()
+                    val intentLogin = Intent(applicationContext, BaseHomeActivity::class.java)
+                    startActivity(intentLogin)
 
-                        prefs.rememberToken = response.body()?.authToken.toString()
-                        val intentLogin = Intent(applicationContext, BaseHomeActivity::class.java)
-                        startActivity(intentLogin)
                 }
-
             })
         }
 

@@ -1,13 +1,18 @@
 package com.example.instagrammo.recyclerview.adapter
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
-import com.example.instagrammo.bean.Post
+import com.example.instagrammo.beans.posts.Post
+import com.example.instagrammo.retrofit.ApiClient
 import kotlinx.android.synthetic.main.item_post_home.view.*
+
 
 class ItemPostRecyclerViewAdapter(
     private val mContext: Context,
@@ -40,17 +45,46 @@ class ItemPostRecyclerViewAdapter(
         position: Int) {
 
         val item = mValues[position]
-        holder.profileImage.setImageURI(item.profile?.picture)
-        //holder.profileName.text = item.profile?.name
-        holder.postImage.setImageURI(item.picture)
+        //holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
+        holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
+        holder.profileName.text = item.profile.name
+        holder.postImage.setImageBitmap(getImage(item.picture!!))
+        holder.titlePost.text = item.title
+        holder.datePost.text = item.uploadTime
     }
+
+
+    private fun getImage(url: String): Bitmap {
+
+        /** Nasconde il problema si dovrebbe implementare un service **/
+        /** -si potrebbe usare un nuovo thread diverso dall applicazione ma
+         *  bisogna essere consapevoli (AsyncTask)
+         **/
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
+        /***************************************************************/
+
+        val response = ApiClient.GetClient.getImage(url)
+        val bodyResponse = response.execute().body()
+
+        return BitmapFactory.decodeStream(bodyResponse?.byteStream())
+    }
+
+/*
+    private fun getImage(url: String, imageView: ImageView) {
+        Picasso.with(mContext)
+            .load(url)
+            .into(imageView)
+
+    }*/
 
 
     inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
         val profileImage = mView.profile_image
         val profileName = mView.profile_name
-        val postImage = mView.profile_image
-        val likeImage = mView.like_image
+        val postImage = mView.post_image
+        val titlePost = mView.title_post
+        val datePost = mView.date_post
 
         override fun toString(): String {
             return super.toString() + "CIAO"
