@@ -24,6 +24,7 @@
         app:showAsAction="ifRoom"
         />
 
+    <!-- toDO cambiare il nome -->
     <item
         android:id="@+id/action_love"
         android:enabled="true"
