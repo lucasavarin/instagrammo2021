@@ -13,5 +13,4 @@ import retrofit2.http.Path
 interface ApiInterface {
     @POST("auth.php")
     fun doAuth(@Body authRequestRest: AuthRequest): Call<AuthResponse>
-
 }
