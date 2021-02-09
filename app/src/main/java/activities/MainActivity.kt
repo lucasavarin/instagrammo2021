@@ -9,21 +9,22 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import util.AuthRequest
-import util.AuthResponse
-import util.prefs
+import utils.AuthRequest
+import utils.AuthResponse
+import utils.prefs
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val username = username.text
-        val password = password.text
-
-        val request = AuthRequest("lsavarin", "lucasava")
-
         btn_login.setOnClickListener {
+
+            val username = username.text
+            val password = password.text
+
+            val request = AuthRequest(username.toString(), password.toString())
+
             ApiClient.getClient.doAuth(request).enqueue(object : Callback<AuthResponse> {
 
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {

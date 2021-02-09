@@ -1,10 +1,10 @@
-package util
+package utils
 
 import android.content.Context
 import android.content.SharedPreferences
 
 class Prefs(context: Context) {
-    private val PREFS_FILENAME = "util"
+    private val PREFS_FILENAME = "utils"
     private val REMEMBER_USER = "remember_user"
     private val REMEMBER_PASSWORD = "remember_token"
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)

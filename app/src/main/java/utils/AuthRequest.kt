@@ -1,4 +1,4 @@
-package util
+package utils
 
 import com.google.gson.annotations.SerializedName
 
