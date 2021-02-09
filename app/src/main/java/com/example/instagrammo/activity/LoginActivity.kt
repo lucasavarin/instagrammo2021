@@ -3,6 +3,7 @@ package com.example.instagrammo.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.instagrammo.MainActivity
 import com.example.instagrammo.R
 import com.example.instagrammo.view.prefs
 import com.example.instagrammo.network.ApiClient
