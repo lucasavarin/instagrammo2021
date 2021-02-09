@@ -1,10 +1,11 @@
-package com.example.instagrammo
+package com.example.instagrammo.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.instagrammo.R
 
 
 /**
@@ -16,7 +17,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Inflate the layout for this com.example.instagrammo.fragment
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 

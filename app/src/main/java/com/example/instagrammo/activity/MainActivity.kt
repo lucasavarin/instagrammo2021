@@ -1,11 +1,12 @@
-package com.example.instagrammo
+package com.example.instagrammo.activity
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.instagrammo.*
+import com.example.instagrammo.fragment.*
 import kotlinx.android.synthetic.main.main_activity.*
 
 
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-addFragment(homeFragment,R.id.fragment_container)
+addFragment(homeFragment, R.id.fragment_container)
 
 
         bottom_navigation.setOnNavigationItemSelectedListener { item ->

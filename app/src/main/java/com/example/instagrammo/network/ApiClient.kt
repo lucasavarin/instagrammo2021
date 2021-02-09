@@ -1,4 +1,4 @@
-package network
+package com.example.instagrammo.network
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

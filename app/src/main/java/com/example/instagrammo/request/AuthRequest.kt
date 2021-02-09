@@ -1,4 +1,4 @@
-package request
+package com.example.instagrammo.request
 
 import com.google.gson.annotations.SerializedName
 

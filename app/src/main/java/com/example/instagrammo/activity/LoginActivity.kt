@@ -1,13 +1,13 @@
-package com.example.instagrammo
+package com.example.instagrammo.activity
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.instagrammo.R
 import com.example.instagrammo.view.prefs
-import network.ApiClient
-import request.AuthRequest
-import response.AuthResponse
+import com.example.instagrammo.network.ApiClient
+import com.example.instagrammo.request.AuthRequest
+import com.example.instagrammo.response.AuthResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package response
+package com.example.instagrammo.response
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
