@@ -7,6 +7,9 @@ import com.example.instagrammo.beans.posts.PostResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiInterface {
     @POST("auth.php")
@@ -29,4 +32,10 @@ interface ApiInterface {
     @GET
     fun getImage(@Url url: String): Call<ResponseBody>
 
+
+    @POST("posts.php/{profileId}")
+    fun doGetProfile(
+        @Body authRequestRest: AuthRequest,
+        @Path("profileId") profileId : String
+    ): Call<Profile>
 }

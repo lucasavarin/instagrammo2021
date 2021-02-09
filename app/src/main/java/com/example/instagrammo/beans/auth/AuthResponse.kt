@@ -8,5 +8,7 @@ data class AuthResponse (
     @Expose
     @SerializedName("authToken") val authToken : String?,
     @Expose
-    @SerializedName("profileId") val profileId : String?
+    @SerializedName("profileId") val profileId : String?,
+    @Expose
+    @SerializedName("result") val result : Boolean?
 ) : Serializable

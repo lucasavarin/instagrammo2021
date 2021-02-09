@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileIcon"
+        android:layout_width="126dp"
+        android:layout_height="124dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/bird"
+        app:civ_border_color="#FF000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/IdImmagine"
+        android:layout_width="138dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/fifth"
+        android:hint="@string/id_immagine"
+        android:textColor="@color/fifth"
+        android:textColorHint="@color/fifth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toEndOf="@+id/profileIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title_header="@string/username" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/spunta"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="84dp"
+        android:src="@drawable/tick"
+        app:civ_border_color="#FF000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toEndOf="@+id/IdImmagine"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/NomeProfilo"
+        android:layout_width="323dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/fifth"
+        android:hint="@string/nome_profilo"
+        android:textColor="@color/fifth"
+        android:textColorHint="@color/fifth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileIcon"
+        app:title_header="@string/username" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/Descrizione"
+        android:layout_width="323dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/fifth"
+        android:hint="@string/descrizione"
+        android:textColor="@color/fifth"
+        android:textColorHint="@color/fifth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NomeProfilo"
+        app:title_header="@string/username" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button2"
+        android:layout_width="323dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="192dp"
+        android:text="@string/salva"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profileIcon"
+        app:layout_constraintTop_toBottomOf="@+id/Descrizione" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
