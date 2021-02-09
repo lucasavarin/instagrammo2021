@@ -4,6 +4,7 @@ import com.example.instagrammo.beans.auth.AuthRequest
 import com.example.instagrammo.beans.auth.AuthResponse
 import com.example.instagrammo.beans.followers.FollowersResponse
 import com.example.instagrammo.beans.posts.PostResponse
+import com.example.instagrammo.beans.posts.Profile
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -19,9 +20,8 @@ interface ApiInterface {
 
     @POST("followers.php/{profileId}")
     fun getFollowers(
-        @Header("authToken") authToken: String,
-        @Path("profileId") profileId: String,
-        @Body token: String
+        @Header("authToken") authToken: String? = ApiClient.TOKEN,
+        @Path("profileId") profileId: String? = ApiClient.PROFILE_ID
     ) : Call<FollowersResponse>
 
     @GET("posts.php")
@@ -32,9 +32,8 @@ interface ApiInterface {
     @GET
     fun getImage(@Url url: String): Call<ResponseBody>
 
-
-    @POST("posts.php/{profileId}")
-    fun doGetProfile(
+    @GET("posts.php/{profileId}")
+    fun getProfile(
         @Body authRequestRest: AuthRequest,
         @Path("profileId") profileId : String
     ): Call<Profile>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.posts.Post
 import com.example.instagrammo.retrofit.ApiClient
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_post_home.view.*
 
 
@@ -64,19 +65,13 @@ class ItemPostRecyclerViewAdapter(
         StrictMode.setThreadPolicy(policy)
         /***************************************************************/
 
+        //Picasso.get().load()
+
         val response = ApiClient.GetClient.getImage(url)
         val bodyResponse = response.execute().body()
 
         return BitmapFactory.decodeStream(bodyResponse?.byteStream())
     }
-
-/*
-    private fun getImage(url: String, imageView: ImageView) {
-        Picasso.with(mContext)
-            .load(url)
-            .into(imageView)
-
-    }*/
 
 
     inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {

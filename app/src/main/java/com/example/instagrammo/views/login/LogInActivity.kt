@@ -2,6 +2,8 @@ package com.example.instagrammo.views.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.widget.EditText
 import android.widget.Toast
 import com.example.instagrammo.R
 import com.example.instagrammo.prefs
@@ -11,6 +13,7 @@ import com.example.instagrammo.beans.auth.AuthResponse
 import com.example.instagrammo.views.BaseActivity
 import com.example.instagrammo.views.BaseHomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,8 +28,8 @@ class LogInActivity : BaseActivity() {
             val username: String = username_view.text.toString()
             val password: String = password_view.text.toString()
 
-            //val request = AuthRequest("lsavarin", "lucasava")
-            val request = AuthRequest(username, password)
+            val request = AuthRequest("jsamson", "mson")
+            //val request = AuthRequest(username, password)
 
             ApiClient.GetClient.doAuth(request).enqueue(object : Callback<AuthResponse> {
 

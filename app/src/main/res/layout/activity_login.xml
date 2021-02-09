@@ -46,6 +46,7 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/fifth"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:textColor="@color/fifth"
         android:textColorHint="@color/fifth"
         app:layout_constraintEnd_toEndOf="parent"
