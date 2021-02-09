@@ -35,12 +35,17 @@ class BaseHomeActivity : BaseActivity(), OnPostItemClickListener{
                     replaceFragment(SearchFragment.searchFragment, R.id.fragment_container)
                     true
                 }
-                R.id.nav_add -> {true}
+                R.id.nav_add -> {
+                    true
+                }
                 R.id.nav_follow -> {
                     replaceFragment(FollowFragment.followFragment, R.id.fragment_container)
                     true
                 }
-                R.id.nav_profile -> {true}
+                R.id.nav_profile -> {
+                    replaceFragment(ProfileFragment.profileFragment, R.id.fragment_container)
+                    true
+                }
                 else -> false
             }
         }

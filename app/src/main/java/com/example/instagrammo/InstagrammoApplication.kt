@@ -11,6 +11,7 @@ val prefs : SharePrefs by lazy {
 class InstagrammoApplication : Application() {
     companion object {
         var prefs : SharePrefs? = null
+        var profilePrefs : SharePrefs? = null
     }
 
     override fun onCreate(){

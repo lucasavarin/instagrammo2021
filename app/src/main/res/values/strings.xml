@@ -10,4 +10,9 @@
     <string name="post">Post</string>
     <string name="amici">Amici</string>
     <string name="modifica_profilo">Modifica Profilo</string>
+    <string name="id_immagine">Id immagine</string>
+    <string name="nome_profilo">Nome Profilo</string>
+    <string name="descrizione">Descrizione</string>
+    <string name="salva">Salva</string>
+    <string name="loginFallito">Username o Password errati</string>
 </resources>

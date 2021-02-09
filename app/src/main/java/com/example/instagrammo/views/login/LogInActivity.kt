@@ -2,6 +2,8 @@ package com.example.instagrammo.views.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.Toast
 import com.example.instagrammo.R
 import com.example.instagrammo.prefs
 import com.example.instagrammo.retrofit.ApiClient
@@ -19,12 +21,13 @@ class LogInActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val username = username_view.text
-        val password = password_view.text
-
-        val request = AuthRequest("lsavarin", "lucasava")
-
         btnAccess.setOnClickListener {
+
+            val username: String = username_view.text.toString()
+            val password: String = password_view.text.toString()
+
+            //val request = AuthRequest("lsavarin", "lucasava")
+            val request = AuthRequest(username, password)
 
             ApiClient.GetClient.doAuth(request).enqueue(object : Callback<AuthResponse> {
 
@@ -32,11 +35,17 @@ class LogInActivity : BaseActivity() {
                     print("Login Fallito")
                 }
 
-                override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-
+                override fun onResponse(
+                    call: Call<AuthResponse>,
+                    response: Response<AuthResponse>
+                ) {
+                    if (response.body()?.result == true) {
                         prefs.rememberToken = response.body()?.authToken.toString()
                         val intentLogin = Intent(applicationContext, BaseHomeActivity::class.java)
                         startActivity(intentLogin)
+                    } else {
+                        Toast.makeText(this@LogInActivity, R.string.loginFallito, Toast.LENGTH_SHORT).show()
+                    }
                 }
 
             })
