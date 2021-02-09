@@ -4,33 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:padding="10dp"
+    android:background="@drawable/background2"
+    android:padding="8dp"
     tools:context=".LoginActivity">
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/corners"
-        android:fontFamily="@font/noto_sans"
-        android:text="@string/login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/noto_sans"
-        android:text="Ricordami"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginTextPasswordWrapper" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo"
@@ -66,17 +42,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loginTextPasswordWrapper"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:boxStrokeWidth="0dp"
+        android:layout_marginTop="30dp"
         app:endIconMode="password_toggle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginTextUsernameWrapper"
+        app:layout_constraintTop_toBottomOf="@+id/loginTextUsernameWrapper">
 
-        >
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/password"
@@ -87,10 +60,34 @@
             android:hint="@string/login_password"
             android:inputType="textPassword"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@id/loginTextUsernameWrapper"
+            app:layout_constraintTop_toBottomOf="@id/loginTextUsernameWrapper" />
 
-
-            />
     </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkbox_Remember"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/noto_sans"
+        android:text="Ricordami"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginTextPasswordWrapper" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners"
+        android:fontFamily="@font/noto_sans"
+        android:text="@string/login"
+        android:backgroundTint="@color/material_on_primary_disabled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
