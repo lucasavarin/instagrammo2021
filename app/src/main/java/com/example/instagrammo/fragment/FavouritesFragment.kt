@@ -20,4 +20,13 @@ class FavouritesFragment : Fragment() {
         // Inflate the layout for this com.example.instagrammo.fragment
         return inflater.inflate(R.layout.fragment_favourites, container, false)
     }
+
+    companion object {
+        @JvmStatic
+         fun newInstance() =
+             FavouritesFragment().apply {
+                 arguments = Bundle().apply {}
+             }
+    }
+
 }
