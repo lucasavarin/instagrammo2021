@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mid_margin">16dp</dimen>
+    <dimen name="tiny_margin">8dp</dimen>
+    <dimen name="margin_from_other_textInputLayout">50dp</dimen>
+</resources>
