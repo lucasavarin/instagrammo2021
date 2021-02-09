@@ -9,12 +9,8 @@ import android.view.ViewGroup
 
 /**
  * A simple [Fragment] subclass.
-
  */
 class AddFragment : Fragment() {
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,4 +19,13 @@ class AddFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add, container, false)
     }
+
+    companion object {
+        @JvmStatic
+         fun newInstance() =
+             AddFragment().apply {
+                 arguments = Bundle().apply {}
+             }
+    }
+
 }

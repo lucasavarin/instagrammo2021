@@ -20,5 +20,12 @@ class SearchFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
+    companion object {
+        @JvmStatic
+         fun newInstance() =
+             SearchFragment().apply {
+                 arguments = Bundle().apply {}
+             }
+    }
 
 }
