@@ -39,10 +39,10 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             })
+            val intent = Intent(applicationContext, HomeActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("chiave", "valore")
+            startActivity(intent, bundle)
         }
-        val intent = Intent(applicationContext, HomeActivity::class.java)
-        val bundle = Bundle()
-        bundle.putString("chiave", "valore")
-        startActivity(intent, bundle)
     }
 }
