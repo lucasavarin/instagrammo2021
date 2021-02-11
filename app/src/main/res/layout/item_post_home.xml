@@ -10,9 +10,11 @@
         android:id="@+id/profile_image"
         android:layout_width="408dp"
         android:layout_height="459dp"
-        android:layout_marginBottom="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="164dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.appcompat.widget.AppCompatTextView

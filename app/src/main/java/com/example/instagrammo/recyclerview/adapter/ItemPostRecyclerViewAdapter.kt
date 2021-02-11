@@ -46,43 +46,45 @@ class ItemPostRecyclerViewAdapter(
         position: Int) {
 
         val item = mValues[position]
-        //holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
+        getImage(item.picture!!)
+        Picasso.get().load(item.picture!!).transform(CircleTransform()).into(holder.profileImage)
+
+/*        //holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
 //        holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
-        Picasso.get().load(item.profile?.picture).transform(CircleTransform()).into(holder.profileImage)
-        holder.profileName.text = item.profile?.name
- /*       holder.postImage.setImageBitmap(getImage(item.picture!!))
-        holder.titlePost.text = item.title
-        holder.datePost.text = item.uploadTime
+       Picasso.get().load(item.profile?.picture).transform(CircleTransform()).into(holder.profileImage)
+       holder.profileName.text = item.profile?.name
+        holder.postImage.setImageBitmap(getImage(item.picture!!))
+       holder.titlePost.text = item.title
+       holder.datePost.text = item.uploadTime
 */
+   }
 
-    }
+   private fun getImage(url: String): Bitmap {
 
-    private fun getImage(url: String): Bitmap {
+       /** Nasconde il problema si dovrebbe implementare un service **/
+       /** -si potrebbe usare un nuovo thread diverso dall applicazione ma
+        *  bisogna essere consapevoli (AsyncTask)
+        **/
+       val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+       StrictMode.setThreadPolicy(policy)
+       /***************************************************************/
 
-        /** Nasconde il problema si dovrebbe implementare un service **/
-        /** -si potrebbe usare un nuovo thread diverso dall applicazione ma
-         *  bisogna essere consapevoli (AsyncTask)
-         **/
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-        /***************************************************************/
+       val response = ApiClient.GetClient.getImage(url)
+       val bodyResponse = response.execute().body()
 
-        val response = ApiClient.GetClient.getImage(url)
-        val bodyResponse = response.execute().body()
-
-        return BitmapFactory.decodeStream(bodyResponse?.byteStream())
-    }
+       return BitmapFactory.decodeStream(bodyResponse?.byteStream())
+   }
 
 
-    inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
-        val profileImage = mView.profile_image
-        val profileName = mView.profile_name
-        val postImage = mView.post_image
-        val titlePost = mView.title_post
-        val datePost = mView.date_post
+   inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
+       val profileImage = mView.profile_image
+       val profileName = mView.profile_name
+       val postImage = mView.post_image
+       val titlePost = mView.title_post
+       val datePost = mView.date_post
 
-        override fun toString(): String {
-            return super.toString() + "CIAO"
-        }
-    }
+       override fun toString(): String {
+           return super.toString() + "CIAO"
+       }
+   }
 }
