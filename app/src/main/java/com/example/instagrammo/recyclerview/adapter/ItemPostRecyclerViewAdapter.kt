@@ -46,12 +46,15 @@ class ItemPostRecyclerViewAdapter(
         position: Int) {
 
         val item = mValues[position]
-        Picasso.get().load(item.picture!!).transform(CircleTransform()).into(holder.profileImage)
-
-/*        //holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
-//        holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
+        Picasso.get().load(item.profile?.picture!!).resize(500, 450).transform(CircleTransform()).into(holder.profileImage)
+        holder.profileName.text = item.profile?.name
+        Picasso.get().load(item.picture).resize(920,700).into(holder.postImage)
+        holder.titlePost.text = item.title
+        holder.datePost.text = item.uploadTime
+/*
+//       holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
        Picasso.get().load(item.profile?.picture).transform(CircleTransform()).into(holder.profileImage)
-       holder.profileName.text = item.profile?.name
+
         holder.postImage.setImageBitmap(getImage(item.picture!!))
        holder.titlePost.text = item.title
        holder.datePost.text = item.uploadTime

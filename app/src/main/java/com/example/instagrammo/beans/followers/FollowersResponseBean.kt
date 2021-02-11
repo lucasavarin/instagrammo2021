@@ -14,5 +14,5 @@ data class FollowerProfile (
     @Expose @SerializedName("id") val id : String?,
     @Expose @SerializedName("name") val name : String?,
     @Expose @SerializedName("description") val description: String?,
-    @Expose @SerializedName("picture") val picture: Uri?
+    @Expose @SerializedName("picture") val picture: String?
 ) : Serializable

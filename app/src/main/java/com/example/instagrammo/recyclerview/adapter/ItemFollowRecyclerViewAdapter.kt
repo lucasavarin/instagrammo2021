@@ -32,7 +32,7 @@ class ItemFollowRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        Picasso.get().load(item.picture).transform(CircleTransform()).into(holder.imageProfile)
+        Picasso.get().load(item.picture).resize(200,200).transform(CircleTransform()).into(holder.imageProfile)
     }
 
     inner class ViewHolder(

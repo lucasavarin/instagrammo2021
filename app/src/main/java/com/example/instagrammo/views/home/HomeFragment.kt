@@ -45,7 +45,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         this.mView = inflater.inflate(R.layout.fragment_home, container, false)
 
         getData()
@@ -63,10 +62,9 @@ class HomeFragment : Fragment() {
                     Log.i("INFORMATION", t.message.toString())
                 }
 
-            override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
+                override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                 itemsPost = response.body()?.payload!!.toMutableList()
-
-            }
+                }
 
             })
 
@@ -76,10 +74,7 @@ class HomeFragment : Fragment() {
                     Log.i("INFORMATION", t.message.toString())
                 }
 
-                override fun onResponse(
-                    call: Call<FollowersResponse>,
-                    response: Response<FollowersResponse>
-                ) {
+                override fun onResponse(call: Call<FollowersResponse>, response: Response<FollowersResponse>) {
                     itemsFollow = response.body()?.payload!!.toMutableList()
                 }
 
@@ -100,11 +95,13 @@ class HomeFragment : Fragment() {
         val recyclerView = this.mView.home_follow_recycler
         if (recyclerView is RecyclerView) {
             recyclerView.apply {
-                layoutManager = LinearLayoutManager(context)
+                layoutManager = LinearLayoutManager(context,  LinearLayoutManager.HORIZONTAL, false)
                 adapter = ItemFollowRecyclerViewAdapter(this.context, itemsFollow, listenerFollow)
                 Log.i("info", "CI SIAMO")
                 itemsFollow.forEach {
                     Log.i("info", it.id!!)
+                    Log.i("info", it.description!!)
+
                 }
             }
         }
