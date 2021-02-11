@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_home)
+        setContentView(R.layout.main_activity)
 
         addFragment(homeFragment,R.id.fragment_container)
 
