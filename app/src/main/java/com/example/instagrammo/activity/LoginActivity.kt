@@ -38,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
         val authRequest = AuthRequest(
                 username = username.text.toString(),
                 password = password.text.toString()
+
         )
         ApiClient.getClient.doAuth(authRequest).enqueue(object : Callback<AuthResponse> {
             override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
@@ -47,6 +48,8 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 prefs!!.rememberUser = checkbox_Remember.isChecked
                 prefs!!.username = if(prefs!!.rememberUser) username.text.toString() else ""
+                prefs!!.idProfilo = response.body()?.profileId.toString()
+                prefs!!.token = response.body()?.authToken.toString()
 
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
