@@ -1,14 +1,11 @@
-package com.lynx.instagrammo.Home
+package com.lynx.instagrammo.home
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.lynx.instagrammo.Fragment.*
-import com.lynx.instagrammo.R
-import com.lynx.instagrammo.prefs
+import com.lynx.instagrammo.*
+import com.lynx.instagrammo.addFragment
+import com.lynx.instagrammo.fragment.*
 import kotlinx.android.synthetic.main.activity_home.*
 
 
@@ -26,6 +23,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         /* ToDO change to home frament */
+       // loadPosts()
         addFragment(homeFragment, R.id.fragmentConainer)
 
         val username = prefs.username
@@ -59,19 +57,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    /*toDO classe di gestione fragment*/
-    fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
-        val fragmentTransaction = beginTransaction()
-        fragmentTransaction.func()
-        fragmentTransaction.commit()
-    }
 
-    fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { add(frameId, fragment) }
-    }
-
-    fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { replace(frameId, fragment) }
-    }
 
 }

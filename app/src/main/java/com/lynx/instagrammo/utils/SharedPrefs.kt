@@ -1,4 +1,4 @@
-package com.lynx.instagrammo.Utils
+package com.lynx.instagrammo.utils
 
 import android.content.Context
 import android.content.SharedPreferences

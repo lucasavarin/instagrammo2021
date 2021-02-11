@@ -1,13 +1,14 @@
-package com.lynx.instagrammo.Login
+package com.lynx.instagrammo.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lynx.instagrammo.API.ApiClient
 import com.lynx.instagrammo.ApplicationContext.Companion.prefs
 import com.lynx.instagrammo.AuthRequest
 import com.lynx.instagrammo.AuthResponse
-import com.lynx.instagrammo.Home.HomeActivity
+import com.lynx.instagrammo.home.HomeActivity
 import com.lynx.instagrammo.R
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -15,7 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
-
+   // var test = Toast.makeText(this, Toast.LENGTH_LONG, Toast.LENGTH_LONG).show()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,17 +39,21 @@ class LoginActivity : AppCompatActivity() {
         )
         ApiClient.getClient.doAuth(authRequest).enqueue(object : Callback<AuthResponse>
         {
+            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                if(!response.body()!!.authToken.isNullOrBlank() || !response.body()!!.profileId.isNullOrBlank()) {
+                    prefs!!.rememberUser = cbRemeberMe.isChecked
+                    prefs!!.username = editTextUsername.text.toString()
+
+                    val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
             override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
                 println("Error : ${t.message}" )
             }
 
-            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-                prefs!!.rememberUser = cbRemeberMe.isChecked
-                prefs!!.username = editTextUsername.text.toString()
 
-                val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                startActivity(intent)
-            }
         })
 
     }
