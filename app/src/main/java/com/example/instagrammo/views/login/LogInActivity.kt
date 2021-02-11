@@ -43,6 +43,7 @@ class LogInActivity : BaseActivity() {
                 ) {
                     if (response.body()?.result == true) {
                         prefs.rememberToken = response.body()?.authToken.toString()
+                        prefs.rememberIdProfile = response.body()?.profileId.toString()
                         val intentLogin = Intent(applicationContext, BaseHomeActivity::class.java)
                         startActivity(intentLogin)
                     } else {
