@@ -1,7 +1,7 @@
 package com.lynx.instagrammo
 
 import android.app.Application
-import com.lynx.instagrammo.Utils.SharedPrefs
+import com.lynx.instagrammo.utils.SharedPrefs
 
 class ApplicationContext: Application(){
         companion object{
