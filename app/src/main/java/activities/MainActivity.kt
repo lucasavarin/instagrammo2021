@@ -1,10 +1,13 @@
 package activities
 
 import API.ApiClient
+import activities.fragments.*
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.instagrammo.R
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,10 +35,10 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(
-                        call: Call<AuthResponse>,
-                        response: Response<AuthResponse>
+                    call: Call<AuthResponse>,
+                    response: Response<AuthResponse>
                 ) {
-                    if(!response.body()?.authToken.isNullOrEmpty()){
+                    if (!response.body()?.authToken.isNullOrEmpty()) {
                         prefs.rememberPassword = response.body()?.authToken.toString();
                     }
                 }
