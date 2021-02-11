@@ -15,23 +15,32 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.auth.AuthResponse
+import com.example.instagrammo.beans.followers.FollowerProfile
+import com.example.instagrammo.beans.followers.FollowersResponse
 import com.example.instagrammo.beans.posts.Post
 import com.example.instagrammo.beans.posts.PostResponse
 import com.example.instagrammo.prefs
 import com.example.instagrammo.recyclerview.adapter.*
 import com.example.instagrammo.retrofit.ApiClient
 import com.example.instagrammo.views.BaseHomeActivity
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeFragment : Fragment(){
+class HomeFragment : Fragment() {
 
     private lateinit var mView: View
 
     private var listener: OnPostItemClickListener? = null
 
+    private var listenerFollow: OnFollowItemClickListener? = null
+
     private var items: MutableList<Post> = mutableListOf()
+
+    private var itemsFollow: MutableList<FollowerProfile> = mutableListOf()
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,29 +57,57 @@ class HomeFragment : Fragment(){
     }
 
     private fun getData() {
-        ApiClient.GetClient.getPosts(prefs.rememberToken!!).enqueue(object : Callback<PostResponse> {
-            override fun onFailure(call: Call<PostResponse>, t: Throwable) {
-                Log.i("INFORMATION", t.message.toString())
-            }
+        ApiClient.GetClient.getPosts(prefs.rememberToken!!)
+            .enqueue(object : Callback<PostResponse> {
+                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                    Log.i("INFORMATION", t.message.toString())
+                }
 
-            override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
-                //items = response.body()?.payload!!.toMutableList()
-                //Log.i("INFORMATION --> vediamo", items.toString())
-            }
+                override fun onResponse(
+                    call: Call<PostResponse>,
+                    response: Response<PostResponse>
+                ) {
+                    //items = response.body()?.payload!!.toMutableList()
+                    //Log.i("INFORMATION --> vediamo", items.toString())
+                }
 
-        })
+            })
+
+        ApiClient.GetClient.getFollowers(prefs.rememberToken!!)
+            .enqueue(object : Callback<FollowersResponse> {
+                override fun onFailure(call: Call<FollowersResponse>, t: Throwable) {
+                    Log.i("INFORMATION", t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<FollowersResponse>,
+                    response: Response<FollowersResponse>
+                ) {
+                   Log.i("info", response.body()?.result.toString())
+                }
+
+            })
     }
 
     private fun setAdapter() {
         val recyclerView = this.mView.findViewById<RecyclerView>(R.id.home_post_recycler)
-        if (recyclerView is RecyclerView ) {
-            recyclerView.apply{
+        if (recyclerView is RecyclerView) {
+            recyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = ItemPostRecyclerViewAdapter(this.context, items, listener )
+                adapter = ItemPostRecyclerViewAdapter(this.context, items, listener)
             }
         }
     }
 
+    private fun setFollowAdapter() {
+        val recyclerView = this.mView.home_follow_recycler
+        if (recyclerView is RecyclerView) {
+            recyclerView.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = ItemFollowRecyclerViewAdapter(this.context, itemsFollow, listenerFollow)
+            }
+        }
+    }
 
 
     override fun onAttach(context: Context) {
@@ -89,7 +126,7 @@ class HomeFragment : Fragment(){
     }
 
     companion object {
-        var homeFragment : HomeFragment = HomeFragment()
+        var homeFragment: HomeFragment = HomeFragment()
     }
 
 }

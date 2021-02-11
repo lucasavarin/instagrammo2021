@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/profile_image_follower"
         android:layout_width="53dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
