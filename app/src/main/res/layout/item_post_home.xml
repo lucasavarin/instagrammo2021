@@ -3,75 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="500dp">
+    android:layout_height="600dp">
 
 
     <ImageView
         android:id="@+id/profile_image"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="44dp"
-        app:layout_constraintEnd_toStartOf="@+id/profile_name"
+        android:layout_width="408dp"
+        android:layout_height="459dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/profile_name"
+        android:layout_width="40dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="32dp"
+        android:textColor="@color/fifth"
+        app:layout_constraintBottom_toBottomOf="@+id/post_image"
+        app:layout_constraintStart_toEndOf="@+id/post_image"
+        app:layout_constraintTop_toTopOf="@+id/post_image"
+        app:layout_constraintVertical_bias="0.485" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/post_image"
+        android:layout_width="52dp"
+        android:layout_height="62dp"
+        app:layout_constraintBottom_toTopOf="@+id/profile_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/profile_name"
-        android:layout_width="wrap_content"
-        android:layout_height="29dp"
-        android:layout_marginEnd="286dp"
-        android:textColor="@color/fifth"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profile_image"
-        app:layout_constraintTop_toTopOf="@+id/profile_image" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/post_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginBottom="46dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/profile_name"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title_post"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="19dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginTop="16dp"
         android:textColor="@color/fifth"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_image" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/date_post"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:textColor="@color/fifth"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+<!--
     <View
         android:id="@+id/view2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="12dp"
         android:background="@color/fifth"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        tools:layout_editor_absoluteY="588dp" />
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>

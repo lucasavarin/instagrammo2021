@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.posts.Post
 import com.example.instagrammo.retrofit.ApiClient
+import com.example.instagrammo.utils.CircleTransform
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_post_home.view.*
 
@@ -26,7 +27,6 @@ class ItemPostRecyclerViewAdapter(
         mOnClickListener = View.OnClickListener {
             mListener?.onPictureProfileItemListener("Cliccato")
         }
-
     }
 
     override fun getItemCount(): Int = mValues.size
@@ -47,13 +47,15 @@ class ItemPostRecyclerViewAdapter(
 
         val item = mValues[position]
         //holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
-        holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
-        holder.profileName.text = item.profile.name
-        holder.postImage.setImageBitmap(getImage(item.picture!!))
+//        holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
+        Picasso.get().load(item.profile?.picture).transform(CircleTransform()).into(holder.profileImage)
+        holder.profileName.text = item.profile?.name
+ /*       holder.postImage.setImageBitmap(getImage(item.picture!!))
         holder.titlePost.text = item.title
         holder.datePost.text = item.uploadTime
-    }
+*/
 
+    }
 
     private fun getImage(url: String): Bitmap {
 
@@ -64,8 +66,6 @@ class ItemPostRecyclerViewAdapter(
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         /***************************************************************/
-
-        //Picasso.get().load()
 
         val response = ApiClient.GetClient.getImage(url)
         val bodyResponse = response.execute().body()
