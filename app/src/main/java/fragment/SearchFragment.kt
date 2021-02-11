@@ -10,7 +10,7 @@ import com.lynxspa.instagrammo.R
 class SearchFragment : Fragment() {
     companion object {
 
-        fun makeInstance(): SearchFragment {
+        fun makeIstance(): SearchFragment {
             return SearchFragment()
         }
     }

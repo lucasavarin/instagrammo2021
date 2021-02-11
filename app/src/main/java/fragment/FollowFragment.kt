@@ -9,7 +9,7 @@ import com.lynxspa.instagrammo.R
 
 class FollowFragment : Fragment() {
     companion object {
-        fun makeInstance(): FollowFragment {
+        fun makeIstance(): FollowFragment {
             return FollowFragment()
         }
     }

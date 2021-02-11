@@ -10,7 +10,7 @@ import com.lynxspa.instagrammo.R
 class ProfileFragment : Fragment() {
     companion object {
 
-        fun makeInstance(): ProfileFragment {
+        fun makeIstance(): ProfileFragment {
             return ProfileFragment()
         }
     }

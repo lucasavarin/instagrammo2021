@@ -7,17 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.lynxspa.instagrammo.R
 
-class HomeFragment : Fragment() {
+class AddFragment : Fragment() {
     companion object {
 
-        fun makeInstance(): HomeFragment {
-            return HomeFragment()
+        fun makeIstance(): AddFragment {
+            return AddFragment()
         }
     }
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_add, container, false)
     }
-
 }
