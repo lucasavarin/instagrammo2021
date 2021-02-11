@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isNotEmpty
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +21,7 @@ import com.example.instagrammo.beans.posts.PostResponse
 import com.example.instagrammo.prefs
 import com.example.instagrammo.recyclerview.adapter.*
 import com.example.instagrammo.retrofit.ApiClient
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import com.example.instagrammo.views.BaseHomeActivity
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit2.Call
@@ -32,11 +32,12 @@ class HomeFragment : Fragment() {
 
     private lateinit var mView: View
 
-    private var listener: OnPostItemClickListener? = null
+    private var listenerPost: OnPostItemClickListener? = null
 
     private var listenerFollow: OnFollowItemClickListener? = null
 
     private var items: MutableList<Post> = mutableListOf()
+    private var itemsPost: MutableList<Post> = mutableListOf()
 
     private var itemsFollow: MutableList<FollowerProfile> = mutableListOf()
 
@@ -51,7 +52,8 @@ class HomeFragment : Fragment() {
         this.mView = inflater.inflate(R.layout.fragment_home, container, false)
 
         getData()
-        setAdapter()
+        setAdapterPost()
+        setFollowAdapter()
 
         return this.mView
     }
@@ -63,13 +65,11 @@ class HomeFragment : Fragment() {
                     Log.i("INFORMATION", t.message.toString())
                 }
 
-                override fun onResponse(
-                    call: Call<PostResponse>,
-                    response: Response<PostResponse>
-                ) {
-                    //items = response.body()?.payload!!.toMutableList()
-                    //Log.i("INFORMATION --> vediamo", items.toString())
-                }
+
+            override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
+                //itemsPost = response.body()?.payload!!.toMutableList()
+                //Log.i("INFORMATION --> vediamo", items.toString())
+            }
 
             })
 
@@ -89,12 +89,12 @@ class HomeFragment : Fragment() {
             })
     }
 
-    private fun setAdapter() {
-        val recyclerView = this.mView.findViewById<RecyclerView>(R.id.home_post_recycler)
-        if (recyclerView is RecyclerView) {
-            recyclerView.apply {
+    private fun setAdapterPost() {
+        val recyclerView = this.mView.home_post_recycler
+        if (recyclerView is RecyclerView ) {
+            recyclerView.apply{
                 layoutManager = LinearLayoutManager(context)
-                adapter = ItemPostRecyclerViewAdapter(this.context, items, listener)
+                adapter = ItemPostRecyclerViewAdapter(this.context, itemsPost, listenerPost )
             }
         }
     }
@@ -113,7 +113,7 @@ class HomeFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnPostItemClickListener) {
-            listener = context
+            listenerPost = context
         } else {
             throw RuntimeException("$context must implement OnPostItemClickListener")
         }
@@ -122,7 +122,7 @@ class HomeFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        listener = null
+        listenerPost = null
     }
 
     companion object {
