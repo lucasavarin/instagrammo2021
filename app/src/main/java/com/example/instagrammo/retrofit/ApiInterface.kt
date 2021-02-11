@@ -26,7 +26,7 @@ interface ApiInterface {
 
     @GET("posts.php")
     fun getPosts(
-        @Header("authToken") authToken: String
+        @Header("x-api-key") xapikey: String
     ) : Call<PostResponse>
 
     @GET
@@ -34,7 +34,7 @@ interface ApiInterface {
 
     @GET("posts.php/{profileId}")
     fun getProfile(
-        @Body authRequestRest: AuthRequest,
+        @Header("x-api-key") xapikey: String,
         @Path("profileId") profileId : String
     ): Call<Profile>
 }
