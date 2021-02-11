@@ -18,10 +18,10 @@ interface ApiInterface {
         @Body authRequestRest: AuthRequest
     ): Call<AuthResponse>
 
-    @POST("followers.php/{profileId}")
+    @GET("followers.php/{profileId}")
     fun getFollowers(
-        @Header("authToken") authToken: String? = ApiClient.TOKEN,
-        @Path("profileId") profileId: String? = ApiClient.PROFILE_ID
+        @Header("x-api-key") xApiKey: String, //= ApiClient.TOKEN,
+        @Path("profileId") profileId: String //= ApiClient.PROFILE_ID
     ) : Call<FollowersResponse>
 
     @GET("posts.php")

@@ -1,6 +1,9 @@
 package com.example.instagrammo.views.home
 
 import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,23 +13,35 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
+import com.example.instagrammo.beans.auth.AuthResponse
+import com.example.instagrammo.beans.followers.FollowerProfile
+import com.example.instagrammo.beans.followers.FollowersResponse
 import com.example.instagrammo.beans.posts.Post
 import com.example.instagrammo.beans.posts.PostResponse
 import com.example.instagrammo.prefs
 import com.example.instagrammo.recyclerview.adapter.*
 import com.example.instagrammo.retrofit.ApiClient
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import com.example.instagrammo.views.BaseHomeActivity
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeFragment : Fragment(){
+class HomeFragment : Fragment() {
 
     private lateinit var mView: View
 
     private var listenerPost: OnPostItemClickListener? = null
 
+    private var listenerFollow: OnFollowItemClickListener? = null
+
+    private var items: MutableList<Post> = mutableListOf()
     private var itemsPost: MutableList<Post> = mutableListOf()
+
+    private var itemsFollow: MutableList<FollowerProfile> = mutableListOf()
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,23 +52,42 @@ class HomeFragment : Fragment(){
         this.mView = inflater.inflate(R.layout.fragment_home, container, false)
 
         getData()
-
+        setAdapterPost()
+        setFollowAdapter()
 
         return this.mView
     }
 
     private fun getData() {
-        ApiClient.GetClient.getPosts(prefs.rememberToken!!).enqueue(object : Callback<PostResponse> {
-            override fun onFailure(call: Call<PostResponse>, t: Throwable) {
-                Log.i("INFORMATION", t.message.toString())
-            }
+
+        ApiClient.GetClient.getPosts(prefs.rememberToken!!)
+            .enqueue(object : Callback<PostResponse> {
+                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                    Log.i("INFORMATION", t.message.toString())
+                }
+
 
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                 //itemsPost = response.body()?.payload!!.toMutableList()
                 //Log.i("INFORMATION --> vediamo", items.toString())
             }
 
-        })
+            })
+
+        ApiClient.GetClient.getFollowers(prefs.rememberToken!!, prefs.rememberIdProfile!!)
+            .enqueue(object : Callback<FollowersResponse> {
+                override fun onFailure(call: Call<FollowersResponse>, t: Throwable) {
+                    Log.i("INFORMATION", t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<FollowersResponse>,
+                    response: Response<FollowersResponse>
+                ) {
+                   Log.i("info", response.body()?.result.toString())
+                }
+
+            })
     }
 
     private fun setAdapterPost() {
@@ -65,6 +99,17 @@ class HomeFragment : Fragment(){
             }
         }
     }
+
+    private fun setFollowAdapter() {
+        val recyclerView = this.mView.home_follow_recycler
+        if (recyclerView is RecyclerView) {
+            recyclerView.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = ItemFollowRecyclerViewAdapter(this.context, itemsFollow, listenerFollow)
+            }
+        }
+    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -82,7 +127,7 @@ class HomeFragment : Fragment(){
     }
 
     companion object {
-        var homeFragment : HomeFragment = HomeFragment()
+        var homeFragment: HomeFragment = HomeFragment()
     }
 
 }
