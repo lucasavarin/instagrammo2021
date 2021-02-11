@@ -1,9 +1,9 @@
-package recyclerView
+package com.lynxspa.instagrammo.recyclerView
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import retrofit.FollowerResponse
+import com.lynxspa.instagrammo.retrofit.FollowerResponse
 import com.lynxspa.instagrammo.R
 
 class FollowerListRecyclerAdapter(private val followers : List <FollowerResponse> ) :

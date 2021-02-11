@@ -4,12 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit.AuthRequest
-import retrofit.AuthResponse
+import com.lynxspa.instagrammo.retrofit.AuthRequest
+import com.lynxspa.instagrammo.retrofit.AuthResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import singleton.ApiClient
+import com.lynxspa.instagrammo.singleton.ApiClient
 
 
 class MainActivity : AppCompatActivity() {

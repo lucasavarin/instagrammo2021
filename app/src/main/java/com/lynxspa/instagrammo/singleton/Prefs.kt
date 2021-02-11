@@ -1,4 +1,4 @@
-package singleton
+package com.lynxspa.instagrammo.singleton
 
 import android.app.Application
 import android.content.Context
@@ -19,7 +19,7 @@ class Prefs(applicationContext: Context) : Application() {
         super.onCreate()
 
         class Prefs(context: Context){
-            private val PREFS_FILENAME = "singleton.Prefs"
+            private val PREFS_FILENAME = "com.lynxspa.instagrammo.singleton.Prefs"
             private val REMEMBER_USER = "remember_user"
             private val prefs : SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 

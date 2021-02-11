@@ -1,4 +1,4 @@
-package retrofit
+package com.lynxspa.instagrammo.retrofit
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

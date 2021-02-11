@@ -1,10 +1,9 @@
-package recyclerView
+package com.lynxspa.instagrammo.recyclerView
 
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import retrofit.FollowerResponse
-import com.squareup.picasso.Picasso
+import com.lynxspa.instagrammo.retrofit.FollowerResponse
 
 class FollowerListHolder(v : View) : RecyclerView.ViewHolder(v), View.OnClickListener {
 

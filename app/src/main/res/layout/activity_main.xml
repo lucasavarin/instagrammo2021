@@ -62,7 +62,7 @@
             />
 
           <androidx.appcompat.widget.AppCompatCheckBox
-              android:id="@id/Checkbox"
+              android:id="@+id/Checkbox"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
               app:layout_constraintRight_toRightOf="parent"

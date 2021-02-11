@@ -1,18 +1,8 @@
  package com.lynxspa.instagrammo
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
-import androidx.fragment.app.FragmentTransaction
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import fragment.*
-import singleton.ApiClient
-import javax.security.auth.callback.Callback
+import com.lynxspa.instagrammo.fragment.*
 
  class HomeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +38,7 @@ import javax.security.auth.callback.Callback
 
      }
 
-     fun toSearch{
+     fun toSearch(){
          val searchFragment = SearchFragment.makeIstance()
 
          val fragmentTransaction = supportFragmentManager.beginTransaction()

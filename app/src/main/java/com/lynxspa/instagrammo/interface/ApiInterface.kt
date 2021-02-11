@@ -1,10 +1,10 @@
-package `interface`
+package com.lynxspa.instagrammo.`interface`
 
 
-import retrofit.AuthRequest
-import retrofit.AuthResponse
-import retrofit.FollowerResponse
-import retrofit.ImageRest
+import com.lynxspa.instagrammo.retrofit.AuthRequest
+import com.lynxspa.instagrammo.retrofit.AuthResponse
+import com.lynxspa.instagrammo.retrofit.FollowerResponse
+import com.lynxspa.instagrammo.retrofit.ImageRest
 import retrofit2.Call
 import retrofit2.http.*
 
