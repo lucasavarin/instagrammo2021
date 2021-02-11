@@ -36,12 +36,9 @@ class HomeFragment : Fragment() {
 
     private var listenerFollow: OnFollowItemClickListener? = null
 
-    private var items: MutableList<Post> = mutableListOf()
     private var itemsPost: MutableList<Post> = mutableListOf()
 
     private var itemsFollow: MutableList<FollowerProfile> = mutableListOf()
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,10 +63,9 @@ class HomeFragment : Fragment() {
                     Log.i("INFORMATION", t.message.toString())
                 }
 
-
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
-                //itemsPost = response.body()?.payload!!.toMutableList()
-                //Log.i("INFORMATION --> vediamo", items.toString())
+                itemsPost = response.body()?.payload!!.toMutableList()
+
             }
 
             })
@@ -84,7 +80,7 @@ class HomeFragment : Fragment() {
                     call: Call<FollowersResponse>,
                     response: Response<FollowersResponse>
                 ) {
-                   Log.i("info", response.body()?.result.toString())
+                    itemsFollow = response.body()?.payload!!.toMutableList()
                 }
 
             })
@@ -106,6 +102,10 @@ class HomeFragment : Fragment() {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = ItemFollowRecyclerViewAdapter(this.context, itemsFollow, listenerFollow)
+                Log.i("info", "CI SIAMO")
+                itemsFollow.forEach {
+                    Log.i("info", it.id!!)
+                }
             }
         }
     }

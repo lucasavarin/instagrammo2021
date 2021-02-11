@@ -1,6 +1,7 @@
 package com.example.instagrammo.recyclerview.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +32,7 @@ class ItemFollowRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-                Picasso.get().load(item.picture).transform(CircleTransform()).into(holder.imageProfile)
+        Picasso.get().load(item.picture).transform(CircleTransform()).into(holder.imageProfile)
     }
 
     inner class ViewHolder(

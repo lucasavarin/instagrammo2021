@@ -46,7 +46,6 @@ class ItemPostRecyclerViewAdapter(
         position: Int) {
 
         val item = mValues[position]
-        getImage(item.picture!!)
         Picasso.get().load(item.picture!!).transform(CircleTransform()).into(holder.profileImage)
 
 /*        //holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
