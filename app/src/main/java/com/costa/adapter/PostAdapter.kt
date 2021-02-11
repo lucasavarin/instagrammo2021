@@ -3,10 +3,10 @@ package com.costa.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.costa.beans.PostOut
+import com.costa.beans.FollowerOut
 import com.costa.instagrammo.R
 
-class PostAdapter (private val posts: List<PostOut>) :
+class PostAdapter(private val posts: List<FollowerOut>) :
     RecyclerView.Adapter<PostViewHolder>() {
 
     /**

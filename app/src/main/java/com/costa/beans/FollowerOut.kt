@@ -1,6 +1,8 @@
 package com.costa.beans
 
-class FollowerOut(id: Int,
-                  name: String,
-                  description: String,
-                  picture: String) {}
+class FollowerOut(
+    var id: Int,
+    var name: String,
+    var description: String,
+    var picture: String
+)
