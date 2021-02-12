@@ -13,7 +13,6 @@ import com.example.instagrammo.beans.auth.AuthResponse
 import com.example.instagrammo.views.BaseActivity
 import com.example.instagrammo.views.BaseHomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
