@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lynx.instagrammo.R
+import com.lynx.instagrammo.loadFollowers
 import com.lynx.instagrammo.loadPosts
+import com.lynx.instagrammo.recycleView.FollowerListAdapter
 import com.lynx.instagrammo.recycleView.PostListAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -24,8 +26,11 @@ class HomeFragment : Fragment() {
         /*colleghiamo la nostra recycleview al homefragment */
         val linearLayoutManager = LinearLayoutManager(context)
         V_FollowerListLayout.layoutManager = linearLayoutManager
-
         V_FollowerListLayout.adapter = PostListAdapter(loadPosts())
+
+        val linearLayoutManager2 = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        H_FollowerListLayout.layoutManager = linearLayoutManager2
+        H_FollowerListLayout.adapter = FollowerListAdapter(loadFollowers())
 
 
     }
