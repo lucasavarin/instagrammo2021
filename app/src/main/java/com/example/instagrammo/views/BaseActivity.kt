@@ -17,10 +17,6 @@ abstract class BaseActivity() : AppCompatActivity() {
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        val window: Window = this.window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.darkblue)
     }
 
     inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {

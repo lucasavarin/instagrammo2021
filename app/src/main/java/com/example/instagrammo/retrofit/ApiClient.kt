@@ -14,16 +14,19 @@ import java.io.IOException
 
 
 object ApiClient {
+
     const val BASEURL : String = "http://www.nbarresi.it/"
     //const val BASEURL : String = "http://192.168.1.10:3001/Instagrammo/"
 
-    val TOKEN : String? = prefs.rememberToken
-    val PROFILE_ID : String? = prefs.rememberIdProfile
-
     val GetClient : ApiInterface
     get(){
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = BODY
+
         val client: OkHttpClient =
-            OkHttpClient.Builder().addInterceptor(object : Interceptor {
+            OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .addInterceptor(object : Interceptor {
                 @Throws(IOException::class)
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val newRequest: Request = chain.request().newBuilder()
@@ -31,11 +34,8 @@ object ApiClient {
                         .build()
                     return chain.proceed(newRequest)
                 }
+
             }).build()
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(BODY)
-        //val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-
         val gson = GsonBuilder().create()
 
         val retrofit = Retrofit.Builder()
@@ -45,45 +45,5 @@ object ApiClient {
             .build()
 
         return retrofit.create(ApiInterface::class.java)
-
-        /*
-
-            val GetClient : ApiInterface
-    get(){
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(BODY)
-        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-
-        val gson = GsonBuilder().create()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASEURL)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-
-        return retrofit.create(ApiInterface::class.java)
-
-
-
-
-
-
-
-
-
-
-
-
-        val httClient = OkHttpClient.Builder()
-            val logging = HttpLoggingInterceptor()
-            httClient.addInterceptor(object : Interceptor {
-                override fun intercept(chain: Interceptor.Chain): Response {
-                    val req =
-                        chain.request().newBuilder().addHeader("x-api-key", prefs.token).build()
-                    return chain.proceed(req)
-                }
-            })
-*/
     }
 }

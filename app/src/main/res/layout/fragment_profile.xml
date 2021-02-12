@@ -5,40 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profileIcon"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/profileImage"
         android:layout_width="126dp"
         android:layout_height="124dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/bird"
+        android:layout_marginStart="@dimen/default24"
+        android:layout_marginTop="@dimen/default24"
         app:civ_border_color="#FF000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingClass" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/postNumber"
+        android:id="@+id/postsNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="52dp"
         android:gravity="center_horizontal"
         android:text="0"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/postWord"
         app:layout_constraintEnd_toEndOf="@+id/postWord"
-        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="@+id/postWord"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/friendsNumber"
+        android:id="@+id/followersNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="52dp"
         android:gravity="center_horizontal"
         android:text="0"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/friendsWord"
         app:layout_constraintHorizontal_bias="0.481"
@@ -49,60 +50,94 @@
         android:id="@+id/postWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginBottom="93dp"
         android:gravity="center_horizontal"
         android:text="@string/post"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.273"
-        app:layout_constraintStart_toEndOf="@+id/profileIcon"
-        app:layout_constraintTop_toBottomOf="@+id/postNumber" />
+        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintStart_toEndOf="@+id/profileImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/friendsWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/default20"
         android:gravity="center_horizontal"
         android:text="@string/amici"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toEndOf="@+id/postWord"
-        app:layout_constraintTop_toBottomOf="@+id/friendsNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/followersNumber" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/nomeProfilo"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/default16"
         android:text="Bird with arms"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileIcon" />
+        app:layout_constraintEnd_toEndOf="@+id/profileImage"
+        app:layout_constraintStart_toStartOf="@+id/profileImage"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/descrizioneProfilo"
+        android:id="@+id/description"
         android:layout_width="323dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/default8"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/edit_profile_button"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/nomeProfilo" />
+        app:layout_constraintStart_toStartOf="@+id/edit_profile_button"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
+        android:id="@+id/edit_profile_button"
+        style="@style/confirm_button_style"
         android:layout_width="323dp"
         android:layout_height="46dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/default8"
         android:text="@string/modifica_profilo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descrizioneProfilo" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
+    <View
+        android:id="@+id/line_separator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default2"
+        android:layout_marginTop="@dimen/default24"
+        android:background="@color/sand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_profile_button" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/grid_recycle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_separator" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="72dp"
+        android:src="@drawable/mono_recycle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_separator" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

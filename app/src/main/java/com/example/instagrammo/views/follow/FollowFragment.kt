@@ -20,6 +20,6 @@ class FollowFragment : Fragment() {
     }
 
     companion object {
-        var followFragment : FollowFragment = FollowFragment()
+        var newInstance : FollowFragment = FollowFragment()
     }
 }

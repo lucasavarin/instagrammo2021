@@ -16,33 +16,33 @@ class BaseHomeActivity : BaseActivity(), OnPostItemClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basehome)
 
-        addFragment(HomeFragment.homeFragment, R.id.fragment_container)
+        addFragment(HomeFragment.newInstance, R.id.fragment_container)
 
         bottomMenuNavigationManager()
 
     }
 
-    fun bottomMenuNavigationManager(){
+    private fun bottomMenuNavigationManager(){
 
         bottom_nav.setOnNavigationItemSelectedListener{ item ->
             when (item.itemId) {
                 R.id.nav_home ->  {
-                    replaceFragment(HomeFragment.homeFragment, R.id.fragment_container)
+                    replaceFragment(HomeFragment.newInstance, R.id.fragment_container)
                     true
                 }
                 R.id.nav_search -> {
-                    replaceFragment(SearchFragment.searchFragment, R.id.fragment_container)
+                    replaceFragment(SearchFragment.newInstance, R.id.fragment_container)
                     true
                 }
                 R.id.nav_add -> {
                     true
                 }
                 R.id.nav_follow -> {
-                    replaceFragment(FollowFragment.followFragment, R.id.fragment_container)
+                    replaceFragment(FollowFragment.newInstance, R.id.fragment_container)
                     true
                 }
                 R.id.nav_profile -> {
-                    replaceFragment(ProfileFragment.profileFragment, R.id.fragment_container)
+                    replaceFragment(ProfileFragment.newInstance, R.id.fragment_container)
                     true
                 }
                 else -> false

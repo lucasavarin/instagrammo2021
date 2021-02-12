@@ -20,7 +20,7 @@ interface ApiInterface {
 
     @GET("followers.php/{profileId}")
     fun getFollowers(
-        @Path("profileId") profileId: String //= ApiClient.PROFILE_ID
+        @Path("profileId") profileId: String
     ) : Call<FollowersResponse>
 
     @GET("posts.php")
@@ -32,7 +32,6 @@ interface ApiInterface {
 
     @GET("posts.php/{profileId}")
     fun getProfile(
-        @Header("x-api-key") xapikey: String,
         @Path("profileId") profileId : String
     ): Call<Profile>
 }

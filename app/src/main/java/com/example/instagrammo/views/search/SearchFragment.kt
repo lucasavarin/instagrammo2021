@@ -23,6 +23,6 @@ class SearchFragment : Fragment() {
     }
 
     companion object {
-        var searchFragment : SearchFragment = SearchFragment()
+        var newInstance : SearchFragment = SearchFragment()
     }
 }

@@ -9,7 +9,6 @@ import java.io.Serializable
 data class PostResponse (
     @Expose @SerializedName("result") val result : Boolean?,
     @Expose @SerializedName("payload") val payload : List<Post>?
-
 ) : Serializable
 
 data class Post (

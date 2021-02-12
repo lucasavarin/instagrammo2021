@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profileIcon"
+        android:id="@+id/profileImage"
         android:layout_width="126dp"
         android:layout_height="124dp"
         android:layout_marginStart="44dp"
@@ -22,13 +22,13 @@
         android:layout_height="38dp"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/fifth"
+        android:backgroundTint="@color/white"
         android:hint="@string/id_immagine"
-        android:textColor="@color/fifth"
-        android:textColorHint="@color/fifth"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.137"
-        app:layout_constraintStart_toEndOf="@+id/profileIcon"
+        app:layout_constraintStart_toEndOf="@+id/profileImage"
         app:layout_constraintTop_toTopOf="parent"
         app:title_header="@string/username" />
 
@@ -49,14 +49,14 @@
         android:layout_width="323dp"
         android:layout_height="44dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/fifth"
+        android:backgroundTint="@color/white"
         android:hint="@string/nome_profilo"
-        android:textColor="@color/fifth"
-        android:textColorHint="@color/fifth"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileIcon"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage"
         app:title_header="@string/username" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -64,10 +64,10 @@
         android:layout_width="323dp"
         android:layout_height="100dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="@color/fifth"
+        android:backgroundTint="@color/white"
         android:hint="@string/descrizione"
-        android:textColor="@color/fifth"
-        android:textColorHint="@color/fifth"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,7 @@
         app:title_header="@string/username" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
+        android:id="@+id/edit_profile_button"
         android:layout_width="323dp"
         android:layout_height="46dp"
         android:layout_marginTop="192dp"
@@ -83,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/profileIcon"
+        app:layout_constraintStart_toStartOf="@+id/profileImage"
         app:layout_constraintTop_toBottomOf="@+id/Descrizione" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@
         android:id="@+id/title_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/fifth"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="@dimen/font16"
         />
@@ -20,10 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/fifth"
+            android:backgroundTint="@color/white"
             android:singleLine="true"
             android:textSize="@dimen/font16"
-            android:textColor="@color/fifth"
+            android:textColor="@color/white"
             />
 
 

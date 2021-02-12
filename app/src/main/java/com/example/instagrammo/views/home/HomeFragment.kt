@@ -48,8 +48,6 @@ class HomeFragment : Fragment() {
         this.mView = inflater.inflate(R.layout.fragment_home, container, false)
 
         getData()
-        setAdapterPost()
-        setFollowAdapter()
 
         return this.mView
     }
@@ -63,7 +61,8 @@ class HomeFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
-                itemsPost = response.body()?.payload!!.toMutableList()
+                    itemsPost = response.body()?.payload!!.toMutableList()
+                    setAdapterPost()
                 }
 
             })
@@ -76,6 +75,7 @@ class HomeFragment : Fragment() {
 
                 override fun onResponse(call: Call<FollowersResponse>, response: Response<FollowersResponse>) {
                     itemsFollow = response.body()?.payload!!.toMutableList()
+                    setFollowAdapter()
                 }
 
             })
@@ -124,7 +124,7 @@ class HomeFragment : Fragment() {
     }
 
     companion object {
-        var homeFragment: HomeFragment = HomeFragment()
+        var newInstance: HomeFragment = HomeFragment()
     }
 
 }
