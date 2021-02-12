@@ -33,5 +33,13 @@ fun loadFollowers(): List<Follower> {
 
 class DataSource {
 
+//    fun loadPosts(): List<Post> {
+//        return listOf<Post>(
+//            Post("1", "1", "title", "URL"),
+//            Post("2", "2", "title", "URL"),
+//            Post("3", "3", "title", "URL"),
+//            Post("4", "4", "title", "URL")
+//        )
+//    }
 
 }

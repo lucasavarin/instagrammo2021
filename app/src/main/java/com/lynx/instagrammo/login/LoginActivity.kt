@@ -1,8 +1,8 @@
 package com.lynx.instagrammo.login
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lynx.instagrammo.API.ApiClient
 import com.lynx.instagrammo.ApplicationContext.Companion.prefs
@@ -15,16 +15,17 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class LoginActivity : AppCompatActivity() {
-   // var test = Toast.makeText(this, Toast.LENGTH_LONG, Toast.LENGTH_LONG).show()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         if(cbRemeberMe.isChecked ){
-        editTextUsername.setText(prefs?.username)
-        Log.i("INFORMATION :" , prefs?.username)}
+            editTextUsername.setText(prefs?.username)
+            Log.i("INFORMATION :" , prefs?.username)}
 
         btnLogin.setOnClickListener {
             doLogin()
@@ -37,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
             username = editTextUsername.text.toString(),
             password = editTextPassword.text.toString()
         )
-        ApiClient.getClient.doAuth(authRequest).enqueue(object : Callback<AuthResponse>
+        ApiClient.GetClient.doAuth(authRequest).enqueue(object : Callback<AuthResponse>
         {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 if(!response.body()!!.authToken.isNullOrBlank() || !response.body()!!.profileId.isNullOrBlank()) {
@@ -60,3 +61,55 @@ class LoginActivity : AppCompatActivity() {
 
 
 }
+//class LoginActivity : AppCompatActivity() {
+//
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_login)
+//
+//        if (cbRemeberMe.isChecked) {
+//            editTextUsername.setText(prefs?.username)
+//        }
+//
+//        btnLogin.setOnClickListener {
+//            doLogin()
+//        }
+//
+//    }
+//
+//    fun doLogin() {
+//        val authRequest = AuthRequest(
+//                username = editTextUsername.text.toString(),
+//                password = editTextPassword.text.toString()
+//        )
+//
+//        ApiClient.getClient.doAuth(authRequest).enqueue(object : Callback<AuthResponse>
+//        {
+//            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>)
+//            {
+//                if (!response.body()!!.authToken.isNullOrBlank() || !response.body()!!.profileId.isNullOrBlank())
+//                {
+//
+//                    prefs!!.rememberUser = cbRemeberMe.isChecked
+//                    prefs!!.username = editTextUsername.text.toString()
+//                    Log.i("INFORMATION :", prefs?.username)
+//                    //userId = response.body().profileId.toString()
+//                    prefs!!.authToken = response.body()!!.authToken.toString()
+//                    Log.i("AUTHTOKEN :", prefs?.authToken)
+//
+//                    val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+//                    startActivity(intent)
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+//                println("Error : ${t.message}")
+//            }
+//
+//        })
+//
+//    }
+//
+//
+//}

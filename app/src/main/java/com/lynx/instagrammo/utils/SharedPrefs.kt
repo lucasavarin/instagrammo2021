@@ -7,7 +7,7 @@ class SharedPrefs(context: Context) {
     private val PREF_FILENAME = "com.lynx.instagrammo.prefs"
     private val REMEMBER_USER = "remember_user"
     private val USERNAME = "username"
-    private val AUTHTOKEN = "authtoken"
+    private val AUTHTOKEN = "authToken"
     private val prefs: SharedPreferences = context.getSharedPreferences(PREF_FILENAME, 0)
 
     var rememberUser: Boolean

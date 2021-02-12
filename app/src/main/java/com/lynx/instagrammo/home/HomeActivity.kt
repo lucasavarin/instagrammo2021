@@ -23,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         /* ToDO change to home frament */
-       // loadPosts()
+        // loadPosts()
         addFragment(homeFragment, R.id.fragmentConainer)
 
         val username = prefs.username
@@ -56,7 +56,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
 }

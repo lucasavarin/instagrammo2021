@@ -7,6 +7,6 @@ data class Post(
     val postId: String,
     val title: String,
     val picture: String,
-   // val uploadTime: Date,
-    // val profile: Profile
+    val uploadTime: String,
+    val profile: Profile
 )

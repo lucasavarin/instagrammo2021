@@ -1,4 +1,4 @@
-package com.lynx.instagrammo.recycleView
+package com.lynx.instagrammo.recyclerView
 
 import android.net.Uri
 import android.view.View

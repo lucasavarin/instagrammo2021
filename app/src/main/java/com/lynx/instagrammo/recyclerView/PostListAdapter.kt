@@ -1,12 +1,10 @@
-package com.lynx.instagrammo.recycleView
+package com.lynx.instagrammo.recyclerView
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lynx.instagrammo.R
-import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.bean.Post
-import com.lynx.instagrammo.loadPosts
 
 class PostListAdapter(private val posts : List<Post>) : RecyclerView.Adapter<PostListViewHolder>() {
 
@@ -19,7 +17,6 @@ class PostListAdapter(private val posts : List<Post>) : RecyclerView.Adapter<Pos
     override fun getItemCount() = posts.size
 
     override fun onBindViewHolder(holder: PostListViewHolder, position: Int) {
-      //  holder.bindFollower(followers[position])
         val item = posts[position]
                holder.bindPost(item)
                //holder.textImage.setText(item.title)
