@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
 
     private fun getData() {
 
-        ApiClient.GetClient.getPosts(prefs.rememberToken!!)
+        ApiClient.GetClient.getPosts()
             .enqueue(object : Callback<PostResponse> {
                 override fun onFailure(call: Call<PostResponse>, t: Throwable) {
                     Log.i("INFORMATION", t.message.toString())
@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
 
             })
 
-        ApiClient.GetClient.getFollowers(prefs.rememberToken!!, prefs.rememberIdProfile!!)
+        ApiClient.GetClient.getFollowers(prefs.rememberIdProfile!!)
             .enqueue(object : Callback<FollowersResponse> {
                 override fun onFailure(call: Call<FollowersResponse>, t: Throwable) {
                     Log.i("INFORMATION", t.message.toString())

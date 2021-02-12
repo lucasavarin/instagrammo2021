@@ -20,13 +20,11 @@ interface ApiInterface {
 
     @GET("followers.php/{profileId}")
     fun getFollowers(
-        @Header("x-api-key") xApiKey: String, //= ApiClient.TOKEN,
         @Path("profileId") profileId: String //= ApiClient.PROFILE_ID
     ) : Call<FollowersResponse>
 
     @GET("posts.php")
     fun getPosts(
-        @Header("x-api-key") xapikey: String
     ) : Call<PostResponse>
 
     @GET

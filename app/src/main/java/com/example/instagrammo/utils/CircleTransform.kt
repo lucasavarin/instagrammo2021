@@ -22,7 +22,7 @@ class CircleTransform : Transformation {
             BitmapShader(squaredBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
         paint.shader = shader
         paint.isAntiAlias = true
-        val r = size / 2f
+        val r = size / 2.1f
         canvas.drawCircle(r, r, r, paint)
         squaredBitmap.recycle()
         return bitmap
