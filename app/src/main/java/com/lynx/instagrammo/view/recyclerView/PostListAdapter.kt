@@ -1,4 +1,4 @@
-package com.lynx.instagrammo.recyclerView
+package com.lynx.instagrammo.view.recyclerView
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

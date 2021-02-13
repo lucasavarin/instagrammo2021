@@ -1,4 +1,4 @@
-package com.lynx.instagrammo.utils
+package com.lynx.instagrammo.persistence
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -8,6 +8,7 @@ class SharedPrefs(context: Context) {
     private val REMEMBER_USER = "remember_user"
     private val USERNAME = "username"
     private val AUTHTOKEN = "authToken"
+    private val USER_ID = "userId"
     private val prefs: SharedPreferences = context.getSharedPreferences(PREF_FILENAME, 0)
 
     var rememberUser: Boolean
@@ -22,4 +23,7 @@ class SharedPrefs(context: Context) {
         get() = prefs.getString(AUTHTOKEN, "")!!
         set(value) = prefs.edit().putString(AUTHTOKEN, value).apply()
 
+    var userId: String
+        get() = prefs.getString(USER_ID, "")!!
+        set(value) = prefs.edit().putString(USER_ID, value).apply()
 }

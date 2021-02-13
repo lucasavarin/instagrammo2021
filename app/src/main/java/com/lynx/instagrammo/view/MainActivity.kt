@@ -1,16 +1,20 @@
-package com.lynx.instagrammo.home
+package com.lynx.instagrammo.view
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.lynx.instagrammo.*
 import com.lynx.instagrammo.addFragment
-import com.lynx.instagrammo.fragment.*
+import com.lynx.instagrammo.view.add.AddFragment
+import com.lynx.instagrammo.view.home.HomeFragment
+import com.lynx.instagrammo.view.notification.NotificationsFragment
+import com.lynx.instagrammo.view.profile.ProfileFragment
+import com.lynx.instagrammo.view.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 
 /* toDO cambiare il nome dell'activity in BaseActivity */
-class HomeActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     val homeFragment = HomeFragment()
     val searchFragment = SearchFragment()

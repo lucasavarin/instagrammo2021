@@ -1,4 +1,4 @@
-package com.lynx.instagrammo.fragment
+package com.lynx.instagrammo.view.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

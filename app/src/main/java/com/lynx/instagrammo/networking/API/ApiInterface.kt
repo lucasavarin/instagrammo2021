@@ -1,9 +1,9 @@
-package com.lynx.instagrammo.API
+package com.lynx.instagrammo.networking.API
 
-import com.lynx.instagrammo.AuthRequest
-import com.lynx.instagrammo.AuthResponse
-import com.lynx.instagrammo.FollowerResponse
-import com.lynx.instagrammo.PostResponse
+import com.lynx.instagrammo.networking.AuthRequest
+import com.lynx.instagrammo.networking.AuthResponse
+import com.lynx.instagrammo.networking.FollowerResponse
+import com.lynx.instagrammo.networking.PostResponse
 import retrofit2.Call
 import retrofit2.http.*
 

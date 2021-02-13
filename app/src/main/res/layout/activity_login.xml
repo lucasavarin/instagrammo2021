@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_login"
     android:padding="15dp"
-    tools:context=".login.LoginActivity">
+    tools:context=".view.login.LoginActivity">
 
     <!-- LOGO -->
     <androidx.appcompat.widget.AppCompatImageView
@@ -214,6 +214,7 @@
         android:layout_marginTop="22dp"
         android:background="@drawable/google"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txtEasyAccess"
         app:layout_constraintRight_toRightOf="@+id/loginFB"
         app:layout_constraintTop_toBottomOf="@+id/txtEasyAccess"/>
 
@@ -223,6 +224,7 @@
         android:layout_height="68dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/fb"
+        app:layout_constraintStart_toEndOf="@id/txtEasyAccess"
         app:layout_constraintLeft_toLeftOf="@+id/loginGoogle"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEasyAccess"/>

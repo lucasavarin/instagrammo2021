@@ -4,14 +4,14 @@ import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.bean.Post
 
 
-fun loadPosts(): List<Post> {
-    return listOf<Post>(
-        Post("1", "1", "title", "URL"),
-        Post("2", "2", "title", "URL"),
-        Post("3", "3", "title", "URL"),
-        Post("4", "4", "title", "URL")
-    )
-}
+//fun loadPosts(): List<Post> {
+//    return listOf<Post>(
+//        Post("1", "1", "title", "URL"),
+//        Post("2", "2", "title", "URL"),
+//        Post("3", "3", "title", "URL"),
+//        Post("4", "4", "title", "URL")
+//    )
+//}
 
 fun loadFollowers(): List<Follower> {
     return listOf<Follower>(

@@ -1,8 +1,6 @@
-package com.lynx.instagrammo.API
+package com.lynx.instagrammo.networking.API
 
-import android.provider.Telephony.TextBasedSmsColumns.BODY
 import com.google.gson.GsonBuilder
-import com.lynx.instagrammo.API.ApiClient.BASE_URL
 import com.lynx.instagrammo.prefs
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -12,7 +10,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
-import kotlin.jvm.Throws
 
 object ApiClient {
 

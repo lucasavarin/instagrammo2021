@@ -1,4 +1,4 @@
-package com.lynx.instagrammo.recyclerView
+package com.lynx.instagrammo.view.recyclerView
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +12,6 @@ class PostListViewHolder(private var v : View): RecyclerView.ViewHolder(v) {
 
     fun bindPost(posts :Post){
         this.posts = posts
-       // v.likes_text.text = posts.title
         v.username_text.text = posts.profile.name
         v.description_text.text = posts.title
         Picasso.get().load(posts.picture).into(v.post_image)
