@@ -1,4 +1,4 @@
-package com.example.instagrammo
+package com.example.instagrammo.bean
 
 data class Follower(
     val id:String,

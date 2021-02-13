@@ -2,8 +2,7 @@ package com.example.instagrammo.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.instagrammo.Follower
-import com.example.instagrammo.R
+import com.example.instagrammo.bean.Follower
 import com.example.instagrammo.view.CircleTransformation
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.follower.view.*

@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        addFragment(homeFragment,R.id.fragment_container)
+        addFragment(homeFragment, R.id.fragment_container)
 
         navigation.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
         navigation.add(MeowBottomNavigation.Model(1, R.drawable.ic_search))
@@ -32,23 +32,23 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnClickMenuListener {
             when (it.id) {
                 0 -> {
-                   replaceFragment(homeFragment,R.id.fragment_container)
+                    replaceFragment(homeFragment, R.id.fragment_container)
 
                 }
                 1 -> {
-                    replaceFragment(searchFragment,R.id.fragment_container)
+                    replaceFragment(searchFragment, R.id.fragment_container)
 
                 }
                 2 -> {
-                    replaceFragment(addFragment,R.id.fragment_container)
+                    replaceFragment(addFragment, R.id.fragment_container)
 
                 }
                 3 -> {
-                    replaceFragment(favouritesFragment,R.id.fragment_container)
+                    replaceFragment(favouritesFragment, R.id.fragment_container)
 
                 }
                 4 -> {
-                    replaceFragment(profileFragment,R.id.fragment_container)
+                    replaceFragment(profileFragment, R.id.fragment_container)
 
                 }
                 else -> false
@@ -58,16 +58,16 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-    fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
-        val fragmentTransaction = beginTransaction()
-        fragmentTransaction.func()
-        fragmentTransaction.commit()
-    }
+fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
+    val fragmentTransaction = beginTransaction()
+    fragmentTransaction.func()
+    fragmentTransaction.commit()
+}
 
-    fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { add(frameId, fragment) }
-    }
+fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
+    supportFragmentManager.inTransaction { add(frameId, fragment) }
+}
 
-    fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { replace(frameId, fragment) }
-    }
+fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
+    supportFragmentManager.inTransaction { replace(frameId, fragment) }
+}

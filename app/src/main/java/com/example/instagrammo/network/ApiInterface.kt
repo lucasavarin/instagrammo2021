@@ -3,6 +3,7 @@ package com.example.instagrammo.network
 import com.example.instagrammo.request.AuthRequest
 import com.example.instagrammo.response.AuthResponse
 import com.example.instagrammo.response.FollowerResponse
+import com.example.instagrammo.response.PostResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -12,9 +13,12 @@ import retrofit2.http.Path
 interface ApiInterface {
     @POST("auth.php")
     fun doAuth(
-        @Body authRequestRest : AuthRequest
+        @Body authRequestRest: AuthRequest
     ): Call<AuthResponse>
 
     @GET("followers.php/{profiloUtente}")
-    fun getFollowers(@Path("profiloUtente") profiloUtente:String ): Call<FollowerResponse>
+    fun getFollowers(@Path("profiloUtente") profiloUtente: String): Call<FollowerResponse>
+
+    @GET("posts.php")
+    fun getPost(): Call<PostResponse>
 }
