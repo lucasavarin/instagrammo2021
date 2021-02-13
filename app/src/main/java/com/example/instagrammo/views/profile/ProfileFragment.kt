@@ -6,9 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
-import com.example.instagrammo.beans.posts.Profile
+import com.example.instagrammo.beans.posts.Post
+import com.example.instagrammo.beans.posts.PostResponse
+import com.example.instagrammo.beans.profile.Profile
+import com.example.instagrammo.beans.profile.ProfileResponse
 import com.example.instagrammo.prefs
+import com.example.instagrammo.recyclerview.adapter.ItemPostRecyclerViewAdapter
+import com.example.instagrammo.recyclerview.adapter.OnPostItemClickListener
 import com.example.instagrammo.retrofit.ApiClient
 import com.example.instagrammo.utils.CircleTransform
 import com.squareup.picasso.Picasso
@@ -22,45 +29,74 @@ class ProfileFragment : Fragment() {
 
     private lateinit var itemsProfile: Profile
 
-    private lateinit var viewContext: View
+    private var listenerPost: OnPostItemClickListener? = null
+
+    private var itemsPost: MutableList<Post> = mutableListOf()
+
+    private lateinit var mView: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewContext = inflater.inflate(R.layout.fragment_profile, container, false)
+        mView = inflater.inflate(R.layout.fragment_profile, container, false)
         getData()
 
-        return viewContext
+        return mView
     }
 
     private fun getData() {
         ApiClient.GetClient.getProfile(prefs.rememberIdProfile)
-            .enqueue(object : Callback<Profile> {
-                override fun onFailure(call: Call<Profile>, t: Throwable) {
+            .enqueue(object : Callback<ProfileResponse> {
+                override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
                     Log.i("INFORMATION", t.message.toString())
                 }
 
-                override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
-                    itemsProfile = response.body()!!
+                override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
+                    itemsProfile = response.body()?.payload?.get(0)!!
                     populateDataView()
                 }
             })
+
+        ApiClient.GetClient.getPosts()
+            .enqueue(object : Callback<PostResponse> {
+                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                    Log.i("INFORMATION", t.message.toString())
+                }
+
+                override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
+                    itemsPost = response.body()?.payload!!.toMutableList()
+                    setAdapterPost()
+                }
+
+            })
+    }
+
+    private fun setAdapterPost() {
+        val recyclerView = this.mView.recycler_post_mono_view
+        if (recyclerView is RecyclerView) {
+            recyclerView.apply{
+                layoutManager = LinearLayoutManager(context)
+                adapter = ItemPostRecyclerViewAdapter(this.context, itemsPost, listenerPost, true )
+            }
+        }
     }
 
     private fun populateDataView() {
-        Picasso.get().load(R.drawable.bird).resize(1000,1000).transform(CircleTransform()).into(viewContext.profileImage)
-        viewContext.postsNumber.text = "2"//itemsProfile.postsNumber
-        viewContext.followersNumber.text = "1"//itemsProfile.followersNumber
-        viewContext.name.text = "Jherome Samson"//itemsProfile.name
-        viewContext.description.text = "SERVER RESPONSE IS EMPTY"//itemsProfile.description
+        Picasso.get().load(R.drawable.bird).resize(1000,1000).transform(CircleTransform()).into(mView.profileImage)
+        mView.postsNumber.text = itemsProfile.postsNumber
+        mView.followersNumber.text = itemsProfile.followersNumber
+        mView.name.text = itemsProfile.name
+        mView.description.text = itemsProfile.description
 /*
         if (itemsProfile.description.isNullOrBlank())
             viewContext.description.visibility = View.GONE
 
  */
     }
+
+
 
     companion object {
         var newInstance : ProfileFragment = ProfileFragment()

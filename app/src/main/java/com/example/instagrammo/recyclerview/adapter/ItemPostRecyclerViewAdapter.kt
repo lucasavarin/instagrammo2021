@@ -19,7 +19,8 @@ import kotlinx.android.synthetic.main.item_post_home.view.*
 class ItemPostRecyclerViewAdapter(
     private val mContext: Context,
     private val mValues: List<Post>,
-    private val mListener: OnPostItemClickListener?
+    private val mListener: OnPostItemClickListener?,
+    private val onlyPicture: Boolean = false
 ) : RecyclerView.Adapter<ItemPostRecyclerViewAdapter.ViewHolder>(){
 
     val mOnClickListener: View.OnClickListener
@@ -46,19 +47,23 @@ class ItemPostRecyclerViewAdapter(
         position: Int) {
 
         val item = mValues[position]
-        Picasso.get().load(item.profile?.picture!!).resize(500, 450).transform(CircleTransform()).into(holder.profileImage)
-        holder.profileName.text = item.profile?.name
-        Picasso.get().load(item.picture).resize(920,700).into(holder.postImage)
-        holder.titlePost.text = item.title
-        holder.datePost.text = item.uploadTime
-/*
-//       holder.profileImage.setImageBitmap(getImage(item.profile?.picture!!))
-       Picasso.get().load(item.profile?.picture).transform(CircleTransform()).into(holder.profileImage)
 
-        holder.postImage.setImageBitmap(getImage(item.picture!!))
-       holder.titlePost.text = item.title
-       holder.datePost.text = item.uploadTime
-*/
+        if (onlyPicture) {
+            holder.profileImage.visibility = View.GONE
+            holder.profileName.visibility = View.GONE
+            holder.titlePost.visibility = View.GONE
+            holder.datePost.visibility = View.GONE
+            holder.lineSeparator.visibility = View.GONE
+            Picasso.get().load(item.picture).resize(880,700).into(holder.postImage)
+        } else {
+
+            Picasso.get().load(item.profile?.picture!!).resize(500, 450).transform(CircleTransform()).into(holder.profileImage)
+            holder.profileName.text = item.profile?.name
+            Picasso.get().load(item.picture).resize(880,700).into(holder.postImage)
+            holder.titlePost.text = item.title
+            holder.datePost.text = item.uploadTime
+        }
+
    }
 
    private fun getImage(url: String): Bitmap {
@@ -84,6 +89,7 @@ class ItemPostRecyclerViewAdapter(
        val postImage = mView.post_image
        val titlePost = mView.title_post
        val datePost = mView.date_post
+       val lineSeparator = mView.line_separator
 
        override fun toString(): String {
            return super.toString() + "CIAO"

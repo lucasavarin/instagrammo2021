@@ -4,7 +4,7 @@ import com.example.instagrammo.beans.auth.AuthRequest
 import com.example.instagrammo.beans.auth.AuthResponse
 import com.example.instagrammo.beans.followers.FollowersResponse
 import com.example.instagrammo.beans.posts.PostResponse
-import com.example.instagrammo.beans.posts.Profile
+import com.example.instagrammo.beans.profile.ProfileResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -30,8 +30,8 @@ interface ApiInterface {
     @GET
     fun getImage(@Url url: String): Call<ResponseBody>
 
-    @GET("posts.php/{profileId}")
+    @GET("profiles.php/{profileId}")
     fun getProfile(
         @Path("profileId") profileId : String
-    ): Call<Profile>
+    ): Call<ProfileResponse>
 }

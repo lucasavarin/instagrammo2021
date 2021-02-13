@@ -1,6 +1,5 @@
 package com.example.instagrammo.beans.followers
 
-import android.net.Uri
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

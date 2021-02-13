@@ -40,6 +40,7 @@ class HomeFragment : Fragment() {
 
     private var itemsFollow: MutableList<FollowerProfile> = mutableListOf()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -97,12 +98,6 @@ class HomeFragment : Fragment() {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context,  LinearLayoutManager.HORIZONTAL, false)
                 adapter = ItemFollowRecyclerViewAdapter(this.context, itemsFollow, listenerFollow)
-                Log.i("info", "CI SIAMO")
-                itemsFollow.forEach {
-                    Log.i("info", it.id!!)
-                    Log.i("info", it.description!!)
-
-                }
             }
         }
     }
