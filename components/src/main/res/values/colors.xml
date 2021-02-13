@@ -10,6 +10,10 @@
     <color name="colorOnSecondary">#201e21</color>
     <color name="disabled">#5A5A5A</color>
 
+    <color name="success">#465C4A</color>
+    <color name="alert">#5C4658</color>
+    <color name="complementary">#5C5546</color>
+
 
 
     <color name="transparent">#00F4F3EF</color>

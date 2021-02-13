@@ -11,10 +11,8 @@
         android:layout_height="124dp"
         android:layout_marginStart="@dimen/default24"
         android:layout_marginTop="@dimen/default24"
-        app:civ_border_color="#FF000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingClass" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/postsNumber"
@@ -24,13 +22,12 @@
         android:gravity="center_horizontal"
         android:text="0"
         android:textColor="@color/white"
+        android:textSize="@dimen/font14"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/postWord"
         app:layout_constraintEnd_toEndOf="@+id/postWord"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="@+id/postWord"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/followersNumber"
@@ -40,9 +37,10 @@
         android:gravity="center_horizontal"
         android:text="0"
         android:textColor="@color/white"
+        android:textSize="@dimen/font14"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/friendsWord"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="@+id/friendsWord"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,28 +48,30 @@
         android:id="@+id/postWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:layout_marginBottom="93dp"
+        android:layout_marginBottom="80dp"
         android:gravity="center_horizontal"
         android:text="@string/post"
         android:textColor="@color/white"
+        android:textSize="@dimen/font14"
         app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintHorizontal_bias="0.31"
         app:layout_constraintStart_toEndOf="@+id/profileImage"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/postsNumber"
+        app:layout_constraintVertical_bias="0.952" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/friendsWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default20"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:text="@string/amici"
         android:textColor="@color/white"
+        android:textSize="@dimen/font14"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toEndOf="@+id/postWord"
         app:layout_constraintTop_toBottomOf="@+id/followersNumber" />
 
@@ -83,6 +83,7 @@
         android:text="Bird with arms"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:textSize="@dimen/font14"
         app:layout_constraintEnd_toEndOf="@+id/profileImage"
         app:layout_constraintStart_toStartOf="@+id/profileImage"
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
@@ -93,6 +94,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/default8"
         android:textColor="@color/white"
+        android:textSize="@dimen/font14"
         app:layout_constraintEnd_toEndOf="@+id/edit_profile_button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edit_profile_button"
@@ -114,7 +116,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/default2"
         android:layout_marginTop="@dimen/default24"
-        android:background="@color/sand"
+        android:background="@color/darksand"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
