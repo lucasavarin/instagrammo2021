@@ -1,9 +1,6 @@
 package com.lynx.instagrammo.networking.API
 
-import com.lynx.instagrammo.networking.AuthRequest
-import com.lynx.instagrammo.networking.AuthResponse
-import com.lynx.instagrammo.networking.FollowerResponse
-import com.lynx.instagrammo.networking.PostResponse
+import com.lynx.instagrammo.networking.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -17,4 +14,7 @@ interface ApiInterface {
 
     @GET("posts.php")
     fun getPost() : Call<PostResponse>
+
+    @GET("profiles.php/{profileId}")
+    fun getSingleProfile(@Path("profileId") profileId :String) : Call<ProfileResponse>
 }

@@ -11,6 +11,7 @@ import com.lynx.instagrammo.view.notification.NotificationsFragment
 import com.lynx.instagrammo.view.profile.ProfileFragment
 import com.lynx.instagrammo.view.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 /* toDO cambiare il nome dell'activity in BaseActivity */
@@ -30,8 +31,7 @@ class MainActivity : AppCompatActivity() {
         // loadPosts()
         addFragment(homeFragment, R.id.fragmentConainer)
 
-        val username = prefs.username
-        Log.i("INFORMATION", username)
+
 
 
         navView.setOnNavigationItemSelectedListener { item ->

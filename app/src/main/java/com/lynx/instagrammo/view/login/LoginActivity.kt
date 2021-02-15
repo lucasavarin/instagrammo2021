@@ -23,10 +23,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        if (cbRemeberMe.isChecked) {
-            editTextUsername.setText(prefs?.username)
-            Log.i("INFORMATION :", prefs?.username)
-        }
+        cbRemeberMe.isChecked = prefs!!.rememberUser
+        editTextUsername.setText(prefs?.username)
+
 
         btnLogin.setOnClickListener {
             doLogin()

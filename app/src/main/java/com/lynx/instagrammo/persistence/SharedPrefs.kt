@@ -26,4 +26,5 @@ class SharedPrefs(context: Context) {
     var userId: String
         get() = prefs.getString(USER_ID, "")!!
         set(value) = prefs.edit().putString(USER_ID, value).apply()
+
 }
