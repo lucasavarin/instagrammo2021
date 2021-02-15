@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.view.CircleTransform
 import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.item_follower.view.*
 
 class FollowerListViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {

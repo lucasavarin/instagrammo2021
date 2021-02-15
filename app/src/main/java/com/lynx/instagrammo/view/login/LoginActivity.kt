@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 if (!response.body()!!.authToken.isNullOrBlank() || !response.body()!!.profileId.isNullOrBlank()) {
                     prefs!!.rememberUser = cbRemeberMe.isChecked
-                    prefs!!.username = editTextUsername.text.toString()
+                    prefs!!.username = if(cbRemeberMe.isChecked) editTextUsername.text.toString() else ""
                     prefs!!.userId = response.body()!!.profileId.toString()
                     prefs!!.authToken = response.body()!!.authToken.toString()
 
