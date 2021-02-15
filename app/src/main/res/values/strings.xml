@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Instagrammo</string>
+    <string name="app_name">MiJo</string>
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
     <string name="login">login</string>
