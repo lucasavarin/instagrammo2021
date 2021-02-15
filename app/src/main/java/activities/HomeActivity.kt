@@ -1,21 +1,25 @@
 package activities
 
-import activities.fragments.*
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagrammo.R
+import fragments.FollowFragment
+import fragments.HomeFragment
+import fragments.ProfileFragment
+import fragments.SearchFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         val homeFragment = HomeFragment()
         val searchFragment = SearchFragment()
-        val addFragment = AddFragment()
+        val addFragment = fragments.AddFragment()
         val followFragment = FollowFragment()
         val profileFragment = ProfileFragment()
 
