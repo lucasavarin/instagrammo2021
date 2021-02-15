@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.instagrammo"
+        applicationId "com.qwerty.instagrammo"
         minSdkVersion 25
         targetSdkVersion 30
         versionCode 1
