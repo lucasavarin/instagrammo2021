@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.costa.beans.FollowerOut
 import com.costa.instagrammo.R
 
-class PostAdapter(private val posts: List<FollowerOut>) :
+class PostAdapter(private val posts: List<PostOut>) :
     RecyclerView.Adapter<PostViewHolder>() {
 
     /**
@@ -19,16 +19,15 @@ class PostAdapter(private val posts: List<FollowerOut>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.post_item, parent, false)
-       // val view =parent.inflate(R.layout.post_item, parent, false)
+            .inflate(R.layout.item_post_home, parent, false)
 
         return PostViewHolder(view)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-
-       // holder.bindPost(posts.get(position))
+        val item = posts[position]
+        holder.bindPost(item)
 
     }
 

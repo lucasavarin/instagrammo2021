@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.costa.instagrammo.R.layout.activity_main
 import com.costa.servizi.ApiClient
+import com.costa.servizi.ApiClient.authToken
+import com.costa.servizi.ApiClient.userId
 import com.costa.servizi.AuthRequest
 import com.costa.servizi.AuthResponse
 import com.costa.utils.prefs
@@ -16,8 +18,7 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    var authToken:String? = null
-    var userId:String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_main)
@@ -54,8 +55,8 @@ class MainActivity : AppCompatActivity() {
                     authToken= response.body()!!.authToken.toString()
                     userId=response.body()!!.profileId.toString()
 
-                    prefs!!.rememberUser= cb_restaLoggato.isChecked
-                    prefs!!.username=if(prefs.rememberUser) et_username.text.toString() else ""
+                    prefs.rememberUser= cb_restaLoggato.isChecked
+                    prefs.username=if(prefs.rememberUser) et_username.text.toString() else ""
 
                     val intent = Intent(this@MainActivity, HomeActivity::class.java)
                  startActivity(intent)

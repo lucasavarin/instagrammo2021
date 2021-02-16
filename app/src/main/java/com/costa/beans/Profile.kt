@@ -1,11 +1,10 @@
 package com.costa.beans
 
-class Profile(
-        profileId: Int,
-        name: String,
-        description: String,
-        picture: String,
-        followersNumber: Int,
-        postsNumber: Int
-) {
-}
+data class Profile(
+       var profileId: Int,
+       var name: String,
+       var description: String,
+       var picture: String,
+       var followersNumber: Int,
+       var postsNumber: Int
+)

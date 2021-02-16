@@ -3,12 +3,15 @@ package com.costa.beans
 import java.util.*
 
 
-class PostOut(
-        profileId: Int,
-        postId: Int,
-        title: String,
-        picture: String,
-        uploadTime: Date,
-        profile: Profile
+data class PostOut(
+    val profileId: String,
+    val postId: String,
+    val title: String,
+    val picture: String,
+    val uploadTime: String,
+    val profile: ProfileOut
 ) {
+    /*fun toPost(): Post {
+        return Post(profileId, postId, title, picture, uploadTime, profile.toProfile())
+    }*/
 }
