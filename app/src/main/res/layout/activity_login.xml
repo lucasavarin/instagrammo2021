@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="53dp"
+        android:layout_marginEnd="60dp"
         android:text="@string/rememberme"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/rememberme_switch"
@@ -98,7 +98,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnAccess"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rememberme_textview"
+        app:layout_constraintVertical_bias="0.946" />
 
     <com.example.components.buttons.ConfirmButtonComponent
         android:id="@+id/btnAccess"
