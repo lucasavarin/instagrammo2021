@@ -120,13 +120,13 @@
         android:layout_height="1dp"
         android:layout_marginBottom="8dp"
         android:background="@color/darksand"
-        app:layout_constraintBottom_toTopOf="@+id/grill_cycle_image"
+        app:layout_constraintBottom_toTopOf="@+id/grid_cycle_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/grill_cycle_image"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/grid_cycle_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -135,14 +135,14 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_profile_button"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/mono_cycle_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
         android:src="@drawable/mono_recycle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/grill_cycle_image" />
+        app:layout_constraintTop_toTopOf="@+id/grid_cycle_image" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_post_mono_view"
@@ -152,8 +152,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grill_cycle_image"
+        app:layout_constraintTop_toBottomOf="@+id/grid_cycle_image"
         tools:context=".views.profile.ProfileFragment"
+        android:visibility="gone"
         tools:listitem="@layout/item_post_home" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_post_grid_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grid_cycle_image"
+        tools:context=".views.profile.ProfileFragment"
+        android:visibility="visible"
+        tools:listitem="@layout/item_grid3x" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

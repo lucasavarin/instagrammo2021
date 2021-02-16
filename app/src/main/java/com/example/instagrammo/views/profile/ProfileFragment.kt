@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
@@ -14,12 +15,15 @@ import com.example.instagrammo.beans.posts.PostResponse
 import com.example.instagrammo.beans.profile.Profile
 import com.example.instagrammo.beans.profile.ProfileResponse
 import com.example.instagrammo.prefs
+import com.example.instagrammo.recyclerview.adapter.ItemGridRecyclerViewAdapter
 import com.example.instagrammo.recyclerview.adapter.ItemPostRecyclerViewAdapter
 import com.example.instagrammo.recyclerview.adapter.OnPostItemClickListener
 import com.example.instagrammo.retrofit.ApiClient
 import com.example.instagrammo.utils.CircleTransform
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
+import kotlinx.android.synthetic.main.item_grid3x.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,6 +46,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         mView = inflater.inflate(R.layout.fragment_profile, container, false)
         getData()
+        buttonsListener()
 
         return mView
     }
@@ -67,18 +72,42 @@ class ProfileFragment : Fragment() {
 
                 override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                     itemsPost = response.body()?.payload!!.toMutableList()
-                    setAdapterPost()
+                    setAdapterGrid()
                 }
 
             })
     }
 
-    private fun setAdapterPost() {
+    private fun buttonsListener(){
+        mView.grid_cycle_image.setOnClickListener {
+            setAdapterGrid()
+        }
+
+        mView.mono_cycle_image.setOnClickListener {
+            setAdapterMono()
+        }
+    }
+
+    private fun setAdapterGrid() {
+        mView.recycler_post_grid_view.visibility = View.VISIBLE
+        mView.recycler_post_mono_view.visibility = View.GONE
         val recyclerView = this.mView.recycler_post_mono_view
         if (recyclerView is RecyclerView) {
             recyclerView.apply{
                 layoutManager = LinearLayoutManager(context)
                 adapter = ItemPostRecyclerViewAdapter(this.context, itemsPost, listenerPost, true )
+            }
+        }
+    }
+
+    private fun setAdapterMono() {
+        mView.recycler_post_mono_view.visibility = View.VISIBLE
+        mView.recycler_post_grid_view.visibility = View.GONE
+        val recyclerView = this.mView.recycler_post_grid_view
+        if (recyclerView is RecyclerView) {
+            recyclerView.apply {
+                layoutManager = GridLayoutManager(context, 4)
+                adapter = ItemGridRecyclerViewAdapter(this.context, itemsPost, listenerPost )
             }
         }
     }
