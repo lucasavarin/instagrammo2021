@@ -1,22 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.instagrammo.fragment.ProfileFragment">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="15dp"
+        android:src="@drawable/mine"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/number_post"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="60dp"/>
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20dp"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/posts_text"
+        app:layout_constraintEnd_toEndOf="@id/posts_text"
+        app:layout_constraintStart_toEndOf="@+id/user_image"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/posts_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20dp"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/profile_name"
+        app:layout_constraintEnd_toStartOf="@id/followers_text"
 
-       <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profli_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/ic_person"
+        app:layout_constraintStart_toEndOf="@+id/user_image"
+        app:layout_constraintTop_toBottomOf="@id/number_post" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/number_follower"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/number_post"
+        app:layout_constraintBottom_toTopOf="@id/followers_text"
+        app:layout_constraintEnd_toEndOf="@id/followers_text"
+        app:layout_constraintStart_toStartOf="@id/followers_text"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/followers_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="120dp"
+        android:text="Followers"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/posts_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/posts_text"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/profile_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Nome Profilo "
+        app:layout_constraintStart_toStartOf="@id/user_image"
+        app:layout_constraintTop_toBottomOf="@id/user_image"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/profile_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="descrizione "
+        app:layout_constraintBottom_toTopOf="@id/btn_view_grid"
+        app:layout_constraintStart_toStartOf="@id/profile_name"
+        app:layout_constraintTop_toBottomOf="@id/profile_name"
+        app:layout_constraintVertical_bias="0"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edit_btn"
+        android:layout_width="303dp"
+        android:layout_height="0dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/white"
+        android:minHeight="0dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="Modifica Profilo"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_description" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_view_grid"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:src="@drawable/ic_grid_view"
+        app:layout_constraintEnd_toStartOf="@id/btn_view_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_btn"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_view_list"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        android:src="@drawable/ic_view_list"
+        app:layout_constraintBottom_toTopOf="@id/recycler_profile_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_view_grid"
+        app:layout_constraintTop_toTopOf="@id/btn_view_grid"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_profile_img"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_view_grid"
         />
 
 
