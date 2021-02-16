@@ -15,10 +15,16 @@ import com.example.instagrammo.beans.profile.Profile
 import com.example.instagrammo.beans.profile.ProfileResponse
 import com.example.instagrammo.prefs
 import com.example.instagrammo.retrofit.ApiClient
+import com.example.instagrammo.utils.CircleTransform
+import com.example.instagrammo.utils.ElementViewConverter.toEditable
 import com.example.instagrammo.views.BaseActivity
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_modifica_profilo.*
+import kotlinx.android.synthetic.main.fragment_modifica_profilo.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
+import kotlinx.android.synthetic.main.fragment_profile.view.edit_profile_button
+import kotlinx.android.synthetic.main.fragment_profile.view.profileImage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +35,7 @@ class EditProfileFragment : Fragment() {
 
     private lateinit var editProfileRequest: EditProfileRequest
 
-    private lateinit var listener : EditProfileFragmentListener
+    private lateinit var listener: EditProfileFragmentListener
 
     private lateinit var mView: View
 
@@ -54,16 +60,18 @@ class EditProfileFragment : Fragment() {
 
                 override fun onResponse(call: Call<EditProfile>, response: Response<EditProfile>) {
                     if (response.body()?.result!!) {
-                       listener.removeFragmentListener()
+                        listener.removeFragmentListener()
                     }
                 }
             })
     }
 
-    fun verificaDatiInseriti(){
+    fun verificaDatiInseriti() {
 
-        var nomeProfilo : String = if(NomeProfilo.text.isNullOrEmpty()) itemsProfile.name!! else NomeProfilo.text.toString()
-        var descrizioneProfilo : String = if(Descrizione.text.isNullOrEmpty()) itemsProfile.description!! else Descrizione.text.toString()
+        var nomeProfilo: String =
+            if (NomeProfilo.text.isNullOrEmpty()) itemsProfile.name!! else NomeProfilo.text.toString()
+        var descrizioneProfilo: String =
+            if (Descrizione.text.isNullOrEmpty()) itemsProfile.description!! else Descrizione.text.toString()
 
         editProfileRequest = EditProfileRequest(
             prefs.rememberIdProfile,
@@ -88,6 +96,7 @@ class EditProfileFragment : Fragment() {
                     response: Response<ProfileResponse>
                 ) {
                     itemsProfile = response.body()?.payload?.get(0)!!
+                    populateDataView()
                 }
             })
     }
@@ -107,8 +116,20 @@ class EditProfileFragment : Fragment() {
         }
     }
 
-        companion object {
-        var newInstance : EditProfileFragment = EditProfileFragment()
+    companion object {
+        var newInstance: EditProfileFragment = EditProfileFragment()
+    }
+
+    private fun populateDataView() {
+        Picasso.get().load(R.drawable.bird).resize(1000, 1000).transform(CircleTransform())
+            .into(mView.profileImage)
+        mView.IdImmagine.text = itemsProfile.profileId?.toEditable()
+        mView.NomeProfilo.text = itemsProfile.name?.toEditable()
+        mView.Descrizione.text = itemsProfile.description?.toEditable()
+       /* mView.postsNumber.text = itemsProfile.postsNumber
+        mView.followersNumber.text = itemsProfile.followersNumber
+        mView.name.text = itemsProfile.name
+        mView.description.text = itemsProfile.description*/
     }
 
 }
