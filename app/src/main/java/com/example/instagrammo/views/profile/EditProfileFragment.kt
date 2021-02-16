@@ -8,10 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.instagrammo.R
-import com.example.instagrammo.beans.profile.EditProfileResponse
-import com.example.instagrammo.beans.profile.EditProfileRequest
-import com.example.instagrammo.beans.profile.Profile
-import com.example.instagrammo.beans.profile.ProfileResponse
+import com.example.instagrammo.beans.profile.*
 import com.example.instagrammo.prefs
 import com.example.instagrammo.retrofit.ApiClient
 import com.example.instagrammo.utils.CircleTransform
@@ -30,7 +27,7 @@ import retrofit2.Response
 
 class EditProfileFragment : Fragment() {
 
-    private lateinit var itemsProfile: Profile
+    private lateinit var itemsProfile: ProfileBean
 
     private lateinit var editProfileRequest: EditProfileRequest
 
@@ -94,7 +91,9 @@ class EditProfileFragment : Fragment() {
                     call: Call<ProfileResponse>,
                     response: Response<ProfileResponse>
                 ) {
-                    itemsProfile = response.body()?.payload?.get(0)!!
+                    itemsProfile = response.body()?.payload?.map {
+                        ProfileBean.convert(it)
+                    }!![0]
                     populateDataView()
                 }
             })
