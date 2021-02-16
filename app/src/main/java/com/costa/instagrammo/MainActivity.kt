@@ -1,71 +1,115 @@
 package com.costa.instagrammo
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.costa.instagrammo.R.layout.activity_main
-import com.costa.servizi.ApiClient
-import com.costa.servizi.ApiClient.authToken
-import com.costa.servizi.ApiClient.userId
-import com.costa.servizi.AuthRequest
-import com.costa.servizi.AuthResponse
-import com.costa.utils.prefs
+import androidx.fragment.app.FragmentTransaction
+import com.costa.views.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_main)
-          et_username.setText(prefs.username)
-          cb_restaLoggato.isChecked= prefs.rememberUser
+        setContentView(R.layout.activity_main)
 
-        bt_login.setOnClickListener {
-
-            login()
-
+        bottom_nav.setOnClickListener{
+            bottom_nav.isSelected = !bottom_nav.isSelected
         }
 
-    }
+        /*nomeUtente.setOnClickListener{
+            nomeUtente.isSelected = true
+        }
+        */
 
-    fun login() {
-        val reuqest = AuthRequest(
+        /*
+        bottom_nav.background = null
 
-                et_username.text.toString(),
+        //followers
+        val posts:ArrayList<String> = ArrayList()
+        for (i in 1..10) {
 
-                et_password.text.toString())
+            posts.add("Utente # $i")
+        }
+
+        //recycler_view_orizzontale.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
+        //recycler_view_orizzontale.adapter = PostAdapter(posts)
+
+        */
 
 
-        ApiClient.getClient.doAuth(reuqest).enqueue(object : Callback<AuthResponse> {
-            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                Toast.makeText(this@MainActivity, "i server non sono al momento disponibili", Toast.LENGTH_SHORT).show()
-            }
+        lateinit var homeFragment: MainFragment
+        lateinit var searchFragment: SearchFragment
+        lateinit var addFragment: AddFragment
+        lateinit var likeFragment: LikeFragment
+        lateinit var profileFragment: ProfileFragment
 
-            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+        val bottomNavigation : BottomNavigationView = findViewById(R.id.bottom_nav)
 
+        homeFragment = MainFragment()
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.home_container_fragment, homeFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit()
 
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
 
-                if(!response.body()!!.authToken.isNullOrBlank()||!response.body()!!.profileId.isNullOrBlank()) {
+                R.id.ic_home -> {
 
-                    authToken= response.body()!!.authToken.toString()
-                    userId=response.body()!!.profileId.toString()
+                    homeFragment = MainFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, homeFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
+                }
 
-                    prefs.rememberUser= cb_restaLoggato.isChecked
-                    prefs.username=if(prefs.rememberUser) et_username.text.toString() else ""
+                R.id.ic_search -> {
 
-                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
-                 startActivity(intent)
-                }else
-                {
-                    Toast.makeText(this@MainActivity, "username o password errati", Toast.LENGTH_SHORT).show()
+                    searchFragment = SearchFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, searchFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
+                }
+
+                R.id.ic_add -> {
+
+                    addFragment = AddFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, addFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
+                }
+
+                R.id.ic_like -> {
+
+                    likeFragment = LikeFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, likeFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
+                }
+
+                R.id.ic_profile -> {
+
+                    profileFragment = ProfileFragment()
+                    supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.home_container_fragment, profileFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit()
                 }
             }
 
-        })
+            true
+
+
+        }
     }
 }
+

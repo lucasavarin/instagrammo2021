@@ -18,8 +18,7 @@ class FollowersListHolder(private var v: View) : RecyclerView.ViewHolder(v),
         this.follower = follower
 
        v.nomeUtente.text = follower.name
-
-       Picasso.get().load("http://i.imgur.com/DvpvklR.png").transform(CropCircleTransformation()).into(v.iconaUtente)
+       Picasso.get().load(follower.picture).transform(CropCircleTransformation()).into(v.iconaUtente)
     }
 
     override fun onClick(v: View?) {

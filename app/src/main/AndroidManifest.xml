@@ -15,8 +15,8 @@
         android:theme="@style/Theme.Instagrammo"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

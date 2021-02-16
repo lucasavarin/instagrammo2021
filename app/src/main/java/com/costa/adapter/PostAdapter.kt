@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.costa.beans.FollowerOut
+import com.costa.beans.PostOut
 import com.costa.instagrammo.R
 
 class PostAdapter(private val posts: List<PostOut>) :

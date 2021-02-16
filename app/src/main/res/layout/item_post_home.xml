@@ -26,10 +26,12 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_post"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/image_placeholder"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@id/tv_description"
         app:layout_constraintTop_toBottomOf="@+id/img_profilo" />
 
