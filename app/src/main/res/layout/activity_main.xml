@@ -77,23 +77,6 @@
               android:textColorHighlight="@color/white"/>
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/RegisterButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="732dp"
-        android:background="@color/cardview_dark_background"
-        android:backgroundTint="@color/purple_700"
-        android:fontFamily="serif"
-        android:text="Register"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textColor="#78B8EC"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="DuplicateIds,MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"

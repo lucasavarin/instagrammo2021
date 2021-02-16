@@ -10,6 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import com.lynxspa.instagrammo.singleton.ApiClient
+import com.lynxspa.instagrammo.singleton.prefs
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         loginButton.setOnClickListener {
             accendi()
+
         }
 
 
@@ -35,6 +37,9 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 println("success response-----------> " + response.body().toString())
+                prefs!!.rememberUsername = if (prefs!!.rememberMe) userNameEditText.text.toString() else ""
+                prefs!!.rememberIdProfile = response.body()?.profileId.toString()
+                prefs!!.rememberToken = response.body()?.authtoken.toString()
                 val intent = Intent(this@MainActivity, HomeActivity::class.java)
                 startActivity(intent)
             }

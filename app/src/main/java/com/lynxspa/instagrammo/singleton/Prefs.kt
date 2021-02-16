@@ -4,29 +4,28 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 
-val prefs: Prefs by lazy {
-    Prefs.prefs!!
+class Prefs (val context: Context){
+    private val PREFS_FILENAME = "com.example.instagrammo"
+    private val REMEMBER_ME = "remember_me"
+    private val REMEMBER_USERNAME = "remember_username"
+    private val REMEMBER_TOKEN = "remember_token"
+    private val REMEMBER_ID_PROFILE = "remember_id_profile"
+    private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
-}
-class Prefs(applicationContext: Context) : Application() {
-    companion object{
-        var prefs : Prefs?= null
-    }
+    var rememberMe: Boolean
+        get() = prefs.getBoolean(REMEMBER_ME, false)
+        set(value) = prefs.edit().putBoolean(REMEMBER_ME, value).apply()
 
-    override fun onCreate() {
-        prefs =
-            Prefs(applicationContext)
-        super.onCreate()
+    var rememberUsername: String
+        get() = prefs.getString(REMEMBER_USERNAME, "")!!
+        set(value) = prefs.edit().putString(REMEMBER_USERNAME, value).apply()
 
-        class Prefs(context: Context){
-            private val PREFS_FILENAME = "com.lynxspa.instagrammo.singleton.Prefs"
-            private val REMEMBER_USER = "remember_user"
-            private val prefs : SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
+  var rememberToken : String
+    get() = prefs.getString(REMEMBER_TOKEN,"")?: ""
+    set(value) = prefs.edit().putString(REMEMBER_TOKEN, value).apply()
 
-            var rememberUser : Boolean
-            get() = prefs.getBoolean(REMEMBER_USER, false)
-            set(value) = prefs.edit().putBoolean(REMEMBER_USER, value).apply()
 
-        }
-    }
+    var rememberIdProfile: String
+        get() = prefs.getString(REMEMBER_ID_PROFILE, "")?: ""
+        set(value) = prefs.edit().putString(REMEMBER_ID_PROFILE, value).apply()
 }

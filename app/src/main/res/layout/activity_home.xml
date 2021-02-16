@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#052035"
-    android:id="@+id/activityHome">
+    >
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/instagrammoEditText"
@@ -17,31 +17,26 @@
         android:textAlignment="center"
         android:textColor="#2196F3"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/fragmentContainer"/>
 
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
-
+        android:id="@+id/fragmentContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/navView"
-        app:layout_constraintBottom_toBottomOf="@+id/instagrammoEditText"
-        />
-   
-
+        app:layout_constraintBottom_toTopOf="@id/navView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/instagrammoEditText"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="68dp"
         android:layout_gravity="bottom"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
         android:background="@color/cardview_shadow_end_color"
         app:itemIconTint="#2196F3"
         app:itemTextColor="#2196F3"

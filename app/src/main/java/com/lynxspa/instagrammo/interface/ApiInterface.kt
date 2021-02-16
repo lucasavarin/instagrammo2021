@@ -13,5 +13,6 @@ interface ApiInterface {
     @POST("auth.php")
     fun doAuth(@Body authRequestRest: AuthRequest): Call<AuthResponse>
     fun getImage(@Query("Page")page: Int): Call<Array<ImageRest>>
-    fun getFollower(@Path(value = "profileId")profileId : String): Call<FollowerResponse>
+    @GET("followers.php/{profiloUtente}")
+    fun getFollower(@Path("profiloUtente")profiloUtente : String): Call<FollowerResponse>
 }

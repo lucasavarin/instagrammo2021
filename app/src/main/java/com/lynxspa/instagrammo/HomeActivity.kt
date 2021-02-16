@@ -2,76 +2,57 @@
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.lynxspa.instagrammo.fragment.*
+import kotlinx.android.synthetic.main.activity_home.*
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.Fragment
 
  class HomeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        addFragment(HomeFragment.makeIstance(),R.id.fragmentContainer)
 
-       /*.onNavigationItemSelectedListener {
-            toHome()
+        navView.setOnNavigationItemSelectedListener{ item ->
+            when (item.itemId) {
+                R.id.homeButton ->  {
+                    replaceFragment(HomeFragment.makeIstance(), R.id.fragmentContainer)
+                    true
+                }
+                R.id.followButton -> {
+                    replaceFragment(FollowFragment.makeIstance(), R.id.fragmentContainer)
+                    true
+                }
+                R.id.addButton -> {
+                    replaceFragment(AddFragment.makeIstance(), R.id.fragmentContainer)
+                    true
+                }
+                R.id.searchButton-> {
+                    replaceFragment(SearchFragment.makeIstance(), R.id.fragmentContainer)
+                    true
+                }
+                R.id.profileButton -> {
+                    replaceFragment(ProfileFragment.makeIstance(), R.id.fragmentContainer)
+                    true
+                }
+                else -> false
+            }
         }
-        searchButton.onNavigationItemSelectedListener {
-            toSearch()
-        }
-        addButton.onNavigationItemSelectedListener {
-            toAdd()
-        }
-        followButton.onNavigationItemSelectedListener {
-            toFollow()
-        }
-        profileButton.onNavigationItemSelectedListener {
-            toProfile()
-        }*/
-
-
-
     }
-     fun toHome(){
-         val homeFragment = HomeFragment.makeIstance()
-
-         val fragmentTransaction = supportFragmentManager.beginTransaction()
-         fragmentTransaction.add(R.id.activityHome, homeFragment)
+     inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
+         val fragmentTransaction = beginTransaction()
+         fragmentTransaction.func()
          fragmentTransaction.commit()
-
      }
 
-     fun toSearch(){
-         val searchFragment = SearchFragment.makeIstance()
-
-         val fragmentTransaction = supportFragmentManager.beginTransaction()
-         fragmentTransaction.add(R.id.activityHome, searchFragment)
-         fragmentTransaction.commit()
-
+     protected fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
+         supportFragmentManager.inTransaction { add(frameId, fragment) }
      }
 
-     fun toAdd(){
-         val addFragment = AddFragment.makeIstance()
-
-         val fragmentTransaction = supportFragmentManager.beginTransaction()
-         fragmentTransaction.add(R.id.activityHome, addFragment)
-         fragmentTransaction.commit()
-
-     }
-
-     fun toFollow(){
-         val followFragment = FollowFragment.makeIstance()
-
-         val fragmentTransaction = supportFragmentManager.beginTransaction()
-         fragmentTransaction.add(R.id.activityHome, followFragment)
-         fragmentTransaction.commit()
-
-     }
-
-     fun toProfile(){
-         val profileFragment = ProfileFragment.makeIstance()
-
-         val fragmentTransaction = supportFragmentManager.beginTransaction()
-         fragmentTransaction.add(R.id.activityHome, profileFragment)
-         fragmentTransaction.commit()
-
+     protected fun replaceFragment(fragment: Fragment, frameId: Int) {
+         supportFragmentManager.inTransaction { replace(frameId, fragment) }
      }
 
 
