@@ -2,7 +2,7 @@
 
     <style name="AppTheme" parent="Theme.Design.NoActionBar">
         <item name="colorPrimary">@color/design_default_color_primary</item>
-        <item name="colorPrimaryDark">@color/gold</item>
+        <item name="colorPrimaryDark">@color/color_primary</item>
     </style>
 
     <style name="MyHintStyle" parent="@android:style/TextAppearance">
