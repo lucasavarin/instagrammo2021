@@ -33,13 +33,13 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/spunta"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="88dp"
         android:src="@drawable/tick"
         app:civ_border_color="#FF000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toEndOf="@+id/IdImmagine"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,27 +62,30 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/Descrizione"
         android:layout_width="323dp"
-        android:layout_height="44dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:backgroundTint="@color/white"
         android:hint="@string/descrizione"
+        android:maxHeight="200dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NomeProfilo"
+        app:layout_constraintVertical_bias="0.0"
         app:title_header="@string/username" />
 
     <com.example.components.buttons.ConfirmButtonComponent
         android:id="@+id/edit_profile_button"
         android:layout_width="323dp"
         android:layout_height="46dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="64dp"
         android:text="@string/salva"
         android:theme="@style/confirm_button_style"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="@+id/Descrizione"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/profileImage"
         app:layout_constraintTop_toBottomOf="@+id/Descrizione" />
 
