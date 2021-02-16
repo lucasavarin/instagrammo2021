@@ -17,3 +17,7 @@ data class Profile (
     @Expose @SerializedName("followersNumber") val followersNumber : String?,
     @Expose @SerializedName("postsNumber") val postsNumber : String?
 ) : Serializable
+
+data class EditProfile (
+    @Expose @SerializedName("result") val result : Boolean?
+        ) : Serializable

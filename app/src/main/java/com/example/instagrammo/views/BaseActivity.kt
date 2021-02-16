@@ -1,7 +1,6 @@
 package com.example.instagrammo.views
 
 import android.content.Context
-import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -9,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.instagrammo.R
+import com.example.instagrammo.views.profile.EditProfileFragment
 
 
 abstract class BaseActivity() : AppCompatActivity() {
@@ -32,5 +32,11 @@ abstract class BaseActivity() : AppCompatActivity() {
     protected fun replaceFragment(fragment: Fragment, frameId: Int) {
         supportFragmentManager.inTransaction { replace(frameId, fragment) }
     }
+
+    protected fun removeFragment(fragment: Fragment) {
+        supportFragmentManager.inTransaction { remove(fragment) }
+    }
+
+
 
 }

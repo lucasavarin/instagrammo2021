@@ -1,5 +1,7 @@
 package com.example.instagrammo.views.profile
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,6 +22,9 @@ import com.example.instagrammo.recyclerview.adapter.ItemPostRecyclerViewAdapter
 import com.example.instagrammo.recyclerview.adapter.OnPostItemClickListener
 import com.example.instagrammo.retrofit.ApiClient
 import com.example.instagrammo.utils.CircleTransform
+import com.example.instagrammo.views.BaseHomeActivity
+import com.example.instagrammo.views.login.LogInActivity
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
@@ -34,6 +39,8 @@ class ProfileFragment : Fragment() {
     private lateinit var itemsProfile: Profile
 
     private var listenerPost: OnPostItemClickListener? = null
+
+    private var listenerButtonEdit: ButtonEditProfileListener? = null
 
     private var itemsPost: MutableList<Post> = mutableListOf()
 
@@ -86,6 +93,10 @@ class ProfileFragment : Fragment() {
         mView.mono_cycle_image.setOnClickListener {
             setAdapterMono()
         }
+
+        mView.edit_profile_button.setOnClickListener{
+            listenerButtonEdit?.OnButtonPressedListener(true)
+        }
     }
 
     private fun setAdapterGrid() {
@@ -125,7 +136,14 @@ class ProfileFragment : Fragment() {
  */
     }
 
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ButtonEditProfileListener) {
+            listenerButtonEdit = context
+        } else {
+            throw RuntimeException("$context must implement ButtonEditProfileListener")
+        }
+    }
 
     companion object {
         var newInstance : ProfileFragment = ProfileFragment()

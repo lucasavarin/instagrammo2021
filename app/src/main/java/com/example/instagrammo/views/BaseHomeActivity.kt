@@ -6,11 +6,14 @@ import com.example.instagrammo.R
 import com.example.instagrammo.recyclerview.adapter.OnPostItemClickListener
 import com.example.instagrammo.views.follow.FollowFragment
 import com.example.instagrammo.views.home.HomeFragment
+import com.example.instagrammo.views.profile.ButtonEditProfileListener
+import com.example.instagrammo.views.profile.EditProfileFragment
+import com.example.instagrammo.views.profile.EditProfileFragmentListener
 import com.example.instagrammo.views.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_basehome.*
 import com.example.instagrammo.views.profile.ProfileFragment
 
-class BaseHomeActivity : BaseActivity(), OnPostItemClickListener{
+class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProfileListener, EditProfileFragmentListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,5 +56,16 @@ class BaseHomeActivity : BaseActivity(), OnPostItemClickListener{
     override fun onPictureProfileItemListener(string: String) {
         Log.i("Ciao",string)
     }
+
+    //bottone per aprire edit profile
+    override fun OnButtonPressedListener(pressed: Boolean) {
+        replaceFragment(EditProfileFragment.newInstance, R.id.fragment_container)
+    }
+
+    //rimuove fragment modifica profilo e apre profilo
+    override fun removeFragmentListener() {
+        replaceFragment(ProfileFragment.newInstance, R.id.fragment_container)
+    }
+
 
 }
