@@ -1,7 +1,6 @@
 package com.example.instagrammo.views.profile
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.posts.Post
+import com.example.instagrammo.beans.posts.PostBean
 import com.example.instagrammo.beans.posts.PostResponse
 import com.example.instagrammo.beans.profile.Profile
 import com.example.instagrammo.beans.profile.ProfileResponse
@@ -22,13 +22,8 @@ import com.example.instagrammo.recyclerview.adapter.ItemPostRecyclerViewAdapter
 import com.example.instagrammo.recyclerview.adapter.OnPostItemClickListener
 import com.example.instagrammo.retrofit.ApiClient
 import com.example.instagrammo.utils.CircleTransform
-import com.example.instagrammo.views.BaseHomeActivity
-import com.example.instagrammo.views.login.LogInActivity
-import com.google.android.material.button.MaterialButtonToggleGroup
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
-import kotlinx.android.synthetic.main.item_grid3x.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,7 +37,7 @@ class ProfileFragment : Fragment() {
 
     private var listenerButtonEdit: ButtonEditProfileListener? = null
 
-    private var itemsPost: MutableList<Post> = mutableListOf()
+    private lateinit var itemsPost: List<PostBean>
 
     private lateinit var mView: View
 
@@ -78,8 +73,14 @@ class ProfileFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
-                    itemsPost = response.body()?.payload!!.toMutableList()
-                    setAdapterGrid()
+                    if(response.isSuccessful &&  response.body()?.result == true) {
+                        itemsPost = response.body()!!.payload!!.map { post ->
+                            PostBean.convert(post)
+                        }
+                        setAdapterGrid()
+                    }
+                    //itemsPost = response.body()?.payload!!.toMutableList()
+                    //setAdapterPost()
                 }
 
             })

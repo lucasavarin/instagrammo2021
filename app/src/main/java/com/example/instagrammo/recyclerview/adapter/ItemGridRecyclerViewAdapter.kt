@@ -10,12 +10,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.posts.Post
+import com.example.instagrammo.beans.posts.PostBean
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_grid3x.view.*
 
 class ItemGridRecyclerViewAdapter(
     private val mContext: Context,
-    private val mValues: List<Post>,
+    private val mValues: List<PostBean>,
     private val mListener: OnPostItemClickListener?
     ) : RecyclerView.Adapter<ItemGridRecyclerViewAdapter.ViewHolder>(){
 

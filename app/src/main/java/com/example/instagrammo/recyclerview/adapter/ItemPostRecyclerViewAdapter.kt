@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.posts.Post
+import com.example.instagrammo.beans.posts.PostBean
 import com.example.instagrammo.retrofit.ApiClient
 import com.example.instagrammo.utils.CircleTransform
 import com.squareup.picasso.Picasso
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.item_post_home.view.*
 
 class ItemPostRecyclerViewAdapter(
     private val mContext: Context,
-    private val mValues: List<Post>,
+    private val mValues: List<PostBean>,
     private val mListener: OnPostItemClickListener?,
     private val onlyPicture: Boolean = false
 ) : RecyclerView.Adapter<ItemPostRecyclerViewAdapter.ViewHolder>(){

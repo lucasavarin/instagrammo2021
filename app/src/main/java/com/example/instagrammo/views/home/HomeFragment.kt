@@ -1,9 +1,6 @@
 package com.example.instagrammo.views.home
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,16 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
-import com.example.instagrammo.beans.auth.AuthResponse
+import com.example.instagrammo.beans.followers.FollowerBean
 import com.example.instagrammo.beans.followers.FollowerProfile
 import com.example.instagrammo.beans.followers.FollowersResponse
 import com.example.instagrammo.beans.posts.Post
+import com.example.instagrammo.beans.posts.PostBean
 import com.example.instagrammo.beans.posts.PostResponse
 import com.example.instagrammo.prefs
 import com.example.instagrammo.recyclerview.adapter.*
 import com.example.instagrammo.retrofit.ApiClient
-import kotlinx.android.synthetic.main.fragment_home.view.*
-import com.example.instagrammo.views.BaseHomeActivity
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,9 +32,9 @@ class HomeFragment : Fragment() {
 
     private var listenerFollow: OnFollowItemClickListener? = null
 
-    private var itemsPost: MutableList<Post> = mutableListOf()
+    private lateinit var itemsPost: List<PostBean>
 
-    private var itemsFollow: MutableList<FollowerProfile> = mutableListOf()
+    private lateinit var itemsFollow: List<FollowerBean>
 
 
     override fun onCreateView(
@@ -62,8 +58,14 @@ class HomeFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
-                    itemsPost = response.body()?.payload!!.toMutableList()
-                    setAdapterPost()
+                    if(response.isSuccessful &&  response.body()?.result == true) {
+                        itemsPost = response.body()!!.payload!!.map { post ->
+                            PostBean.convert(post)
+                        }
+                        setAdapterPost()
+                    }
+                    //itemsPost = response.body()?.payload!!.toMutableList()
+                    //setAdapterPost()
                 }
 
             })
@@ -75,8 +77,15 @@ class HomeFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<FollowersResponse>, response: Response<FollowersResponse>) {
-                    itemsFollow = response.body()?.payload!!.toMutableList()
-                    setFollowAdapter()
+                    if(response.isSuccessful &&  response.body()?.result == true) {
+                        itemsFollow = response.body()!!.payload!!.map { follower ->
+                            FollowerBean.convert(follower)
+
+                        }
+                        setFollowAdapter()
+                    }
+                    //itemsFollow = response.body()?.payload!!.toMutableList()
+                    //setFollowAdapter()
                 }
 
             })

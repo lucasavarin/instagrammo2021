@@ -4,9 +4,10 @@ import com.example.instagrammo.beans.auth.AuthRequest
 import com.example.instagrammo.beans.auth.AuthResponse
 import com.example.instagrammo.beans.followers.FollowersResponse
 import com.example.instagrammo.beans.posts.PostResponse
-import com.example.instagrammo.beans.profile.EditProfile
+import com.example.instagrammo.beans.profile.EditProfileResponse
 import com.example.instagrammo.beans.profile.EditProfileRequest
 import com.example.instagrammo.beans.profile.ProfileResponse
+import okhttp3.Callback
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -40,5 +41,5 @@ interface ApiInterface {
     @PUT("profiles.php")
     fun putProfile(
         @Body profile: EditProfileRequest
-    ): Call<EditProfile>
+    ): Call<EditProfileResponse>
 }

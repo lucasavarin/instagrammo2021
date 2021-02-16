@@ -7,17 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.example.instagrammo.R
-import com.example.instagrammo.beans.profile.EditProfile
+import com.example.instagrammo.beans.profile.EditProfileResponse
 import com.example.instagrammo.beans.profile.EditProfileRequest
 import com.example.instagrammo.beans.profile.Profile
 import com.example.instagrammo.beans.profile.ProfileResponse
 import com.example.instagrammo.prefs
 import com.example.instagrammo.retrofit.ApiClient
-import com.example.instagrammo.views.BaseActivity
 import kotlinx.android.synthetic.main.fragment_modifica_profilo.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -47,12 +44,12 @@ class EditProfileFragment : Fragment() {
 
     private fun putProfile() {
         ApiClient.GetClient.putProfile(editProfileRequest)
-            .enqueue(object : Callback<EditProfile> {
-                override fun onFailure(call: Call<EditProfile>, t: Throwable) {
+            .enqueue(object : Callback<EditProfileResponse> {
+                override fun onFailure(call: Call<EditProfileResponse>, t: Throwable) {
                     Log.i("INFORMATION", t.message.toString())
                 }
 
-                override fun onResponse(call: Call<EditProfile>, response: Response<EditProfile>) {
+                override fun onResponse(call: Call<EditProfileResponse>, response: Response<EditProfileResponse>) {
                     if (response.body()?.result!!) {
                        listener.removeFragmentListener()
                     }

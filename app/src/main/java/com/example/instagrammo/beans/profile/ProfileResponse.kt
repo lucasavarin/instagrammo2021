@@ -1,5 +1,6 @@
 package com.example.instagrammo.beans.profile
 
+import com.example.instagrammo.beans.ResponseDataModel
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -16,8 +17,8 @@ data class Profile (
     @Expose @SerializedName("picture") val picture : String?,
     @Expose @SerializedName("followersNumber") val followersNumber : String?,
     @Expose @SerializedName("postsNumber") val postsNumber : String?
-) : Serializable
+) : ResponseDataModel
 
-data class EditProfile (
+data class EditProfileResponse (
     @Expose @SerializedName("result") val result : Boolean?
-        ) : Serializable
+) : Serializable
