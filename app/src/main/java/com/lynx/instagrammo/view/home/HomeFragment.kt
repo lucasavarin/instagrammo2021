@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lynx.instagrammo.*
-import com.lynx.instagrammo.networking.API.ApiClient
+import com.lynx.instagrammo.R
 import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.bean.Post
+import com.lynx.instagrammo.networking.API.ApiClient
 import com.lynx.instagrammo.networking.FollowerResponse
 import com.lynx.instagrammo.networking.PostResponse
+import com.lynx.instagrammo.prefs
 import com.lynx.instagrammo.view.recyclerView.FollowerListAdapter
 import com.lynx.instagrammo.view.recyclerView.PostListAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -22,8 +23,11 @@ import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -32,7 +36,6 @@ class HomeFragment : Fragment() {
     fun postLayoutManager(payload: List<Post>?) {
         val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         V_FollowerListLayout.layoutManager = linearLayoutManager
-
         if (!payload.isNullOrEmpty())
             V_FollowerListLayout.adapter = PostListAdapter(payload)
         else
@@ -41,7 +44,11 @@ class HomeFragment : Fragment() {
 
     //  FOLLOWER
     fun followerLayoutManager(payload: List<Follower>?) {
-        val linearLayoutManager2 = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val linearLayoutManager2 = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
         H_FollowerListLayout.layoutManager = linearLayoutManager2
 
         if (!payload.isNullOrEmpty())
@@ -57,7 +64,10 @@ class HomeFragment : Fragment() {
 
                     /*-------------- chiamata get follower--------------*/
         ApiClient.GetClient.getFollower(prefs.userId).enqueue(object : Callback<FollowerResponse> {
-            override fun onResponse(call: Call<FollowerResponse>, response: Response<FollowerResponse>) {
+            override fun onResponse(
+                call: Call<FollowerResponse>,
+                response: Response<FollowerResponse>
+            ) {
                 if (response.isSuccessful)
                     followerLayoutManager(response.body()!!.payload)
             }

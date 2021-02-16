@@ -6,21 +6,21 @@
     <item
         android:id="@+id/action_home"
         android:enabled="true"
-        android:icon="@drawable/ic_home_active"
+        android:icon="@drawable/selector_home"
         app:showAsAction="ifRoom"
         />
 
     <item
         android:id="@+id/action_search"
         android:enabled="true"
-        android:icon="@drawable/ic_search_active"
+        android:icon="@drawable/selector_search"
         app:showAsAction="ifRoom"
         />
 
     <item
         android:id="@+id/action_add"
         android:enabled="true"
-        android:icon="@drawable/ic_share_active"
+        android:icon="@drawable/selector_add"
         app:showAsAction="ifRoom"
         />
 
@@ -28,14 +28,14 @@
     <item
         android:id="@+id/action_love"
         android:enabled="true"
-        android:icon="@drawable/ic_likes_border"
+        android:icon="@drawable/selector_likes"
         app:showAsAction="ifRoom"
         />
 
     <item
         android:id="@+id/action_profile"
         android:enabled="true"
-        android:icon="@drawable/ic_profile_active"
+        android:icon="@drawable/selector_profile"
         app:showAsAction="ifRoom"
         />
 

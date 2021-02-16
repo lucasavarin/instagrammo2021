@@ -26,12 +26,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        for(i in 0 until navView.menu.size()){
+        navView.itemIconTintList = null
+        }
 
         /* ToDO change to home frament */
         // loadPosts()
         addFragment(homeFragment, R.id.fragmentConainer)
-
-
 
 
         navView.setOnNavigationItemSelectedListener { item ->
