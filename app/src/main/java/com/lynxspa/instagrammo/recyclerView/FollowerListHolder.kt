@@ -1,14 +1,11 @@
 package com.lynxspa.instagrammo.recyclerView
 
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.lynxspa.instagrammo.retrofit.Follower
-import com.lynxspa.instagrammo.retrofit.FollowerResponse
-import com.lynxspa.instagrammo.retrofit.Post
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_follower.view.*
-import utility.CircleTransform
+import com.lynxspa.instagrammo.utility.CircleTransform
 
 class FollowerListHolder(v: View) : RecyclerView.ViewHolder(v) {
     private var view: View = v

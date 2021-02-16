@@ -20,9 +20,6 @@ class Prefs (val context: Context){
         get() = prefs.getString(REMEMBER_USERNAME, "")!!
         set(value) = prefs.edit().putString(REMEMBER_USERNAME, value).apply()
 
-  var rememberToken : String
-    get() = prefs.getString(REMEMBER_TOKEN,"")?: ""
-    set(value) = prefs.edit().putString(REMEMBER_TOKEN, value).apply()
 
 
     var rememberIdProfile: String

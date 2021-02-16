@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
     const val BASE_URL: String = "http://www.nbarresi.it/"
-    var token = prefs.rememberToken
+    var rememberToken = ""
     val getClient: ApiInterface
         get() {
             val httClient = OkHttpClient.Builder()
@@ -19,7 +19,7 @@ object ApiClient {
             httClient.addInterceptor(object : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val req =
-                        chain.request().newBuilder().addHeader("x-api-key", token)
+                        chain.request().newBuilder().addHeader("x-api-key", rememberToken)
                             .build()
                     return chain.proceed(req)
                 }

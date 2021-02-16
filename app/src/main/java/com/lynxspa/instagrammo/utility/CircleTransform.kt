@@ -1,4 +1,4 @@
-package utility
+package com.lynxspa.instagrammo.utility
 
 import android.graphics.*
 import com.squareup.picasso.Transformation
