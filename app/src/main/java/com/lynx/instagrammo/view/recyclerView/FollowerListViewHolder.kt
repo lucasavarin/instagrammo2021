@@ -15,7 +15,20 @@ class FollowerListViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
 
     fun bindFollow(follower: Follower) {
         this.follower = follower
-      Picasso.get().load(follower.picture).transform(CircleTransform()).into(v.follow_image)
+        v.follower_img_name.text = transformName(follower)
+
+      Picasso
+          .get()
+          .load(follower.picture)
+          .transform(CropCircleTransformation())
+          .resize(200,200)
+          .into(v.follow_image)
+    }
+
+    fun transformName(follower: Follower): String{
+       val name :List<String>
+        name = follower.name.split(" ")
+        return name[0]
     }
 
 }

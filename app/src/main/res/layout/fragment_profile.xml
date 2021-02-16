@@ -126,42 +126,50 @@
         android:layout_height="wrap_content"
         android:text="Inserire descrizione "
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_view_grid"
+        app:layout_constraintBottom_toTopOf="@id/tab_button_layout"
         app:layout_constraintStart_toStartOf="@id/profile_name_text"
         app:layout_constraintTop_toBottomOf="@id/profile_name_text"
 
         />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_view_grid"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_button_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:src="@drawable/ic_search_active"
-        android:background="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/btn_view_list"
+        app:tabIconTint="@color/black"
+        app:tabIndicatorColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_description_text"
-
-         />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_view_list"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_search_active"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="@id/btn_view_grid"
-        app:layout_constraintBottom_toTopOf="@id/recycler_profile_img"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_view_grid" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_description_text"
+        >
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/button_grid"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:icon="@drawable/ic_sharp_grid_on"
+            />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/button_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:icon="@drawable/ic_list_on"
+            />
+    </com.google.android.material.tabs.TabLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_profile_img"
+        android:id="@+id/recycler_profileImg_grid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_view_grid" />
+        app:layout_constraintTop_toBottomOf="@id/tab_button_layout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_profileImg_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_button_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
