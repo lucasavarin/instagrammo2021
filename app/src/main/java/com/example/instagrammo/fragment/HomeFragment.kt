@@ -53,8 +53,7 @@ class HomeFragment : Fragment() {
 
                 override fun onResponse(call: Call<FollowerResponse>, response: Response<FollowerResponse>) {
                     followers = response.body()?.payload?.toMutableList()!!
-                    val linearLayoutManager =
-                        LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+                    val linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                     homeFollowerRecyclerView.layoutManager = linearLayoutManager
                     homeFollowerRecyclerView.adapter = FollowerListRecyclerAdapter(followers)
                     Log.i("info", response.body()?.result.toString())
