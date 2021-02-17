@@ -1,6 +1,7 @@
 package com.costa.views
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.costa.servizi.ApiClient
 import com.costa.servizi.ApiClient.userId
 import com.costa.servizi.FollowersResponse
 import com.costa.servizi.PostsResponse
+import com.costa.utils.prefs
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -86,7 +88,22 @@ class HomeFragment : Fragment() {
 
         })
 
+       /* fun getFollower() {
+            ApiClient.getClient.getFollowes(prefs!!.username).enqueue(object : Callback<FollowersResponse> {
+                override fun onFailure(call: Call<FollowersResponse>, t: Throwable) {
+                    println("accesso fallito")
+                }
 
+                override fun onResponse(
+                    call: Call<FollowersResponse>,
+                    response: Response<FollowersResponse>
+                ) {
+                    followers = response.body()?.payload?.toMutableList()!!
+
+                    Log.i("info",response.body()?.result.toString())
+                }
+            })
+        } */
 
     }
 
