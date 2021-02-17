@@ -21,7 +21,10 @@ private lateinit var post: PostOut
             .into(v.img_profilo)
         Picasso.get()
             .load(post.picture)
+            .fit()
+            .centerCrop()
             .into(v.img_post)
+
         v.tv_nome_Profilo.text=post.profile.name
         v.tv_description.text=post.title
         v.tv_data.text=post.uploadTime

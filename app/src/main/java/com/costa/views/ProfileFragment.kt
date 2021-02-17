@@ -4,16 +4,25 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.costa.`interface`.ApiInterface
+import com.costa.adapter.FollowersListAdapter
 import com.costa.adapter.PostAdapter
+import com.costa.adapter.ProfilePostsGridAdapter
+import com.costa.adapter.ProfilePostsLinearAdapter
+import com.costa.beans.MyPosts
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
 import com.costa.servizi.ApiClient.userId
+import com.costa.servizi.MyPostsResponce
 import com.costa.servizi.PostsResponse
 import com.costa.servizi.ProfileResponse
+import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -36,6 +45,30 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab!!.position) {
+                    0 -> {
+                        rv_posts_profilo_linear.visibility = View.GONE
+                        rv_posts_profilo_gred.visibility = View.VISIBLE
+                    }
+                    1 -> {
+                        rv_posts_profilo_linear.visibility = View.VISIBLE
+                        rv_posts_profilo_gred.visibility = View.GONE
+                    }
+                }
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+        })
+
         ApiClient.getClient.getProfile(userId).enqueue(object : Callback<ProfileResponse> {
 
             override fun onResponse(
@@ -46,20 +79,67 @@ class ProfileFragment : Fragment() {
                     .load(response.body()!!.payload!![0].picture)
                     .transform(CropCircleTransformation())
                     .into(img_profilo)
-                tv_nome_Profilo.text=response.body()!!.payload!![0].name
-                tv_numero_followers.text= response.body()!!.payload!![0].followersNumber.toString()
-                tv_numero_posts.text=response.body()!!.payload!![0].postsNumber.toString()
-                tv_descrizione_Profilo.text=response.body()!!.payload!![0].description
+                tv_nome_Profilo.text = response.body()!!.payload!![0].name
+                tv_numero_followers.text = response.body()!!.payload!![0].followersNumber.toString()
+                tv_numero_posts.text = response.body()!!.payload!![0].postsNumber.toString()
+                tv_descrizione_Profilo.text = response.body()!!.payload!![0].description
 
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                Toast.makeText(context, "non riusciamo a caricare le informazioni, riprova piu tardi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "non riusciamo a caricare le informazioni, riprova piu tardi",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-
 
 
         })
 
+
+        ApiClient.getClient.getMyPosts(userId).enqueue(object : Callback<MyPostsResponce> {
+
+            override fun onResponse(
+                call: Call<MyPostsResponce>,
+                response: Response<MyPostsResponce>
+            ) {
+                if (!response.body()!!.payload!!.isNullOrEmpty()) {
+
+                    linearRecycleView(response.body()!!.payload!!)
+                    gredRecycleView(response.body()!!.payload!!)
+                }
+            }
+
+            override fun onFailure(call: Call<MyPostsResponce>, t: Throwable) {
+                Toast.makeText(
+                    context,
+                    "non riusciamo a caricare le informazioni, riprova piu tardi",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+
+
     }
+
+
+    fun linearRecycleView(payload: List<MyPosts>) {
+        rv_posts_profilo_linear.visibility=View.GONE
+        rv_posts_profilo_linear.apply {
+            val layoutManager = LinearLayoutManager(context)
+            rv_posts_profilo_linear.layoutManager = layoutManager
+            rv_posts_profilo_linear.adapter = ProfilePostsLinearAdapter(payload)
+        }
+    }
+
+    fun gredRecycleView(payload: List<MyPosts>) {
+        rv_posts_profilo_gred.apply {
+            val layoutManager = GridLayoutManager(context, 3)
+            rv_posts_profilo_gred.layoutManager = layoutManager
+            rv_posts_profilo_gred.adapter = ProfilePostsGridAdapter(payload)
+        }
+    }
+
+
 }

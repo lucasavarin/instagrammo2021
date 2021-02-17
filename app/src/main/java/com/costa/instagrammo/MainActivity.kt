@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         */
 
 
-        lateinit var homeFragment: MainFragment
+        lateinit var homeFragment: HomeFragment
         lateinit var searchFragment: SearchFragment
         lateinit var addFragment: AddFragment
         lateinit var likeFragment: LikeFragment
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigation : BottomNavigationView = findViewById(R.id.bottom_nav)
 
-        homeFragment = MainFragment()
+        homeFragment = HomeFragment()
         supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.home_container_fragment, homeFragment)
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.ic_home -> {
 
-                    homeFragment = MainFragment()
+                    homeFragment = HomeFragment()
                     supportFragmentManager
                             .beginTransaction()
                             .replace(R.id.home_container_fragment, homeFragment)

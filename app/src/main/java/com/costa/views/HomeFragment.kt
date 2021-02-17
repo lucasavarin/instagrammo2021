@@ -22,10 +22,10 @@ import retrofit2.Response
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
+ * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MainFragment : Fragment() {
+class HomeFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -53,7 +53,7 @@ class MainFragment : Fragment() {
             override fun onFailure(call: Call<PostsResponse>, t: Throwable) {
 
                 Toast.makeText(
-                    this@MainFragment.context,
+                    this@HomeFragment.context,
                     "i server non sono al momento disponibili",
                     Toast.LENGTH_SHORT
                 ).show()
@@ -68,7 +68,7 @@ class MainFragment : Fragment() {
                 if (!response.body()!!.payload!!.isNullOrEmpty()) {
 
 
-                    val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+                    val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                     recycleHorizontal.layoutManager = layoutManager
                     recycleHorizontal.adapter = FollowersListAdapter(response.body()!!.payload!!)
                 }
@@ -77,7 +77,7 @@ class MainFragment : Fragment() {
             override fun onFailure(call: Call<FollowersResponse>, t: Throwable) {
 
                 Toast.makeText(
-                    this@MainFragment.context,
+                    this@HomeFragment.context,
                     "i server non sono al momento disponibili",
                     Toast.LENGTH_SHORT
                 ).show()

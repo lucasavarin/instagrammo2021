@@ -52,6 +52,7 @@
 
         tools:text="descrizione profilo" />
 
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_numero_posts"
         style="@style/profile_text_count"
@@ -106,14 +107,51 @@
         app:layout_constraintHorizontal_weight="5"
         app:layout_constraintStart_toEndOf="@id/img_profilo" />
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_descrizione_Profilo">
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ti_grid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_grid_view_black_24"
+
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ti_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_linear_view_black_24"
+            />
+    </com.google.android.material.tabs.TabLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_posts_profilo"
+        android:id="@+id/rv_posts_profilo_linear"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/top_border_grey"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_descrizione_Profilo">
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_posts_profilo_gred"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/top_border_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 

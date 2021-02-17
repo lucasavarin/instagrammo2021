@@ -3,11 +3,12 @@ package com.costa.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.costa.beans.PostOut
+import com.costa.beans.MyPosts
 import com.costa.instagrammo.R
 
-class PostAdapter(private val posts: List<PostOut>) :
-    RecyclerView.Adapter<PostViewHolder>() {
+
+class ProfilePostsGridAdapter(private val posts: List<MyPosts>) :
+    RecyclerView.Adapter<ProfilePostsGridViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using
@@ -16,18 +17,18 @@ class PostAdapter(private val posts: List<PostOut>) :
 
 
     // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfilePostsGridViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_post_home, parent, false)
+            .inflate(R.layout.item_profile_post_grid, parent, false)
 
-        return PostViewHolder(view)
+        return ProfilePostsGridViewHolder(view)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProfilePostsGridViewHolder, position: Int) {
         val item = posts[position]
-        holder.bindPost(item)
+        holder.bindProfilePost(item)
 
     }
 
