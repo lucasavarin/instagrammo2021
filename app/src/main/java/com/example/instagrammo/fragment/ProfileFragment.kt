@@ -2,50 +2,127 @@ package com.example.instagrammo.fragment
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.example.instagrammo.R
+import com.example.instagrammo.adapter.PostListGridAdapter
+import com.example.instagrammo.bean.Post
+import com.example.instagrammo.bean.Profile
 import com.example.instagrammo.fragment.secondFragment.ModifyProfileFragment
+import com.example.instagrammo.network.ApiClient
+import com.example.instagrammo.response.FollowerResponse
+import com.example.instagrammo.response.PayloadProfile
+import com.example.instagrammo.response.PostResponse
+import com.example.instagrammo.response.ProfileResponse
+import com.example.instagrammo.view.CircleTransformation
+import com.example.instagrammo.view.prefs
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class ProfileFragment : Fragment() {
+    private var profile: List<PayloadProfile> = mutableListOf()
+    private var posts: List<Post> = mutableListOf()
     val modifyProfile = ModifyProfileFragment()
+
+    val linearLayoutManager =
+        LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this com.example.instagrammo.fragment
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-         edit_btn.setOnClickListener {
-             val fragmentManager: FragmentManager? = fragmentManager
-             var transaction : FragmentTransaction = fragmentManager?.beginTransaction()!!
-             var fragment_new = ModifyProfileFragment()
-             transaction.replace(R.id.fragment_container,fragment_new)
-             transaction.addToBackStack(null)
-             transaction.commit()
-         }
+        getInformationProfile()
+        getPostsProfile()
+
+        edit_btn.setOnClickListener {
+            val fragmentManager: FragmentManager? = fragmentManager
+            var transaction: FragmentTransaction = fragmentManager?.beginTransaction()!!
+            transaction.replace(R.id.fragment_container, modifyProfile)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
     }
 
+    fun getPostsProfile() {
+        ApiClient.getClient.getProfilePosts(prefs.idProfilo)
+            .enqueue(object : Callback<PostResponse> {
+                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                    Log.i("info", t.message)
+                }
 
+                override fun onResponse(
+                    call: Call<PostResponse>,
+                    response: Response<PostResponse>
+                ) {
+                    if (!response.body()?.payload.isNullOrEmpty()) {
+                        posts = response.body()?.payload?.toMutableList()!!
+                        recycler_profile_img.layoutManager = linearLayoutManager
+                        recycler_profile_img.adapter = PostListGridAdapter(posts)
+                        Log.i("info ", response.body()?.result.toString())
+                    }
+                }
+
+            })
+    }
+
+    fun getInformationProfile() {
+        ApiClient.getClient.getSingleProfile(prefs!!.idProfilo)
+            .enqueue(object : Callback<ProfileResponse> {
+                override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+                    Log.i("info", t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<ProfileResponse>,
+                    response: Response<ProfileResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        profile = response.body()?.payload!!
+                        Picasso.get().load(profile[0].picture).transform(CircleTransformation())
+                            .into(user_image)
+                        profile_name.text = profile[0].name
+                        profile_description.text = profile[0].description
+                        if (profile[0].postNumber.isNullOrBlank()) {
+                            profile[0].postNumber = "0"
+                        }
+                        if (profile[0].followersNumber.isNullOrBlank()) {
+                            profile[0].followersNumber = "0"
+                        }
+                        number_post.text = profile[0].postNumber
+                        number_follower.text = profile[0].followersNumber
+                    }
+                    Log.i("info", response.body()?.result.toString())
+                }
+
+            })
+
+    }
 
     companion object {
         @JvmStatic
-         fun newInstance() =
-             ProfileFragment().apply {
-                 arguments = Bundle().apply {}
-             }
+        fun newInstance() =
+            ProfileFragment().apply {
+                arguments = Bundle().apply {}
+            }
     }
 
 }

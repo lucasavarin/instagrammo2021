@@ -23,7 +23,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:layout_marginLeft="20dp"
-        android:textSize="10sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/posts_text"
         app:layout_constraintEnd_toEndOf="@id/posts_text"
         app:layout_constraintStart_toEndOf="@+id/user_image"
@@ -37,7 +37,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:layout_marginLeft="20dp"
-        android:textSize="10sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/profile_name"
         app:layout_constraintEnd_toStartOf="@id/followers_text"
 
@@ -51,7 +51,7 @@
         android:layout_marginBottom="8dp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="10sp"
+        android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@id/number_post"
         app:layout_constraintBottom_toTopOf="@id/followers_text"
         app:layout_constraintEnd_toEndOf="@id/followers_text"
@@ -67,7 +67,7 @@
         android:text="Followers"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="10sp"
+        android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@id/posts_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/posts_text"
@@ -79,6 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Nome Profilo "
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/user_image"
         app:layout_constraintTop_toBottomOf="@id/user_image"
         />
@@ -88,7 +89,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="descrizione "
+        android:text="descrizione"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/btn_view_grid"
         app:layout_constraintStart_toStartOf="@id/profile_name"
         app:layout_constraintTop_toBottomOf="@id/profile_name"
@@ -143,6 +145,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_view_grid"
+        tools:listitem="@layout/post_grid"
         />
 
 
