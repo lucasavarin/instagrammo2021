@@ -5,14 +5,174 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="fragments.ProfileFragment">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/profileImage"
+            android:layout_width="126dp"
+            android:layout_height="124dp"
+            android:layout_marginStart="@dimen/small"
+            android:layout_marginTop="@dimen/small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small"
+            android:textStyle="normal"
+            app:flow_horizontalBias="0.500"
+            app:layout_constraintEnd_toEndOf="@id/word"
+            app:layout_constraintStart_toStartOf="@id/word"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small"
+            android:textStyle="normal"
+            app:flow_horizontalBias="0.500"
+            app:layout_constraintEnd_toEndOf="@id/friends"
+            app:layout_constraintStart_toStartOf="@id/friends"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="80dp"
+            android:text="@string/post"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@id/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.300"
+            app:layout_constraintStart_toEndOf="@id/profileImage"
+            app:layout_constraintTop_toBottomOf="@id/post"
+            app:layout_constraintVertical_bias="0.900"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="@string/post"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small"
+            android:textStyle="normal"
+            app:flow_horizontalBias="0.20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/post"
+            app:layout_constraintTop_toBottomOf="@id/follower"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:text="nome"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@id/profileImage"
+            app:layout_constraintStart_toStartOf="@id/profileImage"
+            app:layout_constraintTop_toBottomOf="@id/profileImage" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description"
+            android:layout_width="320dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="@dimen/cardview_default_radius"
+            android:layout_marginEnd="24dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small"
+            app:flow_horizontalBias="0.500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/editButton"
+            style="@style/MyHintStyle"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="@dimen/small"
+            android:layout_marginEnd="24dp"
+            android:text="@string/modifica_profilo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/description"/>
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintBottom_toTopOf="@id/gridImageButton"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/gridImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/bg_login"
+            app:layout_constraintTop_toBottomOf="@id/editButton"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/monoImageButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="80dp"
+            android:src="@drawable/bg_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gridImageButton"/>
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/profileRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
-        <!--app:layout_constraintTop_toBottomOf="top_toolbar"-->
+            android:id="@+id/monoRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gridImageButton"
+            tools:context=".views.profile.ProfileFragment"
+            android:visibility="visible"
+            tools:listitem="@layout/story_item" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gridRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gridImageButton"
+            tools:context=".views.profile.ProfileFragment"
+            android:visibility="visible"
+            tools:listitem="@layout/story_item"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
