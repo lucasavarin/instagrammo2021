@@ -31,38 +31,11 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-                    /*-------------- LAYOUT MANAGER --------------*/
-    //  POST
-    fun postLayoutManager(payload: List<Post>?) {
-        val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        V_FollowerListLayout.layoutManager = linearLayoutManager
-        if (!payload.isNullOrEmpty())
-            V_FollowerListLayout.adapter = PostListAdapter(payload)
-        else
-            Log.i("ERRORE", payload?.size.toString())
-    }
-
-    //  FOLLOWER
-    fun followerLayoutManager(payload: List<Follower>?) {
-        val linearLayoutManager2 = LinearLayoutManager(
-            context,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        H_FollowerListLayout.layoutManager = linearLayoutManager2
-
-        if (!payload.isNullOrEmpty())
-            H_FollowerListLayout.adapter = FollowerListAdapter(payload)
-        else
-            Log.i("ERRORE", payload?.size.toString())
-    }
-
-
-                        /*-------------- ON VIEW CREATED--------------*/
+    /*-------------- ON VIEW CREATED--------------*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-                    /*-------------- chiamata get follower--------------*/
+        /*-------------- chiamata get follower--------------*/
         ApiClient.GetClient.getFollower(prefs.userId).enqueue(object : Callback<FollowerResponse> {
             override fun onResponse(
                 call: Call<FollowerResponse>,
@@ -77,7 +50,7 @@ class HomeFragment : Fragment() {
             }
         })
 
-                     /*-------------- chiamata get Post--------------*/
+        /*-------------- chiamata get Post--------------*/
         ApiClient.GetClient.getPost().enqueue(object : Callback<PostResponse> {
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                 if (!(response.body()!!.payload.isNullOrEmpty()))
@@ -89,6 +62,32 @@ class HomeFragment : Fragment() {
             }
 
         })
+    }
+
+    /*-------------- LAYOUT MANAGER --------------*/
+    //  POST
+    private fun postLayoutManager(payload: List<Post>?) {
+        val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        V_FollowerListLayout.layoutManager = linearLayoutManager
+        if (!payload.isNullOrEmpty())
+            V_FollowerListLayout.adapter = PostListAdapter(payload)
+        else
+            Log.i("ERRORE", payload?.size.toString())
+    }
+
+    //  FOLLOWER
+    private fun followerLayoutManager(payload: List<Follower>?) {
+        val linearLayoutManager2 = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        H_FollowerListLayout.layoutManager = linearLayoutManager2
+
+        if (!payload.isNullOrEmpty())
+            H_FollowerListLayout.adapter = FollowerListAdapter(payload)
+        else
+            Log.i("ERRORE", payload?.size.toString())
     }
 
 

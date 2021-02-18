@@ -15,6 +15,7 @@ object ApiClient {
 
 
     const val BASE_URL: String = "http://www.nbarresi.it/"
+    var authToken: String = ""
 
     val GetClient: ApiInterface
         get() {
@@ -26,7 +27,7 @@ object ApiClient {
                     @Throws(IOException::class)
                     override fun intercept(chain: Interceptor.Chain): Response {
                         val newRequest: Request = chain.request().newBuilder()
-                            .addHeader("x-api-key", prefs.authToken!!)
+                            .addHeader("x-api-key", authToken)
                             .build()
                         return chain.proceed(newRequest)
                     }

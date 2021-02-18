@@ -38,6 +38,14 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        edit_profile_btn.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+
+
+            }
+
+        })
+
         tab_button_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                if(tab!!.position == 0){
@@ -66,6 +74,7 @@ class ProfileFragment : Fragment() {
 
 
 
+
     private fun callGetSingleProfile() {
         ApiClient.GetClient.getSingleProfile(prefs.userId).enqueue(object : Callback<ProfileResponse> {
 
@@ -75,7 +84,7 @@ class ProfileFragment : Fragment() {
                     profile_name_text.text = response.body()!!.payload!![0].name
                     profile_description_text.text = response.body()!!.payload!![0].description
                     followers_count_text.text = response.body()!!.payload!![0].followersNumber
-                    posts_count_text.text = response.body()!!.payload!![0].postNumber
+                    posts_count_text.text = response.body()!!.payload!![0].postsNumber
                     Picasso.get().load(response.body()!!.payload!![0].picture).transform(CircleTransform()).into(profile_image)
                 }
 
