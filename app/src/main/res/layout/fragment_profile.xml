@@ -12,17 +12,16 @@
         android:layout_margin="15dp"
         android:src="@drawable/mine"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/number_post"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:layout_marginLeft="20dp"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/posts_text"
         app:layout_constraintEnd_toEndOf="@id/posts_text"
@@ -33,10 +32,10 @@
         android:id="@+id/posts_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:text="Post"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:layout_marginLeft="20dp"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/profile_name"
         app:layout_constraintEnd_toStartOf="@id/followers_text"
@@ -55,8 +54,7 @@
         app:layout_constraintBaseline_toBaselineOf="@id/number_post"
         app:layout_constraintBottom_toTopOf="@id/followers_text"
         app:layout_constraintEnd_toEndOf="@id/followers_text"
-        app:layout_constraintStart_toStartOf="@id/followers_text"
-        />
+        app:layout_constraintStart_toStartOf="@id/followers_text" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/followers_text"
@@ -70,8 +68,7 @@
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@id/posts_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/posts_text"
-        />
+        app:layout_constraintStart_toEndOf="@id/posts_text" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/profile_name"
@@ -81,21 +78,19 @@
         android:text="Nome Profilo "
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/user_image"
-        app:layout_constraintTop_toBottomOf="@id/user_image"
-        />
+        app:layout_constraintTop_toBottomOf="@id/user_image" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/profile_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="descrizione"
+        android:text="@string/descrizione"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/btn_view_grid"
+        app:layout_constraintBottom_toTopOf="@id/tabLayout"
         app:layout_constraintStart_toStartOf="@id/profile_name"
         app:layout_constraintTop_toBottomOf="@id/profile_name"
-        app:layout_constraintVertical_bias="0"
-        />
+        app:layout_constraintVertical_bias="0" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/edit_btn"
@@ -115,38 +110,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_description" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_view_grid"
-        android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/white"
-        android:src="@drawable/ic_grid_view"
-        app:layout_constraintEnd_toStartOf="@id/btn_view_list"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_btn"
-        />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_view_list"
-        android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:background="@color/white"
-        android:src="@drawable/ic_view_list"
-        app:layout_constraintBottom_toTopOf="@id/recycler_profile_img"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_view_grid"
-        app:layout_constraintTop_toTopOf="@id/btn_view_grid"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_btn"
+        app:tabMode="fixed">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/gridView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_grid_view" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/listView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_view_list" />
+
+
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_profile_img"
+        android:id="@+id/recycler_profile"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_view_grid"
-        tools:listitem="@layout/post_grid"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        tools:listitem="@layout/post_grid" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_profile_grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        tools:listitem="@layout/post_grid" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

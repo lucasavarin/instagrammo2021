@@ -1,6 +1,7 @@
 package com.example.instagrammo.fragment
 
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -25,6 +27,7 @@ import com.example.instagrammo.response.PostResponse
 import com.example.instagrammo.response.ProfileResponse
 import com.example.instagrammo.view.CircleTransformation
 import com.example.instagrammo.view.prefs
+import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
 import retrofit2.Call
@@ -37,8 +40,8 @@ class ProfileFragment : Fragment() {
     private var posts: List<Post> = mutableListOf()
     val modifyProfile = ModifyProfileFragment()
 
-    val linearLayoutManager =
-        LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+    val linearLayoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+    val gridLayoutManager = GridLayoutManager(context, 3)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,6 +63,34 @@ class ProfileFragment : Fragment() {
             transaction.commit()
         }
 
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if (tab != null) {
+                    when (tab.position) {
+                        0 -> {
+                            recycler_profile.visibility = View.GONE
+                            recycler_profile_grid.visibility = View.VISIBLE
+                        }
+                        1 -> {
+                            recycler_profile_grid.visibility = View.GONE
+                            recycler_profile.visibility = View.VISIBLE
+
+                        }
+
+                    }
+                }
+            }
+
+        })
+
     }
 
     fun getPostsProfile() {
@@ -75,8 +106,11 @@ class ProfileFragment : Fragment() {
                 ) {
                     if (!response.body()?.payload.isNullOrEmpty()) {
                         posts = response.body()?.payload?.toMutableList()!!
-                        recycler_profile_img.layoutManager = linearLayoutManager
-                        recycler_profile_img.adapter = PostListGridAdapter(posts)
+                        recycler_profile_grid.layoutManager = gridLayoutManager
+                        recycler_profile_grid.adapter = PostListGridAdapter(posts)
+
+                        recycler_profile.layoutManager = linearLayoutManager
+                        recycler_profile.adapter = PostListGridAdapter(posts)
                         Log.i("info ", response.body()?.result.toString())
                     }
                 }
