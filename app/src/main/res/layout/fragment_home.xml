@@ -14,7 +14,6 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/home_post_recycler"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.12"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />

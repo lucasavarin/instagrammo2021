@@ -10,18 +10,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lynxspa.instagrammo.R
 import com.lynxspa.instagrammo.recyclerView.FollowerListRecyclerAdapter
+import com.lynxspa.instagrammo.recyclerView.PostListRecyclerAdapter
 import com.lynxspa.instagrammo.retrofit.Follower
 import com.lynxspa.instagrammo.retrofit.FollowerResponse
+import com.lynxspa.instagrammo.retrofit.Post
+import com.lynxspa.instagrammo.retrofit.PostResponse
 import com.lynxspa.instagrammo.singleton.ApiClient
 import com.lynxspa.instagrammo.singleton.prefs
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.collections.toMutableList as toMutableList1
 
 
 class HomeFragment : Fragment() {
     var follower: MutableList<Follower> = mutableListOf()
+    var post: MutableList<Post> = mutableListOf()
 
 
     companion object {
@@ -42,6 +47,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getFollower()
+        getPost()
     }
 
     fun getFollower() {
@@ -57,7 +63,7 @@ class HomeFragment : Fragment() {
                 ) {
                     Log.i("info", response.body().toString())
                     if (response.body()?.payload != null){
-                        follower = response.body()!!.payload!!.toMutableList()
+                        follower = response.body()!!.payload!!.toMutableList1()
                     }
                     val linearLayoutManager =
                         LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -69,6 +75,31 @@ class HomeFragment : Fragment() {
 
             })
 
+    }
+
+    fun getPost(){
+        ApiClient.getClient.getPost(prefs.rememberIdProfile)
+            .enqueue(object : Callback<PostResponse>{
+                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                    println("sono qui" + t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<PostResponse>,
+                    response: Response<PostResponse>
+                ) {
+                    Log.i("info", response.body().toString())
+                    if (response.body()?.payload != null){
+                        post = response.body()!!.payload!!.toMutableList1()
+                    }
+                    val linearLayoutManager =
+                        LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                    home_post_recycler.layoutManager = linearLayoutManager
+                    home_post_recycler.adapter = PostListRecyclerAdapter(follower, post)
+
+
+                }
+            })
     }
 
 }

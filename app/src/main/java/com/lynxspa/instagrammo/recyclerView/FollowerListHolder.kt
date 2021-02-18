@@ -12,7 +12,7 @@ class FollowerListHolder(v: View) : RecyclerView.ViewHolder(v) {
     private var follower: Follower? = null
     fun bindFollower(follower: Follower) {
         this.follower = follower
-        Picasso.get().load(follower.picture).transform(CircleTransform()).into(view.image_view)
+        Picasso.get().load(follower.picture).transform(CircleTransform()).into(view.imgFollowerView)
 
     }
 
