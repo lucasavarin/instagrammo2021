@@ -5,13 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.instagrammo.R
-import fragments.FollowFragment
-import fragments.HomeFragment
-import fragments.ProfileFragment
-import fragments.SearchFragment
+import fragments.*
+import interfaces.ButtonEditProfileListener
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), ButtonEditProfileListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,4 +55,10 @@ class HomeActivity : AppCompatActivity() {
             replace(R.id.fl_wrapper, fragment)
             commit()
         }
+
+    override fun OnClickListenerEditButtonProfile() {
+        makeCurrentFragment(EditProfileFragment.editprofileFragment)
+    }
+
+
 }

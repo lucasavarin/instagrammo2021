@@ -6,21 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.instagrammo.R
-import kotlinx.android.synthetic.main.fragment_profile.*
-import java.util.*
 
-class ProfileFragment : Fragment() {
+class EditProfileFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_modifica_profilo, container, false)
     }
 
     companion object {
-        var profileFragment : ProfileFragment = ProfileFragment()
+        var editprofileFragment : EditProfileFragment = EditProfileFragment()
     }
 
 }
