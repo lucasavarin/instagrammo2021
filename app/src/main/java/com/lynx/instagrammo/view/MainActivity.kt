@@ -5,7 +5,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.lynx.instagrammo.*
 import com.lynx.instagrammo.addFragment
+import com.lynx.instagrammo.bean.Profile
 import com.lynx.instagrammo.view.add.AddFragment
+import com.lynx.instagrammo.view.edit.EditFragment
 import com.lynx.instagrammo.view.home.HomeFragment
 import com.lynx.instagrammo.view.notification.NotificationsFragment
 import com.lynx.instagrammo.view.profile.ProfileFragment
@@ -15,14 +17,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 
 /* toDO cambiare il nome dell'activity in BaseActivity */
-class MainActivity : AppCompatActivity() {
-
-    val homeFragment = HomeFragment()
-    val searchFragment = SearchFragment()
-    val addFragment = AddFragment()
-    val notificationsFragment = NotificationsFragment()
-    val profileFragment = ProfileFragment()
-
+class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,35 +27,39 @@ class MainActivity : AppCompatActivity() {
         }
 
         /* ToDO change to home frament */
-        // loadPosts()
-        addFragment(homeFragment, R.id.fragmentConainer)
+
+        addFragment(HomeFragment.newInstance, R.id.fragmentConainer)
 
 
         navView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.action_home -> {
-                    replaceFragment(homeFragment, R.id.fragmentConainer)
+                    replaceFragment(HomeFragment.newInstance, R.id.fragmentConainer)
                     true
                 }
                 R.id.action_search -> {
-                    replaceFragment(searchFragment, R.id.fragmentConainer)
+                    replaceFragment(SearchFragment.newInstance, R.id.fragmentConainer)
                     true
                 }
                 R.id.action_add -> {
-                    replaceFragment(addFragment, R.id.fragmentConainer)
+                    replaceFragment(AddFragment.newInstance, R.id.fragmentConainer)
                     true
                 }
                 R.id.action_love -> {
-                    replaceFragment(notificationsFragment, R.id.fragmentConainer)
+                    replaceFragment(NotificationsFragment.newInstance, R.id.fragmentConainer)
                     true
                 }
                 R.id.action_profile -> {
-                    replaceFragment(profileFragment, R.id.fragmentConainer)
+                    replaceFragment(ProfileFragment.newInstance, R.id.fragmentConainer)
                     true
                 }
                 else -> false
             }
         }
+    }
+
+    override fun modifyProfilePressed(profile: Profile) {
+       addFragment(EditFragment.newInstance, R.id.fragmentConainer)
     }
 
 

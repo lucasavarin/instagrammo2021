@@ -51,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
                     authToken = response.body()!!.authToken.toString()
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
                 else {
                     Toast.makeText(this@LoginActivity, "Username/Password errata" , Toast.LENGTH_SHORT).show()

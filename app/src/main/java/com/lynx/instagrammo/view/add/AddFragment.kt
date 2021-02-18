@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.lynx.instagrammo.R
+import com.lynx.instagrammo.view.edit.EditFragment
 
 class AddFragment : Fragment() {
 
@@ -14,4 +15,7 @@ class AddFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_add, container, false)
     }
 
+    companion object{
+        val newInstance: AddFragment = AddFragment()
+    }
 }

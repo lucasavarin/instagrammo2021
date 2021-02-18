@@ -90,5 +90,8 @@ class HomeFragment : Fragment() {
             Log.i("ERRORE", payload?.size.toString())
     }
 
+    companion object{
+        val newInstance: HomeFragment = HomeFragment()
+    }
 
 }
