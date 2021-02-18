@@ -2,27 +2,21 @@ package com.example.instagrammo.views.home
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.followers.FollowerBean
-import com.example.instagrammo.beans.followers.FollowerProfile
-import com.example.instagrammo.beans.followers.FollowersResponse
-import com.example.instagrammo.beans.posts.Post
 import com.example.instagrammo.beans.posts.PostBean
-import com.example.instagrammo.beans.posts.PostResponse
-import com.example.instagrammo.prefs
 import com.example.instagrammo.recyclerview.adapter.*
-import com.example.instagrammo.retrofit.ApiClient
+import com.example.instagrammo.utils.DataState
+import com.example.instagrammo.viewmodel.MainStateEvent
+import com.example.instagrammo.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
@@ -36,6 +30,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var itemsFollow: List<FollowerBean>
 
+    private val viewModel = MainViewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,11 +42,45 @@ class HomeFragment : Fragment() {
 
         getData()
 
+        setObservable()
+
         return this.mView
     }
 
     private fun getData() {
+        viewModel.setStateEvent(MainStateEvent.GetPostsEvent)
 
+        viewModel.setStateEvent(MainStateEvent.GetFollowersEvent)
+    }
+
+    private fun setObservable() {
+
+        viewModel.dataStatePost.observe(viewLifecycleOwner, Observer { dataStatePosts ->
+            when (dataStatePosts) {
+                is DataState.Error -> {
+                }
+                is DataState.Loading -> {
+                }
+                is DataState.Success -> {
+                    itemsPost = dataStatePosts.data
+                    setAdapterPost()
+                }
+            }
+        })
+
+        viewModel.dataStateFollowers.observe(viewLifecycleOwner, Observer { dataStateFollowers ->
+            when (dataStateFollowers) {
+                is DataState.Error -> {
+                }
+                is DataState.Loading -> {
+                }
+                is DataState.Success -> {
+                    itemsFollow = dataStateFollowers.data
+                    setAdapterFollower()
+                }
+            }
+        })
+/*
         ApiClient.GetClient.getPosts()
             .enqueue(object : Callback<PostResponse> {
                 override fun onFailure(call: Call<PostResponse>, t: Throwable) {
@@ -64,13 +94,11 @@ class HomeFragment : Fragment() {
                         }
                         setAdapterPost()
                     }
-                    //itemsPost = response.body()?.payload!!.toMutableList()
-                    //setAdapterPost()
                 }
 
             })
 
-        ApiClient.GetClient.getFollowers(prefs.rememberIdProfile!!)
+        ApiClient.GetClient.getFollowers(prefs.rememberIdProfile)
             .enqueue(object : Callback<FollowersResponse> {
                 override fun onFailure(call: Call<FollowersResponse>, t: Throwable) {
                     Log.i("INFORMATION", t.message.toString())
@@ -80,15 +108,14 @@ class HomeFragment : Fragment() {
                     if(response.isSuccessful &&  response.body()?.result == true) {
                         itemsFollow = response.body()!!.payload!!.map { follower ->
                             FollowerBean.convert(follower)
-
                         }
                         setFollowAdapter()
                     }
-                    //itemsFollow = response.body()?.payload!!.toMutableList()
-                    //setFollowAdapter()
                 }
 
             })
+
+ */
     }
 
     private fun setAdapterPost() {
@@ -101,7 +128,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setFollowAdapter() {
+    private fun setAdapterFollower() {
         val recyclerView = this.mView.home_follow_recycler
         if (recyclerView is RecyclerView) {
             recyclerView.apply {

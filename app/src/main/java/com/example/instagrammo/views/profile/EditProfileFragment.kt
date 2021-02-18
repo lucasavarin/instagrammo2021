@@ -7,18 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.profile.*
 import com.example.instagrammo.prefs
 import com.example.instagrammo.retrofit.ApiClient
 import com.example.instagrammo.utils.CircleTransform
+import com.example.instagrammo.utils.DataState
 import com.example.instagrammo.utils.ElementViewConverter.toEditable
-import com.example.instagrammo.views.BaseActivity
+import com.example.instagrammo.viewmodel.MainStateEvent
+import com.example.instagrammo.viewmodel.MainViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_modifica_profilo.*
 import kotlinx.android.synthetic.main.fragment_modifica_profilo.view.*
-import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.android.synthetic.main.fragment_profile.view.edit_profile_button
 import kotlinx.android.synthetic.main.fragment_profile.view.profileImage
 import retrofit2.Call
@@ -35,6 +36,8 @@ class EditProfileFragment : Fragment() {
 
     private lateinit var mView: View
 
+    private val viewModel = MainViewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,7 +50,33 @@ class EditProfileFragment : Fragment() {
         return mView
     }
 
-    private fun putProfile() {
+    private fun setObservable() {
+
+
+        viewModel.dataStateProfile.observe(viewLifecycleOwner, Observer { dataStateProfile ->
+            when (dataStateProfile) {
+                is DataState.Error -> {
+                }
+                is DataState.Loading -> {
+                }
+                is DataState.Success -> {
+                    itemsProfile = dataStateProfile.data
+                    populateDataView()
+                }
+            }
+        })
+
+        viewModel.dataStateEditProfile.observe(viewLifecycleOwner, Observer { dataStateEditProfile ->
+            when (dataStateEditProfile) {
+                is DataState.Error -> {
+                }
+                is DataState.Loading -> {
+                }
+                is DataState.Success -> { listener.removeFragmentListener() }
+            }
+        })
+
+      /*
         ApiClient.GetClient.putProfile(editProfileRequest)
             .enqueue(object : Callback<EditProfileResponse> {
                 override fun onFailure(call: Call<EditProfileResponse>, t: Throwable) {
@@ -60,6 +89,7 @@ class EditProfileFragment : Fragment() {
                     }
                 }
             })
+        */
     }
 
     fun verificaDatiInseriti() {
@@ -76,7 +106,9 @@ class EditProfileFragment : Fragment() {
             itemsProfile.picture
         )
 
-        putProfile()
+        viewModel.setStateEvent(MainStateEvent.PutEditProfileEvent(editProfileRequest))
+
+        setObservable()
 
     }
 
