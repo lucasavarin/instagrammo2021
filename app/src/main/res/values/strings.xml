@@ -12,4 +12,6 @@
     <string name="add">Add</string>
     <string name="follow">Follow</string>
     <string name="profile">Profile</string>
+    <string name="post">post</string>
+    <string name="modifica_profilo">modifica_profilo</string>
 </resources>
