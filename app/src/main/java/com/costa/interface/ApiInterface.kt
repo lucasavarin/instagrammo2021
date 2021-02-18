@@ -3,10 +3,7 @@ package com.costa.`interface`
 
 import com.costa.servizi.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiInterface {
     @POST("auth.php")
@@ -25,4 +22,9 @@ interface ApiInterface {
 
     @GET("posts.php/{profileId}")
     fun getMyPosts(@Path(value = "profileId")profileId:String): Call<MyPostsResponce>
+
+    @Headers("Content-Type: application/json")
+    @PUT("profiles.php/{profileId}")
+    fun putEditProfile(@Path(value = "profileId")profileId:String,
+                       @Body profileEditRequest:ProfileEditRequest):Call<BooleanRespomce>
 }
