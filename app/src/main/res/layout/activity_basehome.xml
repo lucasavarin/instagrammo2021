@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkblue">
+    android:background="@color/white">
     <!--
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -46,17 +46,17 @@
         app:layout_constraintHeight_percent="0.08"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="1dp"
-        android:background="@color/darkblue"
-        android:backgroundTint="@color/darkblue"
-        app:itemIconTint="@color/white"
+        android:background="@color/lightRed"
+        android:backgroundTint="@color/white"
+        app:itemIconTint="@drawable/tab_color"
         app:itemRippleColor="@color/white"
-        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_container"
-        app:menu="@menu/bottom_menu" />
+        app:menu="@menu/bottom_menu"
+        app:labelVisibilityMode="unlabeled" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

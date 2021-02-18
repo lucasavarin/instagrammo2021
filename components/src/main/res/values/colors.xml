@@ -5,11 +5,15 @@
     <color name="darksand">#b89068</color>
     <color name="darksandopacity">#51B89068</color>
     <color name="white">#f4f3ef</color>
+    <color name="black">#000000</color>
     <color name="colorSecondaryVariant">#b99164</color>
     <color name="strock">#939393</color>
     <color name="colorOnSecondary">#201e21</color>
     <color name="disabled">#5A5A5A</color>
-
+    <color name="lightBlue">#6ADEDA</color>
+    <color name="lightPink">#E15A60</color>
+    <color name="lightGrey">#3A3A39</color>
+    <color name="lightRed">#fe5644</color>
     <color name="success">#465C4A</color>
     <color name="alert">#5C4658</color>
     <color name="complementary">#5C5546</color>
