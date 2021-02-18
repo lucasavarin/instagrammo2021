@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
     tools:context=".fragment.secondFragment.ModifyProfileFragment">
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/second_toolbar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="18dp"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            android:background="@color/white"/>
 
         <TextView
             android:id="@+id/modify_title"
@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/modifica_profilo"
+            android:textColor="@color/black"
             android:textSize="24sp" />
 
     </androidx.appcompat.widget.Toolbar>
@@ -39,7 +40,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/ic_person"
+        android:layout_marginLeft="4dp"
+        android:src="@drawable/mine"
         app:layout_constraintStart_toStartOf="@+id/ModifyUsernameWrapper"
         app:layout_constraintTop_toBottomOf="@+id/second_toolbar" />
 
@@ -47,7 +49,7 @@
         android:id="@+id/image_user_textId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@id/user_image"
         app:layout_constraintTop_toBottomOf="@+id/user_image"
@@ -69,11 +71,11 @@
         android:id="@+id/appCompatImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="4dp"
         android:layout_marginTop="12dp"
         android:src="@drawable/ic_check"
         app:layout_constraintStart_toEndOf="@id/image_user_textId"
-        app:layout_constraintTop_toBottomOf="@+id/image_user_textId"
         app:layout_constraintTop_toTopOf="@id/image_user_textId"
       />
 
@@ -82,7 +84,7 @@
         android:id="@+id/ModifyUsernameWrapper"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/salva_button"
+        android:layout_marginTop="50dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_user_textId">
@@ -91,6 +93,8 @@
             android:id="@+id/text_nome_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             android:background="@drawable/corners"
             android:fontFamily="@font/noto_sans"
             android:hint="@string/nome_profilo"
@@ -113,6 +117,8 @@
             android:id="@+id/descrizione"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             android:background="@drawable/corners"
             android:fontFamily="@font/noto_sans"
             android:hint="@string/descrizione"
@@ -125,11 +131,15 @@
         android:id="@+id/salva_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/corners"
         android:backgroundTint="@color/material_on_primary_disabled"
         android:fontFamily="@font/noto_sans"
         android:text="@string/salva"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
