@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import com.costa.instagrammo.R
 
 class SearchFragment : Fragment() {
+    companion object{
+        val instance:SearchFragment= SearchFragment()
 
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

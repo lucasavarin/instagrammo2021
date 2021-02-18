@@ -13,7 +13,10 @@ import com.costa.instagrammo.R
  * create an instance of this fragment.
  */
 class LikeFragment : Fragment() {
+    companion object{
+        val instance:LikeFragment= LikeFragment()
 
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

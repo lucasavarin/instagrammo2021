@@ -28,7 +28,10 @@ import retrofit2.Response
  * create an instance of this fragment.
  */
 class HomeFragment : Fragment() {
+    companion object{
+        val instance:HomeFragment= HomeFragment()
 
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

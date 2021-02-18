@@ -4,104 +4,82 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
 import com.costa.beans.ProfileOut
+import com.costa.utils.addFragment
+import com.costa.utils.removeFragment
+import com.costa.utils.replaceFragment
 import com.costa.views.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface {
+class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface,
+    EditProfileFragment.EditProfileFragmentInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        bottom_nav.setOnClickListener{
+        bottom_nav.setOnClickListener {
             bottom_nav.isSelected = !bottom_nav.isSelected
         }
+
         /*  bottom_nav.background = null  */
 
-        lateinit var homeFragment: HomeFragment
-        lateinit var searchFragment: SearchFragment
-        lateinit var addFragment: AddFragment
-        lateinit var likeFragment: LikeFragment
-        lateinit var profileFragment: ProfileFragment
 
-        val bottomNavigation : BottomNavigationView = findViewById(R.id.bottom_nav)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_nav)
 
-        homeFragment = HomeFragment()
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.home_container_fragment, homeFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+
+        replaceFragment(HomeFragment.instance, R.id.home_container_fragment)
 
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
 
                 R.id.ic_home -> {
 
-                    homeFragment = HomeFragment()
-                    supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.home_container_fragment, homeFragment)
-                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                            .commit()
+                    replaceFragment(HomeFragment.instance, R.id.home_container_fragment)
                 }
 
                 R.id.ic_search -> {
 
-                    searchFragment = SearchFragment()
-                    supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.home_container_fragment, searchFragment)
-                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                            .commit()
+                    replaceFragment(SearchFragment.instance, R.id.home_container_fragment)
                 }
 
                 R.id.ic_add -> {
 
-                    addFragment = AddFragment()
-                    supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.home_container_fragment, addFragment)
-                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                            .commit()
+                    replaceFragment(AddFragment.instance, R.id.home_container_fragment)
                 }
 
                 R.id.ic_like -> {
 
-                    likeFragment = LikeFragment()
-                    supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.home_container_fragment, likeFragment)
-                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                            .commit()
+                    replaceFragment(LikeFragment.instance, R.id.home_container_fragment)
                 }
 
                 R.id.ic_profile -> {
 
-                    profileFragment = ProfileFragment()
-                    supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.home_container_fragment, profileFragment)
-                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                            .commit()
+                    replaceFragment(ProfileFragment.instance, R.id.home_container_fragment)
                 }
             }
 
             true
-
 
         }
 
     }
 
     override fun modifyProfilePressed(profile: ProfileOut) {
-        var editProfileFragment = EditProfileFragment()
+        var bundle = Bundle()
+        bundle.putString("nome", profile.name)
+        bundle.putString("description", profile.description)
+        bundle.putString("picture", profile.picture)
 
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.home_container_fragment, editProfileFragment)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .commit()
+        EditProfileFragment.instance.arguments = bundle
+
+        addFragment(EditProfileFragment.instance, R.id.home_container_fragment)
+        removeFragment(ProfileFragment.instance)
+    }
+
+    override fun back() {
+        replaceFragment(ProfileFragment.instance, R.id.home_container_fragment)
+        removeFragment(EditProfileFragment.instance)
+
     }
 
 }

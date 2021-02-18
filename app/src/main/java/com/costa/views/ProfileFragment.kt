@@ -45,6 +45,10 @@ class ProfileFragment : Fragment() {
     //private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var profilo : ProfileOut
 
+    companion object{
+        val instance:ProfileFragment= ProfileFragment()
+
+    }
 
 
     override fun onCreateView(

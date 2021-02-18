@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.costa.instagrammo.R
 
 class AddFragment : Fragment() {
-
+    companion object{
+        val instance:AddFragment= AddFragment()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
