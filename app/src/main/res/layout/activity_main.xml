@@ -34,10 +34,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemRippleColor="@color/softWhit"
+        app:itemRippleColor="@color/softWhite"
         app:elevation="10dp"
         app:itemIconTint="@color/selector_navb"
-        android:background="@color/softBlack"
+        
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
