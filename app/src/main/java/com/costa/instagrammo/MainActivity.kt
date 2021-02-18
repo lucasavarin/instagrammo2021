@@ -3,11 +3,12 @@ package com.costa.instagrammo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
+import com.costa.beans.ProfileOut
 import com.costa.views.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,27 +16,7 @@ class MainActivity : AppCompatActivity() {
         bottom_nav.setOnClickListener{
             bottom_nav.isSelected = !bottom_nav.isSelected
         }
-
-        /*nomeUtente.setOnClickListener{
-            nomeUtente.isSelected = true
-        }
-        */
-
-        /*
-        bottom_nav.background = null
-
-        //followers
-        val posts:ArrayList<String> = ArrayList()
-        for (i in 1..10) {
-
-            posts.add("Utente # $i")
-        }
-
-        //recycler_view_orizzontale.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
-        //recycler_view_orizzontale.adapter = PostAdapter(posts)
-
-        */
-
+        /*  bottom_nav.background = null  */
 
         lateinit var homeFragment: HomeFragment
         lateinit var searchFragment: SearchFragment
@@ -110,6 +91,17 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-    }
-}
 
+    }
+
+    override fun modifyProfilePressed(profile: ProfileOut) {
+        var editProfileFragment = EditProfileFragment()
+
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.home_container_fragment, editProfileFragment)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
+    }
+
+}

@@ -1,11 +1,14 @@
 package com.costa.views
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,6 +19,8 @@ import com.costa.adapter.PostAdapter
 import com.costa.adapter.ProfilePostsGridAdapter
 import com.costa.adapter.ProfilePostsLinearAdapter
 import com.costa.beans.MyPosts
+import com.costa.beans.Profile
+import com.costa.beans.ProfileOut
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
 import com.costa.servizi.ApiClient.userId
@@ -25,6 +30,7 @@ import com.costa.servizi.ProfileResponse
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
+import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.item_post_home.view.*
@@ -34,6 +40,13 @@ import retrofit2.Response
 
 class ProfileFragment : Fragment() {
 
+    private lateinit var listener: ProfileFragmentInterface
+    //private lateinit var linearLayoutManager: LinearLayoutManager
+    //private lateinit var gridLayoutManager: GridLayoutManager
+    private lateinit var profilo : ProfileOut
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,8 +55,23 @@ class ProfileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        //linearLayoutManager = LinearLayoutManager(context)
+        //gridLayoutManager = GridLayoutManager(context, 3)
+
+        if (context is ProfileFragmentInterface) {
+            listener = context
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        btn_modifica_profilo.setOnClickListener {
+            listener.modifyProfilePressed(profilo)
+        }
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 
@@ -75,6 +103,7 @@ class ProfileFragment : Fragment() {
                 call: Call<ProfileResponse>,
                 response: Response<ProfileResponse>
             ) {
+                profilo = response.body()!!.payload!![0]
                 Picasso.get()
                     .load(response.body()!!.payload!![0].picture)
                     .transform(CropCircleTransformation())
@@ -123,9 +152,8 @@ class ProfileFragment : Fragment() {
 
     }
 
-
     fun linearRecycleView(payload: List<MyPosts>) {
-        rv_posts_profilo_linear.visibility=View.GONE
+        rv_posts_profilo_linear.visibility = View.GONE
         rv_posts_profilo_linear.apply {
             val layoutManager = LinearLayoutManager(context)
             rv_posts_profilo_linear.layoutManager = layoutManager
@@ -142,4 +170,17 @@ class ProfileFragment : Fragment() {
     }
 
 
+    interface ProfileFragmentInterface {
+        fun modifyProfilePressed(profile: ProfileOut)
+    }
+
+    /*override fun refreshFragment() {
+        if (profileScrollView.scrolly != 0) {
+            profileScrollView.smoothScrollTo( 0, 0)
+        }else{
+            btn_modifica_profilo.isRefreshing = true
+            getPost()
+            getProfile()
+        }
+    }*/
 }
