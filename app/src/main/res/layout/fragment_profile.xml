@@ -67,8 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:text="@string/post"
+            android:layout_marginTop="4dp"
+            android:text="@string/amici"
             android:textColor="@color/white"
             android:textSize="@dimen/small"
             android:textStyle="normal"
@@ -141,8 +141,8 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/monoImageButton"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="80dp"
             android:src="@drawable/bg_login"
             app:layout_constraintEnd_toEndOf="parent"
