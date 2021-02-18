@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarFragmentCorrente"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/colorPrimary">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/immagineFrecciaBack"
+        android:layout_width="44dp"
+        android:layout_height="46dp"
+        android:src="@drawable/ic_arrow_back"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/testoFragmentCorrente"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="TextView"
+        android:textSize="25dp"
+        android:padding="10dp"
+        android:textAlignment="center"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</FrameLayout>

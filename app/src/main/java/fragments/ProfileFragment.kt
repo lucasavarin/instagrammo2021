@@ -23,4 +23,6 @@ class ProfileFragment : Fragment() {
         var profileFragment : ProfileFragment = ProfileFragment()
     }
 
+
+
 }

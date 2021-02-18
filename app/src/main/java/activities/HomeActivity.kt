@@ -60,5 +60,4 @@ class HomeActivity : AppCompatActivity(), ButtonEditProfileListener {
         makeCurrentFragment(EditProfileFragment.editprofileFragment)
     }
 
-
 }
