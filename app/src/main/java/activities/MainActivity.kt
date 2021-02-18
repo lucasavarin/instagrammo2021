@@ -3,6 +3,7 @@ package activities
 import API.ApiClient
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagrammo.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,12 +19,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if(prefs.rememberUser){
+            et_username.text = prefs.username.toEditable()
+        }
+
         btn_login.setOnClickListener {
 
             val username = et_username.text
             val password = et_password.text
 
             val request = AuthRequest(username.toString(), password.toString())
+
+            /*if(remind_me == true){
+                et_username.text = prefs.username.toEditable()
+            }*/
 
             ApiClient.getClient.doAuth(request).enqueue(object : Callback<AuthResponse> {
 
@@ -51,4 +60,5 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+    fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
 }
