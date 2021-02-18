@@ -17,7 +17,8 @@ class ProfileListViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
         Picasso
             .get()
             .load(post.picture)
-            .fit().centerCrop()
+            .fit()
+            .centerCrop()
             .into(v.list_profile_img)
     }
 

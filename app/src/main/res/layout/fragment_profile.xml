@@ -65,32 +65,8 @@
         android:textAlignment="center"
         android:textSize="10sp"
         app:layout_constraintBaseline_toBaselineOf="@id/posts_text"
-        app:layout_constraintEnd_toStartOf="@id/following_text"
-        app:layout_constraintStart_toEndOf="@id/posts_text" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/following_count_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textSize="10sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/posts_count_text"
-        app:layout_constraintBottom_toTopOf="@id/following_text"
-        app:layout_constraintEnd_toEndOf="@id/following_text"
-        app:layout_constraintStart_toStartOf="@+id/following_text" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/following_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/following"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textSize="10sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/posts_text"
         app:layout_constraintEnd_toEndOf="@id/edit_profile_btn"
-        app:layout_constraintStart_toEndOf="@id/followers_text" />
+        app:layout_constraintStart_toEndOf="@id/posts_text" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/edit_profile_btn"
