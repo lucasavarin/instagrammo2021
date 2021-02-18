@@ -60,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
 
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                  startActivity(intent)
+                    finish()
                 }else
                 {
                     Toast.makeText(this@LoginActivity, "username o password errati", Toast.LENGTH_SHORT).show()
