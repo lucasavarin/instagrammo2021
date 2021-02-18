@@ -54,7 +54,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getInformationProfile()
         getPostsProfile()
-
+        recycler_profile_grid.layoutManager = gridLayoutManager
+        recycler_profile.layoutManager = linearLayoutManager
         edit_btn.setOnClickListener {
             val fragmentManager: FragmentManager? = fragmentManager
             var transaction: FragmentTransaction = fragmentManager?.beginTransaction()!!
@@ -65,11 +66,12 @@ class ProfileFragment : Fragment() {
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
+                Log.i("info", tab.toString())
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
+                Log.i("info", tab.toString())
+
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -106,10 +108,8 @@ class ProfileFragment : Fragment() {
                 ) {
                     if (!response.body()?.payload.isNullOrEmpty()) {
                         posts = response.body()?.payload?.toMutableList()!!
-                        recycler_profile_grid.layoutManager = gridLayoutManager
                         recycler_profile_grid.adapter = PostListGridAdapter(posts)
 
-                        recycler_profile.layoutManager = linearLayoutManager
                         recycler_profile.adapter = PostListGridAdapter(posts)
                         Log.i("info ", response.body()?.result.toString())
                     }
