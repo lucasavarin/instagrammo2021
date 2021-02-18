@@ -1,0 +1,5 @@
+package bean
+
+interface DataModel {
+
+}
