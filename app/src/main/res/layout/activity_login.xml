@@ -48,7 +48,7 @@
             android:background="@color/backgroud_log_input"
             android:hint="@string/username"
             android:imeOptions="actionDone"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:fontFamily="sans-serif-thin" />
@@ -65,7 +65,8 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputLayoutUsername">
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutUsername"
+        app:passwordToggleEnabled="true">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTextPassword"
@@ -73,9 +74,9 @@
             android:layout_height="60dp"
             android:background="@color/backgroud_log_input"
             android:hint="@string/password"
+            android:textAlignment="textStart"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:fontFamily="sans-serif-thin" />
@@ -89,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/custom_button"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/login"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -170,5 +172,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

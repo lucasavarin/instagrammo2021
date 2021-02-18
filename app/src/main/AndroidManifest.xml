@@ -13,18 +13,17 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Instagrammo" >
-       <!-- SECOND ACTIVITY-->
-        <activity android:name=".SecondActivity" >
-        </activity>
-        <!-- LOGINPAGE -->
-        <activity android:name=".view.login.LoginActivity" >
+        android:theme="@style/Theme.Instagrammo">
+        <activity android:name=".view.splash.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- HOMEPAGE -->
+        <!-- LOGINPAGE -->
+        <activity android:name=".view.login.LoginActivity">
+
+        </activity> <!-- HOMEPAGE -->
         <activity android:name=".view.MainActivity" />
     </application>
 
