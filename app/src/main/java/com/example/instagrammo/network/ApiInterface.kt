@@ -4,6 +4,7 @@ import com.example.instagrammo.request.AuthRequest
 import com.example.instagrammo.response.AuthResponse
 import com.example.instagrammo.response.FollowerResponse
 import com.example.instagrammo.response.PostResponse
+import com.example.instagrammo.response.ProfileResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -21,4 +22,11 @@ interface ApiInterface {
 
     @GET("posts.php")
     fun getPost(): Call<PostResponse>
+
+    @GET("posts.php/{profileId}")
+    fun getProfilePosts(@Path("profileId") profileId: String): Call<PostResponse>
+
+    @GET("profiles.php/{profiloUtente}")
+    fun getSingleProfile(@Path("profiloUtente") profiloUtente: String): Call<ProfileResponse>
+
 }
