@@ -1,5 +1,6 @@
 package com.lynx.instagrammo.networking.API
 
+import com.lynx.instagrammo.bean.Profile
 import com.lynx.instagrammo.networking.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -20,4 +21,10 @@ interface ApiInterface {
 
     @GET("posts.php/{profileId}")
     fun getMyPosts(@Path("profileId") profileId :String) : Call<MyPostsResponse>
+
+    @Headers("Content-Type: application/json")
+    @PUT("profiles.php/{profileId}")
+    fun putEditProfile(@Path("profileId") profileId :String,
+                       @Body profile: ProfileRequest) : Call<Boolean>
+
 }

@@ -1,7 +1,6 @@
 package com.lynx.instagrammo.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.lynx.instagrammo.*
 import com.lynx.instagrammo.addFragment
@@ -13,11 +12,10 @@ import com.lynx.instagrammo.view.notification.NotificationsFragment
 import com.lynx.instagrammo.view.profile.ProfileFragment
 import com.lynx.instagrammo.view.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_login.*
 
 
 /* toDO cambiare il nome dell'activity in BaseActivity */
-class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface {
+class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface, EditFragment.EditFragmenInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +27,6 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
         /* ToDO change to home frament */
 
         addFragment(HomeFragment.newInstance, R.id.fragmentConainer)
-
 
         navView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -59,7 +56,13 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
     }
 
     override fun modifyProfilePressed(profile: Profile) {
-       addFragment(EditFragment.newInstance, R.id.fragmentConainer)
+        addFragment(EditFragment.newInstance, R.id.fragmentConainer)
+        removeFragment(ProfileFragment.newInstance)
+    }
+
+    override fun saveAndExit() {
+        replaceFragment(ProfileFragment.newInstance, R.id.fragmentConainer)
+        removeFragment(EditFragment.newInstance)
     }
 
 

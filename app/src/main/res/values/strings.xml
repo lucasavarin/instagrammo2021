@@ -15,6 +15,12 @@
     <string name="followers">followers</string>
     <string name="following">seguiti</string>
     <string name="edit_profile">modifica</string>
+    <string name="profile_name">Nome Profilo</string>
+    <string name="profile_description">Descrizione Profilo</string>
+    <string name="profile_id_image">Id Profilo</string>
+    <string name="profile_edit">Modifica Profilo</string>
+    <string name="save">Salva</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

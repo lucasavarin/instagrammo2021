@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Instagrammo">
         <activity android:name=".view.splash.SplashScreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"  />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -24,7 +24,7 @@
         <activity android:name=".view.login.LoginActivity">
 
         </activity> <!-- HOMEPAGE -->
-        <activity android:name=".view.MainActivity" />
+        <activity android:name=".view.MainActivity" android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

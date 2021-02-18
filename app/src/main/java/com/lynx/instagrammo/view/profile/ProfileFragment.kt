@@ -38,6 +38,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var listener: ProfileFragmentInterface
     private lateinit var profile: Profile
+    var args = Bundle()
     var posts: List<MyPost> = mutableListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +58,12 @@ class ProfileFragment : Fragment() {
 
         edit_profile_btn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-            listener.modifyProfilePressed(profile)
+
+                args.putString("name",profile.name)
+                args.putString("description", profile.description)
+                args.putString("picture", profile.picture)
+                EditFragment.newInstance.putArguments(args)
+                listener.modifyProfilePressed(profile)
             }
         })
 
