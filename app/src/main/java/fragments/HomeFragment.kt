@@ -10,7 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import bean.Follower
+import bean.FollowerBean
+import bean.PostBean
 import retrofit2.Call
 import com.example.instagrammo.R
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -18,11 +19,12 @@ import retrofit2.Response
 import utils.FollowerResponse
 import utils.prefs
 import retrofit2.Callback
-import kotlin.math.log
 
 class HomeFragment : Fragment() {
 
-
+    private lateinit var mView: View
+    private lateinit var itemsPost: List<PostBean>
+    private lateinit var itemsFollow: List<FollowerBean>
 
     override fun onCreateView(
         inflater: LayoutInflater,
