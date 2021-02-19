@@ -6,34 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:paddingHorizontal="100dp"
-    android:background="#ffffff">
+    android:paddingHorizontal="100dp">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo_splash"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher_instagrammo"
+        android:src="@mipmap/ic_launcher_app"
+        android:layout_marginRight="@dimen/mid_margin"
+        android:layout_marginLeft="@dimen/mid_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:theme="@style/SplashTheme"
+        android:theme="@style/SplashTheme" />
 
-        />
-    
-    <TextView
-        android:id="@+id/testo_splash"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tema_splash"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
         android:fontFamily="@font/mr_dafoe"
+        android:textColor="@color/softYellow"
         android:text="Instagrammo"
+        android:shadowColor="@color/softBlack"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
         android:textAlignment="center"
-        android:textSize="40sp"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/logo_splash"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo_splash"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
