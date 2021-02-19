@@ -1,16 +1,12 @@
 package com.example.instagrammo.recyclerview.adapter
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
-import com.example.instagrammo.beans.posts.Post
-import com.example.instagrammo.beans.posts.PostBean
+import com.example.instagrammo.beans.business.post.PostBean
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_grid3x.view.*
 

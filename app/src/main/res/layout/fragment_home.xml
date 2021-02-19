@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:foregroundGravity="center"
-        tools:context=".views.home.HomeFragment"
+        tools:context=".view.views.home.HomeFragment"
         tools:listitem="@layout/item_follow_home" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_follow_recycler"
-        tools:context=".views.home.HomeFragment"
+        tools:context=".view.views.home.HomeFragment"
         tools:listitem="@layout/item_post_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

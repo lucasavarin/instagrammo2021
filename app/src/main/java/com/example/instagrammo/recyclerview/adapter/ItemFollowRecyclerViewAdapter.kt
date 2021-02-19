@@ -1,14 +1,12 @@
 package com.example.instagrammo.recyclerview.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
-import com.example.instagrammo.beans.followers.FollowerBean
-import com.example.instagrammo.beans.followers.FollowerProfile
+import com.example.instagrammo.beans.business.followers.FollowerBean
 import com.example.instagrammo.utils.CircleTransform
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_follow_home.view.*

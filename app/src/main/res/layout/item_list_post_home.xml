@@ -8,7 +8,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.home.HomeFragment"
+        tools:context=".view.views.home.HomeFragment"
         tools:listitem="@layout/item_post_home" />
 
 

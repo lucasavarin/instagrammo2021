@@ -155,7 +155,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grid_cycle_image"
-        tools:context=".views.profile.ProfileFragment"
+        tools:context=".view.views.profile.ProfileFragment"
         android:visibility="gone"
         tools:listitem="@layout/item_post_home" />
 
@@ -168,7 +168,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grid_cycle_image"
-        tools:context=".views.profile.ProfileFragment"
+        tools:context=".view.views.profile.ProfileFragment"
         android:visibility="visible"
         tools:listitem="@layout/item_grid3x" />
 
