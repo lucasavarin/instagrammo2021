@@ -18,11 +18,11 @@ class ProfileGridViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
                 .load(post.picture)
                 .into(v.grid_profile_img)
 
-        Picasso
+/*        Picasso
                 .get()
                 .load(post.picture)
                 .transform(BlurTransformation(v.context, 25, 3))
-                .into(v.blur_grid_profile_img)
+                .into(v.blur_grid_profile_img)*/
 
     }
 }
