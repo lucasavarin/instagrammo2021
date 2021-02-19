@@ -1,10 +1,12 @@
 package com.lynx.instagrammo.view.home
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lynx.instagrammo.R
@@ -15,14 +17,16 @@ import com.lynx.instagrammo.networking.FollowerResponse
 import com.lynx.instagrammo.networking.PostResponse
 import com.lynx.instagrammo.prefs
 import com.lynx.instagrammo.view.recyclerView.FollowerListAdapter
+import com.lynx.instagrammo.view.recyclerView.FollowerListViewHolder
 import com.lynx.instagrammo.view.recyclerView.PostListAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), FollowerListViewHolder.OnFollowerClickListener {
 
+    lateinit private var listener: HomeFragmentInterface
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,13 +89,27 @@ class HomeFragment : Fragment() {
         H_FollowerListLayout.layoutManager = linearLayoutManager2
 
         if (!payload.isNullOrEmpty())
-            H_FollowerListLayout.adapter = FollowerListAdapter(payload)
+            H_FollowerListLayout.adapter = FollowerListAdapter(payload, this)
         else
             Log.i("ERRORE", payload?.size.toString())
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is HomeFragmentInterface)
+            listener = context
+    }
+
     companion object{
         val newInstance: HomeFragment = HomeFragment()
+    }
+
+    override fun onItemClick(item: Follower, position: Int) {
+    listener.goToProfilepressed(item)
+    }
+
+    interface HomeFragmentInterface{
+    fun goToProfilepressed(follower: Follower)
     }
 
 }

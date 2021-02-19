@@ -12,6 +12,7 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.lynx.instagrammo.R
 import com.lynx.instagrammo.addFragment
@@ -56,6 +57,8 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+
+
         edit_profile_btn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
@@ -74,6 +77,7 @@ class ProfileFragment : Fragment() {
                 } else if (tab!!.position == 1) {
                     recycler_profileImg_list.visibility = View.VISIBLE
                 }
+    //            onScrollTab()
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -157,5 +161,15 @@ class ProfileFragment : Fragment() {
     companion object {
         val newInstance: ProfileFragment = ProfileFragment()
     }
+
+/*fun onScrollTab() {
+    recycler_profileImg_list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            if (dy > 0)
+                tab_button_layout.visibility = View.INVISIBLE
+        }
+    })
+}*/
 }
 

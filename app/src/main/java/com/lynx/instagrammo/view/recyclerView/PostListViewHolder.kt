@@ -23,6 +23,7 @@ class PostListViewHolder(private var v : View): RecyclerView.ViewHolder(v) {
         Picasso
             .get()
             .load(posts.picture)
+            .fit()
             .into(v.post_image)
 
     }

@@ -18,7 +18,6 @@ class ProfileListViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
             .get()
             .load(post.picture)
             .fit()
-            .centerCrop()
             .into(v.list_profile_img)
     }
 

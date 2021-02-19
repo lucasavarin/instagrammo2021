@@ -4,18 +4,22 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.lynx.instagrammo.*
 import com.lynx.instagrammo.addFragment
+import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.bean.Profile
 import com.lynx.instagrammo.view.add.AddFragment
 import com.lynx.instagrammo.view.edit.EditFragment
+import com.lynx.instagrammo.view.followerDetail.FollowerDetailFragment
 import com.lynx.instagrammo.view.home.HomeFragment
 import com.lynx.instagrammo.view.notification.NotificationsFragment
 import com.lynx.instagrammo.view.profile.ProfileFragment
 import com.lynx.instagrammo.view.search.SearchFragment
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.fragment_follower_detail.*
 
 
 /* toDO cambiare il nome dell'activity in BaseActivity */
-class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface, EditFragment.EditFragmenInterface {
+class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface, EditFragment.EditFragmenInterface, HomeFragment.HomeFragmentInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +67,12 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
     override fun saveAndExit() {
         replaceFragment(ProfileFragment.newInstance, R.id.fragmentConainer)
         removeFragment(EditFragment.newInstance)
+    }
+
+    override fun goToProfilepressed(follower: Follower) {
+        FollowerDetailFragment.newInstance.getFollow(follower)
+        replaceFragment(FollowerDetailFragment.newInstance, R.id.fragmentConainer)
+
     }
 
 
