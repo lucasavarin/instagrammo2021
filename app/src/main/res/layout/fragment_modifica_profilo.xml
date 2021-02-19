@@ -24,7 +24,7 @@
         android:backgroundTint="@color/black"
         android:hint="@string/id_immagine"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/lightRed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toEndOf="@+id/profileImage"
@@ -51,7 +51,7 @@
         android:backgroundTint="@color/black"
         android:hint="@string/nome_profilo"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/lightRed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,22 +63,20 @@
         android:id="@+id/Descrizione"
         android:layout_width="323dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
         android:backgroundTint="@color/black"
         android:hint="@string/descrizione"
         android:maxHeight="200dp"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/lightRed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NomeProfilo"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.082"
         app:title_header="@string/username" />
 
     <com.example.components.buttons.ConfirmButtonComponent
-        android:id="@+id/edit_profile_button"
+        android:id="@+id/close_edit_profile_button"
         android:layout_width="323dp"
         android:layout_height="46dp"
         android:layout_marginTop="64dp"
@@ -95,6 +93,6 @@
         android:layout_height="52dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

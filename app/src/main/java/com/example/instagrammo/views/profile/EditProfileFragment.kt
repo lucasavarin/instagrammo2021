@@ -132,7 +132,7 @@ class EditProfileFragment : Fragment() {
     }
 
     private fun buttonsListener() {
-        mView.edit_profile_button.setOnClickListener {
+        mView.close_edit_profile_button.setOnClickListener {
             verificaDatiInseriti()
         }
     }

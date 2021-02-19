@@ -19,9 +19,10 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/testoFragmentCorrente"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="TextView"
+            android:layout_marginLeft="70dp"
+            android:text="@string/modifica_profilo"
             android:textSize="25dp"
             android:padding="10dp"/>
 

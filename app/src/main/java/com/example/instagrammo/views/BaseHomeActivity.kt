@@ -2,6 +2,7 @@ package com.example.instagrammo.views
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.FragmentTransaction
 import com.example.instagrammo.R
 import com.example.instagrammo.recyclerview.adapter.OnPostItemClickListener
 import com.example.instagrammo.views.follow.FollowFragment
@@ -59,13 +60,14 @@ class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProf
 
     //bottone per aprire edit profile
     override fun OnButtonPressedListener(pressed: Boolean) {
-        replaceFragment(EditProfileFragment.newInstance, R.id.fragment_container)
+        //replaceFragment(EditProfileFragment.newInstance, R.id.fragment_container)
+        addFragment(EditProfileFragment.newInstance, R.id.fragment_container)
+        removeFragment(ProfileFragment.newInstance)
     }
 
     //rimuove fragment modifica profilo e apre profilo
     override fun removeFragmentListener() {
         replaceFragment(ProfileFragment.newInstance, R.id.fragment_container)
+        removeFragment(EditProfileFragment.newInstance)
     }
-
-
 }
