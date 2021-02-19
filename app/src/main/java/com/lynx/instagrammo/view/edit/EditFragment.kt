@@ -43,6 +43,11 @@ class EditFragment : Fragment() {
 
         getHint()
 
+        edit_back_button.setOnClickListener {
+            listener.backToProfile()
+            getHint()
+        }
+
 
 
         save_edit_profile.setOnClickListener {
@@ -132,6 +137,7 @@ class EditFragment : Fragment() {
 
     interface EditFragmenInterface{
         fun saveAndExit()
+        fun backToProfile()
     }
 
 }
