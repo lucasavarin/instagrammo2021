@@ -11,7 +11,7 @@
     <!--PALET COLORI APP-->
     <color name="softWhite">#DCCDCD</color>
     <color name="softOrange">#d65a31</color>
-    <color name="softYellow">#ffde59</color>
+    <color name="softYellow">#FFDC4D</color>
 
     <color name="softGray">#393e46</color>
     <color name="softBlack">#222831</color>
@@ -25,4 +25,8 @@
     <color name="grey">#BBB</color>
     <color name="blue">#3897F0</color>
     <color name="red_coral">#D9555A</color>
+
+    <color name="transparent">#00D9555A</color>
+
+
 </resources>

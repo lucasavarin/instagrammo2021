@@ -11,4 +11,7 @@
     <string name="ic_profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome_utente">Nome Utente</string>
+    <string name="descrizione">Descrizione</string>
+    <string name="modifica_profilo">Modifica Profilo</string>
 </resources>
