@@ -38,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/str_username"
-
             android:imeOptions="actionDone"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -85,9 +84,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/mid_margin"
         android:layout_marginRight="@dimen/mid_margin"
-
         android:text="non sei ancora registrato? Registrati"
         android:textAlignment="center"
+        android:layout_marginBottom="@dimen/mid_margin"
         app:layout_constraintBottom_toTopOf="@id/bt_login"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -99,10 +98,9 @@
         android:layout_marginStart="@dimen/tiny_margin"
         android:layout_marginRight="@dimen/tiny_margin"
         android:layout_marginBottom="@dimen/tiny_margin"
-
         android:background="@drawable/radius_button"
         android:text="@string/login"
-
+        app:itemRippleColor="@color/softYellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
