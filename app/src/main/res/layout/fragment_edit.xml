@@ -9,8 +9,8 @@
     android:focusable="true"
     tools:context=".view.edit.EditFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linear_layout"
+    <com.lynx.instagrammo.view.custom.CustomHeader
+        android:id="@+id/custom_header"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -33,7 +33,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Modifica Profilo"
             android:textSize="25sp"
             android:text="@string/profile_edit"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +40,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.lynx.instagrammo.view.custom.CustomHeader>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerImgProfile"
@@ -49,7 +48,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout">
+        app:layout_constraintTop_toBottomOf="@id/custom_header">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/edit_profile_image"
@@ -99,6 +98,7 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -108,6 +108,7 @@
         app:layout_constraintTop_toBottomOf="@id/containerImgProfile">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerTextInfo"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -122,7 +123,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Nome Profilo"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTxt_name"
@@ -149,11 +150,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                app:layout_constraintStart_toStartOf="@+id/editTxt_name"
                 app:layout_constraintEnd_toEndOf="@+id/editTxt_name"
-                app:layout_constraintTop_toBottomOf="@id/txtView_description"/>
+                app:layout_constraintStart_toStartOf="@+id/editTxt_name"
+                app:layout_constraintTop_toBottomOf="@id/txtView_description" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/save_edit_profile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -162,8 +164,7 @@
                 app:layout_constraintEnd_toEndOf="@id/editTxt_description"
                 app:layout_constraintStart_toStartOf="@id/editTxt_description"
                 app:layout_constraintTop_toBottomOf="@id/editTxt_description"
-                app:layout_constraintVertical_bias="1"
-                />
+                app:layout_constraintVertical_bias="1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
