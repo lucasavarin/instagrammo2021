@@ -15,7 +15,7 @@ class PostListHolder(v : View) : RecyclerView.ViewHolder(v) {
         this.posts = post
         Picasso.get().load(post.profile.picture)
         view.username.text = post.profile.name
-        Picasso.get().load(post.picture).into(view.image_post)
+        Picasso.get().load(post.picture).fit().into(view.image_post)
         view.description_post.text = post.title
     }
 }
