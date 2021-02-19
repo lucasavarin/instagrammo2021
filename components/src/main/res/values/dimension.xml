@@ -2,6 +2,7 @@
 <resources>
 
     <!-- Standard Dimens -->
+    <dimen name="default0">0dp</dimen>
     <dimen name="default05">0.5dp</dimen>
     <dimen name="default1">1dp</dimen>
     <dimen name="default2">2dp</dimen>

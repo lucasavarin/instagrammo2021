@@ -103,7 +103,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.example.components.buttons.ConfirmButtonComponent
         android:id="@+id/edit_profile_button"
         style="@style/confirm_button_style"
         android:layout_width="323dp"
@@ -121,7 +121,7 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/darksand"
+        android:background="@color/davysGray"
         app:layout_constraintBottom_toTopOf="@+id/grid_cycle_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

@@ -8,7 +8,7 @@
         android:endColor="@color/darkblue"/-->
 
     <solid
-        android:color="@color/lightRed"
+        android:color="@color/celadonBlue"
         />
 
     <padding
@@ -19,7 +19,7 @@
 
     <stroke
         android:width="@dimen/default1"
-        android:color="@color/lightRed"/>
+        android:color="@color/celadonBlue"/>
         <!--android:dashgap="@dimens/default1"
         android:dashWidth="@dimen/default4"-->
 

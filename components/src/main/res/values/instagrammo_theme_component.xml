@@ -2,14 +2,14 @@
 <resources>
 
     <style name="confirm_button_style" parent="@style/Widget.AppCompat.Button">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/royalBlueDark</item>
         <item name="android:background">@drawable/confirm_button</item>
         <item name="android:gravity">center</item>
         <item name="textAllCaps">true</item>
     </style>
 
     <style name="title_header">
-        <item name="android:textColor">@color/lightRed</item>
+        <item name="android:textColor">@color/redSalsa</item>
     </style>
 
 </resources>

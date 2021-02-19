@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@drawable/background_login">
 
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo_imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="219dp"
+        android:layout_height="163dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="25dp"
-        android:src="@mipmap/logo"
+        android:src="@mipmap/logo0"
         app:layout_constraintBottom_toTopOf="@+id/username_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,10 +26,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="332dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/royalBlueDark"
         android:hint="@string/username"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColor="@color/royalBlueDark"
+        android:textColorHint="@color/royalBlueDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -44,11 +44,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="22dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/royalBlueDark"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColor="@color/royalBlueDark"
+        android:textColorHint="@color/royalBlueDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_view"
@@ -60,7 +60,6 @@
         android:id="@+id/rememberme_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:thumbTint="@color/lightRed"
         app:layout_constraintBaseline_toBaselineOf="@+id/rememberme_textview"
         app:layout_constraintEnd_toEndOf="@+id/password_view" />
 
@@ -72,7 +71,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/reset_password"
         android:textAllCaps="true"
-        android:textColor="@color/black"
+        android:textColor="@color/royalBlueDark"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/password_view"
         app:layout_constraintTop_toBottomOf="@+id/password_view" />
@@ -84,10 +83,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="60dp"
         android:text="@string/rememberme"
-        android:textColor="@color/black"
+        android:textColor="@color/royalBlueDark"
         app:layout_constraintEnd_toEndOf="@+id/rememberme_switch"
         app:layout_constraintTop_toBottomOf="@+id/password_view" />
-
+<!--
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/registration_textview"
         android:layout_width="wrap_content"
@@ -95,14 +94,14 @@
         android:layout_marginBottom="17dp"
         android:text="@string/registrati"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="@color/royalBlueDark"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnAccess"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rememberme_textview"
         app:layout_constraintVertical_bias="0.946" />
-
+-->
     <com.example.components.buttons.ConfirmButtonComponent
         android:id="@+id/btnAccess"
         android:layout_width="0dp"
@@ -112,6 +111,7 @@
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="14dp"
         android:maxHeight="@dimen/default40"
+        android:textColor="@color/royalBlueDark"
         android:text="@string/accedi"
         android:theme="@style/confirm_button_style"
         app:layout_constraintBottom_toBottomOf="parent"

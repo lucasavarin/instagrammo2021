@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gradientup"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/background_follower_recycler_up"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_follow_recycler"
         android:layout_width="0dp"
@@ -17,6 +27,16 @@
         android:foregroundGravity="center"
         tools:context=".view.views.home.HomeFragment"
         tools:listitem="@layout/item_follow_home" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gradientdown"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="@+id/home_follow_recycler"
+        app:layout_constraintHeight_percent="0.01"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/background_follower_recycler_down"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_post_recycler"

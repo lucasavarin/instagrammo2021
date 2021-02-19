@@ -13,7 +13,7 @@
 
     <stroke
         android:width="@dimen/default1"
-        android:color="@color/white"/>
+        android:color="@color/disabled"/>
         <!--android:dashgap="@dimens/default1"
         android:dashWidth="@dimen/default4"-->
 

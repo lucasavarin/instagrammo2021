@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/platinum">
     <!--
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -24,7 +24,7 @@
         layout="@layout/toolbar"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.10"
+        app:layout_constraintHeight_percent="0.08"
         app:layout_constraintBottom_toTopOf="@+id/fragment_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,16 +47,17 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="1dp"
         android:background="@color/lightRed"
-        android:backgroundTint="@color/white"
-        app:itemIconTint="@drawable/tab_color"
-        app:itemRippleColor="@color/white"
+        android:backgroundTint="@color/platinum"
+        app:itemRippleColor="@color/platinum"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_container"
         app:menu="@menu/bottom_menu"
-        app:labelVisibilityMode="unlabeled" />
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_icon_color_selector"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
