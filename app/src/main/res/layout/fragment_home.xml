@@ -12,15 +12,18 @@
         android:id="@+id/recycleHorizontal"
         android:layout_width="0dp"
         android:layout_height="90dp"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/follow_item" />
+        tools:listitem="@layout/follow_item"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_post"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/top_border_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
