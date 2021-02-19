@@ -1,15 +1,21 @@
 package activities
 
 
+import android.graphics.Insets.add
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.instagrammo.R
+import com.example.instagrammo.views.BaseActivity
 import fragments.*
 import interfaces.ButtonEditProfileListener
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity(), ButtonEditProfileListener {
+
+class HomeActivity : BaseActivity(), ButtonEditProfileListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +62,12 @@ class HomeActivity : AppCompatActivity(), ButtonEditProfileListener {
             commit()
         }
 
-    override fun OnClickListenerEditButtonProfile() {
-        makeCurrentFragment(EditProfileFragment.editprofileFragment)
+    //bottone per aprire modifica profilo
+    override fun OnClickListenerEditButtonProfile(pressed: Boolean) {
+        addFragment(EditProfileFragment.newInstance, R.id.fl_wrapper)
+        removeFragment(ProfileFragment.newInstance)
     }
+
+
 
 }

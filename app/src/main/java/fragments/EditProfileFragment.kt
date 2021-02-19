@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import bean.ProfileBean
 import bean.ProfileRequest
 import com.example.instagrammo.R
 import kotlinx.android.synthetic.main.fragment_modifica_profilo.*
@@ -17,6 +18,8 @@ import utils.FollowerResponse
 import utils.prefs
 
 class EditProfileFragment : Fragment(){
+
+    private lateinit var itemProfile: ProfileBean
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +36,7 @@ class EditProfileFragment : Fragment(){
         editButton.setOnClickListener{
             ApiClient.getClient.putProfile(prefs.profileId, profileRequest).enqueue(object:Callback<Boolean>{
                 override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                    //TODO: gestire la chiusura del modifica profilo
+
                 }
 
                 override fun onFailure(call: Call<Boolean>, t: Throwable) {
@@ -45,7 +48,7 @@ class EditProfileFragment : Fragment(){
     }
 
     companion object {
-        var editprofileFragment : EditProfileFragment = EditProfileFragment()
+        var newInstance: EditProfileFragment = EditProfileFragment()
     }
 
 }
