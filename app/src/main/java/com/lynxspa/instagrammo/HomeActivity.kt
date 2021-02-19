@@ -7,11 +7,14 @@ import com.lynxspa.instagrammo.fragment.*
 import kotlinx.android.synthetic.main.activity_home.*
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.Fragment
+import com.lynxspa.instagrammo.retrofit.Profile
+import kotlinx.android.synthetic.main.fragment_profile.*
 
- class HomeActivity: AppCompatActivity() {
+ class HomeActivity: AppCompatActivity(), ProfileFragment.ProfileInterfaceFragment {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
 
         addFragment(HomeFragment.makeIstance(),R.id.fragmentContainer)
 
@@ -55,5 +58,7 @@ import androidx.fragment.app.Fragment
          supportFragmentManager.inTransaction { replace(frameId, fragment) }
      }
 
-
+     override fun modificaProfiloFragment() {
+         replaceFragment(ModificaProfiloFragment.makeIstance(),R.id.fragmentContainer)
+     }
  }

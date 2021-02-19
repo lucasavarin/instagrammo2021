@@ -4,22 +4,86 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:padding="4dp"
-        android:clipToPadding="false"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ProfileView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/numberPost"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/ProfileView"
+        app:layout_constraintBottom_toBottomOf="@+id/ProfileView"
+        app:layout_constraintTop_toTopOf="@+id/ProfileView"
+        android:layout_marginLeft="100dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/numberFollower"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/numberPost"
+        app:layout_constraintBottom_toBottomOf="@+id/ProfileView"
+        app:layout_constraintTop_toTopOf="@+id/ProfileView"
+        android:layout_marginLeft="110dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/profileName"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/ProfileView"
+        app:layout_constraintLeft_toLeftOf="@id/ProfileView"
+        app:layout_constraintRight_toRightOf="@id/ProfileView"
+        app:layout_constraintStart_toStartOf="@id/ProfileView"
+        android:layout_marginTop="25dp"
+        android:textSize="20dp"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/profileDescription"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/profileName"
+        app:layout_constraintLeft_toLeftOf="@id/ProfileView"
+        app:layout_constraintRight_toRightOf="@id/ProfileView"
+        app:layout_constraintStart_toStartOf="@id/ProfileView"
+        android:layout_marginTop="25dp"
+        android:textSize="15dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingHorizontal="30dp"
+        android:text="@string/modifca_profilo"
+        app:layout_constraintStart_toStartOf="@id/ProfileView"
+        app:layout_constraintTop_toBottomOf="@+id/profileDescription" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnGrid"
+        android:layout_height="0dp"
+        android:layout_width="30mm"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/grid"
+
+        />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnList"
+        android:layout_height="0dp"
+        android:layout_width="30mm"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditProfile"
+        app:layout_constraintStart_toEndOf="@+id/btnGrid"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/list"
+
         />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/instagrammoEditText">
 
-    </androidx.appcompat.widget.AppCompatTextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

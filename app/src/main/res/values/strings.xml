@@ -3,5 +3,7 @@
     <string name="Password">Password</string>
     <string name="Username">Username</string>
     <string name="Ricordami">Ricordami</string>
+    <string name="salva">Salva</string>
+    <string name="modifca_profilo">Modifca Profilo</string>
 
 </resources>

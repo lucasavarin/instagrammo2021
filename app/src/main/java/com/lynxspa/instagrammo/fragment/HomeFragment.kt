@@ -95,7 +95,7 @@ class HomeFragment : Fragment() {
                     val linearLayoutManager =
                         LinearLayoutManager(context, RecyclerView.VERTICAL, false)
                     home_post_recycler.layoutManager = linearLayoutManager
-                    home_post_recycler.adapter = PostListRecyclerAdapter(follower, post)
+                    home_post_recycler.adapter = PostListRecyclerAdapter( post)
 
 
                 }
