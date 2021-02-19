@@ -69,6 +69,11 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
         removeFragment(EditFragment.newInstance)
     }
 
+    override fun backToProfile() {
+        replaceFragment(ProfileFragment.newInstance, R.id.fragmentConainer)
+        removeFragment(EditFragment.newInstance)
+    }
+
     override fun goToProfilepressed(follower: Follower) {
         FollowerDetailFragment.newInstance.getFollow(follower)
         replaceFragment(FollowerDetailFragment.newInstance, R.id.fragmentConainer)

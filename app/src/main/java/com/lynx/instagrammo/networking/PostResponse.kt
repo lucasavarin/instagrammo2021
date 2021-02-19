@@ -9,4 +9,5 @@ data class PostResponse(
         @Expose
         @SerializedName("payload")
         val payload: List<Post>?
-)
+
+        )
