@@ -39,7 +39,6 @@ class ProfileFragment : Fragment() {
         /*mView.grid_cycle_image.setOnClickListener {
             setAdapterGrid()
         }
-
         mView.mono_cycle_image.setOnClickListener {
             setAdapterMono()
         }*/

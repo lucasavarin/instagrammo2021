@@ -68,6 +68,11 @@ class HomeActivity : BaseActivity(), ButtonEditProfileListener {
         removeFragment(ProfileFragment.newInstance)
     }
 
-
+    //bottone per salvare le modifiche fatte in modifica profilo
+    //TODO: ancora da finire di implementare
+    /*override fun OnClickListenerSaveEditButtonProfile(pressed: Boolean) {
+        replaceFragment(EditProfileFragment.newInstance, R.id.fl_wrapper)
+        removeFragment(EditProfileFragment.newInstance)
+    }*/
 
 }
