@@ -7,8 +7,8 @@ class Prefs(context: Context) {
     private val PREFS_FILENAME = "utils"
     private val REMEMBER_USER = "remember_user"
     private val REMEMBER_PASSWORD = "remember_token"
-    private val FOLLOWERID = "follower_id"
-    private val FOLLOWERTOKEN = "follower_token"
+    private val PROFILEID = "profile_id"
+    private val PROFILETOKEN = "profile_token"
     private val USERNAME = "username"
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
@@ -20,13 +20,13 @@ class Prefs(context: Context) {
         get() = prefs.getString(REMEMBER_PASSWORD, null)
         set(value) = prefs.edit().putString(REMEMBER_USER, value).apply()
 
-    var followerId: String
-        get() = prefs.getString(FOLLOWERID, "")!!
-        set(value) = prefs.edit().putString(FOLLOWERID, value).apply()
+    var profileId: String
+        get() = prefs.getString(PROFILEID, "")!!
+        set(value) = prefs.edit().putString(PROFILEID, value).apply()
 
-    var followerToken: String
-        get() = prefs.getString(FOLLOWERTOKEN, "")!!
-        set(value) = prefs.edit().putString(FOLLOWERTOKEN, value).apply()
+    var authToken: String
+        get() = prefs.getString(PROFILETOKEN, "")!!
+        set(value) = prefs.edit().putString(PROFILETOKEN, value).apply()
 
     var username: String
         get() = prefs.getString(USERNAME, "")!!

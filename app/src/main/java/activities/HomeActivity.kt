@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity(), ButtonEditProfileListener {
 
         val homeFragment = HomeFragment()
         val searchFragment = SearchFragment()
-        val addFragment = fragments.AddFragment()
+        val addFragment = AddFragment()
         val followFragment = FollowFragment()
         val profileFragment = ProfileFragment()
 

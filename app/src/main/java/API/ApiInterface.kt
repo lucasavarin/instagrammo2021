@@ -1,11 +1,9 @@
 package API
 
-import bean.EditProfileResponse
-import bean.Post
-import bean.PostResponse
-import bean.ProfileResponse
+import bean.*
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.http.*
 import utils.AuthRequest
 import utils.AuthResponse
@@ -29,8 +27,31 @@ interface ApiInterface {
             @Path("profileId") profileId : String
     ): Call<ProfileResponse>
 
-    /*@PUT("profiles.php")
+    @Headers("Content-Type: application/json")
+    @PUT("profiles.php/{profileId}")
     fun putProfile(
-            @Body profile: EditProfileRequest
-    ): Call<EditProfileResponse>*/
+        @Path("profileId") profileId : String,
+        @Body profile: ProfileRequest
+    ): Call<Boolean>
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,7 +21,7 @@ object ApiClient {
                 .addInterceptor(object : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val req =
-                        chain.request().newBuilder().addHeader("x-api-key", prefs.followerToken).build()
+                        chain.request().newBuilder().addHeader("x-api-key", prefs.authToken).build()
                     return chain.proceed(req)
                 }
             }).build()

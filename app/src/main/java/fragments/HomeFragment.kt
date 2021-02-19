@@ -40,12 +40,11 @@ class HomeFragment : Fragment() {
     }
 
     fun callFollower(){
-        ApiClient.getClient.getFollowers(prefs.followerId!!).enqueue(object:  Callback<FollowerResponse>{
+        ApiClient.getClient.getFollowers(prefs.profileId!!).enqueue(object:  Callback<FollowerResponse>{
             override fun onResponse(
                 call: Call<FollowerResponse>,
                 response: Response<FollowerResponse>
             ) {
-
                 val linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                 homeFollowerRecyclerView.layoutManager = linearLayoutManager
                 homeFollowerRecyclerView.adapter = FollowerAdapter(response.body()!!.payload!!)

@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity() {
                     if (!response.body()?.authToken.isNullOrEmpty()) {
                         prefs.rememberUser = remind_me.isChecked
                         prefs.username = if(remind_me.isChecked) et_username.text.toString() else ""
-                        prefs.followerId = response.body()?.profileId.toString()
-                        prefs.followerToken = response.body()?.authToken.toString()
+                        prefs.profileId = response.body()?.profileId.toString()
+                        prefs.authToken = response.body()?.authToken.toString()
 
                         val intent = Intent(applicationContext, HomeActivity::class.java)
                         val bundle = Bundle()
