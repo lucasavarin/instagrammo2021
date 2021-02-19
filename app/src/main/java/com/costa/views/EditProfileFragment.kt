@@ -37,7 +37,7 @@ class EditProfileFragment : Fragment(){
     var descrizione : String= ""
     var immagine : String= ""
     var imageId : String= ""
-    var pathImg : String = "https://picsum.photos/id/$imageId/200/300"
+    var pathImg : String = "https://picsum.photos/id/$imageId/300/300"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,7 +67,7 @@ class EditProfileFragment : Fragment(){
 
         btn_conferma.setOnClickListener {
             imageId = id_immagine.text.toString()
-            pathImg="https://picsum.photos/id/$imageId/200/300"
+            pathImg="https://picsum.photos/id/$imageId/300/300"
             Picasso.get()
                 .load(pathImg)
                 .transform(CropCircleTransformation())
@@ -80,7 +80,7 @@ class EditProfileFragment : Fragment(){
 
             if (ceckFilds()) {
                 imageId = id_immagine.text.toString()
-                pathImg="https://picsum.photos/id/$imageId/200/300"
+                pathImg="https://picsum.photos/id/$imageId/300/300"
 
                 ApiClient.getClient.putEditProfile(
                     userId, ProfileEditRequest(
