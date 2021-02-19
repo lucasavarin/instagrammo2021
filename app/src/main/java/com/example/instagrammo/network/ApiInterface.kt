@@ -1,15 +1,13 @@
 package com.example.instagrammo.network
 
 import com.example.instagrammo.request.AuthRequest
+import com.example.instagrammo.request.EditProfileRequest
 import com.example.instagrammo.response.AuthResponse
 import com.example.instagrammo.response.FollowerResponse
 import com.example.instagrammo.response.PostResponse
 import com.example.instagrammo.response.ProfileResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiInterface {
     @POST("auth.php")
@@ -29,4 +27,7 @@ interface ApiInterface {
     @GET("profiles.php/{profiloUtente}")
     fun getSingleProfile(@Path("profiloUtente") profiloUtente: String): Call<ProfileResponse>
 
+    @Headers("Content-Type: application/json")
+    @PUT("profiles.php/{profiloUtente}")
+    fun saveChanges(@Path("profiloUtente")  profiloUtente: String , @Body editProfileReq : EditProfileRequest): Call<Boolean>
 }
