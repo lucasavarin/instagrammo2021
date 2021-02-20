@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ProfileView"
+        android:id="@+id/profileView"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,26 +15,44 @@
         android:id="@+id/numberPost"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        app:layout_constraintLeft_toRightOf="@+id/ProfileView"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileView"
-        app:layout_constraintTop_toTopOf="@+id/ProfileView"
+        app:layout_constraintLeft_toRightOf="@+id/profileView"
+        app:layout_constraintBottom_toBottomOf="@+id/profileView"
+        app:layout_constraintTop_toTopOf="@+id/profileView"
         android:layout_marginLeft="100dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/numberPost"
+        app:layout_constraintLeft_toLeftOf="@+id/numberPost"
+        app:layout_constraintRight_toRightOf="@id/numberPost"
+        android:layout_marginTop="20dp"
+        android:text="Post"
+        android:textSize="20dp"/>
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/numberFollower"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         app:layout_constraintLeft_toRightOf="@+id/numberPost"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfileView"
-        app:layout_constraintTop_toTopOf="@+id/ProfileView"
+        app:layout_constraintBottom_toBottomOf="@+id/profileView"
+        app:layout_constraintTop_toTopOf="@+id/profileView"
         android:layout_marginLeft="110dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/numberFollower"
+        app:layout_constraintLeft_toLeftOf="@+id/numberFollower"
+        app:layout_constraintRight_toRightOf="@id/numberFollower"
+        android:layout_marginTop="20dp"
+        android:text="Amici"
+        android:textSize="20dp"/>
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/profileName"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ProfileView"
-        app:layout_constraintLeft_toLeftOf="@id/ProfileView"
-        app:layout_constraintRight_toRightOf="@id/ProfileView"
-        app:layout_constraintStart_toStartOf="@id/ProfileView"
+        app:layout_constraintTop_toBottomOf="@+id/profileView"
+        app:layout_constraintLeft_toLeftOf="@id/profileView"
+        app:layout_constraintRight_toRightOf="@id/profileView"
+        app:layout_constraintStart_toStartOf="@id/profileView"
         android:layout_marginTop="25dp"
         android:textSize="20dp"
         />
@@ -43,9 +61,9 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/profileName"
-        app:layout_constraintLeft_toLeftOf="@id/ProfileView"
-        app:layout_constraintRight_toRightOf="@id/ProfileView"
-        app:layout_constraintStart_toStartOf="@id/ProfileView"
+        app:layout_constraintLeft_toLeftOf="@id/profileView"
+        app:layout_constraintRight_toRightOf="@id/profileView"
+        app:layout_constraintStart_toStartOf="@id/profileView"
         android:layout_marginTop="25dp"
         android:textSize="15dp"
         />
@@ -57,7 +75,7 @@
         android:layout_marginTop="32dp"
         android:paddingHorizontal="30dp"
         android:text="@string/modifca_profilo"
-        app:layout_constraintStart_toStartOf="@id/ProfileView"
+        app:layout_constraintStart_toStartOf="@id/profileView"
         app:layout_constraintTop_toBottomOf="@+id/profileDescription" />
 
     <androidx.appcompat.widget.AppCompatImageButton
