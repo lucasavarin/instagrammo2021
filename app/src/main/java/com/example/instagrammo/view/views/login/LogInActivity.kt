@@ -2,6 +2,8 @@ package com.example.instagrammo.view.views.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.lifecycle.Observer
 import com.example.instagrammo.R
 import com.example.instagrammo.prefs
@@ -22,9 +24,8 @@ class LogInActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        loadUsername()
-
         setListener()
+        loadUsername()
 
     }
 
@@ -36,12 +37,13 @@ class LogInActivity : BaseActivity() {
     }
 
     private fun setListener() {
+        var userAvailable = false
+        var passwordAvailable = false
+
         btnAccess.setOnClickListener {
-
             val request = inputControl()
-
             viewModel.setStateEvent(MainStateEvent.PostAuthEvent(request))
-            //val request = AuthRequest(username, password)
+
 
             setObservable()
 
@@ -71,6 +73,41 @@ class LogInActivity : BaseActivity() {
     */
 
         }
+
+        username_view.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if(!s.isNullOrBlank()) {
+                    userAvailable = true
+                    btnAccess.isEnabled = passwordAvailable
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                btnAccess.isEnabled = false
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+        })
+
+        password_view.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if(!s.isNullOrBlank()) {
+                    passwordAvailable = true
+                    btnAccess.isEnabled = userAvailable
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                btnAccess.isEnabled = false
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+        })
+
     }
 
     private fun inputControl(): AuthRequest {
@@ -85,7 +122,7 @@ class LogInActivity : BaseActivity() {
             prefs.rememberUsername = ""
         }
 
-        return AuthRequest("jsamson", "mson")
+        return AuthRequest(username, password)
     }
 
     private fun setObservable() {
@@ -103,4 +140,6 @@ class LogInActivity : BaseActivity() {
         startActivity(intentLogin)
         finish()
     }
+
+
 }
