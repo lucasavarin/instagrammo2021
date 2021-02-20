@@ -1,6 +1,6 @@
 package com.example.instagrammo.view.views.add
 
-import com.example.instagrammo.view.BaseActivity
+import com.example.instagrammo.views.BaseActivity
 
 class AddActivity : BaseActivity(){
 

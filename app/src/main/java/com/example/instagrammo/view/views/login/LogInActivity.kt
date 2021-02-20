@@ -10,8 +10,8 @@ import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.utils.ElementViewConverter.toEditable
 import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
-import com.example.instagrammo.view.BaseActivity
 import com.example.instagrammo.view.BaseHomeActivity
+import com.example.instagrammo.views.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LogInActivity : BaseActivity() {

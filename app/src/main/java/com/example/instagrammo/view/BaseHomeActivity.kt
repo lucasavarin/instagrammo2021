@@ -13,6 +13,7 @@ import com.example.instagrammo.view.views.profile.EditProfileFragmentListener
 import com.example.instagrammo.view.views.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_basehome.*
 import com.example.instagrammo.view.views.profile.ProfileFragment
+import com.example.instagrammo.views.BaseActivity
 
 class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProfileListener, EditProfileFragmentListener{
 
