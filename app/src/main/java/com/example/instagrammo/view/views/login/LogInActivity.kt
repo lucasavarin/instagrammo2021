@@ -129,7 +129,7 @@ class LogInActivity : BaseActivity() {
         viewModel.dataStateAuth.observe(this, Observer { dataStateAuth ->
             when (dataStateAuth) {
                 is DataState.Error -> { alertDialog() }
-                is DataState.Loading -> { }
+                is DataState.Loading -> { loadingShow() }
                 is DataState.Success -> {
                     if (dataStateAuth.data)
                         goToHome()
