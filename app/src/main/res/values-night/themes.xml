@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.Instagrammo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/softWhite</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/softGray</item>
-        <item name="colorOnPrimary">@color/softBlack</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/softYellow</item>
         <item name="colorSecondaryVariant">@color/softYellow</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

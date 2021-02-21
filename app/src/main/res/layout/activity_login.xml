@@ -124,7 +124,6 @@
         android:layout_marginBottom="@dimen/mid_margin"
         android:background="@drawable/radius_button"
         android:text="@string/login"
-        app:itemRippleColor="@color/softYellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
