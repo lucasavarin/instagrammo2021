@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
+import java.io.IOException
 import java.lang.Exception
 
 class MainRepositoryImpl():
@@ -32,12 +33,12 @@ class MainRepositoryImpl():
                 val responseExcuted = withContext(Dispatchers.IO) { response.execute() }
 
                 if (responseExcuted.isSuccessful)
-                    if (responseExcuted.body()?.result != null && responseExcuted.body()!!.result == true) {
-                        prefs.rememberToken = responseExcuted.body()?.authToken.toString()
-                        prefs.rememberIdProfile = responseExcuted.body()?.profileId.toString()
+                    if (responseExcuted.body()?.result != null) {
+                        prefs.rememberToken = if (responseExcuted.body()?.authToken != null) responseExcuted.body()?.authToken.toString() else ""
+                        prefs.rememberIdProfile = if (responseExcuted.body()?.profileId != null) responseExcuted.body()?.profileId.toString() else ""
                         emit(DataState.Success(responseExcuted.body()?.result!!))
                     }
-            } catch (e: Exception) {
+            } catch (e: IOException) {
                 emit(DataState.Error(e))
             }
 
@@ -52,7 +53,7 @@ class MainRepositoryImpl():
                 val responseExcuted = withContext(Dispatchers.IO) { response.execute() }
 
                 if (responseExcuted.isSuccessful)
-                    if (responseExcuted.body()?.result != null && responseExcuted.body()?.result!!) {
+                    if (responseExcuted.body()?.result != null) {
                         val data = responseExcuted.body()!!.payload!!.map { post -> PostBean.convert(post) }
                         emit(DataState.Success(data))
                     }
@@ -71,7 +72,7 @@ class MainRepositoryImpl():
                 val responseExcuted = withContext(Dispatchers.IO) { response.execute() }
 
                 if (responseExcuted.isSuccessful)
-                    if (responseExcuted.body()?.result != null && responseExcuted.body()?.result!!) {
+                    if (responseExcuted.body()?.result != null) {
                         val data = responseExcuted.body()!!.payload!!.map { follower -> FollowerBean.convert(follower) }
                         emit(DataState.Success(data))
                     }
@@ -89,7 +90,7 @@ class MainRepositoryImpl():
                 val responseExcuted = withContext(Dispatchers.IO) { response.execute() }
 
                 if (responseExcuted.isSuccessful)
-                    if (responseExcuted.body()?.payload != null && responseExcuted.body()?.result!!) {
+                    if (responseExcuted.body()?.payload != null) {
                         val data = responseExcuted.body()!!.payload!!.map { follower -> ProfileBean.convert(follower) }[0]
                         emit(DataState.Success(data))
                     }

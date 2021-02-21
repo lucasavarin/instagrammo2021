@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import com.example.instagrammo.R
 import com.example.instagrammo.prefs
@@ -23,7 +24,7 @@ class LogInActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        btnAccess.isEnabled = false
         setListener()
         loadUsername()
 
@@ -43,7 +44,6 @@ class LogInActivity : BaseActivity() {
         btnAccess.setOnClickListener {
             val request = inputControl()
             viewModel.setStateEvent(MainStateEvent.PostAuthEvent(request))
-
 
             setObservable()
 
@@ -128,9 +128,14 @@ class LogInActivity : BaseActivity() {
     private fun setObservable() {
         viewModel.dataStateAuth.observe(this, Observer { dataStateAuth ->
             when (dataStateAuth) {
-                is DataState.Error -> { }
+                is DataState.Error -> { alertDialog() }
                 is DataState.Loading -> { }
-                is DataState.Success -> { goToHome() }
+                is DataState.Success -> {
+                    if (dataStateAuth.data)
+                        goToHome()
+                    else
+                        alertDialog()
+                }
             }
         })
     }
@@ -139,6 +144,18 @@ class LogInActivity : BaseActivity() {
         val intentLogin = Intent(applicationContext, BaseHomeActivity::class.java)
         startActivity(intentLogin)
         finish()
+    }
+
+    private fun alertDialog() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle(R.string.login)
+        builder.setMessage(R.string.login_fallito)
+        builder.setIcon(R.drawable.alert)
+
+        builder.setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
+
+        val alert: AlertDialog = builder.create()
+        alert.show()
     }
 
 

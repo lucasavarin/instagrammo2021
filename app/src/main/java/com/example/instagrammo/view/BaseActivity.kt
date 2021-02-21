@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentTransaction
 
 abstract class BaseActivity() : AppCompatActivity() {
 
-    protected lateinit var context: Context
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
