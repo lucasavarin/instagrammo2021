@@ -16,44 +16,27 @@ class ProfileFragment : Fragment() {
 
     private var listenerButtonEdit: ButtonEditProfileListener? = null
 
-    private lateinit var mView: View
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View? = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        mView = inflater.inflate(R.layout.fragment_profile, container, false)
-
-        buttonsListener()
-
-        return mView
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        editButton.setOnClickListener {
+            listenerButtonEdit?.onClickListenerEditButtonProfile(true)
+        }
     }
 
     companion object {
         var newInstance: ProfileFragment = ProfileFragment()
     }
 
-    private fun buttonsListener(){
-        /*mView.grid_cycle_image.setOnClickListener {
-            setAdapterGrid()
-        }
-        mView.mono_cycle_image.setOnClickListener {
-            setAdapterMono()
-        }*/
-
-        mView.editButton.setOnClickListener{
-            listenerButtonEdit?.OnClickListenerEditButtonProfile(true)
-        }
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is ButtonEditProfileListener) {
             listenerButtonEdit = context
-        } else {
-            throw RuntimeException("$context devi implementare il ButtonEditProfileListener")
         }
     }
 

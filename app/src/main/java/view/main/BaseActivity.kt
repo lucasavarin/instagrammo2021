@@ -33,6 +33,4 @@ abstract class BaseActivity() : AppCompatActivity() {
         supportFragmentManager.inTransaction { remove(fragment) }
     }
 
-
-
 }

@@ -1,7 +1,5 @@
 package interfaces
 
-import android.view.View
-
 interface ButtonEditProfileListener {
-    fun OnClickListenerEditButtonProfile(pressed: Boolean)
+    fun onClickListenerEditButtonProfile(pressed: Boolean)
 }

@@ -22,7 +22,6 @@ import retrofit2.Callback
 
 class HomeFragment : Fragment() {
 
-    private lateinit var mView: View
     private lateinit var itemsPost: List<PostBean>
     private lateinit var itemsFollow: List<FollowerBean>
 

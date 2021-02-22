@@ -4,10 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater
 import android.widget.FrameLayout;
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.instagrammo.R
 import kotlinx.android.synthetic.main.edit_top_bar.view.*
 
-internal class CustomTopBar (context: Context, attrs:AttributeSet) : FrameLayout(context, attrs){
+class CustomTopBar (context: Context, attrs:AttributeSet) : ConstraintLayout(context, attrs){
 
     private val backButtonPressed: ArrayList<(() -> Unit)> = arrayListOf()
 

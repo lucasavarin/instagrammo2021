@@ -2,14 +2,16 @@ package view.main
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.instagrammo.R
 import fragments.*
+import interfaces.ButtonBackToProfile
 import interfaces.ButtonEditProfileListener
 import kotlinx.android.synthetic.main.activity_home.*
 
 
-class HomeActivity : BaseActivity(), ButtonEditProfileListener {
+class HomeActivity : BaseActivity(), ButtonEditProfileListener, ButtonBackToProfile {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,9 +59,9 @@ class HomeActivity : BaseActivity(), ButtonEditProfileListener {
         }
 
     //bottone per aprire modifica profilo
-    override fun OnClickListenerEditButtonProfile(pressed: Boolean) {
+    override fun onClickListenerEditButtonProfile(pressed: Boolean) {
         addFragment(EditProfileFragment.newInstance, R.id.fl_wrapper)
-        removeFragment(ProfileFragment.newInstance)
+        //TODO:cambiare con add(problema sfondo trasparente)
     }
 
     //bottone per salvare le modifiche fatte in modifica profilo
@@ -68,5 +70,12 @@ class HomeActivity : BaseActivity(), ButtonEditProfileListener {
         replaceFragment(EditProfileFragment.newInstance, R.id.fl_wrapper)
         removeFragment(EditProfileFragment.newInstance)
     }*/
+
+    override fun onClickListenerBackToProfile() {
+        supportFragmentManager.beginTransaction().apply {
+            remove(EditProfileFragment.newInstance)
+            commit()
+        }
+    }
 
 }
