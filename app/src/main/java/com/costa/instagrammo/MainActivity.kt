@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface,
-    EditProfileFragment.EditProfileFragmentInterface {
+    EditProfileFragment.EditProfileFragmentInterface,AddFragment.AddFragmentInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -80,6 +80,10 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
         replaceFragment(ProfileFragment.instance, R.id.home_container_fragment)
         removeFragment(EditProfileFragment.instance)
 
+    }
+
+    override fun onClickImage(profile: ProfileOut) {
+      //TODO: da implementare
     }
 
 }
