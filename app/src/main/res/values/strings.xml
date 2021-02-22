@@ -10,4 +10,6 @@
     <string name="descrizione">Descrizione</string>
     <string name="nome_profilo">Nome Profilo</string>
     <string name="id_immagine">Id Immagine</string>
+    <string name="add_post">Aggiungi Post</string>
+    <string name="conferm_add_post">Conferma Aggiunta Post</string>
 </resources>
