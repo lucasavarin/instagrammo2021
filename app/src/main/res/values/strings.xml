@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">BaseDiFerro</string>
+    <string name="app_name">INSTAGRAMMO</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Log in</string>
     <string name="rememberMe">Ricordami</string>
     <string name="easy_access">Accedi tramite</string>
-    <string name="signIn">Dont have an account? <b>Sign In</b></string>
+    <string name="signIn">Sign In</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="add">Add</string>

@@ -14,4 +14,8 @@
     <color name="backgroud_color_center">#C12A6F</color>
     <color name="backgroud_color_end">#BD647B</color>
     <color name="backgroud_log_input">#75DD9CBE</color>
+
+    <color name="my_primary_color">#FAE205</color>
+    <color name="my_primary_gray">#E4E3E3</color>
+    <color name="my_secondary_gray">#333333</color>
 </resources>

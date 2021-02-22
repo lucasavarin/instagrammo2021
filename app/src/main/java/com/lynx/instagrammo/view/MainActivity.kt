@@ -6,7 +6,10 @@ import com.lynx.instagrammo.*
 import com.lynx.instagrammo.addFragment
 import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.bean.Profile
+import com.lynx.instagrammo.beanRest.PicsumImageRest
 import com.lynx.instagrammo.view.add.AddFragment
+import com.lynx.instagrammo.view.add.AddPostFragment
+import com.lynx.instagrammo.view.add.ShowImageFragment
 import com.lynx.instagrammo.view.edit.EditFragment
 import com.lynx.instagrammo.view.followerDetail.FollowerDetailFragment
 import com.lynx.instagrammo.view.home.HomeFragment
@@ -19,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_follower_detail.*
 
 
 /* toDO cambiare il nome dell'activity in BaseActivity */
-class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface, EditFragment.EditFragmenInterface, HomeFragment.HomeFragmentInterface {
+class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface, EditFragment.EditFragmenInterface, HomeFragment.HomeFragmentInterface , AddFragment.AddFragmentInterface, ShowImageFragment.ShowImageFragmentInterface, AddPostFragment.AddPostFragmentInterface{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +81,19 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
         FollowerDetailFragment.newInstance.getFollow(follower)
         replaceFragment(FollowerDetailFragment.newInstance, R.id.fragmentConainer)
 
+    }
+
+    override fun goToAddImage(item: PicsumImageRest) {
+        replaceFragment(ShowImageFragment.newInstance(item), R.id.fragmentConainer)
+    }
+
+    override fun goToAddPost(item: PicsumImageRest) {
+        addFragment(AddPostFragment.newInstace(item), R.id.fragmentConainer)
+    }
+
+    override fun addPostAndExit() {
+        replaceFragment(HomeFragment.newInstance, R.id.fragmentConainer)
+        removeFragment(ShowImageFragment.newInstance)
     }
 
 
