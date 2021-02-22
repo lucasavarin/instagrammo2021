@@ -1,7 +1,10 @@
 package com.example.instagrammo.view
 
+import android.content.Context
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
+import android.view.View
 import com.example.instagrammo.R
 import com.example.instagrammo.utils.adapter.OnPostItemClickListener
 import com.example.instagrammo.view.views.add.AddFragment
@@ -14,13 +17,13 @@ import com.example.instagrammo.view.views.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_basehome.*
 import com.example.instagrammo.view.views.profile.ProfileFragment
 import com.example.instagrammo.views.BaseActivity
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProfileListener, EditProfileFragmentListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basehome)
-
         addFragment(HomeFragment.newInstance, R.id.fragment_container)
 
         bottomMenuNavigationManager()
@@ -64,12 +67,12 @@ class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProf
     override fun OnButtonPressedListener(pressed: Boolean) {
         //replaceFragment(EditProfileFragment.newInstance, R.id.fragment_container)
         addFragment(EditProfileFragment.newInstance, R.id.fragment_container)
-        removeFragment(ProfileFragment.newInstance)
+        //removeFragment(ProfileFragment.newInstance)
     }
 
     //rimuove fragment modifica profilo e apre profilo
     override fun removeFragmentListener() {
-        replaceFragment(ProfileFragment.newInstance, R.id.fragment_container)
+        //replaceFragment(ProfileFragment.newInstance, R.id.fragment_container)
         removeFragment(EditProfileFragment.newInstance)
     }
 }
