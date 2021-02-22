@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Plazalatina</string>
-    <string name="str_username">username</string>
-    <string name="password">password</string>
+    <string name="str_username">Username</string>
+    <string name="password">Password</string>
     <string name="ricordami">Ricordami</string>
     <string name="login">login</string>
     <string name="ic_home">Home</string>
@@ -14,4 +14,5 @@
     <string name="nome_utente">Nome Utente</string>
     <string name="descrizione">Descrizione</string>
     <string name="modifica_profilo">Modifica Profilo</string>
+    <string name="id_immagine">26</string>
 </resources>

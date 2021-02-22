@@ -1,6 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
@@ -31,12 +32,11 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/nomeIdImmagine"
         style="@style/profile_text_count"
-        android:layout_width="120dp"
+        android:layout_width="50dp"
         android:layout_height="20dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="24dp"
         android:textSize="10dp"
-
         app:layout_constraintEnd_toEndOf="@id/id_immagine"
         app:layout_constraintHorizontal_bias="0.548"
         app:layout_constraintStart_toEndOf="@id/immagineProfilo"
@@ -44,12 +44,15 @@
         app:layout_constraintTop_toBottomOf="@id/header"
         tools:text="Id Profilo" />
 
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/id_immagine"
-        style="@style/profile_text"
-        android:layout_width="120dp"
+        android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
+        android:text="@string/id_immagine"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toRightOf="@+id/immagineProfilo"
         app:layout_constraintStart_toEndOf="@id/immagineProfilo"
         app:layout_constraintTop_toBottomOf="@id/nomeIdImmagine" />
 
@@ -59,47 +62,48 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:textSize="10sp"
-        app:layout_constraintHorizontal_bias="0.551"
+        android:layout_marginTop="25dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/immagineProfilo"
-        tools:text="Nome Profilo" />
+        tools:text="Nome Profilo"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/in_editNomeProfilo"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/mid_margin"
         android:layout_marginTop="@dimen/margin_from_other_textInputLayout"
         android:layout_marginEnd="@dimen/mid_margin"
+        app:boxBackgroundMode="outline"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nomeProfilo">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editNomeProfilo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/radius_button"
+            android:backgroundTint="@color/transparent"
             android:hint="@string/nome_utente"
-            android:textSize="15sp"
             android:imeOptions="actionDone"
             android:inputType="textPersonName"
-            android:backgroundTint="@color/transparent"
-
-            />
+            android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/in_editDescrizione"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/mid_margin"
         android:layout_marginTop="@dimen/mid_margin"
         android:layout_marginEnd="@dimen/mid_margin"
+        app:boxBackgroundMode="outline"
+        app:counterEnabled="true"
+        app:counterMaxLength="100"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/in_editNomeProfilo">
@@ -108,13 +112,11 @@
             android:id="@+id/editDescrizione"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/transparent"
             android:hint="@string/descrizione"
-            android:textSize="15sp"
-            android:background="@drawable/radius_button"
             android:imeOptions="actionDone"
             android:inputType="textPersonName"
-            android:backgroundTint="@color/transparent"
-            />
+            android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- TODO: Bottons -->
@@ -124,31 +126,29 @@
         android:id="@+id/btn_conferma"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginRight="@dimen/mid_large_margin"
         android:background="@drawable/circle_botton"
-        android:textAllCaps="false"
         android:src="@drawable/ic_check"
+        android:textAllCaps="false"
         android:textColor="@color/white"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/id_immagine"
         app:layout_constraintBottom_toBottomOf="@+id/immagineProfilo"
-        app:layout_constraintTop_toTopOf="@+id/immagineProfilo"
-        />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/immagineProfilo" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_salva_modifica"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginStart="@dimen/mid_margin"
+        android:layout_marginEnd="@dimen/mid_margin"
+        android:layout_marginBottom="@dimen/mid_margin"
         android:background="@drawable/circle_botton"
         android:text="Salva"
         android:textColor="@color/white"
         android:textSize="15sp"
-        android:textAllCaps="false"
-        android:layout_marginStart="@dimen/mid_margin"
-        android:layout_marginRight="@dimen/mid_margin"
-        android:layout_marginBottom="@dimen/mid_margin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-         />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,6 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".SplashActivity"
-            android:label="SplashActivity"
             android:theme="@style/SplashTheme">
 
             <intent-filter>
@@ -26,10 +25,8 @@
 
         </activity>
 
-        <activity android:name=".MainActivity"
-                  android:label="SplashActivity"/>
-        <activity android:name=".LoginActivity">
-        </activity>
+        <activity android:name=".MainActivity" android:label="SplashActivity" android:windowSoftInputMode="adjustPan" android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
