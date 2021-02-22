@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.instagrammo.R
+import com.example.instagrammo.fragment.ProfileFragment
 import com.example.instagrammo.network.ApiClient
 import com.example.instagrammo.request.EditProfileRequest
 import com.example.instagrammo.response.PayloadProfile
@@ -65,7 +67,7 @@ class ModifyProfileFragment : Fragment() {
             })
         }
         customViewController.setOnBackPressedListner {
-           closefragment()
+           //TODO: implementare la logica per tornare al profilo
         }
     }
 
@@ -94,7 +96,8 @@ class ModifyProfileFragment : Fragment() {
             })
     }
     private fun closefragment() {
-        activity!!.supportFragmentManager.beginTransaction().commit()
+       // requireActivity().onBackPressedDispatcher.addCallback(this)
+        //activity!!.supportFragmentManager.beginTransaction().commit()
     }
 
     companion object {

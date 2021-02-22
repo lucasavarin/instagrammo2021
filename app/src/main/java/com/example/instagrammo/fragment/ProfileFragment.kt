@@ -52,17 +52,22 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getInformationProfile()
-        getPostsProfile()
-        recycler_profile_grid.layoutManager = gridLayoutManager
-        recycler_profile.layoutManager = linearLayoutManager
+
         edit_btn.setOnClickListener {
-            val fragmentManager: FragmentManager? = fragmentManager
+            val fragmentManager = activity!!.supportFragmentManager
             var transaction: FragmentTransaction = fragmentManager?.beginTransaction()!!
-            transaction.add(R.id.fragment_container, modifyProfile)
+            transaction.replace(R.id.fragment_container, modifyProfile)
             transaction.addToBackStack(null)
             transaction.commit()
+
         }
+
+        getInformationProfile()
+        getPostsProfile()
+
+       recycler_profile_grid.layoutManager = gridLayoutManager
+       recycler_profile.layoutManager = linearLayoutManager
+
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
