@@ -12,10 +12,11 @@
         android:id="@+id/custom_add_post"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="custom view da implementare"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="custom view da implementare"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contrainer_add_post"
