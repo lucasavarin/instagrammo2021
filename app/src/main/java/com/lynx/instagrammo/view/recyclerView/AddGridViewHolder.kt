@@ -42,9 +42,10 @@ class AddGridViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
         Log.i("RESULT :", result)
         return result
     }
+/*
 
-/*    interface OnImageClickListener{
-        fun onItemClick(item: PicsumImageRest, position: Int)
-    }*/
-
+    val download_url_t : String = image.download_url.split("/")
+        .mapIndexed{index, value-> if (index == 5 || index == 6)"500" else value}
+        .joinToString(separator = "/")
+*/
 }
