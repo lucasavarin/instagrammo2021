@@ -35,3 +35,26 @@ data class Post(
     var profile: Profile
     )
 */
+
+
+/*class Post (
+    @Expose
+    @SerializedName("profileId")
+    val profileId: String,
+    @Expose
+    @SerializedName("postId")
+    val postId: String,
+    @Expose
+    @SerializedName("title")
+    val title: String,
+    @Expose
+    @SerializedName("picture")
+    val picture: String,
+    @Expose
+    @SerializedName("uploadTime")
+    var uploadTime: String,
+    @Expose
+    @SerializedName("profile")
+    var profile: Profile
+    )
+*/
