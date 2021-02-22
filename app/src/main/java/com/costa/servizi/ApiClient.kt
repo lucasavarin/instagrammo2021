@@ -1,5 +1,6 @@
 package com.costa.servizi
 
+import com.costa.`interface`.ApiImageInterface
 import com.costa.`interface`.ApiInterface
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
@@ -15,6 +16,7 @@ object ApiClient {
     var authToken:String = ""
     var userId:String = ""
     val BASE_URL = "http://www.nbarresi.it/"
+    val IMAGE_URL="https://picsum.photos/"
     var client:OkHttpClient?=null
     val getClient: ApiInterface
             get() {
@@ -36,6 +38,22 @@ object ApiClient {
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build()
             return retrofit.create(ApiInterface::class.java)
+
+        }
+    val getImageClient: ApiImageInterface
+        get() {
+            val logging = HttpLoggingInterceptor()
+            logging.level = HttpLoggingInterceptor.Level.BODY
+            val httClient = OkHttpClient.Builder()
+                .addInterceptor(logging).build()
+
+            val gson = GsonBuilder().create()
+            val retrofit = Builder()
+                .baseUrl(IMAGE_URL)
+                .client(httClient)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+            return retrofit.create(ApiImageInterface::class.java)
 
         }
 }
