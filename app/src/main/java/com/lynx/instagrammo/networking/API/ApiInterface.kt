@@ -27,4 +27,10 @@ interface ApiInterface {
     fun putEditProfile(@Path("profileId") profileId :String,
                        @Body profile: ProfileRequest) : Call<Boolean>
 
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @POST("posts.php/{profileId}")
+    fun addPost(@Path("profileId") profileId :String,
+                @Body post: AddPostRequest) : Call<Boolean>
+
+
 }

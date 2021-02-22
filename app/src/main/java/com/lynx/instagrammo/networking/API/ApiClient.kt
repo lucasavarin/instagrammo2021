@@ -15,6 +15,8 @@ object ApiClient {
 
 
     const val BASE_URL: String = "http://www.nbarresi.it/"
+    const val BASE_PICSUM_URL: String = "https://picsum.photos/"
+
     var authToken: String = ""
 
     val GetClient: ApiInterface
@@ -44,6 +46,26 @@ object ApiClient {
             return retrofit.create(ApiInterface::class.java)
 
         }
+
+    val GetPicsumClient: ApiPicsumInterface
+    get() {
+
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        val client = OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build()
+
+        val gson = GsonBuilder().create()
+
+        val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_PICSUM_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+
+        return retrofit.create(ApiPicsumInterface::class.java)
+    }
 
 }
 
