@@ -28,6 +28,9 @@ class HomeFragment : Fragment() {
     private var followers: MutableList<Follower> = mutableListOf()
     private var posts: List<Post> = mutableListOf()
 
+    val linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+    val linearLayoutVertical = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,6 +44,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getFollower()
         getPosts()
+        homeFollowerRecyclerView.layoutManager = linearLayoutManager
+        homePostListLayout.layoutManager = linearLayoutVertical
+
     }
 
 
@@ -51,10 +57,11 @@ class HomeFragment : Fragment() {
                     println("hai fallito-----------> $t.message ")
                 }
 
-                override fun onResponse(call: Call<FollowerResponse>, response: Response<FollowerResponse>) {
+                override fun onResponse(
+                    call: Call<FollowerResponse>,
+                    response: Response<FollowerResponse>
+                ) {
                     followers = response.body()?.payload?.toMutableList()!!
-                    val linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                    homeFollowerRecyclerView.layoutManager = linearLayoutManager
                     homeFollowerRecyclerView.adapter = FollowerListRecyclerAdapter(followers)
                     Log.i("info", response.body()?.result.toString())
                 }
@@ -71,9 +78,6 @@ class HomeFragment : Fragment() {
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                 if (!response.body()?.payload.isNullOrEmpty()) {
                     posts = response.body()?.payload?.toMutableList()!!
-                    val linearLayoutManager =
-                        LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-                    homePostListLayout.layoutManager = linearLayoutManager
                     homePostListLayout.adapter = PostAdapter(posts)
                 }
                 Log.i("info", response.body()?.result.toString())
