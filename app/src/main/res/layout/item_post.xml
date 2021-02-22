@@ -6,9 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="1dp">
 
-
-
-
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgProfileView"
         android:layout_width="60dp"

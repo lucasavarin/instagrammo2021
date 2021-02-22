@@ -16,4 +16,6 @@ interface ApiInterface {
     fun getPost(@Path("profiloUtente")profiloUtente : String): Call<PostResponse>
     @GET("profiles.php/{profileId}")
     fun getProfilo(@Path("profileId") profileId: String): Call<ProfileResponse>
+    @GET("posts.php/{profileId}")
+    fun getProfiloPost(@Path("profileId") profileId: String): Call<PostResponse>
 }
