@@ -1,7 +1,6 @@
 package com.example.instagrammo
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -11,17 +10,10 @@ import com.example.instagrammo.fragment.*
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
-    val homeFragment = HomeFragment()
-    val searchFragment = SearchFragment()
-    val addFragment = AddFragment()
-    val favouritesFragment = FavouritesFragment()
-    val profileFragment = ProfileFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-
-        addFragment(homeFragment, R.id.fragment_container)
 
         navigation.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
         navigation.add(MeowBottomNavigation.Model(1, R.drawable.ic_search))
@@ -29,28 +21,15 @@ class MainActivity : AppCompatActivity() {
         navigation.add(MeowBottomNavigation.Model(3, R.drawable.ic_favorite))
         navigation.add(MeowBottomNavigation.Model(4, R.drawable.ic_person))
 
+        addFragment(HomeFragment(), R.id.fragment_container)
+
         navigation.setOnClickMenuListener {
             when (it.id) {
-                0 -> {
-                    replaceFragment(homeFragment, R.id.fragment_container)
-
-                }
-                1 -> {
-                    replaceFragment(searchFragment, R.id.fragment_container)
-
-                }
-                2 -> {
-                    replaceFragment(addFragment, R.id.fragment_container)
-
-                }
-                3 -> {
-                    replaceFragment(favouritesFragment, R.id.fragment_container)
-
-                }
-                4 -> {
-                    replaceFragment(profileFragment, R.id.fragment_container)
-
-                }
+                0 -> replaceFragment(HomeFragment(), R.id.fragment_container)
+                1 -> replaceFragment(SearchFragment(), R.id.fragment_container)
+                2 -> replaceFragment(AddFragment(), R.id.fragment_container)
+                3 -> replaceFragment(FavouritesFragment(), R.id.fragment_container)
+                4 -> replaceFragment(ProfileFragment(), R.id.fragment_container)
                 else -> false
 
             }
