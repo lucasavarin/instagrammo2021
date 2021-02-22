@@ -36,7 +36,7 @@ class EditProfileFragment : Fragment(){
         editButton.setOnClickListener{
             ApiClient.getClient.putProfile(prefs.profileId, profileRequest).enqueue(object:Callback<Boolean>{
                 override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                    //TODO: finire di implementare il salvataggio dei dati nel modifica prodilo
+                    //TODO: finire di implementare il salvataggio dei dati nel modifica profilo
                 }
 
                 override fun onFailure(call: Call<Boolean>, t: Throwable) {
@@ -44,6 +44,12 @@ class EditProfileFragment : Fragment(){
                 }
 
             })
+        }
+    }
+
+    private fun buttonsListener(){
+        top_bar_edit_profile.setOnBackEditProfileListener{
+            //remove fragment
         }
     }
 
