@@ -61,6 +61,8 @@ class EditProfileFragment : Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        header.setOnBackPressedListener { (listener as EditProfileFragmentInterface).back() }
+
         super.onViewCreated(view, savedInstanceState)
 
          setFilds()
