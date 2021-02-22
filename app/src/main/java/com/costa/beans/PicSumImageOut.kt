@@ -21,4 +21,10 @@ data class PicSumImageOut (
     val url: String?,
     @Expose
     @SerializedName("download_url")
-    val download_url: String?)
+    val download_url: String?){
+
+    fun toPicSumImage():PicSumImage{
+        var image:PicSumImage= PicSumImage(id=id!!, author = author!!, width = width!!,height = height!!, url =url!!,download_url = download_url!!, imageFormated = "" )
+        return image
+    }
+}
