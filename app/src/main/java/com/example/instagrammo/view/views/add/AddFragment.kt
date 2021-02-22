@@ -26,10 +26,7 @@ class AddFragment : Fragment(){
         return inflater.inflate(R.layout.fragment_add, container, false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
 
         viewModel.dataStateLoremImages.observe(this.viewLifecycleOwner, Observer { dataState ->
             when(dataState) {
@@ -41,8 +38,6 @@ class AddFragment : Fragment(){
             }
         })
     }
-
-
 
     companion object {
         var newInstance : AddFragment = AddFragment()
