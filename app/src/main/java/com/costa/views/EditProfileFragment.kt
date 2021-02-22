@@ -7,9 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.costa.beans.ProfileOut
-import com.costa.instagrammo.MainActivity
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
 import com.costa.servizi.ApiClient.userId
@@ -61,7 +58,7 @@ class EditProfileFragment : Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        header.setOnBackPressedListener { (listener as EditProfileFragmentInterface).back() }
+        header_add_post_step_2.setOnBackPressedListener { (listener as EditProfileFragmentInterface).back() }
 
         super.onViewCreated(view, savedInstanceState)
 

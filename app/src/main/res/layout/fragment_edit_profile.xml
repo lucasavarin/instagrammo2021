@@ -8,7 +8,7 @@
     android:focusable="true"
     tools:context="com.costa.views.EditProfileFragment">
 <com.costa.components.CastomHeader
-    android:id="@+id/header"
+    android:id="@+id/header_add_post_step_2"
     app:title="Modifica Profilo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header" />
+        app:layout_constraintTop_toBottomOf="@id/header_add_post_step_2" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/nomeIdImmagine"
@@ -41,7 +41,7 @@
         app:layout_constraintHorizontal_bias="0.548"
         app:layout_constraintStart_toEndOf="@id/immagineProfilo"
         app:layout_constraintStart_toStartOf="@id/id_immagine"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintTop_toBottomOf="@id/header_add_post_step_2"
         tools:text="Id Profilo" />
 
 
@@ -147,7 +147,6 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 

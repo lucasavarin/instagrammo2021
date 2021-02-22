@@ -1,5 +1,5 @@
 package com.costa.views
-
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,19 +10,19 @@ import com.costa.adapter.AddPostsGridAdAdapter
 import com.costa.beans.PicSumImageOut
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
-
 import kotlinx.android.synthetic.main.fragment_add.*
-
 import android.util.Log
-import com.costa.beans.ProfileOut
+import com.costa.beans.PicSumImage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class AddFragment : Fragment() {
     companion object{
-        val instance:AddFragment= AddFragment()
+        var instance:AddFragment=AddFragment()
+
     }
+    lateinit var listener:AddFragmentInterface
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +32,11 @@ class AddFragment : Fragment() {
 
 
     }
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is AddFragmentInterface)
+            listener = context
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ApiClient.getImageClient.getPictures().enqueue(object: Callback<Array<PicSumImageOut>> {
@@ -56,12 +60,12 @@ class AddFragment : Fragment() {
         rv_add_post.apply {
             val layoutManager = GridLayoutManager(context, 3)
             rv_add_post.layoutManager = layoutManager
-            rv_add_post.adapter = AddPostsGridAdAdapter(payload,{
-
-            })
+            rv_add_post.adapter = AddPostsGridAdAdapter(payload) {image->
+                listener.onClickImage(image)
+            }
         }
     }
     interface AddFragmentInterface {
-        fun onClickImage(profile: ProfileOut)
+        fun onClickImage(imageOut: PicSumImage)
     }
 }

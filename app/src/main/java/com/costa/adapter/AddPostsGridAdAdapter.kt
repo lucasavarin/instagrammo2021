@@ -3,11 +3,12 @@ package com.costa.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.costa.beans.PicSumImage
 
 import com.costa.beans.PicSumImageOut
 import com.costa.instagrammo.R
 
-class AddPostsGridAdAdapter (private val posts: List<PicSumImageOut>,private val callback:(imageOut: PicSumImageOut)->Unit) :
+class AddPostsGridAdAdapter (private val posts: List<PicSumImageOut>,private val callback:(imageOut: PicSumImage)->Unit) :
     RecyclerView.Adapter<AddPostsGridViewHolder>() {
 
     /**

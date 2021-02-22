@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.costa.beans.PicSumImage
 import com.costa.beans.PicSumImageOut
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_add_post_grid.view.*
@@ -12,19 +13,22 @@ import kotlinx.android.synthetic.main.item_add_post_grid.view.*
 class AddPostsGridViewHolder (private var v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
 
 
-    private lateinit var post: PicSumImageOut
+    private lateinit var imageBean: PicSumImage
 
-    fun bindImagePost(image: PicSumImageOut, callback:(imageOut: PicSumImageOut)->Unit){
+    fun bindImagePost(image: PicSumImageOut, callback:(imageOut: PicSumImage)->Unit){
+        imageBean=image.toPicSumImage()
+        imageBean.imageFormated=trasformPath(image)
+
         Picasso.get()
-            .load(trasformPath(image))
+            .load(imageBean.imageFormated)
             .into(v.img_post_grid)
         itemView.setOnClickListener {
-            callback.invoke(image)
+            callback.invoke(imageBean)
         }
     }
 
     override fun onClick(v: View?) {
-        Toast.makeText(v!!.context,post.toString(), Toast.LENGTH_LONG).show()
+        Toast.makeText(v!!.context,imageBean.toString(), Toast.LENGTH_LONG).show()
     }
 
     fun trasformPath(image: PicSumImageOut): String {
