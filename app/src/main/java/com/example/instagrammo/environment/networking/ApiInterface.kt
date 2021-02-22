@@ -43,6 +43,6 @@ interface ApiInterface {
         @Body profile: EditProfileRequest
     ): Call<EditProfileResponse>
 
-    @GET("")
+    @GET("v2/list")
     fun getLoremPictures() : Call<List<LoremRest>>
 }

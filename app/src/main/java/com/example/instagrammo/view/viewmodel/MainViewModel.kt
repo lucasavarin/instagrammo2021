@@ -89,6 +89,7 @@ class MainViewModel() : ViewModel() {
                 is MainStateEvent.GetLoremImagesEvent -> {
                     mainRepository.getListPictureLorem()
                         .onEach {  dataStateLoremImage -> _dataStateLoremImages.value = dataStateLoremImage }
+                        .launchIn(viewModelScope)
                 }
             }
         }

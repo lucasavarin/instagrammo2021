@@ -24,7 +24,8 @@ class TopBarBackComponent (context: Context, attrs: AttributeSet? = null) : Cons
         immagineFrecciaBack.setOnClickListener(){onBackPressed.forEach{ callback -> callback.invoke() }}
         testoFragmentCorrente.text = attributes.getString(R.styleable.CustomHeader_title)
 
-        attributes.recycle()*/
+        attributes.recycle()
+        */
 
         inflate(context,R.layout.top_bar_back_component,this)
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.CustomHeader)
