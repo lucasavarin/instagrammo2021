@@ -1,4 +1,4 @@
-package bean
+package bean.business
 
 data class Follower(val id : String,
                     val name: String,

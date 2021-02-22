@@ -1,4 +1,4 @@
-package bean
+package bean.rest
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

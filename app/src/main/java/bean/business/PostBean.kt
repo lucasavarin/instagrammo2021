@@ -1,4 +1,6 @@
-package bean
+package bean.business
+
+import bean.rest.Post
 
 class PostBean (
         var profileId : String,

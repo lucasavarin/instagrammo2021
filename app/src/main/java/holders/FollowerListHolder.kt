@@ -1,10 +1,9 @@
-package adapters
+package holders
 
-import android.net.Uri
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import bean.Follower
+import bean.business.Follower
 import kotlinx.android.synthetic.main.story_item.view.*
 
 class FollowerListHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {

@@ -1,15 +1,9 @@
-package activities
+package view.main
 
 
-import android.graphics.Insets.add
 import android.os.Bundle
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.example.instagrammo.R
-import com.example.instagrammo.views.BaseActivity
 import fragments.*
 import interfaces.ButtonEditProfileListener
 import kotlinx.android.synthetic.main.activity_home.*

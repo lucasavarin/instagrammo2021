@@ -1,13 +1,14 @@
-package API
+package utils.api
 
-import bean.*
+import bean.rest.PostResponse
+import bean.rest.ProfileRequest
+import bean.rest.ProfileResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.*
-import utils.AuthRequest
-import utils.AuthResponse
-import utils.FollowerResponse
+import bean.rest.AuthRequest
+import bean.rest.AuthResponse
+import bean.rest.FollowerResponse
 
 interface ApiInterface {
     @POST("auth.php")

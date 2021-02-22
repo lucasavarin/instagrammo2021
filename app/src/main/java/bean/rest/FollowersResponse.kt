@@ -1,5 +1,6 @@
-package bean
+package bean.rest
 
+import bean.business.ResponseDataModel
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

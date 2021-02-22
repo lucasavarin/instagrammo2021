@@ -1,21 +1,20 @@
 package fragments
 
-import API.ApiClient
+import utils.api.ApiClient
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import bean.ProfileBean
-import bean.ProfileRequest
+import bean.business.ProfileBean
+import bean.rest.ProfileRequest
 import com.example.instagrammo.R
 import kotlinx.android.synthetic.main.fragment_modifica_profilo.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import utils.FollowerResponse
-import utils.prefs
+import utils.extensions.prefs
 
 class EditProfileFragment : Fragment(){
 

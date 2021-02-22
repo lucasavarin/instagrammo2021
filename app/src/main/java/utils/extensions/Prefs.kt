@@ -1,4 +1,4 @@
-package utils
+package utils.extensions
 
 import android.content.Context
 import android.content.SharedPreferences

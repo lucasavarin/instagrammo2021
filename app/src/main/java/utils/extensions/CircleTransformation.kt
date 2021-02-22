@@ -1,4 +1,4 @@
-package utils
+package utils.extensions
 
 import android.graphics.*
 import com.squareup.picasso.Transformation

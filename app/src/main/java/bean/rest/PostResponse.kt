@@ -1,5 +1,6 @@
-package bean
+package bean.rest
 
+import bean.business.ResponseDataModel
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -16,4 +17,4 @@ data class Post (
         @Expose @SerializedName("picture") val picture : String?,
         @Expose @SerializedName("uploadTime") val uploadTime : String?,
         @Expose @SerializedName("profile") val profile : Profile
-        ) :ResponseDataModel
+        ) : ResponseDataModel
