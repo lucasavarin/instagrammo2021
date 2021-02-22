@@ -2,6 +2,7 @@ package com.example.instagrammo.environment.repository
 
 import com.example.instagrammo.beans.rest.auth.AuthRequest
 import com.example.instagrammo.beans.business.followers.FollowerBean
+import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
 import com.example.instagrammo.beans.business.profile.ProfileBean
@@ -87,11 +88,11 @@ class MainRepositoryImpl():
             emit(DataState.Loading)
             try {
                 val response = apiService.getProfile(prefs.rememberIdProfile)
-                val responseExcuted = withContext(Dispatchers.IO) { response.execute() }
+                val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
 
-                if (responseExcuted.isSuccessful)
-                    if (responseExcuted.body()?.payload != null) {
-                        val data = responseExcuted.body()!!.payload!!.map { follower -> ProfileBean.convert(follower) }[0]
+                if (responseExecuted.isSuccessful)
+                    if (responseExecuted.body()?.payload != null) {
+                        val data = responseExecuted.body()!!.payload!!.map { follower -> ProfileBean.convert(follower) }[0]
                         emit(DataState.Success(data))
                     }
             } catch (e: Exception) {
@@ -105,12 +106,29 @@ class MainRepositoryImpl():
             emit(DataState.Loading)
             try {
                 val response = apiService.putProfile(newData)
-                val responseExcuted = withContext(Dispatchers.IO) { response.execute() }
+                val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
 
-                if (responseExcuted.isSuccessful)
-                    if (responseExcuted.body()?.result != null)
-                        emit(DataState.Success(responseExcuted.body()?.result!!))
+                if (responseExecuted.isSuccessful)
+                    if (responseExecuted.body()?.result != null)
+                        emit(DataState.Success(responseExecuted.body()?.result!!))
 
+            } catch (e: Exception) {
+                emit(DataState.Error(e))
+            }
+        }
+    }
+
+    override fun getListPictureLorem(): Flow<DataState<List<LoremBean>>> {
+        return flow {
+            emit(DataState.Loading)
+            try {
+                val response = apiService.getLoremPictures()
+                val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
+
+                if (responseExecuted.isSuccessful){
+                    val data = responseExecuted.body()!!.map { image -> LoremBean.convert(image) }
+                    emit(DataState.Success(data))
+                }
             } catch (e: Exception) {
                 emit(DataState.Error(e))
             }

@@ -1,4 +1,4 @@
-package com.example.instagrammo.recyclerview.adapter
+package com.example.instagrammo.utils.adapter
 
 interface OnPostItemClickListener {
 

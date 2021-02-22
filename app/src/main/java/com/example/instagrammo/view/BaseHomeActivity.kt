@@ -2,9 +2,9 @@ package com.example.instagrammo.view
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.FragmentTransaction
 import com.example.instagrammo.R
-import com.example.instagrammo.recyclerview.adapter.OnPostItemClickListener
+import com.example.instagrammo.utils.adapter.OnPostItemClickListener
+import com.example.instagrammo.view.views.add.AddFragment
 import com.example.instagrammo.view.views.follow.FollowFragment
 import com.example.instagrammo.view.views.home.HomeFragment
 import com.example.instagrammo.view.views.profile.ButtonEditProfileListener
@@ -40,6 +40,7 @@ class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProf
                     true
                 }
                 R.id.nav_add -> {
+                    replaceFragment(AddFragment.newInstance, R.id.fragment_container)
                     true
                 }
                 R.id.nav_follow -> {

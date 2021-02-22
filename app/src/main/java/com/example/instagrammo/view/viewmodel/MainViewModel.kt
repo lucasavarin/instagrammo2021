@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.instagrammo.beans.business.followers.FollowerBean
+import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.environment.repository.MainRepositoryImpl
@@ -26,6 +27,8 @@ class MainViewModel() : ViewModel() {
 
     private val _dataStateEditProfile: MutableLiveData<DataState<Boolean>> = MutableLiveData()
 
+    private val _dataStateLoremImages: MutableLiveData<DataState<List<LoremBean>>> = MutableLiveData()
+
     val dataStatePost: LiveData<DataState<List<PostBean>>>
         get() = _dataStatePosts
 
@@ -40,6 +43,9 @@ class MainViewModel() : ViewModel() {
 
     val dataStateEditProfile : LiveData<DataState<Boolean>>
         get() = _dataStateEditProfile
+
+    val dataStateLoremImages : LiveData<DataState<List<LoremBean>>>
+        get() = _dataStateLoremImages
 
 
     fun setStateEvent(mainStateEvent: MainStateEvent) {
@@ -78,6 +84,11 @@ class MainViewModel() : ViewModel() {
                         .onEach { dataStateEditProfile -> _dataStateEditProfile.value = dataStateEditProfile}
                         .launchIn(viewModelScope)
 
+                }
+
+                is MainStateEvent.GetLoremImagesEvent -> {
+                    mainRepository.getListPictureLorem()
+                        .onEach {  dataStateLoremImage -> _dataStateLoremImages.value = dataStateLoremImage }
                 }
             }
         }

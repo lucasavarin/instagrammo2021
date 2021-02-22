@@ -3,6 +3,7 @@ package com.example.instagrammo.environment.networking
 import com.example.instagrammo.beans.rest.auth.AuthRequest
 import com.example.instagrammo.beans.rest.auth.AuthResponse
 import com.example.instagrammo.beans.rest.follower.FollowersResponse
+import com.example.instagrammo.beans.rest.lorem.LoremRest
 import com.example.instagrammo.beans.rest.post.PostsResponse
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileResponse
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
@@ -41,4 +42,7 @@ interface ApiInterface {
     fun putProfile(
         @Body profile: EditProfileRequest
     ): Call<EditProfileResponse>
+
+    @GET("")
+    fun getLoremPictures() : Call<List<LoremRest>>
 }

@@ -14,4 +14,6 @@ sealed class MainStateEvent {
     object GetFollowersEvent : MainStateEvent()
 
     object GetProfileEvent : MainStateEvent()
+
+    object GetLoremImagesEvent : MainStateEvent()
 }

@@ -19,6 +19,7 @@ object ApiClient {
     //const val BASEURL : String = "http://192.168.1.10:3001/Instagrammo/"
 
     val GetClient : ApiInterface
+
     get(){
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = BODY

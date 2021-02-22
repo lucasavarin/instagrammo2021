@@ -2,6 +2,7 @@ package com.example.instagrammo.environment.repository
 
 import com.example.instagrammo.beans.rest.auth.AuthRequest
 import com.example.instagrammo.beans.business.followers.FollowerBean
+import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
 import com.example.instagrammo.beans.business.profile.ProfileBean
@@ -19,4 +20,6 @@ interface MainRepository {
     fun getProfile() : Flow<DataState<ProfileBean>>
 
     fun putProfile(data: EditProfileRequest) : Flow<DataState<Boolean>>
+
+    fun getListPictureLorem() : Flow<DataState<List<LoremBean>>>
 }

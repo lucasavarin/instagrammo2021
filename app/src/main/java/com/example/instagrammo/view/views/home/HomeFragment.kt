@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.followers.FollowerBean
 import com.example.instagrammo.beans.business.post.PostBean
-import com.example.instagrammo.recyclerview.adapter.*
+import com.example.instagrammo.utils.adapter.*
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
