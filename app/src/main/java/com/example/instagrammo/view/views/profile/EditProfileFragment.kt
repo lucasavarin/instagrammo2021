@@ -2,12 +2,14 @@ package com.example.instagrammo.view.views.profile
 
 import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.components.topBar.TopBarBackComponent
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.profile.*
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
@@ -135,8 +137,13 @@ class EditProfileFragment : Fragment() {
     }
 
     private fun buttonsListener() {
+        //bottone salva
         mView.close_edit_profile_button.setOnClickListener {
             verificaDatiInseriti()
+        }
+        //bottone back nell header
+        topBarBackComponent.setOnPressedListener{
+            listener.removeFragmentListener()
         }
     }
 
