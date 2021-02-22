@@ -2,7 +2,7 @@ package com.costa.servizi
 
 import com.google.gson.annotations.SerializedName
 
-data class AddPostRequestRest (
+data class AddPostRequestRest(
     @SerializedName("profileId")
     var profileId: String?,
     @SerializedName("title")

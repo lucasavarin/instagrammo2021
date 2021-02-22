@@ -47,14 +47,18 @@ class AddPostStep2Fragment : Fragment() {
         Picasso.get()
             .load(imagePost.imageFormated)
             .into(iv_imagine_post)
-         header_add_post_step_2.setOnBackPressedListener {
-             listener.backToAddPostStep1()
-         }
+        header_add_post_step_2.setOnBackPressedListener {
+            listener.backToAddPostStep1()
+        }
         btn_carica_post.setOnClickListener {
 
-            var post: AddPostRequestRest= AddPostRequestRest(profileId = ApiClient.userId,title =editDescrizione.text.toString(), picture = imagePost.imageFormated)
+            var post: AddPostRequestRest = AddPostRequestRest(
+                profileId = ApiClient.userId,
+                title = editDescrizione.text.toString(),
+                picture = imagePost.imageFormated
+            )
 
-            ApiClient.getClient.doAddPost(post).enqueue(object: Callback<BooleanRespomce>{
+            ApiClient.getClient.doAddPost(post).enqueue(object : Callback<BooleanRespomce> {
                 override fun onFailure(call: Call<BooleanRespomce>, t: Throwable) {
 
                 }
@@ -63,7 +67,7 @@ class AddPostStep2Fragment : Fragment() {
                     call: Call<BooleanRespomce>,
                     response: Response<BooleanRespomce>
                 ) {
-                        listener.salvaPost()
+                    listener.salvaPost()
                 }
 
             })

@@ -14,11 +14,11 @@ import kotlinx.android.synthetic.main.fragment_add_post_step_1.*
 import kotlinx.android.synthetic.main.item_profile_post_grid.view.*
 
 class AddPostStep1Fragment : Fragment() {
-    companion object{
-        lateinit var imagePost:PicSumImage
-        val instance:AddPostStep1Fragment=AddPostStep1Fragment()
-        fun getinstance(image:PicSumImage):AddPostStep1Fragment {
-            imagePost=image
+    companion object {
+        lateinit var imagePost: PicSumImage
+        val instance: AddPostStep1Fragment = AddPostStep1Fragment()
+        fun getinstance(image: PicSumImage): AddPostStep1Fragment {
+            imagePost = image
             return instance
         }
 
@@ -34,10 +34,11 @@ class AddPostStep1Fragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is AddPostStep1Interface) {
+        if (context is AddPostStep1Interface) {
             listener = context
         }
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -46,13 +47,14 @@ class AddPostStep1Fragment : Fragment() {
             .into(iv_imagine_add)
 
         bt_next.setOnClickListener {
-          listener.addPostStep1ToStep2(imagePost)
+            listener.addPostStep1ToStep2(imagePost)
         }
 
         header_add_post_step_1.setOnBackPressedListener {
             listener.backToAddFragment()
         }
     }
+
     interface AddPostStep1Interface {
         fun addPostStep1ToStep2(image: PicSumImage)
         fun backToAddFragment()

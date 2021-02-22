@@ -14,8 +14,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface,
-    EditProfileFragment.EditProfileFragmentInterface,AddFragment.AddFragmentInterface,
-    AddPostStep1Fragment.AddPostStep1Interface,AddPostStep2Fragment.AddPostStep2Interface {
+    EditProfileFragment.EditProfileFragmentInterface, AddFragment.AddFragmentInterface,
+    AddPostStep1Fragment.AddPostStep1Interface, AddPostStep2Fragment.AddPostStep2Interface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -106,7 +106,8 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
         replaceFragment(AddFragment.instance, R.id.home_container_fragment)
         removeFragment(AddPostStep2Fragment.instance)
     }
-    override  fun backToAddPostStep1(){
+
+    override fun backToAddPostStep1() {
         replaceFragment(AddPostStep1Fragment.instance, R.id.home_container_fragment)
         removeFragment(AddPostStep2Fragment.instance)
     }

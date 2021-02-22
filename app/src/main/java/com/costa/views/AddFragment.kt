@@ -1,4 +1,5 @@
 package com.costa.views
+
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,11 +19,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AddFragment : Fragment() {
-    companion object{
-        var instance:AddFragment=AddFragment()
+    companion object {
+        var instance: AddFragment = AddFragment()
 
     }
-    lateinit var listener:AddFragmentInterface
+
+    lateinit var listener: AddFragmentInterface
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,16 +34,18 @@ class AddFragment : Fragment() {
 
 
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is AddFragmentInterface)
+        if (context is AddFragmentInterface)
             listener = context
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ApiClient.getImageClient.getPictures().enqueue(object: Callback<Array<PicSumImageOut>> {
+        ApiClient.getImageClient.getPictures().enqueue(object : Callback<Array<PicSumImageOut>> {
             override fun onFailure(call: Call<Array<PicSumImageOut>>, t: Throwable) {
-                Log.i("ERRORE: ","onFailure")
+                Log.i("ERRORE: ", "onFailure")
 
             }
 
@@ -55,16 +59,18 @@ class AddFragment : Fragment() {
 
         })
     }
+
     fun gredRecycleView(payload: List<PicSumImageOut>) {
 
         rv_add_post.apply {
             val layoutManager = GridLayoutManager(context, 3)
             rv_add_post.layoutManager = layoutManager
-            rv_add_post.adapter = AddPostsGridAdAdapter(payload) {image->
+            rv_add_post.adapter = AddPostsGridAdAdapter(payload) { image ->
                 listener.onClickImage(image)
             }
         }
     }
+
     interface AddFragmentInterface {
         fun onClickImage(imageOut: PicSumImage)
     }
