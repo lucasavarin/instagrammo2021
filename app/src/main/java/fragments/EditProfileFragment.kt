@@ -14,8 +14,8 @@ import com.example.instagrammo.R
 import interfaces.ButtonBackToProfile
 import interfaces.ButtonEditProfileListener
 import kotlinx.android.synthetic.main.edit_top_bar.*
-import kotlinx.android.synthetic.main.fragment_modifica_profilo.*
-import kotlinx.android.synthetic.main.fragment_modifica_profilo.view.*
+import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import kotlinx.android.synthetic.main.fragment_edit_profile.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,7 +33,7 @@ class EditProfileFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_modifica_profilo, container, false)
+        return inflater.inflate(R.layout.fragment_edit_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_login">
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/top_toolbar"
@@ -31,7 +30,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         app:labelVisibilityMode="unlabeled"
-        android:background="@drawable/bg_bnv"
+        android:background="@color/color_primary_dark"
         app:itemIconTint="@color/selector_bnv"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

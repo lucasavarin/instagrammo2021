@@ -9,7 +9,7 @@ data class FollowerBean (
         val picture: String
         ) : DataModel {
 
-            companion object : DataConverter<FollowerBean, FollowerProfile> {
+            /*companion object : DataConverter<FollowerBean, FollowerProfile> {
                 override fun convert(response: FollowerProfile): FollowerBean {
                     return FollowerBean(
                             response.id!!,
@@ -18,5 +18,5 @@ data class FollowerBean (
                             response.picture!!
                     )
                 }
-            }
+            }*/
         }

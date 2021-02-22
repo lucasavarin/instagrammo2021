@@ -11,6 +11,7 @@
         android:fontFamily="@font/algerian_regular"
         android:gravity="center"
         android:text="Instagrammo"
+        android:background="@color/color_primary"
         android:textColor="@color/color_primary_dark"
         android:textSize="25dp"
         app:layout_constraintTop_toTopOf="parent"
