@@ -39,7 +39,6 @@ class AddFragment : Fragment(){
         })
     }
 
-
     companion object {
         var newInstance : AddFragment = AddFragment()
     }

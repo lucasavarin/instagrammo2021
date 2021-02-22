@@ -29,8 +29,6 @@ class EditProfileFragment : Fragment() {
 
     private lateinit var listener: EditProfileFragmentListener
 
-    private lateinit var mView: View
-
     private val viewModel = MainViewModel()
 
     override fun onCreateView(
@@ -38,11 +36,12 @@ class EditProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mView = inflater.inflate(R.layout.fragment_modifica_profilo, container, false)
+        return inflater.inflate(R.layout.fragment_modifica_profilo, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         buttonsListener()
-
-        return mView
     }
 
     private fun setObservable() {
@@ -128,11 +127,11 @@ class EditProfileFragment : Fragment() {
 */
     private fun buttonsListener() {
         //bottone salva
-        mView.close_edit_profile_button.setOnClickListener {
+        view?.close_edit_profile_button?.setOnClickListener {
             verificaDatiInseriti()
         }
         //bottone back nell header
-        mView.topBarBackComponent.setOnPressedListener{
+        view?.topBarBackComponent?.setOnPressedListener{
             listener.removeFragmentListener()
         }
     }
@@ -148,10 +147,10 @@ class EditProfileFragment : Fragment() {
 
     private fun populateDataView() {
         Picasso.get().load(R.drawable.bird).resize(1000, 1000).transform(CircleTransform())
-            .into(mView.profileImage)
-        mView.IdImmagine.text = itemsProfile.profileId?.toEditable()
-        mView.NomeProfilo.text = itemsProfile.name?.toEditable()
-        mView.Descrizione.text = itemsProfile.description?.toEditable()
+            .into(view?.profileImage)
+        view?.IdImmagine?.text = itemsProfile.profileId?.toEditable()
+        view?.NomeProfilo?.text = itemsProfile.name?.toEditable()
+        view?.Descrizione?.text = itemsProfile.description?.toEditable()
         /* mView.postsNumber.text = itemsProfile.postsNumber
          mView.followersNumber.text = itemsProfile.followersNumber
          mView.name.text = itemsProfile.name

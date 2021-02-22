@@ -128,6 +128,7 @@ class MainRepositoryImpl():
 
                 if (responseExecuted.isSuccessful){
                     val data = responseExecuted.body()!!.map { image -> LoremBean.convert(image) }
+                    data.forEach{it -> println(it)}
                     emit(DataState.Success(data))
                 }
                 ApiClient.setBaseUrl()

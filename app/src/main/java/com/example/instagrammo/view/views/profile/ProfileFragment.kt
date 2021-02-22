@@ -34,8 +34,6 @@ class ProfileFragment : Fragment() {
 
     private lateinit var itemsPost: List<PostBean>
 
-    private lateinit var mView: View
-
     private val viewModel = MainViewModel()
 
     override fun onCreateView(
@@ -43,13 +41,14 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mView = inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_profile, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         getData()
         setObservable()
         buttonsListener()
-
-        return mView
     }
 
     private fun getData() {
@@ -121,23 +120,23 @@ class ProfileFragment : Fragment() {
     }
 
     private fun buttonsListener(){
-        mView.grid_cycle_image.setOnClickListener {
+        view?.grid_cycle_image!!.setOnClickListener {
             setAdapterGrid()
         }
 
-        mView.mono_cycle_image.setOnClickListener {
+        view?.mono_cycle_image!!.setOnClickListener {
             setAdapterMono()
         }
 
-        mView.edit_profile_button.setOnClickListener{
+        view?.edit_profile_button!!.setOnClickListener{
             listenerButtonEdit?.OnButtonPressedListener(true)
         }
     }
 
     private fun setAdapterGrid() {
-        mView.recycler_post_grid_view.visibility = View.VISIBLE
-        mView.recycler_post_mono_view.visibility = View.GONE
-        val recyclerView = this.mView.recycler_post_mono_view
+        requireView().recycler_post_grid_view.visibility = View.VISIBLE
+        requireView().recycler_post_mono_view.visibility = View.GONE
+        val recyclerView = view?.recycler_post_mono_view
         if (recyclerView is RecyclerView) {
             recyclerView.apply{
                 layoutManager = LinearLayoutManager(context)
@@ -147,9 +146,9 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setAdapterMono() {
-        mView.recycler_post_mono_view.visibility = View.VISIBLE
-        mView.recycler_post_grid_view.visibility = View.GONE
-        val recyclerView = this.mView.recycler_post_grid_view
+        requireView().recycler_post_mono_view.visibility = View.VISIBLE
+        requireView().recycler_post_grid_view.visibility = View.GONE
+        val recyclerView = requireView().recycler_post_grid_view
         if (recyclerView is RecyclerView) {
             recyclerView.apply {
                 layoutManager = GridLayoutManager(context, 4)
@@ -159,11 +158,11 @@ class ProfileFragment : Fragment() {
     }
 
     private fun populateDataView() {
-        Picasso.get().load(R.drawable.bird).resize(1000,1000).transform(CircleTransform()).into(mView.profileImage)
-        mView.postsNumber.text = itemsProfile.postsNumber
-        mView.followersNumber.text = itemsProfile.followersNumber
-        mView.name.text = itemsProfile.name
-        mView.description.text = itemsProfile.description
+        Picasso.get().load(R.drawable.bird).resize(1000,1000).transform(CircleTransform()).into(requireView().profileImage)
+        requireView().postsNumber.text = itemsProfile.postsNumber
+        requireView().followersNumber.text = itemsProfile.followersNumber
+        requireView().name.text = itemsProfile.name
+        requireView().description.text = itemsProfile.description
 /*
         if (itemsProfile.description.isNullOrBlank())
             viewContext.description.visibility = View.GONE

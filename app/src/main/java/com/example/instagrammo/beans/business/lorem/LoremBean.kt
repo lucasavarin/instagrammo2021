@@ -15,13 +15,14 @@ data class LoremBean(
 
     companion object : DataConverter<LoremBean, LoremRest> {
         override fun convert(response: LoremRest) : LoremBean {
+            val dataModified =  response.download_url?.split("/")!!.mapIndexed { index, s -> if (index == 5 || index == 6 ) "400" else s }.joinToString("/")
             return LoremBean(
                 response.id!!,
                 response.author!!,
                 response.width!!,
                 response.height!!,
                 response.url!!,
-                response.download_url!!
+                dataModified
             )
         }
     }

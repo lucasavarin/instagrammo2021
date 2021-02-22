@@ -20,8 +20,6 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
 
-    private lateinit var mView: View
-
     private var listenerPost: OnPostItemClickListener? = null
 
     private var listenerFollow: OnFollowItemClickListener? = null
@@ -38,13 +36,14 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        this.mView = inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         getData()
 
         setObservable()
-
-        return this.mView
     }
 
     private fun getData() {
@@ -119,7 +118,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setAdapterPost() {
-        val recyclerView = this.mView.home_post_recycler
+        val recyclerView = view?.home_post_recycler
         if (recyclerView is RecyclerView ) {
             recyclerView.apply{
                 layoutManager = LinearLayoutManager(context)
@@ -129,7 +128,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setAdapterFollower() {
-        val recyclerView = this.mView.home_follow_recycler
+        val recyclerView = view?.home_follow_recycler
         if (recyclerView is RecyclerView) {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context,  LinearLayoutManager.HORIZONTAL, false)

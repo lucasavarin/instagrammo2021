@@ -24,7 +24,7 @@ class TopBarBackComponent (context: Context, attrs: AttributeSet? = null) : Cons
     }
 
     fun setOnPressedListener(callback : () -> Unit){
-    onBackPressed.add (callback)
+        onBackPressed.add (callback)
     }
 
 }
