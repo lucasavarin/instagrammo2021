@@ -8,31 +8,24 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homeFollowerRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        tools:context = "fragments.HomeFragment"
-        tools:listitem="@layout/story_item"
-        android:orientation="horizontal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.10"
+        app:layout_constraintBottom_toTopOf="@+id/homePostRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".views.home.HomeFragment"
+        tools:listitem="@layout/item_follow_home" />
 
-    <!--<androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/homePostListLayout"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        tools:context = "activities.fragments.HomeFragment"
-        tools:listitem="@layout/story_item"   DA CAMBIARE
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="homeFollowerListLayout"/>-->
-
-    <!--<TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homePostRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="HOME"/>-->
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeFollowerRecyclerView"
+        tools:context=".views.home.HomeFragment"
+        tools:listitem="@layout/item_post_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
