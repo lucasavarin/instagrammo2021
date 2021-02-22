@@ -1,6 +1,6 @@
 package fragments
 
-import API.ApiClient
+import utils.api.ApiClient
 import adapters.FollowerAdapter
 import android.os.Bundle
 import android.util.Log
@@ -10,14 +10,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import bean.FollowerBean
-import bean.PostBean
+import bean.business.FollowerBean
+import bean.business.PostBean
 import retrofit2.Call
 import com.example.instagrammo.R
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Response
-import utils.FollowerResponse
-import utils.prefs
+import bean.rest.FollowerResponse
+import utils.extensions.prefs
 import retrofit2.Callback
 
 class HomeFragment : Fragment() {
@@ -42,8 +42,8 @@ class HomeFragment : Fragment() {
     fun callFollower(){
         ApiClient.getClient.getFollowers(prefs.profileId!!).enqueue(object:  Callback<FollowerResponse>{
             override fun onResponse(
-                call: Call<FollowerResponse>,
-                response: Response<FollowerResponse>
+                    call: Call<FollowerResponse>,
+                    response: Response<FollowerResponse>
             ) {
                 val linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                 homeFollowerRecyclerView.layoutManager = linearLayoutManager

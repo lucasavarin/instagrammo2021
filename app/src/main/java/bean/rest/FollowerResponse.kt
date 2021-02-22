@@ -1,6 +1,6 @@
-package utils
+package bean.rest
 
-import bean.Follower
+import bean.business.Follower
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package API
+package utils.api
 
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
@@ -7,7 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import utils.prefs
+import utils.extensions.prefs
 
 object ApiClient {
     const val BASE_URL: String = "http://www.nbarresi.it/"

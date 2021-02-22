@@ -1,4 +1,6 @@
-package bean
+package bean.business
+
+import bean.rest.Profile
 
 data class ProfileBean(
         val profileId : String?,

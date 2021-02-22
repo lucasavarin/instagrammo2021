@@ -1,4 +1,4 @@
-package com.example.instagrammo.views
+package view.main
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

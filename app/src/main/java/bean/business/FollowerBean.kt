@@ -1,4 +1,6 @@
-package bean
+package bean.business
+
+import bean.rest.FollowerProfile
 
 data class FollowerBean (
         val id: String,

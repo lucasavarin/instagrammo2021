@@ -3,8 +3,9 @@ package adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import bean.Follower
+import bean.business.Follower
 import com.example.instagrammo.R
+import holders.FollowerListHolder
 
 class FollowerAdapter(private val followers: List<Follower>) : RecyclerView.Adapter<FollowerListHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerListHolder {

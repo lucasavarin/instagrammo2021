@@ -1,6 +1,6 @@
-package activities
+package view.login
 
-import API.ApiClient
+import utils.api.ApiClient
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -10,11 +10,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import utils.AuthRequest
-import utils.AuthResponse
-import utils.prefs
+import bean.rest.AuthRequest
+import bean.rest.AuthResponse
+import utils.extensions.prefs
+import view.main.HomeActivity
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,8 +42,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(
-                    call: Call<AuthResponse>,
-                    response: Response<AuthResponse>
+                        call: Call<AuthResponse>,
+                        response: Response<AuthResponse>
                 ) {
                     if (!response.body()?.authToken.isNullOrEmpty()) {
                         prefs.rememberUser = remind_me.isChecked
