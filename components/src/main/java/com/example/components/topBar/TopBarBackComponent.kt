@@ -26,12 +26,12 @@ class TopBarBackComponent (context: Context, attrs: AttributeSet? = null) : Cons
 
         attributes.recycle()*/
 
-        val inflater = inflate(context,R.layout.top_bar_back_component,this)
+        inflate(context,R.layout.top_bar_back_component,this)
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.CustomHeader)
-        immagineFrecciaBack.setOnClickListener(){
-            onBackPressed.forEach(){it.invoke()}
+        immagineFrecciaBack.setOnClickListener{
+            onBackPressed.forEach{it.invoke()}
         }
-        testoFragmentCorrente.text=attributes.getString(R.styleable.CustomHeader_title)
+        testoFragmentCorrente.text = attributes.getString(R.styleable.CustomHeader_title)
 
         attributes.recycle()
 

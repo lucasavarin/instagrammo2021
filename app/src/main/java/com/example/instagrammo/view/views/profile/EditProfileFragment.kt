@@ -142,7 +142,7 @@ class EditProfileFragment : Fragment() {
             verificaDatiInseriti()
         }
         //bottone back nell header
-        topBarBackComponent.setOnPressedListener{
+        mView.topBarBackComponent.setOnPressedListener{
             listener.removeFragmentListener()
         }
     }
