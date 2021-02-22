@@ -2,15 +2,26 @@ package com.lynx.instagrammo.view.custom
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
+import com.lynx.instagrammo.R
+import kotlinx.android.synthetic.main.custom_navigation_header.view.*
 
 
-class CustomHeader : ConstraintLayout {
-    constructor(context: Context?) : super(context!!) {}
+class CustomHeader(context: Context, attrs: AttributeSet?) : ConstraintLayout (context,attrs){
 
-    constructor(context: Context?, attrs: AttributeSet?) : super(context!!,attrs) {}
+    private val onBackPressed :ArrayList<(() -> Unit)> = arrayListOf()
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : this(context, attrs) {}
+    init {
+        inflate(context, R.layout.custom_navigation_header, this)
+
+        val attributes = context.obtainStyledAttributes(attrs, R.styleable.CustomHeader)
+        edit_back_button.setOnClickListener{onBackPressed.forEach{it.invoke()}}
+        edit_text_header.text = attributes.getString(R.styleable.CustomHeader_title)
+        attributes.recycle()
+    }
+
+    fun setOnBackClickListener(callback: () -> Unit){
+        onBackPressed.add{callback}
+
+    }
 }

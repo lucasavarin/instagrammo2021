@@ -13,6 +13,7 @@ import com.lynx.instagrammo.networking.ProfileRequest
 import com.lynx.instagrammo.prefs
 import com.lynx.instagrammo.view.CircleTransform
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.custom_navigation_header.*
 import kotlinx.android.synthetic.main.fragment_edit.*
 import retrofit2.Call
 import retrofit2.Callback

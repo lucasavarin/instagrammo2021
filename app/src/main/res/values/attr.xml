@@ -2,10 +2,7 @@
 <resources>
 
     <declare-styleable name="CustomHeader">
-        <attr name="leftLabel" format="string" />
-        <attr name="rightLabel" format="string" />
-        <attr name="leftLabelStyle" format="reference" />
-        <attr name="rightLabelStyle" format="reference" />
+        <attr name="title" format="string" />
     </declare-styleable>
 
 </resources>
