@@ -61,7 +61,6 @@ class HomeActivity : BaseActivity(), ButtonEditProfileListener, ButtonBackToProf
     //bottone per aprire modifica profilo
     override fun onClickListenerEditButtonProfile(pressed: Boolean) {
         addFragment(EditProfileFragment.newInstance, R.id.fl_wrapper)
-        //TODO:cambiare con add(problema sfondo trasparente)
     }
 
     //bottone per salvare le modifiche fatte in modifica profilo
@@ -71,6 +70,7 @@ class HomeActivity : BaseActivity(), ButtonEditProfileListener, ButtonBackToProf
         removeFragment(EditProfileFragment.newInstance)
     }*/
 
+    //bottone per tornare indietro, da modifica profilo a profilo
     override fun onClickListenerBackToProfile() {
         supportFragmentManager.beginTransaction().apply {
             remove(EditProfileFragment.newInstance)
