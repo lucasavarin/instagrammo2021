@@ -122,13 +122,15 @@ class MainRepositoryImpl():
         return flow {
             emit(DataState.Loading)
             try {
-                val response = apiService.getLoremPictures()
+
+                val response = ApiClient.setBaseUrl(false).getLoremPictures()
                 val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
 
                 if (responseExecuted.isSuccessful){
                     val data = responseExecuted.body()!!.map { image -> LoremBean.convert(image) }
                     emit(DataState.Success(data))
                 }
+                ApiClient.setBaseUrl()
             } catch (e: Exception) {
                 emit(DataState.Error(e))
             }

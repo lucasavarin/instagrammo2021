@@ -2,20 +2,15 @@ package com.example.instagrammo.view.views.profile
 
 import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.example.components.topBar.TopBarBackComponent
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.profile.*
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
-import com.example.instagrammo.beans.rest.profile.ProfileResponse
 import com.example.instagrammo.prefs
-import com.example.instagrammo.environment.networking.ApiClient
 import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.utils.ElementViewConverter.toEditable
@@ -24,11 +19,7 @@ import com.example.instagrammo.view.viewmodel.MainViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_modifica_profilo.*
 import kotlinx.android.synthetic.main.fragment_modifica_profilo.view.*
-import kotlinx.android.synthetic.main.fragment_profile.view.edit_profile_button
 import kotlinx.android.synthetic.main.fragment_profile.view.profileImage
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class EditProfileFragment : Fragment() {
 
@@ -48,14 +39,13 @@ class EditProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mView = inflater.inflate(R.layout.fragment_modifica_profilo, container, false)
-        getData()
+
         buttonsListener()
 
         return mView
     }
 
     private fun setObservable() {
-
 
         viewModel.dataStateProfile.observe(viewLifecycleOwner, Observer { dataStateProfile ->
             when (dataStateProfile) {
@@ -116,7 +106,7 @@ class EditProfileFragment : Fragment() {
         setObservable()
 
     }
-
+/*
     private fun getData() {
         ApiClient.GetClient.getProfile(prefs.rememberIdProfile)
             .enqueue(object : Callback<ProfileResponse> {
@@ -135,7 +125,7 @@ class EditProfileFragment : Fragment() {
                 }
             })
     }
-
+*/
     private fun buttonsListener() {
         //bottone salva
         mView.close_edit_profile_button.setOnClickListener {
