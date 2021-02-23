@@ -4,9 +4,11 @@
     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:clickable="true"
     android:focusable="true"
     tools:context="com.costa.views.EditProfileFragment">
+
 
 
     <!-- TODO: Update blank fragment layout -->
