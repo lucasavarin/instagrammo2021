@@ -5,14 +5,15 @@
     android:id="@+id/toolbarFragmentCorrente"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="?attr/colorPrimary">
+    android:background="@color/trasparente">
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/immagineFrecciaBack"
         android:layout_width="46dp"
         android:layout_height="46dp"
         android:src="@drawable/ic_arrow_back"
-        android:background="?attr/colorPrimary"
+        android:background="@color/trasparente"
+        android:tint="@color/color_primary_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -23,6 +24,8 @@
         android:layout_height="match_parent"
         android:padding="10dp"
         android:text="TextView"
+        android:textColor="@color/color_primary_dark"
+        android:fontFamily="@font/algerian_regular"
         android:textAlignment="center"
         android:textSize="25dp" />
 
