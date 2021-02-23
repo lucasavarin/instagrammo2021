@@ -7,9 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.costa.beans.ProfileOut
-import com.costa.instagrammo.MainActivity
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
 import com.costa.servizi.ApiClient.userId
@@ -37,7 +34,7 @@ class EditProfileFragment : Fragment(){
     var descrizione : String= ""
     var immagine : String= ""
     var imageId : String= ""
-    var pathImg : String = "https://picsum.photos/id/$imageId/200/300"
+    var pathImg : String = "https://picsum.photos/id/$imageId/300/300"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,13 +58,15 @@ class EditProfileFragment : Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        header_add_post_step_2.setOnBackPressedListener { (listener as EditProfileFragmentInterface).back() }
+
         super.onViewCreated(view, savedInstanceState)
 
          setFilds()
 
         btn_conferma.setOnClickListener {
             imageId = id_immagine.text.toString()
-            pathImg="https://picsum.photos/id/$imageId/200/300"
+            pathImg="https://picsum.photos/id/$imageId/300/300"
             Picasso.get()
                 .load(pathImg)
                 .transform(CropCircleTransformation())
@@ -80,7 +79,7 @@ class EditProfileFragment : Fragment(){
 
             if (ceckFilds()) {
                 imageId = id_immagine.text.toString()
-                pathImg="https://picsum.photos/id/$imageId/200/300"
+                pathImg="https://picsum.photos/id/$imageId/300/300"
 
                 ApiClient.getClient.putEditProfile(
                     userId, ProfileEditRequest(

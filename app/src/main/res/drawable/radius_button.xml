@@ -15,6 +15,7 @@
 
         />
     <stroke
+
         android:width="5px"
         android:color="@color/softYellow"/>
 </shape>

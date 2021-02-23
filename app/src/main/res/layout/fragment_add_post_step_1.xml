@@ -5,21 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background"
-    android:clickable="true"
-    android:focusable="true"
-    tools:context="com.costa.views.FragmentAddPost">
+    tools:context="com.costa.views.AddPostStep1Fragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/custom_add_post"
-        android:layout_width="0dp"
+    <com.costa.components.CastomHeader
+        android:id="@+id/header_add_post_step_1"
+        app:title="Modifica Profilo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="custom view da implementare"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,10 +24,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/custom_add_post"
+        app:layout_constraintTop_toBottomOf="@+id/header_add_post_step_1"
         >
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_imagine_add"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +38,7 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bt_next"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginRight="@dimen/mid_margin"

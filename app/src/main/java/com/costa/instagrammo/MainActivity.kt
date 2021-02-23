@@ -3,6 +3,8 @@ package com.costa.instagrammo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
+import com.costa.beans.PicSumImage
+import com.costa.beans.PicSumImageOut
 import com.costa.beans.ProfileOut
 import com.costa.utils.addFragment
 import com.costa.utils.removeFragment
@@ -12,7 +14,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface,
-    EditProfileFragment.EditProfileFragmentInterface {
+    EditProfileFragment.EditProfileFragmentInterface, AddFragment.AddFragmentInterface,
+    AddPostStep1Fragment.AddPostStep1Interface, AddPostStep2Fragment.AddPostStep2Interface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -82,4 +85,30 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
 
     }
 
+    override fun onClickImage(imageOut: PicSumImage) {
+
+        addFragment(AddPostStep1Fragment.getinstance(imageOut), R.id.home_container_fragment)
+        removeFragment(AddFragment.instance)
+    }
+
+    override fun backToAddFragment() {
+        replaceFragment(AddFragment.instance, R.id.home_container_fragment)
+        removeFragment(AddPostStep1Fragment.instance)
+    }
+
+    override fun addPostStep1ToStep2(image: PicSumImage) {
+        addFragment(AddPostStep2Fragment.getinstance(image), R.id.home_container_fragment)
+        removeFragment(AddPostStep1Fragment.instance)
+    }
+
+
+    override fun salvaPost() {
+        replaceFragment(AddFragment.instance, R.id.home_container_fragment)
+        removeFragment(AddPostStep2Fragment.instance)
+    }
+
+    override fun backToAddPostStep1() {
+        replaceFragment(AddPostStep1Fragment.instance, R.id.home_container_fragment)
+        removeFragment(AddPostStep2Fragment.instance)
+    }
 }
