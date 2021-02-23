@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/transparent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_follow_item"
@@ -17,8 +17,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iconaUtente"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:padding="@dimen/postText_margin"
+            android:layout_margin="@dimen/postText_margin"
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintLeft_toLeftOf="@+id/container_follow_item"
             app:layout_constraintTop_toTopOf="@+id/logo" />
@@ -29,6 +31,8 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:text=""
+            android:padding="@dimen/postText_margin"
+            android:layout_margin="@dimen/postText_margin"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/iconaUtente"
             app:layout_constraintStart_toStartOf="@+id/iconaUtente"

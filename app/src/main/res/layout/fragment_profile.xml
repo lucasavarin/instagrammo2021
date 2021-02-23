@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:clickable="true"
     android:focusable="true"
     tools:context="com.costa.views.ProfileFragment">
@@ -18,13 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
+
+    <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_profilo"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_margin="@dimen/mid_margin"
+            android:padding="@dimen/postText_margin"
             android:src="@drawable/person"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@id/btn_modifica_profilo"
@@ -36,6 +35,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_numero_posts"
             style="@style/profile_text_count"
+            android:layout_margin="@dimen/postText_margin"
+            android:padding="@dimen/postText_margin"
             app:layout_constraintBottom_toTopOf="@id/btn_modifica_profilo"
             app:layout_constraintEnd_toEndOf="@id/label_numero_post"
             app:layout_constraintStart_toStartOf="@id/label_numero_post"
@@ -46,6 +47,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/label_numero_post"
             style="@style/profile_text"
+            android:layout_margin="@dimen/postText_margin"
+            android:padding="@dimen/postText_margin"
             android:text="posts"
             app:layout_constraintEnd_toStartOf="@id/label_numero_followers"
             app:layout_constraintStart_toStartOf="@id/btn_modifica_profilo"
@@ -54,6 +57,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_numero_followers"
             style="@style/profile_text_count"
+            android:layout_margin="@dimen/postText_margin"
+            android:padding="@dimen/postText_margin"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_numero_posts"
             app:layout_constraintEnd_toEndOf="@id/label_numero_followers"
             app:layout_constraintStart_toStartOf="@id/label_numero_followers"
@@ -62,18 +67,19 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/label_numero_followers"
             style="@style/profile_text"
+            android:layout_margin="@dimen/postText_margin"
+            android:padding="@dimen/postText_margin"
             android:text="followers"
             app:layout_constraintBaseline_toBaselineOf="@id/label_numero_post"
-            app:layout_constraintEnd_toEndOf="@+id/container_profile"
+            app:layout_constraintEnd_toEndOf="@+id/btn_modifica_profilo"
             app:layout_constraintStart_toEndOf="@id/label_numero_post" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_nome_Profilo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/mid_margin"
-            android:layout_marginTop="@dimen/mid_margin"
-            android:layout_marginEnd="@dimen/mid_margin"
+            android:layout_margin="@dimen/tiny_margin"
+            android:padding="@dimen/iconText_margin"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="@+id/container_profile"
             app:layout_constraintStart_toStartOf="@+id/container_profile"
@@ -84,10 +90,9 @@
             android:id="@+id/tv_descrizione_Profilo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:textSize="10dp"
+            android:layout_margin="@dimen/iconText_margin"
+            android:padding="@dimen/tiny_margin"
+            android:textSize="12dp"
             app:layout_constraintEnd_toEndOf="@+id/container_profile"
             app:layout_constraintStart_toStartOf="@+id/container_profile"
             app:layout_constraintTop_toBottomOf="@id/tv_nome_Profilo"
@@ -97,24 +102,22 @@
             android:id="@+id/btn_modifica_profilo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="@dimen/tiny_margin"
             android:background="@drawable/radius_button"
             android:minHeight="0dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
+            android:padding="@dimen/tiny_margin"
             android:text="@string/modifica_profilo"
             android:textAllCaps="false"
-            android:textSize="14sp"
+            app:layout_constraintHorizontal_weight="5"
             app:layout_constraintBottom_toTopOf="@id/tv_nome_Profilo"
             app:layout_constraintEnd_toEndOf="@+id/container_profile"
-            app:layout_constraintHorizontal_weight="5"
             app:layout_constraintStart_toEndOf="@id/img_profilo" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_marginTop="@dimen/iconText_margin"
             app:layout_constraintLeft_toLeftOf="@+id/container_profile"
             app:layout_constraintRight_toRightOf="@+id/container_profile"
             app:layout_constraintTop_toBottomOf="@id/tv_descrizione_Profilo">
@@ -123,15 +126,18 @@
                 android:id="@+id/ti_grid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/iconText_margin"
                 android:icon="@drawable/ic_grid_view_black_24"
-
-                />
+                android:padding="@dimen/iconText_margin" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/ti_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/ic_linear_view_black_24" />
+                android:layout_margin="@dimen/iconText_margin"
+                android:icon="@drawable/ic_linear_view_black_24"
+                android:padding="@dimen/iconText_margin" />
+
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.recyclerview.widget.RecyclerView

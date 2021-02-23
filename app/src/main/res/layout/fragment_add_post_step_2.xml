@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
             android:id="@+id/header_add_post_step_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bottom_border_grey"
             app:layout_constraintTop_toTopOf="parent"
             app:title="Conferma Immagine" />
 
@@ -37,7 +39,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/mid_margin"
-
+            app:counterEnabled="true"
+            app:counterMaxLength="100"
             app:boxBackgroundMode="outline"
             app:layout_constraintBottom_toTopOf="@id/btn_carica_post"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -51,7 +54,7 @@
                 android:backgroundTint="@color/transparent"
                 android:hint="@string/descrizione"
                 android:imeOptions="actionDone"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
                 android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,7 +67,6 @@
             android:layout_marginBottom="@dimen/mid_margin"
             android:background="@drawable/radius_button"
             android:text="Conferma"
-            android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

@@ -3,6 +3,7 @@ package com.costa.instagrammo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.GridLayoutManager
 import com.costa.beans.PicSumImage
 import com.costa.beans.PicSumImageOut
 import com.costa.beans.ProfileOut
@@ -12,6 +13,7 @@ import com.costa.utils.replaceFragment
 import com.costa.views.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface,
     EditProfileFragment.EditProfileFragmentInterface, AddFragment.AddFragmentInterface,

@@ -39,10 +39,11 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bt_next"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginRight="@dimen/mid_margin"
-        android:layout_marginBottom="@dimen/mid_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/mid_margin"
+        android:padding="@dimen/iconText_margin"
         android:src="@drawable/ic_arrow_forward_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
