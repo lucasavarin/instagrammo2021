@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.lynxspa.instagrammo.retrofit.Profile
 import kotlinx.android.synthetic.main.fragment_profile.*
 
- class HomeActivity: AppCompatActivity(), ProfileFragment.ProfileInterfaceFragment {
+ class HomeActivity: AppCompatActivity(), ProfileFragment.ProfileInterfaceFragment, ModificaProfiloFragment.BackToProfile {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -59,6 +59,13 @@ import kotlinx.android.synthetic.main.fragment_profile.*
      }
 
      override fun modificaProfiloFragment() {
-         replaceFragment(ModificaProfiloFragment.makeIstance(),R.id.fragmentContainer)
+         addFragment(ModificaProfiloFragment.makeIstance(),R.id.fragmentContainer)
+     }
+
+     override fun closeModificaProfiloFragment() {
+         supportFragmentManager.beginTransaction().apply {
+             remove(ModificaProfiloFragment.makeIstance())
+             commit()
+         }
      }
  }
