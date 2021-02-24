@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.example.components.topBar.TopBarBackComponent
+        android:id="@+id/topBarBackComponent"
+        android:layout_width="412dp"
+        android:layout_height="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/conferma_aggiungi_post" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/profileImage"
+        android:layout_width="326dp"
+        android:layout_height="326dp"
+        android:layout_marginTop="88dp"
+        app:civ_border_color="#FF000000"
+        app:layout_constraintBottom_toTopOf="@+id/Descrizione"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/Descrizione"
+        android:layout_width="323dp"
+        android:layout_height="44dp"
+        android:backgroundTint="@color/black"
+        android:hint="@string/descrizione"
+        android:textColor="@color/black"
+        android:textColorHint="@color/lightRed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBarBackComponent"
+        app:layout_constraintVertical_bias="0.737"
+        app:title_header="@string/descrizione" />
+
+    <com.example.components.buttons.ConfirmButtonComponent
+        android:id="@+id/close_edit_profile_button"
+        android:layout_width="323dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/salva"
+        android:theme="@style/confirm_button_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Descrizione"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Descrizione"
+        app:layout_constraintTop_toBottomOf="@+id/Descrizione"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,4 +22,6 @@
     <string name="profile">Profile</string>
     <string name="login">Login</string>
     <string name="ok">OK</string>
+    <string name="aggiungi_post">Aggiungi Post</string>
+    <string name="conferma_aggiungi_post">Conferma Aggiunta Post</string>
 </resources>
