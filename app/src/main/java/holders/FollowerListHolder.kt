@@ -4,7 +4,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import bean.business.Follower
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_follow_home.view.*
 import kotlinx.android.synthetic.main.story_item.view.*
+import utils.extensions.CircleTransformation
 
 class FollowerListHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
     private var view: View = v
@@ -12,9 +15,7 @@ class FollowerListHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickList
 
     fun bindFollower(follower: Follower){
         this.follower = follower
-        /*Picasso.get().load(follower.picture).transform(CircleTransform()).into(view.followerImage)*/
-        /*view.FollowerImageButton.setImageURI(Uri.EMPTY)*/                              //passare le immagini dei singoli user usando picasso
-        view.blob.text = follower.name
+        Picasso.get().load(follower.picture).transform(CircleTransformation()).into(view.profile_image_follower)
     }
 
     override fun onClick(v: View?) {

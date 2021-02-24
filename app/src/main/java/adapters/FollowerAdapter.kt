@@ -9,7 +9,7 @@ import holders.FollowerListHolder
 
 class FollowerAdapter(private val followers: List<Follower>) : RecyclerView.Adapter<FollowerListHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerListHolder {
-        val inflate = LayoutInflater.from(parent.context).inflate(R.layout.story_item,parent,false)
+        val inflate = LayoutInflater.from(parent.context).inflate(R.layout.item_follow_home,parent,false)
         return FollowerListHolder(inflate)
     }
 

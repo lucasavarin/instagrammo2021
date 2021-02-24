@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_image"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title_post"
@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/post_image" />
 
-    <View
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/line_separator"
         android:layout_width="match_parent"
         android:layout_height="0.2dp"
