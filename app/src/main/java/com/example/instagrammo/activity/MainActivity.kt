@@ -7,9 +7,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.example.instagrammo.fragment.*
+import com.example.instagrammo.fragment.secondFragment.ModifyProfileFragment
 import kotlinx.android.synthetic.main.main_activity.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , InterfaceApp{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +36,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun backToProfile() {
+       supportFragmentManager.beginTransaction().apply {
+           remove(ModifyProfileFragment.newInstance)
+           commit()
+       }
+    }
 }
+
 
 fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
     val fragmentTransaction = beginTransaction()

@@ -56,7 +56,7 @@ class ProfileFragment : Fragment() {
         edit_btn.setOnClickListener {
             val fragmentManager = activity!!.supportFragmentManager
             var transaction: FragmentTransaction = fragmentManager?.beginTransaction()!!
-            transaction.replace(R.id.fragment_container, modifyProfile)
+            transaction.add(R.id.fragment_container, modifyProfile)
             transaction.addToBackStack(null)
             transaction.commit()
 

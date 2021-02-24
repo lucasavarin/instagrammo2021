@@ -36,6 +36,7 @@
             android:background="@drawable/corners"
             android:fontFamily="@font/noto_sans"
             android:hint="@string/login_username"
+
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>

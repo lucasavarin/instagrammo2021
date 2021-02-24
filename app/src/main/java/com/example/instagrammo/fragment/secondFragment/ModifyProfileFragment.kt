@@ -1,5 +1,6 @@
 package com.example.instagrammo.fragment.secondFragment
 
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils.replace
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.instagrammo.InterfaceApp
 import com.example.instagrammo.R
 import com.example.instagrammo.fragment.ProfileFragment
 import com.example.instagrammo.network.ApiClient
@@ -25,7 +27,7 @@ import retrofit2.Response
 
 
 class ModifyProfileFragment : Fragment() {
-   // private lateinit var listner :
+     private  var listner : InterfaceApp? = null
     private var posts: List<PayloadProfile> = mutableListOf()
 
     override fun onCreateView(
@@ -58,7 +60,7 @@ class ModifyProfileFragment : Fragment() {
                 )
             ).enqueue(object : Callback<Boolean> {
                 override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                    Log.i("info","${t.message}")
+                    Log.i("info", "${t.message}")
                 }
 
                 override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
@@ -68,7 +70,16 @@ class ModifyProfileFragment : Fragment() {
             })
         }
         customViewController.setOnBackPressedListner {
-           //TODO: implementare la logica per tornare al profilo
+            listner?.backToProfile()
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is InterfaceApp) {
+            listner = context
+        } else {
+            throw RuntimeException("$context must implement InterfaceApp")
         }
     }
 
@@ -96,17 +107,18 @@ class ModifyProfileFragment : Fragment() {
 
             })
     }
+
     private fun closefragment() {
-       // requireActivity().onBackPressedDispatcher.addCallback(this)
-        //activity!!.supportFragmentManager.beginTransaction().commit()
+        val fragmentManager = activity!!.supportFragmentManager
+        fragmentManager.beginTransaction().apply {
+            remove(ModifyProfileFragment.newInstance)
+            commit()
+        }
     }
 
     companion object {
-        @JvmStatic
-        fun newInstance() =
-            ModifyProfileFragment().apply {
-                arguments = Bundle().apply {}
-            }
+        var newInstance: ModifyProfileFragment = ModifyProfileFragment()
+
     }
 
 }

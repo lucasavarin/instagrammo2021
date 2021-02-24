@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object PicApiClient {
-    const val BASE_URL: String = "https://picsum.photos/v2/list"
+    const val BASE_URL: String = "https://picsum.photos/v2/list/"
 
     val getClient: PicApiInterface
         get() {
