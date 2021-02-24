@@ -15,6 +15,7 @@ import com.lynx.instagrammo.networking.AddPostRequest
 import com.lynx.instagrammo.prefs
 import com.lynx.instagrammo.view.CircleTransform
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.custom_navigation_header.*
 import kotlinx.android.synthetic.main.fragment_add_post.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,6 +36,10 @@ class AddPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        edit_back_button.setOnClickListener {
+            listener.backToShowImage()
+        }
+
         Picasso
             .get()
             .load(itemPicture!!.download_url)
@@ -50,7 +55,7 @@ class AddPostFragment : Fragment() {
                     title = title,
                     picture = itemPicture!!.download_url
                 )
-            ).enqueue(object : Callback<Boolean>{
+            ).enqueue(object : Callback<Boolean> {
                 override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                     Toast.makeText(context, "POST SALVATO", Toast.LENGTH_SHORT).show()
                 }
@@ -69,19 +74,21 @@ class AddPostFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is AddPostFragmentInterface)
+        if (context is AddPostFragmentInterface)
             listener = context
     }
 
     companion object {
         var itemPicture: PicsumImageRest? = null
+        val newInstance: AddPostFragment = AddPostFragment()
         fun newInstace(item: PicsumImageRest): AddPostFragment {
             itemPicture = item
             return AddPostFragment()
         }
     }
 
-    interface AddPostFragmentInterface{
+    interface AddPostFragmentInterface {
         fun addPostAndExit()
+        fun backToShowImage()
     }
 }

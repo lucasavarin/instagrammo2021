@@ -96,5 +96,14 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
         removeFragment(ShowImageFragment.newInstance)
     }
 
+    override fun backToAdd() {
+        replaceFragment(AddFragment.newInstance, R.id.fragmentConainer)
+        removeFragment(ShowImageFragment.newInstance)
+    }
+
+    override fun backToShowImage() {
+        replaceFragment(ShowImageFragment.newInstance, R.id.fragmentConainer)
+        removeFragment(AddPostFragment.newInstance)
+    }
 
 }
