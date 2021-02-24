@@ -13,15 +13,9 @@ import kotlinx.android.synthetic.main.item_grid3x.view.*
 
 class ItemLoremRecyclerViewAdapter(
     private val mContext: Context,
-    private val mValues: List<LoremBean>
+    private val mValues: List<LoremBean>,
+    private val mListener: OnImageItemClickListener
 ) : RecyclerView.Adapter<ItemLoremRecyclerViewAdapter.ViewHolder>(){
-
-    val mOnClickListener: View.OnClickListener
-    init {
-        mOnClickListener = View.OnClickListener {
-
-        }
-    }
 
     override fun getItemCount(): Int = mValues.size
 
@@ -40,9 +34,10 @@ class ItemLoremRecyclerViewAdapter(
         position: Int) {
 
         val item = mValues[position]
-
         Picasso.get().load(item.download_url).resize(100,100).into(holder.itemImage)
-
+        holder.itemView.setOnClickListener {
+            mListener.onImageItemListener(item)
+        }
     }
 
     inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {

@@ -49,6 +49,7 @@ object ApiClient {
             .build()
 
         return retrofit.create(ApiInterface::class.java)
+
     }
 
     fun setBaseUrl(baseUrl : Boolean = true) : ApiInterface{

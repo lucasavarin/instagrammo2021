@@ -16,6 +16,7 @@ import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.utils.adapter.ItemLoremRecyclerViewAdapter
 import com.example.instagrammo.utils.adapter.ItemPostRecyclerViewAdapter
+import com.example.instagrammo.utils.adapter.OnImageItemClickListener
 import com.example.instagrammo.utils.adapter.OnPostItemClickListener
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainStateEvent
@@ -30,6 +31,7 @@ class AddFragment : Fragment(){
 
     private val viewModel = MainViewModel()
     private lateinit var listaLorem : List<LoremBean>
+    private lateinit var listenerImage: OnImageItemClickListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,11 +61,19 @@ class AddFragment : Fragment(){
         if (recyclerView is RecyclerView) {
             recyclerView.apply{
                 layoutManager = GridLayoutManager(context, 3)
-                adapter = ItemLoremRecyclerViewAdapter(this.context, listaLorem )
+                adapter = ItemLoremRecyclerViewAdapter(this.context, listaLorem, listenerImage)
             }
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnImageItemClickListener) {
+            listenerImage = context
+        } else {
+            throw RuntimeException("$context must implement OnImageItemClickListener")
+        }
+    }
 
     companion object {
         var newInstance : AddFragment = AddFragment()

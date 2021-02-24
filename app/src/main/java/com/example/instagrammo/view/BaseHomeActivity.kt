@@ -2,10 +2,14 @@ package com.example.instagrammo.view
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.ContactsContract
 import android.util.Log
 import android.view.View
 import com.example.instagrammo.R
+import com.example.instagrammo.beans.business.lorem.LoremBean
+import com.example.instagrammo.utils.adapter.OnImageItemClickListener
 import com.example.instagrammo.utils.adapter.OnPostItemClickListener
 import com.example.instagrammo.view.views.add.AddFragment
 import com.example.instagrammo.view.views.follow.FollowFragment
@@ -19,7 +23,7 @@ import com.example.instagrammo.view.views.profile.ProfileFragment
 import com.example.instagrammo.views.BaseActivity
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
-class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProfileListener, EditProfileFragmentListener{
+class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProfileListener, EditProfileFragmentListener, OnImageItemClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +31,9 @@ class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProf
         addFragment(HomeFragment.newInstance, R.id.fragment_container)
 
         bottomMenuNavigationManager()
-
+        Handler(Looper.getMainLooper()).postDelayed({
+            //getdata()
+        }, 5000)
     }
 
     private fun bottomMenuNavigationManager(){
@@ -74,5 +80,9 @@ class BaseHomeActivity : BaseActivity(), OnPostItemClickListener, ButtonEditProf
     override fun removeFragmentListener() {
         //replaceFragment(ProfileFragment.newInstance, R.id.fragment_container)
         removeFragment(EditProfileFragment.newInstance)
+    }
+
+    override fun onImageItemListener(image: LoremBean) {
+        Log.i("IMMAGINE CLICCATO ", image.download_url)
     }
 }
