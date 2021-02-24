@@ -3,7 +3,7 @@ package com.lynxspa.instagrammo
 import android.app.Application
 import com.lynxspa.instagrammo.singleton.Prefs
 
-class InstagrammoApplication : Application() {
+class Instagrammo : Application() {
     companion object {
         var prefs: Prefs? = null
 

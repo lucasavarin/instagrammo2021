@@ -1,8 +1,8 @@
 package com.lynxspa.instagrammo.singleton
 
-import com.lynxspa.instagrammo.InstagrammoApplication
+import com.lynxspa.instagrammo.Instagrammo
 
 
     val prefs : Prefs by lazy {
-        InstagrammoApplication.prefs!!
+        Instagrammo.prefs!!
     }

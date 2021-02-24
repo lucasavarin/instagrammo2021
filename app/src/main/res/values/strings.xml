@@ -5,5 +5,10 @@
     <string name="Ricordami">Ricordami</string>
     <string name="salva">Salva</string>
     <string name="modifca_profilo">Modifca Profilo</string>
+    <string name="conferma">Conferma</string>
+    <string name="descrizione">Descrizione</string>
+    <string name="id_immagine">Id immagine</string>
+    <string name="nome_profilo">Nome profilo</string>
+    <string name="descrizione_profilo">Descrizione profilo</string>
 
 </resources>

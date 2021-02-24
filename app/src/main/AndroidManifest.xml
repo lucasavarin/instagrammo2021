@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Instagrammo"
         android:usesCleartextTraffic="true"
-        android:name=".InstagrammoApplication"
+        android:name=".Instagrammo"
         >
 
         <activity android:name=".MainActivity">

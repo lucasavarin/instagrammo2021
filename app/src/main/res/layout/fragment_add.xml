@@ -4,29 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/instagrammoEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="cursive"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/instagrammo"
-        android:textAlignment="center"
-        android:textColor="#2196F3"
-        android:textSize="40sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerAdd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toStartOf="@+id/appCompatTextView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="add"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/instagrammoEditText">
 
-    </androidx.appcompat.widget.AppCompatTextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

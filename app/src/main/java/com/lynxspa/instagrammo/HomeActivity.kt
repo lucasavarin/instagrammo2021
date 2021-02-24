@@ -14,6 +14,9 @@ import kotlinx.android.synthetic.main.fragment_profile.*
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        btnEditProfile.setOnClickListener {
+
+        }
 
 
         addFragment(HomeFragment.makeIstance(),R.id.fragmentContainer)
