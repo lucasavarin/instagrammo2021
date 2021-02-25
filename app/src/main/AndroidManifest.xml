@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:name=".view.ApplicationContext"
@@ -21,10 +22,11 @@
             </intent-filter>
         </activity>
         <!-- LOGINPAGE -->
-        <activity android:name=".view.login.LoginActivity">
-
-        </activity> <!-- HOMEPAGE -->
+        <activity android:name=".view.login.LoginActivity"/>
+        <!-- HOMEPAGE -->
         <activity android:name=".view.MainActivity" android:windowSoftInputMode="adjustPan" />
+        <!--FOREGROUND SERVICE-->
+        <service android:name=".view.service.ForegroundService" android:enabled="true" android:exported="false"/>
     </application>
 
 </manifest>

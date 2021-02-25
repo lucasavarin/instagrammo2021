@@ -49,8 +49,6 @@ class EditFragment : Fragment() {
             getHint()
         }
 
-
-
         save_edit_profile.setOnClickListener {
 
             imageIdEdited = edit_id_image.text.toString()

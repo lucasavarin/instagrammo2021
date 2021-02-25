@@ -16,6 +16,7 @@ class ProfileGridViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
         Picasso
                 .get()
                 .load(post.picture)
+                .resize(500,500)
                 .into(v.grid_profile_img)
 
 /*        Picasso
