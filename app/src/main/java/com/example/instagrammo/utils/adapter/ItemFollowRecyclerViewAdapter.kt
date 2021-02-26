@@ -32,6 +32,7 @@ class ItemFollowRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
+        holder.nameFollowerText.text = item.name
         Picasso.get().load(item.picture).resize(200,200).transform(CircleTransform()).into(holder.imageProfile)
     }
 
@@ -39,6 +40,7 @@ class ItemFollowRecyclerViewAdapter(
         mView: View
     ) : RecyclerView.ViewHolder(mView){
         val imageProfile = mView.profile_image_follower
+        val nameFollowerText = mView.name_follower
     }
 
 }

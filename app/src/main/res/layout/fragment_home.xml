@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <!--
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gradientup"
         android:layout_width="match_parent"
@@ -49,5 +51,76 @@
         app:layout_constraintTop_toBottomOf="@+id/home_follow_recycler"
         tools:context=".view.views.home.HomeFragment"
         tools:listitem="@layout/item_post_home" />
+-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinetopfollower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gradientup"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/background_follower_recycler_up"
+        app:layout_constraintTop_toTopOf="@+id/guidelinetopfollower"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_follow_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:foregroundGravity="center"
+        android:layout_marginBottom="@dimen/default2"
+        android:layout_marginTop="@dimen/default2"
+        app:layout_constraintBottom_toBottomOf="@id/guidelinebottomfollower"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelinetopfollower"
+        tools:context=".view.views.home.HomeFragment"
+        tools:listitem="@layout/item_follow_home" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gradientdown"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/background_follower_recycler_down"
+        app:layout_constraintBottom_toBottomOf="@id/guidelinebottomfollower"
+        app:layout_constraintEnd_toEndOf="@+id/home_follow_recycler"
+        app:layout_constraintHeight_percent="0.005"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinebottomfollower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_post_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/default2"
+        android:layout_marginTop="@dimen/default2"
+        app:layout_constraintBottom_toBottomOf="@id/guidelinebottompost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelinebottomfollower"
+        tools:context=".view.views.home.HomeFragment"
+        tools:listitem="@layout/item_post_home" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinebottompost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

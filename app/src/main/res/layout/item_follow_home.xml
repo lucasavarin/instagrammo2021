@@ -4,16 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/default2"
     android:layout_gravity="center">
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/profile_image_follower"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default0"
+        android:layout_marginTop="@dimen/default1"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/name_follower"
+        app:layout_constraintHeight_percent="0.65"
         app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="@dimen/default0"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/name_follower"
+        android:layout_width="@dimen/default0"
+        android:layout_height="@dimen/default0"
+        android:layout_marginBottom="@dimen/default1"
+        android:textAlignment="center"
+        android:textSize="@dimen/font14"
+        android:textColor="@color/royalBlueDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image_follower"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintStart_toStartOf="@+id/profile_image_follower"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image_follower" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
