@@ -12,6 +12,7 @@ import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.environment.networking.ApiClient
 import com.example.instagrammo.utils.CircleTransform
+import com.example.instagrammo.utils.listener.OnPostItemClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_post_home.view.*
 

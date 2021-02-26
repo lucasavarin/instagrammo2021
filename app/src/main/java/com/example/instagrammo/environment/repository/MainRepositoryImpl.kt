@@ -2,12 +2,14 @@ package com.example.instagrammo.environment.repository
 
 import com.example.instagrammo.beans.rest.auth.AuthRequest
 import com.example.instagrammo.beans.business.followers.FollowerBean
-import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
 import com.example.instagrammo.beans.business.profile.ProfileBean
+import com.example.instagrammo.beans.rest.lorem.LoremRest
+import com.example.instagrammo.beans.rest.post.AddPostRequest
 import com.example.instagrammo.prefs
 import com.example.instagrammo.environment.networking.ApiClient
+import com.example.instagrammo.environment.networking.ApiClientLorem
 import com.example.instagrammo.view.viewmodel.DataState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -35,8 +37,8 @@ class MainRepositoryImpl():
 
                 if (responseExcuted.isSuccessful)
                     if (responseExcuted.body()?.result != null) {
-                        prefs.rememberToken = if (responseExcuted.body()?.authToken != null) responseExcuted.body()?.authToken.toString() else ""
-                        prefs.rememberIdProfile = if (responseExcuted.body()?.profileId != null) responseExcuted.body()?.profileId.toString() else ""
+                        prefs.token = if (responseExcuted.body()?.authToken != null) responseExcuted.body()?.authToken.toString() else ""
+                        prefs.idProfile = if (responseExcuted.body()?.profileId != null) responseExcuted.body()?.profileId.toString() else ""
                         emit(DataState.Success(responseExcuted.body()?.result!!))
                     }
             } catch (e: IOException) {
@@ -69,7 +71,7 @@ class MainRepositoryImpl():
         return flow {
             emit(DataState.Loading)
             try {
-                val response = apiService.getFollowers(prefs.rememberIdProfile)
+                val response = apiService.getFollowers(prefs.idProfile)
                 val responseExcuted = withContext(Dispatchers.IO) { response.execute() }
 
                 if (responseExcuted.isSuccessful)
@@ -87,7 +89,7 @@ class MainRepositoryImpl():
         return flow {
             emit(DataState.Loading)
             try {
-                val response = apiService.getProfile(prefs.rememberIdProfile)
+                val response = apiService.getProfile(prefs.idProfile)
                 val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
 
                 if (responseExecuted.isSuccessful)
@@ -118,17 +120,16 @@ class MainRepositoryImpl():
         }
     }
 
-    override fun getListPictureLorem(): Flow<DataState<List<LoremBean>>> {
+    override fun getListPictureLorem(): Flow<DataState<List<LoremRest>>> {
         return flow {
             emit(DataState.Loading)
             try {
 
-                val response = ApiClient.setBaseUrl(false).getLoremPictures()
+                val response = ApiClientLorem.GetClient.getAllLoremPictures()
                 val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
 
                 if (responseExecuted.isSuccessful){
-                    val data = responseExecuted.body()!!.map { image -> LoremBean.convert(image) }
-                    data.forEach{it -> println(it)}
+                    val data = responseExecuted.body()!!
                     emit(DataState.Success(data))
                 }
                 ApiClient.setBaseUrl()
@@ -138,5 +139,45 @@ class MainRepositoryImpl():
         }
     }
 
+    override fun postAddPost(idProfile: String, post: AddPostRequest): Flow<DataState<Boolean>> {
+        return flow {
+            emit(DataState.Loading)
+            try {
 
+                val response = ApiClient.GetClient.postAddPost(idProfile, post)
+                val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
+
+                if (responseExecuted.isSuccessful)
+                    emit(DataState.Success(responseExecuted.body()!!.result!!))
+
+            } catch (e: Exception) {
+                emit(DataState.Error(e))
+            }
+        }
+    }
+/*
+    override fun getPictureLorem(id: String, width: String, height: String): Flow<DataState<LoremBean>> {
+        return flow {
+            emit(DataState.Loading)
+            try {
+
+                val response = ApiClientLorem.GetClient.getLoremPicture(id, width, height)
+                val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
+
+                if (responseExecuted.isSuccessful){
+                    val data = responseExecuted.body()!!
+                    val dataBean = LoremBean.convert(data)
+                    emit(DataState.Success(dataBean))
+                    Log.i("ciao", dataBean.download_url)
+                }
+                ApiClient.setBaseUrl()
+            } catch (e: Exception) {
+                emit(DataState.Error(e))
+            }
+        }
+    }
+
+
+
+ */
 }

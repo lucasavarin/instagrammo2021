@@ -19,11 +19,11 @@ class SharePrefs (context: Context){
         get() = prefs.getString(REMEMBER_USERNAME, "")!!
         set(value) = prefs.edit().putString(REMEMBER_USERNAME, value).apply()
 
-    var rememberToken: String
+    var token: String
         get() = prefs.getString(REMEMBER_TOKEN, "")!!
         set(value) = prefs.edit().putString(REMEMBER_TOKEN, value).apply()
 
-    var rememberIdProfile: String
+    var idProfile: String
         get() = prefs.getString(REMEMBER_ID_PROFILE, "")!!
         set(value) = prefs.edit().putString(REMEMBER_ID_PROFILE, value).apply()
 }

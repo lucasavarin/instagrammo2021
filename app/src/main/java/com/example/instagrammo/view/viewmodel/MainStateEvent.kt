@@ -1,6 +1,8 @@
 package com.example.instagrammo.view.viewmodel
 
+import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.rest.auth.AuthRequest
+import com.example.instagrammo.beans.rest.post.AddPostRequest
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
 
 sealed class MainStateEvent {
@@ -15,5 +17,10 @@ sealed class MainStateEvent {
 
     object GetProfileEvent : MainStateEvent()
 
-    object GetLoremImagesEvent : MainStateEvent()
+    object GetAllLoremImagesEvent : MainStateEvent()
+
+    class PostAddPicture(val idProfile: String, val postRequest: AddPostRequest) : MainStateEvent()
+
+    class GetLoremImageEvent(val id: String, val width: String, val height: String)
+        : MainStateEvent()
 }

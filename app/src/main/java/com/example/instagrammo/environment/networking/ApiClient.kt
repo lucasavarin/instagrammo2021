@@ -34,7 +34,7 @@ object ApiClient {
                 @Throws(IOException::class)
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val newRequest: Request = chain.request().newBuilder()
-                        .addHeader("x-api-key", prefs.rememberToken!!)
+                        .addHeader("x-api-key", prefs.token!!)
                         .build()
                     return chain.proceed(newRequest)
                 }

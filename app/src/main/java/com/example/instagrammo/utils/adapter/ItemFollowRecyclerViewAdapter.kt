@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.followers.FollowerBean
 import com.example.instagrammo.utils.CircleTransform
+import com.example.instagrammo.utils.listener.OnFollowItemClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_follow_home.view.*
 

@@ -6,6 +6,8 @@ import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
 import com.example.instagrammo.beans.business.profile.ProfileBean
+import com.example.instagrammo.beans.rest.lorem.LoremRest
+import com.example.instagrammo.beans.rest.post.AddPostRequest
 import com.example.instagrammo.view.viewmodel.DataState
 import kotlinx.coroutines.flow.Flow
 
@@ -21,5 +23,9 @@ interface MainRepository {
 
     fun putProfile(data: EditProfileRequest) : Flow<DataState<Boolean>>
 
-    fun getListPictureLorem() : Flow<DataState<List<LoremBean>>>
+    fun getListPictureLorem() : Flow<DataState<List<LoremRest>>>
+
+    fun postAddPost(idProfile: String, post: AddPostRequest) : Flow<DataState<Boolean>>
+
+    //fun getPictureLorem(id: String, width: String, height: String) : Flow<DataState<LoremBean>>
 }

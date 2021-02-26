@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.lorem.LoremBean
-import com.example.instagrammo.beans.business.post.PostBean
+import com.example.instagrammo.utils.listener.OnImageItemClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_grid3x.view.*
 
@@ -34,9 +34,9 @@ class ItemLoremRecyclerViewAdapter(
         position: Int) {
 
         val item = mValues[position]
-        Picasso.get().load(item.download_url).resize(100,100).into(holder.itemImage)
+        Picasso.get().load(item.download_url).resize(400,400).into(holder.itemImage)
         holder.itemView.setOnClickListener {
-            mListener.onImageItemListener(item)
+            mListener.onImageItemAddListener(item)
         }
     }
 

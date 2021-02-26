@@ -1,6 +1,7 @@
 package com.example.instagrammo.beans.business.lorem
 
 import com.example.instagrammo.beans.DataConverter
+import com.example.instagrammo.beans.DataConverterSize
 import com.example.instagrammo.beans.DataModel
 import com.example.instagrammo.beans.rest.lorem.LoremRest
 
@@ -15,15 +16,17 @@ data class LoremBean(
 
     companion object : DataConverter<LoremBean, LoremRest> {
         override fun convert(response: LoremRest) : LoremBean {
-            val dataModified =  response.download_url?.split("/")!!.mapIndexed { index, s -> if (index == 5 || index == 6 ) "400" else s }.joinToString("/")
+            //val dataModified =  response.download_url?.split("/")!!.mapIndexed { index, s -> if (index == 5 || index == 6 ) size else s }.joinToString("/")
             return LoremBean(
                 response.id!!,
                 response.author!!,
                 response.width!!,
                 response.height!!,
                 response.url!!,
-                dataModified
+                response.download_url!!
             )
         }
+
+
     }
 }

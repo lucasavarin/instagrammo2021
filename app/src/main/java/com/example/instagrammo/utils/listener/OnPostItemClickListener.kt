@@ -1,4 +1,4 @@
-package com.example.instagrammo.utils.adapter
+package com.example.instagrammo.utils.listener
 
 interface OnPostItemClickListener {
 

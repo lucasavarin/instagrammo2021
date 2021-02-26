@@ -15,7 +15,7 @@ import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.utils.adapter.ItemGridRecyclerViewAdapter
 import com.example.instagrammo.utils.adapter.ItemPostRecyclerViewAdapter
-import com.example.instagrammo.utils.adapter.OnPostItemClickListener
+import com.example.instagrammo.utils.listener.OnPostItemClickListener
 import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainStateEvent

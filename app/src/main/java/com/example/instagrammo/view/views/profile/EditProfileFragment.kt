@@ -94,7 +94,7 @@ class EditProfileFragment : Fragment() {
 
         editProfileRequest =
             EditProfileRequest(
-                prefs.rememberIdProfile,
+                prefs.idProfile,
                 nomeProfilo,
                 descrizioneProfilo,
                 itemsProfile.picture

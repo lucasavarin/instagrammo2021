@@ -17,7 +17,7 @@
         app:title="@string/conferma_aggiungi_post" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/profileImage"
+        android:id="@+id/image_to_confirm"
         android:layout_width="326dp"
         android:layout_height="326dp"
         android:layout_marginTop="88dp"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/Descrizione"
+        android:id="@+id/description_post"
         android:layout_width="323dp"
         android:layout_height="44dp"
         android:backgroundTint="@color/black"
@@ -43,7 +43,7 @@
         app:title_header="@string/descrizione" />
 
     <com.example.components.buttons.ConfirmButtonComponent
-        android:id="@+id/close_edit_profile_button"
+        android:id="@+id/confirm_post_image_button"
         android:layout_width="323dp"
         android:layout_height="46dp"
         android:layout_marginTop="64dp"
@@ -52,8 +52,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/Descrizione"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/Descrizione"
-        app:layout_constraintTop_toBottomOf="@+id/Descrizione"
+        app:layout_constraintStart_toStartOf="@+id/description_post"
+        app:layout_constraintTop_toBottomOf="@+id/description_post"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

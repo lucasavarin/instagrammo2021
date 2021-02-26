@@ -8,6 +8,7 @@ import com.example.instagrammo.beans.business.followers.FollowerBean
 import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.business.profile.ProfileBean
+import com.example.instagrammo.beans.rest.lorem.LoremRest
 import com.example.instagrammo.environment.repository.MainRepositoryImpl
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -27,7 +28,11 @@ class MainViewModel() : ViewModel() {
 
     private val _dataStateEditProfile: MutableLiveData<DataState<Boolean>> = MutableLiveData()
 
-    private val _dataStateLoremImages: MutableLiveData<DataState<List<LoremBean>>> = MutableLiveData()
+    private val _dataStateAllLoremImages: MutableLiveData<DataState<List<LoremRest>>> = MutableLiveData()
+
+    private val _dataStateLoremImage: MutableLiveData<DataState<LoremBean>> = MutableLiveData()
+
+    private val _dataStateAddPost: MutableLiveData<DataState<Boolean>> = MutableLiveData()
 
     val dataStatePost: LiveData<DataState<List<PostBean>>>
         get() = _dataStatePosts
@@ -44,8 +49,14 @@ class MainViewModel() : ViewModel() {
     val dataStateEditProfile : LiveData<DataState<Boolean>>
         get() = _dataStateEditProfile
 
-    val dataStateLoremImages : LiveData<DataState<List<LoremBean>>>
-        get() = _dataStateLoremImages
+    val dataStateAllLoremImages : LiveData<DataState<List<LoremRest>>>
+        get() = _dataStateAllLoremImages
+
+    val dataStateLoremImage : LiveData<DataState<LoremBean>>
+        get() = _dataStateLoremImage
+
+    val dataStateAddPost : LiveData<DataState<Boolean>>
+        get() = _dataStateAddPost
 
 
     fun setStateEvent(mainStateEvent: MainStateEvent) {
@@ -86,11 +97,25 @@ class MainViewModel() : ViewModel() {
 
                 }
 
-                is MainStateEvent.GetLoremImagesEvent -> {
+                is MainStateEvent.GetAllLoremImagesEvent -> {
                     mainRepository.getListPictureLorem()
-                        .onEach {  dataStateLoremImage -> _dataStateLoremImages.value = dataStateLoremImage }
+                        .onEach {  dataStateLoremImage -> _dataStateAllLoremImages.value = dataStateLoremImage }
                         .launchIn(viewModelScope)
                 }
+
+                is MainStateEvent.PostAddPicture -> {
+                    mainRepository.postAddPost(mainStateEvent.idProfile, mainStateEvent.postRequest)
+                        .onEach { dataStateAddPost -> _dataStateAddPost.value = dataStateAddPost}
+                        .launchIn(viewModelScope)
+                }
+
+
+/*
+                is MainStateEvent.GetLoremImageEvent -> {
+                    mainRepository.getPictureLorem(mainStateEvent.id, mainStateEvent.width, mainStateEvent.height)
+                        .onEach {  dataStateLoremImage -> _dataStateLoremImage.value = dataStateLoremImage }
+                        .launchIn(viewModelScope)
+                }*/
             }
         }
     }
