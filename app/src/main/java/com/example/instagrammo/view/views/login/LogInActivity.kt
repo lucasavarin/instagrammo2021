@@ -1,5 +1,6 @@
 package com.example.instagrammo.view.views.login
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -125,16 +126,27 @@ class LogInActivity : BaseActivity() {
         return AuthRequest(username, password)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun setObservable() {
         viewModel.dataStateAuth.observe(this, Observer { dataStateAuth ->
             when (dataStateAuth) {
-                is DataState.Error -> { alertDialog() }
+                is DataState.Error -> { createAlertDialog(this,  getString(R.string.login),
+                    getString(R.string.login_fallito), getString(R.string.chiamata_fallita), getDrawable(R.drawable.alert)!!) }
                 is DataState.Loading -> { loadingShow() }
                 is DataState.Success -> {
+                    loadingDismiss()
                     if (dataStateAuth.data)
                         goToHome()
-                    else
-                        alertDialog()
+                    else {
+                        createAlertDialog(
+                            this@LogInActivity,
+                            getString(R.string.login),
+                            getString(R.string.login_fallito),
+                            getString(R.string.ok),
+                            getDrawable(R.drawable.alert)!!
+                        )
+
+                    }
                 }
             }
         })
@@ -145,18 +157,5 @@ class LogInActivity : BaseActivity() {
         startActivity(intentLogin)
         finish()
     }
-
-    private fun alertDialog() {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-        builder.setTitle(R.string.login)
-        builder.setMessage(R.string.login_fallito)
-        builder.setIcon(R.drawable.alert)
-
-        builder.setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
-
-        val alert: AlertDialog = builder.create()
-        alert.show()
-    }
-
 
 }

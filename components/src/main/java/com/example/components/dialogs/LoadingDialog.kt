@@ -4,11 +4,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import com.example.components.R
 
-class LoadingDialog(
-
-    val activity: Activity
-
-) {
+class LoadingDialog(private val activity: Activity) {
     private lateinit var alert : AlertDialog
 
     fun start() {
@@ -23,6 +19,7 @@ class LoadingDialog(
         alert = builder.create()
         alert.show()
         alert.window?.setBackgroundDrawable(null)
+
     }
 
     fun dismiss() {

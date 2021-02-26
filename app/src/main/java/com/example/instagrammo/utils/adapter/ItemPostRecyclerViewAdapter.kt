@@ -55,7 +55,7 @@ class ItemPostRecyclerViewAdapter(
             holder.titlePost.visibility = View.GONE
             holder.datePost.visibility = View.GONE
             holder.lineSeparator.visibility = View.GONE
-            Picasso.get().load(item.picture).resize(880,700).into(holder.postImage)
+            Picasso.get().load(item.picture).into(holder.postImage)
         } else {
 
             Picasso.get().load(item.profile?.picture!!).resize(500, 450).transform(CircleTransform()).into(holder.profileImage)
