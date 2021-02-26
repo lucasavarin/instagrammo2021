@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.lorem.LoremBean
-import com.example.instagrammo.utils.listener.OnImageItemClickListener
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainViewModel
 import com.squareup.picasso.Picasso

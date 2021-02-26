@@ -1,6 +1,7 @@
 package com.example.instagrammo.environment.networking
 
 import com.example.instagrammo.prefs
+import com.example.instagrammo.utils.Constant.BASEURL
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,13 +15,6 @@ import java.io.IOException
 
 
 object ApiClient {
-
-    const val BASEURL : String = "http://www.nbarresi.it/"
-    //const val BASEURL : String = "http://192.168.1.10:3001/Instagrammo/"
-    const val BASEURLLOREM : String = "https://picsum.photos/"
-
-    private var url: String = BASEURL
-
 
     val GetClient : ApiInterface
     get(){
@@ -43,18 +37,13 @@ object ApiClient {
         val gson = GsonBuilder().create()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(url)
+            .baseUrl(BASEURL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
         return retrofit.create(ApiInterface::class.java)
 
-    }
-
-    fun setBaseUrl(baseUrl : Boolean = true) : ApiInterface{
-        url = if (baseUrl) BASEURL else BASEURLLOREM
-        return GetClient
     }
 
 }

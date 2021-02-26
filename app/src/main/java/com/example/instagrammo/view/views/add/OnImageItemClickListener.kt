@@ -1,4 +1,4 @@
-package com.example.instagrammo.utils.listener
+package com.example.instagrammo.view.views.add
 
 import com.example.instagrammo.beans.business.lorem.LoremBean
 

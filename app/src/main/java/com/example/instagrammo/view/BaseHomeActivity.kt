@@ -1,12 +1,14 @@
 package com.example.instagrammo.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.lorem.LoremBean
-import com.example.instagrammo.utils.listener.OnImageItemClickListener
+import com.example.instagrammo.service.NotificationService
+import com.example.instagrammo.view.views.add.OnImageItemClickListener
 import com.example.instagrammo.utils.listener.OnPostItemClickListener
 import com.example.instagrammo.view.views.add.AddFragment
 import com.example.instagrammo.view.views.add.AddPostConfirmFragment
@@ -29,6 +31,8 @@ class BaseHomeActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basehome)
         addFragment(HomeFragment.newInstance, R.id.fragment_container)
+
+        startNotificationService()
 
         bottomMenuNavigationManager()
         Handler(Looper.getMainLooper()).postDelayed({
@@ -54,6 +58,7 @@ class BaseHomeActivity : BaseActivity(),
                 }
                 R.id.nav_follow -> {
                     replaceFragment(FollowFragment.newInstance, R.id.fragment_container)
+                    stopNotificationService()
                     true
                 }
                 R.id.nav_profile -> {
@@ -91,4 +96,15 @@ class BaseHomeActivity : BaseActivity(),
         val fragment = AddPostFragment.newInstance(image)
         addFragment(fragment, R.id.fragment_container)
     }
+
+
+    private fun startNotificationService() {
+        startService(Intent(this, NotificationService.newInstance::class.java))
+    }
+
+    private fun stopNotificationService() {
+        stopService(Intent(this, NotificationService.newInstance::class.java))
+    }
+
+
 }

@@ -132,7 +132,6 @@ class MainRepositoryImpl():
                     val data = responseExecuted.body()!!
                     emit(DataState.Success(data))
                 }
-                ApiClient.setBaseUrl()
             } catch (e: Exception) {
                 emit(DataState.Error(e))
             }
