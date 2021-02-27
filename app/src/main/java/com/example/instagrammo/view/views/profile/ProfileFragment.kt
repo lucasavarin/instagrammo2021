@@ -7,27 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.example.instagrammo.R
-import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.utils.CircleTransform
-import com.example.instagrammo.utils.adapter.ItemGridRecyclerViewAdapter
-import com.example.instagrammo.utils.adapter.ItemPostRecyclerViewAdapter
 import com.example.instagrammo.utils.adapter.PagerAdapter
-import com.example.instagrammo.utils.listener.OnPostItemClickListener
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
-import com.example.instagrammo.view.views.recycler.GridRecyclerFragment
-import com.example.instagrammo.view.views.recycler.MonoRecyclerFragment
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.view.*
@@ -46,14 +35,12 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         createTabLayout()
-
         getData()
         setObservable()
         buttonsListener()

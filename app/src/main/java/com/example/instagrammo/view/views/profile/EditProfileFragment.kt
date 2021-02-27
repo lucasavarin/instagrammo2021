@@ -36,13 +36,14 @@ class EditProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        getData()
         return inflater.inflate(R.layout.fragment_modifica_profilo, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getData()
         buttonsListener()
+        setObservable()
     }
 
     private fun getData() {
@@ -105,8 +106,6 @@ class EditProfileFragment : Fragment() {
                 itemProfile.picture
             )
         viewModel.setStateEvent(MainStateEvent.PutEditProfileEvent(editProfileRequest))
-
-        setObservable()
 
     }
 /*
