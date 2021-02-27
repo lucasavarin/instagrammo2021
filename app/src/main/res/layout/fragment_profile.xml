@@ -123,6 +123,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:text="@string/modifica_profilo"
+            android:background="@color/color_primary_dark"
+            android:textColor="@color/color_primary"
             app:layout_constraintBottom_toBottomOf="@id/description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileImage"
