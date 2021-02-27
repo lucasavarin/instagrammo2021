@@ -59,6 +59,7 @@ class HomeFragment : Fragment(){
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                 if (!(response.body()!!.payload.isNullOrEmpty()))
                     postLayoutManager(response.body()?.payload)
+
             }
 
             override fun onFailure(call: Call<PostResponse>, t: Throwable) {

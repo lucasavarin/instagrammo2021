@@ -30,21 +30,10 @@ class FollowerListViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
         }
     }
 
-//    init{
-//        itemView.setOnClickListener{v:View ->
-//            val position: Int = adapterPosition
-//            Toast.makeText(itemView.context, "You clic on item # ${position + 1}", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
     fun transformName(follower: Follower): String{
        val name :List<String>
         name = follower.name.split(" ")
         return name[0]
-    }
-
-    interface OnFollowerClickListener{
-        fun onItemClick(item: Follower, position: Int)
     }
 
 }

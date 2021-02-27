@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:background="@color/my_primary_gray"
         app:labelVisibilityMode="unlabeled"
+        app:itemIconTint="@color/selector_bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
