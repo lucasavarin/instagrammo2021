@@ -24,7 +24,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeFragment : Fragment(), FollowerListViewHolder.OnFollowerClickListener {
+class HomeFragment : Fragment(){
 
     lateinit private var listener: HomeFragmentInterface
 
@@ -89,7 +89,9 @@ class HomeFragment : Fragment(), FollowerListViewHolder.OnFollowerClickListener 
         H_FollowerListLayout.layoutManager = linearLayoutManager2
 
         if (!payload.isNullOrEmpty())
-            H_FollowerListLayout.adapter = FollowerListAdapter(payload, this)
+            H_FollowerListLayout.adapter = FollowerListAdapter(payload){item, position ->
+                listener.goToProfilepressed(item)
+            }
         else
             Log.i("ERRORE", payload?.size.toString())
     }
@@ -102,10 +104,6 @@ class HomeFragment : Fragment(), FollowerListViewHolder.OnFollowerClickListener 
 
     companion object{
         val newInstance: HomeFragment = HomeFragment()
-    }
-
-    override fun onItemClick(item: Follower, position: Int) {
-    listener.goToProfilepressed(item)
     }
 
     interface HomeFragmentInterface{
