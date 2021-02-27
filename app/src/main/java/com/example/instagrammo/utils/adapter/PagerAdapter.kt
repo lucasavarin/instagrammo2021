@@ -3,10 +3,11 @@ package com.example.instagrammo.utils.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.view.views.recycler.GridRecyclerFragment
 import com.example.instagrammo.view.views.recycler.MonoRecyclerFragment
 
-class PagerAdapter(fm: FragmentManager, val numOfTabs: Int)  : FragmentPagerAdapter(fm, numOfTabs) {
+class PagerAdapter(fm: FragmentManager, private val numOfTabs: Int)  : FragmentPagerAdapter(fm, numOfTabs) {
 
     override fun getItem(position: Int): Fragment = when(position) {
 

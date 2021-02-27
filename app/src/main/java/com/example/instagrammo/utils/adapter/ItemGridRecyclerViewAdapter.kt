@@ -10,6 +10,7 @@ import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.utils.listener.OnPostItemClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_grid3x.view.*
+import kotlinx.android.synthetic.main.item_grid4x.view.*
 
 class ItemGridRecyclerViewAdapter(
     private val mContext: Context,
@@ -32,7 +33,7 @@ class ItemGridRecyclerViewAdapter(
         ): ItemGridRecyclerViewAdapter.ViewHolder {
 
             val layoutInflater = LayoutInflater.from(mContext)
-                .inflate(R.layout.item_grid3x, parent, false)
+                .inflate(R.layout.item_grid4x, parent, false)
             return ViewHolder(layoutInflater)
         }
 
@@ -47,7 +48,7 @@ class ItemGridRecyclerViewAdapter(
         }
 
         inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
-            val itemImage = mView.item_image_grid
+            val itemImage = mView.item_image_grid4x
 
             override fun toString(): String {
                 return super.toString() + "CIAO"

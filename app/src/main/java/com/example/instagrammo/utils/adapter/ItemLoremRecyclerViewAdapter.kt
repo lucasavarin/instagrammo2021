@@ -41,7 +41,7 @@ class ItemLoremRecyclerViewAdapter(
     }
 
     inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
-        val itemImage = mView.item_image_grid
+        val itemImage = mView.item_image_grid3x
 
         override fun toString(): String {
             return super.toString() + "CIAO"

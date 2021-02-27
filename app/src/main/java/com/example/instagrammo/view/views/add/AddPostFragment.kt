@@ -11,10 +11,12 @@ import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.rest.post.AddPostRequest
 import com.example.instagrammo.prefs
+import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
 import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_confirm_add_post.*
 
 class AddPostFragment: Fragment() {
@@ -64,7 +66,7 @@ class AddPostFragment: Fragment() {
     }
 
     private fun populateDataView() {
-        Picasso.get().load(image.download_url).into(image_to_confirm)
+        Picasso.get().load(image.download_url).transform(CircleTransform()).into(image_to_confirm)
     }
 
     companion object {

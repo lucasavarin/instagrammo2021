@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.instagrammo.R
+import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.utils.adapter.PagerAdapter
@@ -26,6 +27,8 @@ class ProfileFragment : Fragment() {
 
     private lateinit var itemsProfile: ProfileBean
 
+    private lateinit var itemsPost: List<PostBean>
+
     private var listenerButtonEdit: ButtonEditProfileListener? = null
 
     private val viewModel = MainViewModel()
@@ -40,7 +43,6 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        createTabLayout()
         getData()
         setObservable()
         buttonsListener()
@@ -52,6 +54,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setObservable() {
+        viewModel.dataStateProfile.removeObservers(viewLifecycleOwner)
 
             viewModel.dataStateProfile.observe(viewLifecycleOwner, Observer { dataStateProfile ->
                 when (dataStateProfile) {
@@ -65,6 +68,21 @@ class ProfileFragment : Fragment() {
                     }
                 }
             })
+
+        viewModel.dataStatePost.observe(viewLifecycleOwner, Observer { dataStatePosts ->
+                when (dataStatePosts) {
+                    is DataState.Error -> {
+                    }
+                    is DataState.Loading -> {
+                    }
+                    is DataState.Success -> {
+                        itemsPost = dataStatePosts.data
+                        createTabLayout()
+                    }
+                }
+            })
+
+
 
         /*
         ApiClient.GetClient.getProfile(prefs.rememberIdProfile)
@@ -160,6 +178,7 @@ class ProfileFragment : Fragment() {
             throw RuntimeException("$context must implement ButtonEditProfileListener")
         }
     }
+
 
     companion object {
         var newInstance : ProfileFragment = ProfileFragment()

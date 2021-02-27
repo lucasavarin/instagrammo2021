@@ -17,7 +17,7 @@ import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.grid_recycler_fragment.*
 
-class GridRecyclerFragment : Fragment() {
+class GridRecyclerFragment: Fragment() {
 
     private lateinit var itemsPost: List<PostBean>
 

@@ -71,7 +71,7 @@ class EditProfileFragment : Fragment() {
                 }
                 is DataState.Loading -> {
                 }
-                is DataState.Success -> { listener.removeFragmentListener() }
+                is DataState.Success -> { }
             }
         })
 
@@ -135,7 +135,7 @@ class EditProfileFragment : Fragment() {
         }
         //bottone back nell header
         view?.topBarBackComponent?.setOnPressedListener{
-            listener.removeFragmentListener()
+            listener.removeFragmentListener(this)
         }
     }
 

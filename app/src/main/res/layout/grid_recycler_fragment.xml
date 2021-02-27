@@ -10,5 +10,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.views.profile.ProfileFragment"
-        tools:listitem="@layout/item_grid3x" />
+        tools:listitem="@layout/item_grid4x" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,6 +29,7 @@ class MonoRecyclerFragment : Fragment(){
 
     private val viewModel = ViewModelRecyclerView()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

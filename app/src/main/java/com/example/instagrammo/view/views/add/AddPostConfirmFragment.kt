@@ -66,7 +66,11 @@ class AddPostConfirmFragment : Fragment(){
     }
 
     private fun populateDataView() {
-        Picasso.get().load(image.download_url).into(image_lorem)
+        Picasso.get().load(image.download_url)
+            .resize(1300, 1900)
+            .centerCrop()
+            .onlyScaleDown()
+            .into(image_lorem)
     }
 
 

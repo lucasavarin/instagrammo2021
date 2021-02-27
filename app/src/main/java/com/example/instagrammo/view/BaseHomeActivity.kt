@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.service.NotificationService
@@ -82,14 +83,16 @@ class BaseHomeActivity : BaseActivity(),
     }
 
     //rimuove fragment modifica profilo e apre profilo
-    override fun removeFragmentListener() {
+    override fun removeFragmentListener(fragment: Fragment) {
         //replaceFragment(ProfileFragment.newInstance, R.id.fragment_container)
-        removeFragment(EditProfileFragment.newInstance)
+        removeFragment(fragment)
     }
 
     override fun onImageItemAddListener(image: LoremBean) {
         val fragment = AddPostConfirmFragment.newInstance(image)
-        addFragment(fragment, R.id.fragment_container)
+        replaceFragment(fragment, R.id.fragment_container)
+        //addFragment(fragment, R.id.fragment_container)
+
     }
 
     override fun onImageItemAddPostListener(image: LoremBean) {
