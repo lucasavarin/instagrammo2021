@@ -5,11 +5,15 @@
     <string name="login">login</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="modifica_profilo">Modifica Profilo</string>
     <string name="salva">salva</string>
     <string name="descrizione">Descrizione</string>
     <string name="nome_profilo">Nome Profilo</string>
     <string name="id_immagine">Id Immagine</string>
     <string name="add_post">Aggiungi Post</string>
     <string name="conferm_add_post">Conferma Aggiunta Post</string>
+    <string name="conferma">conferma</string>
+    <string name="ricordami">Ricordami</string>
+    <string name="post">Post</string>
+    <string name="followers">Followers</string>
+    <string name="modifica_profilo">Modifica Profilo</string>
 </resources>

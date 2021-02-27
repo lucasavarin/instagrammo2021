@@ -38,7 +38,7 @@ import retrofit2.Response
 class ProfileFragment : Fragment() {
     private var profile: List<PayloadProfile> = mutableListOf()
     private var posts: List<Post> = mutableListOf()
-    val modifyProfile = ModifyProfileFragment()
+val modifyProfile = ModifyProfileFragment()
 
     val linearLayoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     val gridLayoutManager = GridLayoutManager(context, 3)

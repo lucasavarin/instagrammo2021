@@ -27,7 +27,7 @@ import retrofit2.Response
 
 
 class ModifyProfileFragment : Fragment() {
-     private  var listner : InterfaceApp? = null
+    private  var listner : InterfaceApp? = null
     private var posts: List<PayloadProfile> = mutableListOf()
 
     override fun onCreateView(

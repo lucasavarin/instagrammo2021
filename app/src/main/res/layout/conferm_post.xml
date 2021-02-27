@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background2">
 
     <com.example.instagrammo.view.CustomViewController
         android:id="@+id/customViewController"
@@ -42,7 +43,7 @@
 
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/descrizione"
+            android:id="@+id/descrizione_post"
             android:layout_width="405dp"
             android:layout_height="64dp"
             android:layout_marginBottom="160dp"
@@ -55,7 +56,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/salva_button"
+        android:id="@+id/conferma_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
@@ -64,7 +65,7 @@
         android:background="@drawable/corners"
         android:backgroundTint="@color/material_on_primary_disabled"
         android:fontFamily="@font/noto_sans"
-        android:text="@string/salva"
+        android:text="@string/conferma"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
