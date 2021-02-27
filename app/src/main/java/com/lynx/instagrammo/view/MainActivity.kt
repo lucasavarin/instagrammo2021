@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
 
             var difference = newPostsNumber.compareTo(prefs.oldPosts)
 
-            ApiClient.GetClient.getNumberPost().enqueue(object : Callback<NumberPostsResponse> {
+            ApiClient.GetClient.getNumberPost(prefs.userId).enqueue(object : Callback<NumberPostsResponse> {
                 override fun onResponse(call: Call<NumberPostsResponse>, response: Response<NumberPostsResponse>) {
                         prefs.oldPosts = newPostsNumber
                         newPostsNumber = response.body()!!.payload!!.toInt()
