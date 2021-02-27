@@ -1,5 +1,6 @@
 package com.example.instagrammo.view.views.add
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,6 +23,8 @@ import kotlinx.android.synthetic.main.fragment_confirm_add_post.*
 class AddPostFragment: Fragment() {
 
     private val viewModel = MainViewModel()
+
+    private lateinit var listenerImage: OnImageItemClickListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +49,7 @@ class AddPostFragment: Fragment() {
 
     private fun setAddRequest() : AddPostRequest = AddPostRequest(
         prefs.idProfile,
-        description_post.toString(),
+        description_post.text.toString(),
         image.download_url)
 
 
@@ -59,7 +62,11 @@ class AddPostFragment: Fragment() {
             when(dataState) {
                 is DataState.Error ->  {}
                 is DataState.Loading -> { }
-                is DataState.Success -> { Log.i("debug",dataState.data.toString())}
+                is DataState.Success -> {
+
+                    listenerImage.onImagePostsListener(this)
+                    Log.i("debug",dataState.data.toString())
+                }
                 }
             }
         )
@@ -68,6 +75,16 @@ class AddPostFragment: Fragment() {
     private fun populateDataView() {
         Picasso.get().load(image.download_url).transform(CircleTransform()).into(image_to_confirm)
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnImageItemClickListener) {
+            listenerImage = context
+        } else {
+            throw RuntimeException("$context must implement OnImageItemClickListener")
+        }
+    }
+
 
     companion object {
 

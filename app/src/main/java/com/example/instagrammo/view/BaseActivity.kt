@@ -2,7 +2,6 @@ package com.example.instagrammo.views
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.nfc.Tag
 import com.example.components.dialogs.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -26,17 +25,22 @@ abstract class BaseActivity() : AppCompatActivity() {
         supportFragmentManager.inTransaction { add(frameId, fragment) }
     }
 
-    protected fun replaceFragment(fragment: Fragment, frameId: Int) {
+    protected fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
         supportFragmentManager.inTransaction { replace(frameId, fragment) }
     }
 
-    protected fun addToBackStackFragment(tag: String) {
+    protected fun AppCompatActivity.addToBackStackFragment(tag: String) {
         supportFragmentManager.inTransaction { addToBackStack(tag) }
     }
 
-    protected fun removeFragment(fragment: Fragment) {
+    protected fun AppCompatActivity.removeFragment(fragment: Fragment) {
         supportFragmentManager.inTransaction { remove(fragment) }
     }
+
+    fun AppCompatActivity.popBackStack() {
+        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    }
+
 
     protected fun loadingShow() {
         loading.start()

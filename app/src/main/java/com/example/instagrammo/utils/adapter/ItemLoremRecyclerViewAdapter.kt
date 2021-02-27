@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.lorem.LoremBean
+import com.example.instagrammo.view.views.add.AddFragment
 import com.example.instagrammo.view.views.add.OnImageItemClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_grid3x.view.*
@@ -36,7 +37,7 @@ class ItemLoremRecyclerViewAdapter(
         val item = mValues[position]
         Picasso.get().load(item.download_url).resize(400,400).into(holder.itemImage)
         holder.itemView.setOnClickListener {
-            mListener.onImageItemAddListener(item)
+            mListener.onImageItemAddListener(item, AddFragment.tag)
         }
     }
 

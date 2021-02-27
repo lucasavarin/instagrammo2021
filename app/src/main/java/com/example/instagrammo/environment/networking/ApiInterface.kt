@@ -6,6 +6,7 @@ import com.example.instagrammo.beans.rest.follower.FollowersResponse
 import com.example.instagrammo.beans.rest.lorem.LoremRest
 import com.example.instagrammo.beans.rest.post.AddPostRequest
 import com.example.instagrammo.beans.rest.post.AddPostResponse
+import com.example.instagrammo.beans.rest.post.NumberPosts
 import com.example.instagrammo.beans.rest.post.PostsResponse
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileResponse
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
@@ -44,21 +45,15 @@ interface ApiInterface {
     fun putProfile(
         @Body profile: EditProfileRequest
     ): Call<EditProfileResponse>
-/*
-    @Headers("Content-Type: application/json")
-    @PUT("profiles.php/{profileId}")
-    fun putEditProfile(
-        @Path("profileId") profileId :String,
-        @Body profile: ProfileRequest) : Call<Boolean>
-*/
+
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("posts.php/{profileId}")
     fun postAddPost(
         @Path("profileId") profileId :String,
         @Body post: AddPostRequest
     ) : Call<AddPostResponse>
-/*
+
     @GET("posts_number.php")
-    fun getNumberPost() : Call<NumberPostsResponse>
-*/
+    fun getNumberPosts() : Call<NumberPosts>
+
 }

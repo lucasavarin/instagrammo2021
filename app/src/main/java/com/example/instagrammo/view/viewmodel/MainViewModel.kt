@@ -6,6 +6,7 @@ import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.beans.rest.lorem.LoremRest
+import com.example.instagrammo.beans.rest.post.NumberPosts
 import com.example.instagrammo.environment.repository.MainRepositoryImpl
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -31,6 +32,8 @@ class MainViewModel() : ViewModel() {
 
     private val _dataStateAddPost: MutableLiveData<DataState<Boolean>> = MutableLiveData()
 
+    private val _dataStateNumberPosts: MutableLiveData<DataState<NumberPosts>> = MutableLiveData()
+
     val dataStatePost: LiveData<DataState<List<PostBean>>>
         get() = _dataStatePosts
 
@@ -54,6 +57,9 @@ class MainViewModel() : ViewModel() {
 
     val dataStateAddPost : LiveData<DataState<Boolean>>
         get() = _dataStateAddPost
+
+    val dataStateNumberPosts : LiveData<DataState<NumberPosts>>
+        get() = _dataStateNumberPosts
 
 
     fun setStateEvent(mainStateEvent: MainStateEvent) {
@@ -103,6 +109,12 @@ class MainViewModel() : ViewModel() {
                 is MainStateEvent.PostAddPicture -> {
                     mainRepository.postAddPost(mainStateEvent.idProfile, mainStateEvent.postRequest)
                         .onEach { dataStateAddPost -> _dataStateAddPost.value = dataStateAddPost}
+                        .launchIn(viewModelScope)
+                }
+
+                is MainStateEvent.GetNumberPost -> {
+                    mainRepository.getNumberPost()
+                        .onEach { dataStateNumberPosts -> _dataStateNumberPosts.value = dataStateNumberPosts}
                         .launchIn(viewModelScope)
                 }
 

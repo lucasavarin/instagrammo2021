@@ -68,6 +68,7 @@ class AddFragment : Fragment(){
     }
 
     companion object {
+        const val tag = "addFragment"
 
         var newInstance : AddFragment = AddFragment()
     }

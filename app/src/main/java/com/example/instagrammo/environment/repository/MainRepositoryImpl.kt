@@ -7,6 +7,7 @@ import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.beans.rest.lorem.LoremRest
 import com.example.instagrammo.beans.rest.post.AddPostRequest
+import com.example.instagrammo.beans.rest.post.NumberPosts
 import com.example.instagrammo.prefs
 import com.example.instagrammo.environment.networking.ApiClient
 import com.example.instagrammo.environment.networking.ApiClientLorem
@@ -154,6 +155,24 @@ class MainRepositoryImpl():
             }
         }
     }
+
+    override fun getNumberPost(): Flow<DataState<NumberPosts>> {
+        return flow {
+            emit(DataState.Loading)
+            try {
+
+                val response = ApiClient.GetClient.getNumberPosts()
+                val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
+
+                if (responseExecuted.isSuccessful) {
+                    emit(DataState.Success(responseExecuted.body()!!))
+                }
+            } catch (e: Exception) {
+                emit(DataState.Error(e))
+            }
+        }
+    }
+
 /*
     override fun getPictureLorem(id: String, width: String, height: String): Flow<DataState<LoremBean>> {
         return flow {
