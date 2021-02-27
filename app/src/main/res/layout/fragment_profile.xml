@@ -6,6 +6,15 @@
     tools:context="fragments.ProfileFragment"
     android:background="@drawable/bg_login">
 
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">-->
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/profileImage"
             android:layout_width="126dp"
@@ -153,19 +162,6 @@
             app:layout_constraintTop_toTopOf="@id/gridImageButton"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/monoRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/gridImageButton"
-            tools:context=".views.profile.ProfileFragment"
-            android:visibility="visible"
-            tools:listitem="@layout/story_item" />
-
-        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/gridRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -173,9 +169,23 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/monoImageButton"
-            tools:context=".views.profile.ProfileFragment"
+            app:layout_constraintTop_toBottomOf="@id/gridImageButton"
             android:visibility="visible"
+            tools:context=".views.profile.ProfileFragment"
+            tools:listitem="@layout/story_item" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/monoRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/monoImageButton"
+            android:visibility="invisible"
+            tools:context=".views.profile.ProfileFragment"
             tools:listitem="@layout/story_item"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
