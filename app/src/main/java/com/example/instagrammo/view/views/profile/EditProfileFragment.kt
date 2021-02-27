@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_profile.view.profileImage
 
 class EditProfileFragment : Fragment() {
 
-    private lateinit var itemsProfile: ProfileBean
+    private lateinit var itemProfile: ProfileBean
 
     private lateinit var editProfileRequest: EditProfileRequest
 
@@ -36,12 +36,17 @@ class EditProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        getData()
         return inflater.inflate(R.layout.fragment_modifica_profilo, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buttonsListener()
+    }
+
+    private fun getData() {
+        viewModel.setStateEvent(MainStateEvent.GetProfileEvent)
     }
 
     private fun setObservable() {
@@ -53,7 +58,7 @@ class EditProfileFragment : Fragment() {
                 is DataState.Loading -> {
                 }
                 is DataState.Success -> {
-                    itemsProfile = dataStateProfile.data
+                    itemProfile = dataStateProfile.data
                     populateDataView()
                 }
             }
@@ -88,18 +93,17 @@ class EditProfileFragment : Fragment() {
     fun verificaDatiInseriti() {
 
         var nomeProfilo: String =
-            if (NomeProfilo.text.isNullOrEmpty()) itemsProfile.name!! else NomeProfilo.text.toString()
+            if (NomeProfilo.text.isNullOrEmpty()) itemProfile.name!! else NomeProfilo.text.toString()
         var descrizioneProfilo: String =
-            if (Descrizione.text.isNullOrEmpty()) itemsProfile.description!! else Descrizione.text.toString()
+            if (Descrizione.text.isNullOrEmpty()) itemProfile.description!! else Descrizione.text.toString()
 
         editProfileRequest =
             EditProfileRequest(
                 prefs.idProfile,
                 nomeProfilo,
                 descrizioneProfilo,
-                itemsProfile.picture
+                itemProfile.picture
             )
-
         viewModel.setStateEvent(MainStateEvent.PutEditProfileEvent(editProfileRequest))
 
         setObservable()
@@ -148,9 +152,9 @@ class EditProfileFragment : Fragment() {
     private fun populateDataView() {
         Picasso.get().load(R.drawable.bird).resize(1000, 1000).transform(CircleTransform())
             .into(view?.profileImage)
-        view?.IdImmagine?.text = itemsProfile.profileId?.toEditable()
-        view?.NomeProfilo?.text = itemsProfile.name?.toEditable()
-        view?.Descrizione?.text = itemsProfile.description?.toEditable()
+        view?.IdImmagine?.text = itemProfile.profileId?.toEditable()
+        view?.NomeProfilo?.text = itemProfile.name?.toEditable()
+        view?.Descrizione?.text = itemProfile.description?.toEditable()
         /* mView.postsNumber.text = itemsProfile.postsNumber
          mView.followersNumber.text = itemsProfile.followersNumber
          mView.name.text = itemsProfile.name

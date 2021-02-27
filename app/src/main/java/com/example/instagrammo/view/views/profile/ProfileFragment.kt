@@ -2,24 +2,33 @@ package com.example.instagrammo.view.views.profile
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.post.PostBean
 import com.example.instagrammo.beans.business.profile.ProfileBean
+import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.utils.adapter.ItemGridRecyclerViewAdapter
 import com.example.instagrammo.utils.adapter.ItemPostRecyclerViewAdapter
+import com.example.instagrammo.utils.adapter.PagerAdapter
 import com.example.instagrammo.utils.listener.OnPostItemClickListener
-import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
+import com.example.instagrammo.view.views.recycler.GridRecyclerFragment
+import com.example.instagrammo.view.views.recycler.MonoRecyclerFragment
+import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
@@ -28,11 +37,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var itemsProfile: ProfileBean
 
-    private var listenerPost: OnPostItemClickListener? = null
-
     private var listenerButtonEdit: ButtonEditProfileListener? = null
-
-    private lateinit var itemsPost: List<PostBean>
 
     private val viewModel = MainViewModel()
 
@@ -41,11 +46,14 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        createTabLayout()
+
         getData()
         setObservable()
         buttonsListener()
@@ -67,19 +75,6 @@ class ProfileFragment : Fragment() {
                     is DataState.Success -> {
                         itemsProfile = dataStateProfile.data
                         populateDataView()
-                    }
-                }
-            })
-
-            viewModel.dataStatePost.observe(viewLifecycleOwner, Observer { dataStatePosts ->
-                when (dataStatePosts) {
-                    is DataState.Error -> {
-                    }
-                    is DataState.Loading -> {
-                    }
-                    is DataState.Success -> {
-                        itemsPost = dataStatePosts.data
-                        setAdapterGrid()
                     }
                 }
             })
@@ -120,40 +115,9 @@ class ProfileFragment : Fragment() {
     }
 
     private fun buttonsListener(){
-        view?.grid_cycle_image!!.setOnClickListener {
-            setAdapterGrid()
-        }
-
-        view?.mono_cycle_image!!.setOnClickListener {
-            setAdapterMono()
-        }
 
         view?.edit_profile_button!!.setOnClickListener{
             listenerButtonEdit?.OnButtonPressedListener(true)
-        }
-    }
-
-    private fun setAdapterGrid() {
-        requireView().recycler_post_grid_view.visibility = View.VISIBLE
-        requireView().recycler_post_mono_view.visibility = View.GONE
-        val recyclerView = view?.recycler_post_mono_view
-        if (recyclerView is RecyclerView) {
-            recyclerView.apply{
-                layoutManager = LinearLayoutManager(context)
-                adapter = ItemPostRecyclerViewAdapter(this.context, itemsPost, listenerPost, true )
-            }
-        }
-    }
-
-    private fun setAdapterMono() {
-        requireView().recycler_post_mono_view.visibility = View.VISIBLE
-        requireView().recycler_post_grid_view.visibility = View.GONE
-        val recyclerView = requireView().recycler_post_grid_view
-        if (recyclerView is RecyclerView) {
-            recyclerView.apply {
-                layoutManager = GridLayoutManager(context, 4)
-                adapter = ItemGridRecyclerViewAdapter(this.context, itemsPost, listenerPost )
-            }
         }
     }
 
@@ -163,11 +127,42 @@ class ProfileFragment : Fragment() {
         requireView().followersNumber.text = itemsProfile.followersNumber
         requireView().name.text = itemsProfile.name
         requireView().description.text = itemsProfile.description
-/*
-        if (itemsProfile.description.isNullOrBlank())
-            viewContext.description.visibility = View.GONE
+    }
 
- */
+
+    private fun createTabLayout() {
+        val tabLayout = requireView().findViewById(R.id.tabs) as TabLayout
+        val viewPager = requireView().findViewById(R.id.viewpager) as ViewPager
+
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.grid_recycle))
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.mono_recycle))
+
+        tabLayout.tabGravity = TabLayout.GRAVITY_FILL
+
+        val mLayoutManager = LinearLayoutManager(activity)
+
+        mLayoutManager.orientation = LinearLayoutManager.VERTICAL
+
+        viewPager.adapter = PagerAdapter(childFragmentManager, tabLayout.tabCount)
+
+        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+        tabLayout.addOnTabSelectedListener( TabLayout.ViewPagerOnTabSelectedListener(viewPager))
+
+        tabLayout.addOnTabSelectedListener((object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                viewPager.currentItem = tab!!.position
+                Log.i("INFORMATION", "onTabReselected")
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                Log.i("INFORMATION", "onTabUnselected")
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                Log.i("INFORMATION", "onTabSelected")
+            }
+
+        }))
     }
 
     override fun onAttach(context: Context) {
@@ -182,4 +177,5 @@ class ProfileFragment : Fragment() {
     companion object {
         var newInstance : ProfileFragment = ProfileFragment()
     }
-}
+
+    }

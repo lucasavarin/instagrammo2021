@@ -67,23 +67,6 @@ class ItemPostRecyclerViewAdapter(
 
    }
 
-   private fun getImage(url: String): Bitmap {
-
-       /** Nasconde il problema si dovrebbe implementare un service **/
-       /** -si potrebbe usare un nuovo thread diverso dall applicazione ma
-        *  bisogna essere consapevoli (AsyncTask)
-        **/
-       val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-       StrictMode.setThreadPolicy(policy)
-       /***************************************************************/
-
-       val response = ApiClient.GetClient.getImage(url)
-       val bodyResponse = response.execute().body()
-
-       return BitmapFactory.decodeStream(bodyResponse?.byteStream())
-   }
-
-
    inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
        val profileImage = mView.profile_image
        val profileName = mView.profile_name
