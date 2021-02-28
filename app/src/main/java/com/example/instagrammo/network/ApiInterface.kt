@@ -31,4 +31,7 @@ interface ApiInterface {
 
     @POST("posts.php")
     fun addPost(@Body postToAdd : AddPostReq): Call<PostResult>
+
+    @GET("posts_number.php")
+    fun getListPostNumber() : Call<PostNumberResponse>
 }
