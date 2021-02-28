@@ -22,7 +22,7 @@
         android:id="@+id/add_image"
         android:layout_width="0dp"
         android:layout_height="321dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="88dp"
         android:src="@drawable/mine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -31,23 +31,21 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Description_add_post"
-        android:layout_width="405dp"
-        android:layout_height="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/conferma_button"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_image"
-        app:layout_constraintVertical_bias="0.2">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_image">
 
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/descrizione_post"
-            android:layout_width="405dp"
-            android:layout_height="64dp"
-            android:layout_marginBottom="160dp"
-            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:background="@color/transparent"
             android:enabled="true"
             android:fontFamily="@font/noto_sans"
             android:hint="@string/descrizione"
