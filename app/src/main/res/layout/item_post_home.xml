@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_profilo"
         style="@style/icon"
-        android:padding="@dimen/tiny_margin"
+        android:padding="@dimen/iconText_margin"
         android:layout_margin="@dimen/tiny_margin"
         android:src="@drawable/person"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:padding="@dimen/tiny_margin"
-        android:layout_margin="@dimen/tiny_margin"
+        android:layout_margin="@dimen/iconTextMid_margin"
         app:layout_constraintBottom_toBottomOf="@id/img_profilo"
         app:layout_constraintStart_toEndOf="@id/img_profilo"
         app:layout_constraintTop_toTopOf="@id/img_profilo"

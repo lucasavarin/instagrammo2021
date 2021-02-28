@@ -20,11 +20,12 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/logo_splash"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:src="@mipmap/ic_launcher_app"
             android:theme="@style/SplashTheme"
-            app:layout_constraintBottom_toTopOf="@+id/tema_splash"
+            android:layout_marginTop="250dp"
+            android:padding="@dimen/postText_margin"
             app:layout_constraintEnd_toEndOf="@+id/container_splash"
             app:layout_constraintStart_toStartOf="@+id/container_splash"
             app:layout_constraintTop_toTopOf="@+id/container_splash" />
@@ -38,11 +39,12 @@
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="2"
+            android:layout_margin="@dimen/postText_margin"
+            android:padding="@dimen/postText_margin"
             android:text="Instagrammo"
             android:textAlignment="center"
             android:textColor="@color/softYellow"
             android:textSize="@dimen/mid_large_margin"
-            app:layout_constraintBottom_toBottomOf="@+id/container_splash"
             app:layout_constraintEnd_toEndOf="@+id/container_splash"
             app:layout_constraintStart_toStartOf="@+id/container_splash"
             app:layout_constraintTop_toBottomOf="@+id/logo_splash" />

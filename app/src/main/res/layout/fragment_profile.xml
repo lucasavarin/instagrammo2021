@@ -18,11 +18,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_profilo"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/mid_margin"
+            android:layout_margin="@dimen/tiny_margin"
             android:padding="@dimen/postText_margin"
             android:src="@drawable/person"
             app:layout_constraintDimensionRatio="1:1"
@@ -78,9 +78,11 @@
             android:id="@+id/tv_nome_Profilo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="@dimen/tiny_margin"
-            android:padding="@dimen/iconText_margin"
-            android:textSize="20dp"
+            android:padding="@dimen/tiny_margin"
+            android:textSize="13sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/container_profile"
             app:layout_constraintStart_toStartOf="@+id/container_profile"
             app:layout_constraintTop_toBottomOf="@id/img_profilo"
@@ -90,9 +92,9 @@
             android:id="@+id/tv_descrizione_Profilo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/iconText_margin"
+            android:layout_margin="@dimen/tiny_margin"
             android:padding="@dimen/tiny_margin"
-            android:textSize="12dp"
+            android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="@+id/container_profile"
             app:layout_constraintStart_toStartOf="@+id/container_profile"
             app:layout_constraintTop_toBottomOf="@id/tv_nome_Profilo"
@@ -103,14 +105,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/tiny_margin"
+            android:layout_marginBottom="4dp"
             android:background="@drawable/radius_button"
             android:minHeight="0dp"
             android:padding="@dimen/tiny_margin"
             android:text="@string/modifica_profilo"
             android:textAllCaps="false"
-            app:layout_constraintHorizontal_weight="5"
             app:layout_constraintBottom_toTopOf="@id/tv_nome_Profilo"
             app:layout_constraintEnd_toEndOf="@+id/container_profile"
+            app:layout_constraintHorizontal_weight="5"
             app:layout_constraintStart_toEndOf="@id/img_profilo" />
 
         <com.google.android.material.tabs.TabLayout
