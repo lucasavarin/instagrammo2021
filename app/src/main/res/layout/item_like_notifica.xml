@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_notification"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_not_profile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/tiny_margin"
+            android:padding="@dimen/postText_margin"
+            android:src="@drawable/person"
+            app:layout_constraintBottom_toBottomOf="@+id/container_notification"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="@id/container_notification"
+            app:layout_constraintTop_toTopOf="@+id/container_notification" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name_notification"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/iconText_margin"
+            android:padding="@dimen/postText_margin"
+            android:text="nome utente cognome"
+            android:singleLine="true"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/image_not_profile"
+            app:layout_constraintTop_toTopOf="@+id/image_not_profile" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description_not"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/iconText_margin"
+            android:padding="@dimen/postText_margin"
+            android:text="description notification bla bla bla bla bla bla"
+            android:textStyle="italic"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@+id/image_not_profile"
+            app:layout_constraintStart_toEndOf="@+id/image_not_profile"
+            app:layout_constraintTop_toBottomOf="@+id/name_notification" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/reference_notification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/iconText_margin"
+            android:padding="@dimen/postText_margin"
+            android:text="Ha caricato un post:"
+            android:singleLine="true"
+
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/name_notification"
+            app:layout_constraintStart_toEndOf="@+id/name_notification"
+            app:layout_constraintTop_toTopOf="@+id/name_notification"
+            app:layout_constraintEnd_toStartOf="@+id/image_notification"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ora_notification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/iconText_margin"
+            android:padding="@dimen/postText_margin"
+            android:text="3h"
+            android:singleLine="true"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/description_not"
+            app:layout_constraintStart_toEndOf="@+id/description_not"
+            app:layout_constraintTop_toTopOf="@+id/description_not"
+            app:layout_constraintEnd_toStartOf="@+id/image_notification"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_notification"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/tiny_margin"
+            android:padding="@dimen/postText_margin"
+            android:src="@drawable/image_placeholder"
+            app:layout_constraintBottom_toBottomOf="@+id/container_notification"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@id/container_notification"
+            app:layout_constraintTop_toTopOf="@+id/container_notification" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

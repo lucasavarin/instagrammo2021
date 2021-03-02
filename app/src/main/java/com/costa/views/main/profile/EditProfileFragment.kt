@@ -44,7 +44,7 @@ class EditProfileFragment : Fragment(){
         nome=getArguments()!!.getString("nome").toString()
         descrizione=getArguments()!!.getString("description").toString()
         immagine=getArguments()!!.getString("picture").toString()
-        var picsumUrl = immagine!!.split("/")
+        var picsumUrl = immagine.split("/")
         codImg=picsumUrl[4]
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edit_profile, container, false)

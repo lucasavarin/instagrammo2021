@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
             bottom_nav.isSelected = !bottom_nav.isSelected
         }
 
-
-
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_nav)
 
 

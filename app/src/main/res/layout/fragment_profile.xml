@@ -4,156 +4,172 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
     tools:context="com.costa.views.main.profile.ProfileFragment">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_profilo"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_profile"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:src="@drawable/person"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/btn_modifica_profilo"
-        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_nome_Profilo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
-        android:textSize="20dp"
+        app:layout_constraintTop_toTopOf="parent">
 
 
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@id/img_profilo"
-        tools:text="nome profilo" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_descrizione_Profilo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:textSize="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_nome_Profilo"
-
-        tools:text="descrizione profilo" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_profilo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/tiny_margin"
+            android:padding="@dimen/postText_margin"
+            android:src="@drawable/person"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/btn_modifica_profilo"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toStartOf="@+id/container_profile"
+            app:layout_constraintTop_toTopOf="@+id/container_profile" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_numero_posts"
-        style="@style/profile_text_count"
-        app:layout_constraintBottom_toTopOf="@id/btn_modifica_profilo"
-        app:layout_constraintEnd_toEndOf="@id/label_numero_post"
-        app:layout_constraintStart_toStartOf="@id/label_numero_post"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        tools:text="50" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_numero_posts"
+            style="@style/profile_text_count"
+            android:layout_margin="@dimen/postText_margin"
+            android:padding="@dimen/postText_margin"
+            app:layout_constraintBottom_toTopOf="@id/btn_modifica_profilo"
+            app:layout_constraintEnd_toEndOf="@id/label_numero_post"
+            app:layout_constraintStart_toStartOf="@id/label_numero_post"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3"
+            tools:text="50" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_numero_post"
+            style="@style/profile_text"
+            android:layout_margin="@dimen/postText_margin"
+            android:padding="@dimen/postText_margin"
+            android:text="posts"
+            app:layout_constraintEnd_toStartOf="@id/label_numero_followers"
+            app:layout_constraintStart_toStartOf="@id/btn_modifica_profilo"
+            app:layout_constraintTop_toBottomOf="@id/tv_numero_posts" />
 
-        android:id="@+id/label_numero_post"
-        style="@style/profile_text"
-        android:text="posts"
-        app:layout_constraintEnd_toStartOf="@id/label_numero_followers"
-        app:layout_constraintStart_toStartOf="@id/btn_modifica_profilo"
-        app:layout_constraintTop_toBottomOf="@id/tv_numero_posts" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_numero_followers"
+            style="@style/profile_text_count"
+            android:layout_margin="@dimen/postText_margin"
+            android:padding="@dimen/postText_margin"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_numero_posts"
+            app:layout_constraintEnd_toEndOf="@id/label_numero_followers"
+            app:layout_constraintStart_toStartOf="@id/label_numero_followers"
+            tools:text="100" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_numero_followers"
-        style="@style/profile_text_count"
-        app:layout_constraintBaseline_toBaselineOf="@id/tv_numero_posts"
-        app:layout_constraintEnd_toEndOf="@id/label_numero_followers"
-        app:layout_constraintStart_toStartOf="@id/label_numero_followers"
-        tools:text="100" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_numero_followers"
+            style="@style/profile_text"
+            android:layout_margin="@dimen/postText_margin"
+            android:padding="@dimen/postText_margin"
+            android:text="followers"
+            app:layout_constraintBaseline_toBaselineOf="@id/label_numero_post"
+            app:layout_constraintEnd_toEndOf="@+id/btn_modifica_profilo"
+            app:layout_constraintStart_toEndOf="@id/label_numero_post" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-
-        android:id="@+id/label_numero_followers"
-        style="@style/profile_text"
-        android:text="followers"
-        app:layout_constraintBaseline_toBaselineOf="@id/label_numero_post"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/label_numero_post" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_modifica_profilo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/radius_button"
-        android:minHeight="0dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:text="@string/modifica_profilo"
-        android:textAllCaps="false"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/tv_nome_Profilo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="5"
-        app:layout_constraintStart_toEndOf="@id/img_profilo" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_descrizione_Profilo">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/ti_grid"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_nome_Profilo"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:icon="@drawable/ic_grid_view_black_24"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/tiny_margin"
+            android:padding="@dimen/tiny_margin"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/container_profile"
+            app:layout_constraintStart_toStartOf="@+id/container_profile"
+            app:layout_constraintTop_toBottomOf="@id/img_profilo"
+            tools:text="nome profilo" />
 
-            />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/ti_linear"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_descrizione_Profilo"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:icon="@drawable/ic_linear_view_black_24" />
-    </com.google.android.material.tabs.TabLayout>
+            android:layout_margin="@dimen/tiny_margin"
+            android:padding="@dimen/tiny_margin"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/container_profile"
+            app:layout_constraintStart_toStartOf="@+id/container_profile"
+            app:layout_constraintTop_toBottomOf="@id/tv_nome_Profilo"
+            tools:text="descrizione profilo" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_posts_profilo_linear"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/top_border_grey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_modifica_profilo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/tiny_margin"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/radius_button"
+            android:minHeight="0dp"
+            android:padding="@dimen/tiny_margin"
+            android:text="@string/modifica_profilo"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@id/tv_nome_Profilo"
+            app:layout_constraintEnd_toEndOf="@+id/container_profile"
+            app:layout_constraintHorizontal_weight="5"
+            app:layout_constraintStart_toEndOf="@id/img_profilo" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/iconText_margin"
+            app:layout_constraintLeft_toLeftOf="@+id/container_profile"
+            app:layout_constraintRight_toRightOf="@+id/container_profile"
+            app:layout_constraintTop_toBottomOf="@id/tv_descrizione_Profilo">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_posts_profilo_gred"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/top_border_grey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout">
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_grid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/iconText_margin"
+                android:icon="@drawable/ic_grid_view_black_24"
+                android:padding="@dimen/iconText_margin" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/iconText_margin"
+                android:icon="@drawable/ic_linear_view_black_24"
+                android:padding="@dimen/iconText_margin" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_posts_profilo_linear"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/top_border_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabLayout">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_posts_profilo_gred"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/top_border_grey"
+            app:layout_constraintBottom_toBottomOf="@+id/container_profile"
+            app:layout_constraintLeft_toLeftOf="@+id/container_profile"
+            app:layout_constraintRight_toRightOf="@+id/container_profile"
+            app:layout_constraintTop_toBottomOf="@id/tabLayout">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
