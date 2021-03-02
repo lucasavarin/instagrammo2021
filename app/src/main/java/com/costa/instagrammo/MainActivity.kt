@@ -14,6 +14,7 @@ import com.costa.views.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.progress_bar.*
 
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface,
     EditProfileFragment.EditProfileFragmentInterface, AddFragment.AddFragmentInterface,
