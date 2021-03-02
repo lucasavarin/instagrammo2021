@@ -156,15 +156,12 @@ class ProfileFragment : Fragment() {
         tabLayout.addOnTabSelectedListener((object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 viewPager.currentItem = tab!!.position
-                Log.i("INFORMATION", "onTabReselected")
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                Log.i("INFORMATION", "onTabUnselected")
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                Log.i("INFORMATION", "onTabSelected")
             }
 
         }))

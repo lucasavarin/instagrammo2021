@@ -5,8 +5,8 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import com.example.instagrammo.utils.Constant.CHANNEL_ID
-import com.example.instagrammo.utils.Constant.CHANNEL_NAME
+import com.example.instagrammo.utils.Constant.CONST_CHANNEL_ID
+import com.example.instagrammo.utils.Constant.CONST_CHANNEL_NAME
 import com.example.instagrammo.utils.SharePrefs
 
 //variabile globale che punta alla classe Prefs
@@ -29,8 +29,8 @@ class InstagrammoApplication : Application() {
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                CHANNEL_ID,
-                CHANNEL_NAME,
+                CONST_CHANNEL_ID,
+                CONST_CHANNEL_NAME,
                 NotificationManager.IMPORTANCE_DEFAULT)
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
