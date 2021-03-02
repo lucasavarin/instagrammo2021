@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    tools:context=".LoginActivity">
+    tools:context="com.costa.views.login.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contrainer_login"

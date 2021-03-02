@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    tools:context="com.costa.views.LikeFragment">
+    tools:context="com.costa.views.main.like.LikeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_fragment_like"

@@ -6,159 +6,159 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    tools:context="com.costa.views.EditProfileFragment">
+    tools:context="com.costa.views.main.profile.EditProfileFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_edit_profile"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.costa.components.CastomHeader
-            android:id="@+id/header_add_post_step_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bottom_border_grey"
-            android:fontFamily="sans-serif-smallcaps"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="Modifica Profilo" />
-
-
-        <!-- TODO: Update blank fragment layout -->
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/immagineProfilo"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_edit_profile"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/tiny_margin"
-            android:padding="@dimen/tiny_margin"
-            android:src="@drawable/person"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/nomeIdImmagine"
-            app:layout_constraintHorizontal_weight="2"
-            app:layout_constraintStart_toStartOf="@+id/container_edit_profile"
-            app:layout_constraintTop_toBottomOf="@id/header_add_post_step_2"
-
-            />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nomeIdImmagine"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/mid_large_margin"
-            android:padding="@dimen/tiny_margin"
-            app:boxBackgroundMode="outline"
-            app:layout_constraintEnd_toStartOf="@+id/btn_conferma"
-            app:layout_constraintHorizontal_weight="5"
-            app:layout_constraintStart_toEndOf="@id/immagineProfilo"
-            app:layout_constraintTop_toBottomOf="@id/header_add_post_step_2">
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/id_immagine"
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:hint="ID"
-                android:imeOptions="actionDone"
-                android:inputType="number"
-                android:maxLength="4"
-                android:textAlignment="center" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/nomeProfilo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/mid_margin"
-            android:padding="@dimen/iconText_margin"
-            app:layout_constraintEnd_toEndOf="@+id/container_edit_profile"
-            app:layout_constraintStart_toStartOf="@+id/container_edit_profile"
-            app:layout_constraintTop_toBottomOf="@id/immagineProfilo"
-            tools:text="Nome Profilo" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/in_editNomeProfilo"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/mid_margin"
-            android:padding="@dimen/iconText_margin"
-            app:boxBackgroundMode="outline"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nomeProfilo">
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editNomeProfilo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/transparent"
-                android:hint="@string/nome_utente"
-                android:imeOptions="actionDone"
-                android:inputType="textPersonName"
-                android:textSize="15sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/in_editDescrizione"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/mid_margin"
-            android:padding="@dimen/iconText_margin"
-            app:boxBackgroundMode="outline"
-            app:counterEnabled="true"
-            app:counterMaxLength="100"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/in_editNomeProfilo">
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editDescrizione"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/transparent"
-                android:hint="@string/descrizione"
-                android:imeOptions="actionDone"
-                android:inputType="textMultiLine"
-                android:textSize="15sp"
-                app:counterTextColor="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- TODO: Bottons -->
-
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_conferma"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="@dimen/mid_margin"
-            android:background="@drawable/circle_botton"
-            android:padding="@dimen/iconText_margin"
-            android:src="@drawable/ic_check"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/nomeIdImmagine"
-            app:layout_constraintEnd_toEndOf="@+id/container_edit_profile"
-            app:layout_constraintTop_toTopOf="@+id/nomeIdImmagine" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_salva_modifica"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="@dimen/mid_margin"
-            android:background="@drawable/radius_button"
-            android:padding="@dimen/iconText_margin"
-            android:text="Salva"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.costa.components.CastomHeader
+                android:id="@+id/header_add_post_step_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bottom_border_grey"
+                android:fontFamily="sans-serif-smallcaps"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="Modifica Profilo" />
+
+
+            <!-- TODO: Update blank fragment layout -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/immagineProfilo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/tiny_margin"
+                android:padding="@dimen/tiny_margin"
+                android:src="@drawable/person"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/nomeIdImmagine"
+                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintStart_toStartOf="@+id/container_edit_profile"
+                app:layout_constraintTop_toBottomOf="@id/header_add_post_step_2"
+
+                />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nomeIdImmagine"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/mid_large_margin"
+                android:padding="@dimen/tiny_margin"
+                app:boxBackgroundMode="outline"
+                app:layout_constraintEnd_toStartOf="@+id/btn_conferma"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintStart_toEndOf="@id/immagineProfilo"
+                app:layout_constraintTop_toBottomOf="@id/header_add_post_step_2">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/id_immagine"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:hint="ID"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:textAlignment="center" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/nomeProfilo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/mid_margin"
+                android:padding="@dimen/iconText_margin"
+                app:layout_constraintEnd_toEndOf="@+id/container_edit_profile"
+                app:layout_constraintStart_toStartOf="@+id/container_edit_profile"
+                app:layout_constraintTop_toBottomOf="@id/immagineProfilo"
+                tools:text="Nome Profilo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/in_editNomeProfilo"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/mid_margin"
+                android:padding="@dimen/iconText_margin"
+                app:boxBackgroundMode="outline"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nomeProfilo">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editNomeProfilo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/transparent"
+                    android:hint="@string/nome_utente"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/in_editDescrizione"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/mid_margin"
+                android:padding="@dimen/iconText_margin"
+                app:boxBackgroundMode="outline"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/in_editNomeProfilo">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editDescrizione"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/transparent"
+                    android:hint="@string/descrizione"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:textSize="15sp"
+                    app:counterTextColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- TODO: Bottons -->
+
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_conferma"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/mid_margin"
+                android:background="@drawable/circle_botton"
+                android:padding="@dimen/iconText_margin"
+                android:src="@drawable/ic_check"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/nomeIdImmagine"
+                app:layout_constraintEnd_toEndOf="@+id/container_edit_profile"
+                app:layout_constraintTop_toTopOf="@+id/nomeIdImmagine" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_salva_modifica"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/mid_margin"
+                android:background="@drawable/radius_button"
+                android:padding="@dimen/iconText_margin"
+                android:text="Salva"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

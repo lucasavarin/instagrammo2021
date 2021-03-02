@@ -1,7 +1,7 @@
 package com.costa.servizi
 
 
-import com.costa.beans.PostOut
+import com.costa.beans.rest.PostOut
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

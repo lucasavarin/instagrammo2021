@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:name="com.costa.utils.ApplicationContext"
@@ -14,8 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Instagrammo"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".SplashActivity"
+
+        <service
+            android:name="com.costa.views.service.ForegroundService"
+            android:enabled="true"
+            android:exported="true"/>
+
+        <activity android:name="com.costa.views.splash.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +37,9 @@
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name="com.costa.views.main.MainActivity" android:label="SplashActivity" android:windowSoftInputMode="adjustPan" android:screenOrientation="portrait"/>
+        <activity android:name="com.costa.views.login.LoginActivity" android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"

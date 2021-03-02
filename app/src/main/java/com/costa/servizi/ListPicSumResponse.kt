@@ -1,7 +1,6 @@
 package com.costa.servizi
 
-import com.costa.beans.MyPosts
-import com.costa.beans.PicSumImageOut
+import com.costa.beans.rest.PicSumImageOut
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

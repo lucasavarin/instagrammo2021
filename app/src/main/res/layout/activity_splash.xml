@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="100dp"
     android:clickable="true"
     android:focusable="true"
-    tools:context=".SplashActivity">
+    tools:context="com.costa.views.splash.SplashActivity"
+    android:paddingHorizontal="100dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_splash"
