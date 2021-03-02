@@ -1,4 +1,4 @@
-package com.costa.views
+package com.costa.views.main.addpost
 
 import android.content.Context
 import android.os.Bundle
@@ -14,7 +14,8 @@ import kotlinx.android.synthetic.main.fragment_add_post_step_1.*
 class AddPostStep1Fragment : Fragment() {
     companion object {
         lateinit var imagePost: PicSumImage
-        val instance: AddPostStep1Fragment = AddPostStep1Fragment()
+        val instance: AddPostStep1Fragment =
+            AddPostStep1Fragment()
         fun getinstance(image: PicSumImage): AddPostStep1Fragment {
             imagePost = image
             return instance

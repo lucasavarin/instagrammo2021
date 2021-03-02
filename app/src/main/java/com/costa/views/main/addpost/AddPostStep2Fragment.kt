@@ -1,4 +1,4 @@
-package com.costa.views
+package com.costa.views.main.addpost
 
 import android.content.Context
 import android.os.Bundle
@@ -20,7 +20,8 @@ import retrofit2.Response
 class AddPostStep2Fragment : Fragment() {
     companion object {
         lateinit var imagePost: PicSumImage
-        val instance: AddPostStep2Fragment = AddPostStep2Fragment()
+        val instance: AddPostStep2Fragment =
+            AddPostStep2Fragment()
         fun getinstance(image: PicSumImage): AddPostStep2Fragment {
             imagePost = image
             return instance

@@ -1,4 +1,4 @@
-package com.costa.views
+package com.costa.views.main.profile
 
 import android.content.Context
 import android.os.Bundle
@@ -26,15 +26,16 @@ import retrofit2.Response
  */
 class EditProfileFragment : Fragment(){
     companion object{
-        val instance:EditProfileFragment= EditProfileFragment()
-
+        val instance: EditProfileFragment =
+            EditProfileFragment()
     }
     lateinit var listener:Context
     var nome : String= ""
     var descrizione : String= ""
     var immagine : String= ""
     var imageId : String= ""
-    var pathImg : String = "https://picsum.photos/id/$imageId/300/300"
+    var pathImg : String = "https://picsum.photos/id/$imageId/500/500"
+    lateinit var codImg:String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +44,8 @@ class EditProfileFragment : Fragment(){
         nome=getArguments()!!.getString("nome").toString()
         descrizione=getArguments()!!.getString("description").toString()
         immagine=getArguments()!!.getString("picture").toString()
+        var picsumUrl = immagine!!.split("/")
+        codImg=picsumUrl[4]
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edit_profile, container, false)
     }
@@ -66,12 +69,11 @@ class EditProfileFragment : Fragment(){
 
         btn_conferma.setOnClickListener {
             imageId = id_immagine.text.toString()
-            pathImg="https://picsum.photos/id/$imageId/300/300"
+            pathImg="https://picsum.photos/id/$imageId/500/500"
             Picasso.get()
                 .load(pathImg)
                 .transform(CropCircleTransformation())
                 .into(immagineProfilo)
-
 
         }
 
@@ -79,7 +81,7 @@ class EditProfileFragment : Fragment(){
 
             if (ceckFilds()) {
                 imageId = id_immagine.text.toString()
-                pathImg="https://picsum.photos/id/$imageId/300/300"
+                pathImg="https://picsum.photos/id/$imageId/500/500"
 
                 ApiClient.getClient.putEditProfile(
                     userId, ProfileEditRequest(
@@ -125,6 +127,7 @@ class EditProfileFragment : Fragment(){
             .into(immagineProfilo)
         editNomeProfilo.setText(nome)
         editDescrizione.setText(descrizione)
+        id_immagine.setText(codImg)
     }
     interface EditProfileFragmentInterface {
         fun back()
