@@ -74,13 +74,15 @@
         android:id="@+id/home_follow_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:foregroundGravity="center"
-        android:layout_marginBottom="@dimen/default2"
         android:layout_marginTop="@dimen/default2"
+        android:layout_marginBottom="@dimen/default2"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="@id/guidelinebottomfollower"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelinetopfollower"
+        app:layout_constraintVertical_bias="1.0"
         tools:context=".view.views.home.HomeFragment"
         tools:listitem="@layout/item_follow_home" />
 
@@ -88,7 +90,7 @@
         android:id="@+id/gradientdown"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="90dp"
         android:background="@drawable/background_follower_recycler_down"
         app:layout_constraintBottom_toBottomOf="@id/guidelinebottomfollower"
         app:layout_constraintEnd_toEndOf="@+id/home_follow_recycler"
@@ -101,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.20" />
+        app:layout_constraintGuide_percent="0.16" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_post_recycler"

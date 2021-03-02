@@ -15,21 +15,21 @@ import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
 import com.example.instagrammo.view.views.add.AddFragment
-import com.example.instagrammo.view.views.add.AddPostConfirmFragment
-import com.example.instagrammo.view.views.add.AddPostFragment
+import com.example.instagrammo.view.views.add.AddNewPostFragment
+import com.example.instagrammo.view.views.add.ConfirmNewPostFragment
 import com.example.instagrammo.view.views.add.OnImageItemClickListener
 import com.example.instagrammo.view.views.follow.FollowFragment
 import com.example.instagrammo.view.views.home.HomeFragment
 import com.example.instagrammo.view.views.profile.ButtonEditProfileListener
 import com.example.instagrammo.view.views.profile.EditProfileFragment
-import com.example.instagrammo.view.views.profile.EditProfileFragmentListener
+import com.example.instagrammo.utils.listener.HeaderBackListener
 import com.example.instagrammo.view.views.profile.ProfileFragment
 import com.example.instagrammo.view.views.search.SearchFragment
 import com.example.instagrammo.views.BaseActivity
 import kotlinx.android.synthetic.main.activity_basehome.*
 
 class BaseHomeActivity : BaseActivity(),
-    OnPostItemClickListener, ButtonEditProfileListener, EditProfileFragmentListener,
+    OnPostItemClickListener, ButtonEditProfileListener, HeaderBackListener,
     OnImageItemClickListener {
 
     private val viewModel = MainViewModel()
@@ -138,7 +138,7 @@ class BaseHomeActivity : BaseActivity(),
     }
 
     override fun onImageItemAddListener(image: LoremBean, tag: String) {
-        val fragment = AddPostConfirmFragment.newInstance(image)
+        val fragment = AddNewPostFragment.newInstance(image)
         replaceFragment(fragment, R.id.fragment_container)
         addToBackStackFragment(tag)
         //addFragment(fragment, R.id.fragment_container)
@@ -146,7 +146,7 @@ class BaseHomeActivity : BaseActivity(),
     }
 
     override fun onImageItemAddPostListener(image: LoremBean) {
-        val fragment = AddPostFragment.newInstance(image)
+        val fragment = ConfirmNewPostFragment.newInstance(image)
         addFragment(fragment, R.id.fragment_container)
     }
 
@@ -168,6 +168,10 @@ class BaseHomeActivity : BaseActivity(),
     override fun onDestroy() {
         super.onDestroy()
         stopRepeatingTask()
+    }
+
+    override fun addFragment() {
+        addFragment(AddFragment.newInstance, R.id.fragment_container)
     }
 
 

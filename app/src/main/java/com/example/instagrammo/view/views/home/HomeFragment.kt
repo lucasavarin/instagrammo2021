@@ -20,6 +20,7 @@ import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
+
 class HomeFragment : Fragment() {
 
     private var listenerPost: OnPostItemClickListener? = null
@@ -124,7 +125,7 @@ class HomeFragment : Fragment() {
         if (recyclerView is RecyclerView ) {
             recyclerView.apply{
                 layoutManager = LinearLayoutManager(context)
-                adapter = ItemPostRecyclerViewAdapter(this.context, itemsPost, listenerPost )
+                adapter = ItemPostRecyclerViewAdapter(this.context, itemsPost, listenerPost)
             }
         }
     }
@@ -133,7 +134,7 @@ class HomeFragment : Fragment() {
         val recyclerView = view?.home_follow_recycler
         if (recyclerView is RecyclerView) {
             recyclerView.apply {
-                layoutManager = LinearLayoutManager(context,  LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = ItemFollowRecyclerViewAdapter(this.context, itemsFollow, listenerFollow)
             }
         }

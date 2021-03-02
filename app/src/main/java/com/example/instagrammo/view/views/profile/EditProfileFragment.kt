@@ -14,6 +14,7 @@ import com.example.instagrammo.prefs
 import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.utils.ElementViewConverter.toEditable
+import com.example.instagrammo.utils.listener.HeaderBackListener
 import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
 import com.squareup.picasso.Picasso
@@ -27,7 +28,7 @@ class EditProfileFragment : Fragment() {
 
     private lateinit var editProfileRequest: EditProfileRequest
 
-    private lateinit var listener: EditProfileFragmentListener
+    private lateinit var listener: HeaderBackListener
 
     private val viewModel = MainViewModel()
 
@@ -141,7 +142,7 @@ class EditProfileFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is EditProfileFragmentListener) {
+        if (context is HeaderBackListener) {
             listener = context
         } else {
             throw RuntimeException("$context must implement EditProfileFragmentListener")

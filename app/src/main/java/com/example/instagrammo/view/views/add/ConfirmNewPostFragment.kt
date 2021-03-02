@@ -16,15 +16,18 @@ import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
+import com.example.instagrammo.utils.listener.HeaderBackListener
 import com.squareup.picasso.Picasso
-import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_confirm_add_post.*
+import kotlinx.android.synthetic.main.fragment_modifica_profilo.view.*
 
-class AddPostFragment: Fragment() {
+class ConfirmNewPostFragment: Fragment() {
 
     private val viewModel = MainViewModel()
 
     private lateinit var listenerImage: OnImageItemClickListener
+
+    private lateinit var listener: HeaderBackListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +40,7 @@ class AddPostFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         populateDataView()
         confirmButtonListener()
+        backButtonListener()
     }
 
     private fun confirmButtonListener() {
@@ -44,6 +48,13 @@ class AddPostFragment: Fragment() {
             setAddRequest()
             sendRequest()
             setObserver()
+        }
+    }
+
+    private fun backButtonListener(){
+        //bottone back nell header
+        view?.topBarBackComponent?.setOnPressedListener{
+            listener.removeFragmentListener(this)
         }
     }
 
@@ -83,6 +94,11 @@ class AddPostFragment: Fragment() {
         } else {
             throw RuntimeException("$context must implement OnImageItemClickListener")
         }
+        if (context is HeaderBackListener) {
+            listener = context
+        } else {
+            throw RuntimeException("$context must implement EditProfileFragmentListener")
+        }
     }
 
 
@@ -90,6 +106,6 @@ class AddPostFragment: Fragment() {
 
         private lateinit var image: LoremBean
 
-        fun newInstance(image: LoremBean)  : AddPostFragment = AddPostFragment().also{ this.image = image}
+        fun newInstance(image: LoremBean)  : ConfirmNewPostFragment = ConfirmNewPostFragment().also{ this.image = image}
     }
 }

@@ -27,6 +27,7 @@ class ItemFollowRecyclerViewAdapter(
 
         val layoutInflater = LayoutInflater.from(mContext)
             .inflate(R.layout.item_follow_home, parent, false)
+        impostaDimensioneImmagini(layoutInflater)
         return ViewHolder(layoutInflater)
     }
 
@@ -41,6 +42,14 @@ class ItemFollowRecyclerViewAdapter(
     ) : RecyclerView.ViewHolder(mView){
         val imageProfile = mView.profile_image_follower
         val nameFollowerText = mView.name_follower
+    }
+
+    fun impostaDimensioneImmagini(
+        mView: View
+    ){
+        /*var larghezza =  mView.profile_image_follower.getLayoutParams().width
+        mView.profile_image_follower.getLayoutParams().height = larghezza/3
+        mView.profile_image_follower.requestLayout()*/
     }
 
 }
