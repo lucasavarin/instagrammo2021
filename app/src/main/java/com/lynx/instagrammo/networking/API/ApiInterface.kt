@@ -35,4 +35,7 @@ interface ApiInterface {
     @GET("posts_number.php/")
     fun getNumberPost() : Call<NumberPostsResponse>
 
+    @DELETE("posts.php/postsId")
+    fun deletePost(@Path("postsId")postsId :String) : Call<Boolean>
+
 }

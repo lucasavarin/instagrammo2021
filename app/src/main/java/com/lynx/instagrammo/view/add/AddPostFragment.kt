@@ -55,8 +55,8 @@ class AddPostFragment : Fragment() {
                 prefs.userId, AddPostRequest(
                     profileId = prefs.userId,
                     title = title,
-                    picture = itemPicture!!.download_url
-                )
+                    picture = transformPicture(itemPicture!!)
+            )
             ).enqueue(object : Callback<Boolean> {
                 override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                     Toast.makeText(context, "POST SALVATO", Toast.LENGTH_SHORT).show()
@@ -96,5 +96,22 @@ class AddPostFragment : Fragment() {
     interface AddPostFragmentInterface {
         fun addPostAndExit()
         fun backToShowImage()
+    }
+
+    fun transformPicture(image: PicsumImageRest): String {
+        val picsumUrl: List<String>
+        var result = ""
+        picsumUrl = image.download_url.split("/")
+        picsumUrl.forEach {
+            if (picsumUrl[5].equals(it) || picsumUrl[6].equals(it)) {
+                result = result + "/" + "500"
+            } else if (!result.isNullOrBlank()) {
+                result = result + "/" + it
+            }else{
+                result = it
+            }
+        }
+        Log.i("RESULT :", result)
+        return result
     }
 }
