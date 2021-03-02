@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:background="#052035"
+        android:background="@drawable/gradient"
         tools:ignore="ExtraText">
 
 
@@ -18,7 +18,7 @@
         android:lineSpacingExtra="8sp"
         android:text="@string/instagrammo"
         android:textAlignment="center"
-        android:textColor="#2196F3"
+        android:textColor="@color/orange"
         android:textSize="40sp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -35,10 +35,10 @@
             android:hint="@string/Username"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:textColorHint="#03A9F4"
+            android:textColorHint="@color/purple_200"
             android:layout_marginTop="50dp"
             android:fontFamily="serif"
-            android:textColor="#2196F3"
+            android:textColor="@color/orange"
             android:backgroundTint="@android:color/darker_gray"/>
 
 
@@ -57,8 +57,8 @@
             android:layout_marginTop="50dp"
             android:id="@+id/passwordEditText"
             android:fontFamily="serif"
-            android:textColor="#03A9F4"
-            android:textColorHint="#03A9F4"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/purple_200"
             android:backgroundTint="@android:color/darker_gray"
             />
 
@@ -73,9 +73,9 @@
               android:layout_marginStart="16dp"
               android:layout_marginEnd="16dp"
               android:fontFamily="serif"
-              android:textColor="#2196F3"
-              android:backgroundTint="@color/white"
-              android:textColorHighlight="@color/white"/>
+              android:textColor="@color/purple_200"
+              android:backgroundTint="@color/orange"
+              android:textColorHighlight="@color/orange"/>
 
 
 
@@ -89,7 +89,7 @@
             android:layout_marginBottom="0dp"
             android:fontFamily="serif"
             android:text="login"
-            android:textColor="#78B8EC"
+            android:textColor="@color/orange"
             android:backgroundTint="@color/cardview_shadow_end_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"

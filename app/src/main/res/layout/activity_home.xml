@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#052035"
+    android:background="@drawable/gradient"
     >
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -15,7 +15,7 @@
         android:lineSpacingExtra="8sp"
         android:text="@string/instagrammo"
         android:textAlignment="center"
-        android:textColor="#2196F3"
+        android:textColor="@color/orange"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@id/fragmentContainer"/>
 
@@ -31,15 +31,14 @@
         app:layout_constraintTop_toTopOf="@id/instagrammoEditText"
         app:layout_constraintVertical_bias="0.0" />
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navView"
         android:layout_width="400dp"
         android:layout_height="68dp"
         android:layout_gravity="bottom"
         android:background="@color/cardview_shadow_end_color"
-        app:itemIconTint="#2196F3"
-        app:itemTextColor="#2196F3"
+        app:itemIconTint="@color/purple_200"
+        app:itemTextColor="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

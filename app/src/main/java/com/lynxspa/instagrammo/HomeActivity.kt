@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        //btn esegue al click
         btnEditProfile.setOnClickListener {
 
         }
@@ -47,6 +48,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
             }
         }
     }
+     //
      inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
          val fragmentTransaction = beginTransaction()
          fragmentTransaction.func()
