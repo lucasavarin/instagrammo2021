@@ -55,12 +55,12 @@ class BaseHomeActivity : BaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basehome)
-        addFragment(HomeFragment.newInstance, R.id.fragment_container)
 
         bottomMenuNavigationManager()
         startRepeatingTask()
         setObserver()
     }
+
 
     private fun bottomMenuNavigationManager(){
 
@@ -114,14 +114,11 @@ class BaseHomeActivity : BaseActivity(),
                         prefs.firstLog = false
                         viewModel.setStateEvent(MainStateEvent.GetPostsEvent)
                     }
-                    dataState.data.payload
-                    prefs.numberPosts
                     if(dataState.data.payload > prefs.numberPosts) {
                         previewGapNumberNotification = dataState.data.payload - (dataState.data.payload - prefs.numberPosts)
                         prefs.numberPosts = dataState.data.payload
                         viewModel.setStateEvent(MainStateEvent.GetPostsEvent)
                     }
-                    viewModel.setStateEvent(MainStateEvent.GetPostsEvent)
                 }
             }
         })
@@ -144,13 +141,13 @@ class BaseHomeActivity : BaseActivity(),
     private fun buildDataNotification() : ArrayList<NotificationArguments> {
         val sizePosts = itemsPost.size -1
         val notificationList : ArrayList<NotificationArguments> = ArrayList()
-/*
+
         for ( i in sizePosts downTo previewGapNumberNotification step 1) {
             notificationList.add(
                 NotificationArguments(itemsPost[i].profile.name!!, itemsPost[i].title, itemsPost[i].profile.picture!!))
-        }*/
-        notificationList.add(
-            NotificationArguments(itemsPost[1].profile.name!!, itemsPost[1].title, itemsPost[1].profile.picture!!))
+        }
+        /*notificationList.add(
+            NotificationArguments(itemsPost[1].profile.name!!, itemsPost[1].title, itemsPost[1].profile.picture!!))*/
         return notificationList
     }
 
@@ -212,6 +209,13 @@ class BaseHomeActivity : BaseActivity(),
         addFragment(AddFragment.newInstance, R.id.fragment_container)
     }
 
+    override fun onStart() {
+        addFragment(HomeFragment.newInstance, R.id.fragment_container)
+        super.onStart()
+    }
 
+    companion object {
+        var newInstance : BaseActivity = BaseHomeActivity()
+    }
 
 }

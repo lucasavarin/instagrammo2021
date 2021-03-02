@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.components.dialogs.LoadingDialog
+import com.example.instagrammo.view.views.add.AddFragment
 
 
 abstract class BaseActivity() : AppCompatActivity() {
@@ -59,6 +60,5 @@ abstract class BaseActivity() : AppCompatActivity() {
     protected fun alertDismiss() {
         alertDialog.dismiss()
     }
-
 
 }

@@ -11,7 +11,9 @@ import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.utils.Constant.CONST_CHANNEL_ID
 import com.example.instagrammo.utils.Constant.CONST_GROUP_APP_NOTIFICATION
 import com.example.instagrammo.utils.Constant.CONST_NOTIFICATION_DATA
+import com.example.instagrammo.view.BaseHomeActivity
 import com.example.instagrammo.view.views.home.HomeFragment
+import com.example.instagrammo.views.BaseActivity
 import com.squareup.picasso.Picasso
 
 class NotificationService : Service(){
@@ -27,7 +29,7 @@ class NotificationService : Service(){
 
     private fun displayNotification(title: String, description : String, iconProfile: String) {
         val notidicationId = 1
-        val notificationIntent = Intent(this, HomeFragment.newInstance::class.java)
+        val notificationIntent = Intent(this, BaseHomeActivity::class.java)
         val pendingIntent: PendingIntent =
             PendingIntent.getActivity(
                 this,
