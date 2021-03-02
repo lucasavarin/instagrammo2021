@@ -28,7 +28,7 @@ class AddGridViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
 
     fun transformName(image: PicsumImageRest): String {
         val picsumUrl: List<String>
-        var result: String = ""
+        var result = ""
         picsumUrl = image.download_url.split("/")
         picsumUrl.forEach {
             if (picsumUrl[5].equals(it) || picsumUrl[6].equals(it)) {

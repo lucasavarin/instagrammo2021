@@ -32,7 +32,7 @@ interface ApiInterface {
     fun addPost(@Path("profileId") profileId :String,
                 @Body post: AddPostRequest) : Call<Boolean>
 
-    @GET("posts_number.php")
+    @GET("posts_number.php/")
     fun getNumberPost() : Call<NumberPostsResponse>
 
 }

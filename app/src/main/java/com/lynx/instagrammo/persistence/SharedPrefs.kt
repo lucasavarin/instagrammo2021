@@ -9,6 +9,8 @@ class SharedPrefs(context: Context) {
     private val USERNAME = "username"
     private val AUTHTOKEN = "authToken"
     private val USER_ID = "userId"
+    private val NUMBER_POSTS = "numberPosts"
+    private val POSTS_DIFFERENCE ="postsDifference"
     private val prefs: SharedPreferences = context.getSharedPreferences(PREF_FILENAME, 0)
 
     var rememberUser: Boolean
@@ -26,5 +28,13 @@ class SharedPrefs(context: Context) {
     var userId: String
         get() = prefs.getString(USER_ID, "")!!
         set(value) = prefs.edit().putString(USER_ID, value).apply()
+
+    var oldPosts: Int
+        get() = prefs.getInt(NUMBER_POSTS, 0)!!
+        set(value) = prefs.edit().putInt(NUMBER_POSTS, value).apply()
+
+    var postsDifference: Int
+    get() = prefs.getInt(POSTS_DIFFERENCE, 0)
+    set(value) = prefs.edit().putInt(POSTS_DIFFERENCE, value).apply()
 
 }

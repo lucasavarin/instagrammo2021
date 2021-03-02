@@ -14,7 +14,7 @@ class FollowerListViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
 
     private var follower: Follower? = null
 
-    fun bindFollow(follower: Follower, action: OnFollowerClickListener) {
+    fun bindFollow(follower: Follower, callback :(item: Follower, position: Int)-> Unit) {
         this.follower = follower
         v.follower_img_name.text = transformName(follower)
 
@@ -26,25 +26,14 @@ class FollowerListViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
           .into(v.follow_image)
 
         itemView.setOnClickListener{
-            action.onItemClick(follower, adapterPosition)
+            callback.invoke(follower, adapterPosition)
         }
     }
-
-//    init{
-//        itemView.setOnClickListener{v:View ->
-//            val position: Int = adapterPosition
-//            Toast.makeText(itemView.context, "You clic on item # ${position + 1}", Toast.LENGTH_SHORT).show()
-//        }
-//    }
 
     fun transformName(follower: Follower): String{
        val name :List<String>
         name = follower.name.split(" ")
         return name[0]
-    }
-
-    interface OnFollowerClickListener{
-        fun onItemClick(item: Follower, position: Int)
     }
 
 }

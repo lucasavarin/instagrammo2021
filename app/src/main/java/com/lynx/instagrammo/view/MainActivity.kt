@@ -32,18 +32,15 @@ import retrofit2.Response
 
 
 /* toDO cambiare il nome dell'activity in BaseActivity */
-class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface, EditFragment.EditFragmenInterface, HomeFragment.HomeFragmentInterface , AddFragment.AddFragmentInterface, ShowImageFragment.ShowImageFragmentInterface, AddPostFragment.AddPostFragmentInterface{
+class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface, EditFragment.EditFragmenInterface, HomeFragment.HomeFragmentInterface, AddFragment.AddFragmentInterface, ShowImageFragment.ShowImageFragmentInterface, AddPostFragment.AddPostFragmentInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        for(i in 0 until navView.menu.size()){
-        navView.itemIconTintList = null
-        }
 
         addFragment(HomeFragment.newInstance, R.id.fragmentConainer)
         getPostDifference()
-        
+
         navView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.action_home -> {
@@ -60,7 +57,9 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
                 }
                 R.id.action_love -> {
                     replaceFragment(NotificationsFragment.newInstance, R.id.fragmentConainer)
-                    ForegroundService.stopService(this)
+                    navView.getBadge(R.id.action_love)?.apply {
+                        isVisible = false
+                    }
                     true
                 }
                 R.id.action_profile -> {
@@ -99,7 +98,7 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
     }
 
     override fun goToAddPost(item: PicsumImageRest) {
-        addFragment(AddPostFragment.newInstace(item ), R.id.fragmentConainer)
+        addFragment(AddPostFragment.newInstace(item), R.id.fragmentConainer)
     }
 
     override fun addPostAndExit() {
@@ -107,44 +106,6 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
         removeFragment(ShowImageFragment.newInstance)
     }
 
-
-    private fun getPostDifference() {
-        var handler = Handler()
-        var runnable: Runnable? = null
-        var delay = 5000
-
-        /*todo sostituire queste variabili con dei prefs*/
-        var newPostsNumber = 0
-        var oldPostsNumber = 0
-
-        handler.postDelayed(Runnable {
-            handler.postDelayed(runnable!!, delay.toLong())
-
-
-            var difference = newPostsNumber.compareTo(oldPostsNumber)
-
-            ApiClient.GetClient.getNumberPost().enqueue(object : Callback<NumberPostsResponse> {
-                override fun onResponse(call: Call<NumberPostsResponse>, response: Response<NumberPostsResponse>) {
-                        oldPostsNumber = newPostsNumber
-                        newPostsNumber = response.body()!!.payload!!.toInt()
-                }
-
-                override fun onFailure(call: Call<NumberPostsResponse>, t: Throwable) {
-
-                }
-
-            })
-            Log.i("OLD NUMBER :", "$oldPostsNumber")
-            Log.i("NEW NUMBER :", "$newPostsNumber")
-        Log.i("DIFFERENCE :", "$difference")
-         if(difference > 0){
-            var input = newPostsNumber - oldPostsNumber
-             ForegroundService.startService(this, input.toString())
-         }
-
-        }.also { runnable = it }, delay.toLong())
-
-    }
 
     override fun backToAdd() {
         replaceFragment(AddFragment.newInstance, R.id.fragmentConainer)
@@ -154,6 +115,45 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
     override fun backToShowImage() {
         replaceFragment(ShowImageFragment.newInstance, R.id.fragmentConainer)
         removeFragment(AddPostFragment.newInstance)
+    }
+
+    private fun getPostDifference() {
+        var handler = Handler()
+        var runnable: Runnable? = null
+        var delay = 5000
+
+        /*todo sostituire queste variabili con dei prefs*/
+
+
+        handler.postDelayed(Runnable {
+            handler.postDelayed(runnable!!, delay.toLong())
+
+            ApiClient.GetClient.getNumberPost().enqueue(object : Callback<NumberPostsResponse> {
+                override fun onResponse(call: Call<NumberPostsResponse>, response: Response<NumberPostsResponse>) {
+                    var newPostsNumber = response.body()!!.payload!!.toInt()
+
+                    var difference = newPostsNumber.compareTo(prefs.oldPosts)
+                    if (difference > 0) {
+                        var input = newPostsNumber - prefs.oldPosts
+                        prefs.postsDifference = input
+                        navView.getOrCreateBadge(R.id.action_love).apply {
+                            number = input
+                            isVisible = true
+                        }
+                        ForegroundService.startService(this@MainActivity, input.toString())
+                        prefs.oldPosts = newPostsNumber
+                    }
+                }
+
+                override fun onFailure(call: Call<NumberPostsResponse>, t: Throwable) {
+
+                }
+
+            })
+
+
+        }.also { runnable = it }, delay.toLong())
+
     }
 
 

@@ -47,9 +47,10 @@ class AddPostFragment : Fragment() {
             .transform(CircleTransform())
             .into(image_new_post)
 
-        title = description_new_post.text.toString()
+
 
         btn_add_new_post.setOnClickListener {
+            title = description_new_post.text.toString()
             ApiClient.GetClient.addPost(
                 prefs.userId, AddPostRequest(
                     profileId = prefs.userId,
