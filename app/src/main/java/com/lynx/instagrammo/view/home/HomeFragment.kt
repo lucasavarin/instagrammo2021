@@ -46,7 +46,7 @@ class HomeFragment : Fragment(){
                 response: Response<FollowerResponse>
             ) {
                 if (response.isSuccessful)
-                    followerLayoutManager(response.body()!!.payload)
+                    followerLayoutManager(response.body()!!.payload!!.asReversed())
             }
 
             override fun onFailure(call: Call<FollowerResponse>, t: Throwable) {
@@ -58,7 +58,7 @@ class HomeFragment : Fragment(){
         ApiClient.GetClient.getPost().enqueue(object : Callback<PostResponse> {
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                 if (!(response.body()!!.payload.isNullOrEmpty()))
-                    postLayoutManager(response.body()?.payload)
+                    postLayoutManager(response.body()?.payload!!.asReversed())
 
             }
 

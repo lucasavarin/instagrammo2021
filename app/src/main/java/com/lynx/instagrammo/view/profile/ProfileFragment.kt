@@ -118,8 +118,8 @@ class ProfileFragment : Fragment() {
         ApiClient.GetClient.getMyPosts(prefs.userId).enqueue(object : Callback<MyPostsResponse> {
             override fun onResponse(call: Call<MyPostsResponse>, response: Response<MyPostsResponse>) {
                 posts = response.body()!!.payload!!
-                gridLayoutManager(response.body()!!.payload!!)
-                linearLayoutManager(response.body()!!.payload!!)
+                gridLayoutManager(response.body()!!.payload!!.asReversed())
+                linearLayoutManager(response.body()!!.payload!!.asReversed())
             }
 
             override fun onFailure(call: Call<MyPostsResponse>, t: Throwable) {
