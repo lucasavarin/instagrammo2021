@@ -33,4 +33,7 @@ interface ApiInterface {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("posts.php")
     fun doAddPost(@Body addPostRequestRest: AddPostRequestRest): Call<BooleanRespomce>
+
+    @GET("posts_number.php")
+    fun getPostsNumber():Call<NumberPostsResponse>
 }
