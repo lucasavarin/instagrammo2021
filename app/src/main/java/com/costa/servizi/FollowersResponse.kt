@@ -1,6 +1,6 @@
 package com.costa.servizi
 
-import com.costa.beans.FollowerOut
+import com.costa.beans.rest.FollowerOut
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

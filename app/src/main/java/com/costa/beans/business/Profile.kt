@@ -1,4 +1,4 @@
-package com.costa.beans
+package com.costa.beans.business
 
 data class Profile(
        var profileId: Int,

@@ -1,4 +1,4 @@
-package com.costa.views
+package com.costa.views.main.profile
 
 import android.content.Context
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.costa.adapter.ProfilePostsGridAdapter
-import com.costa.adapter.ProfilePostsLinearAdapter
+import com.costa.adapter.profilePostsGrid.ProfilePostsGridAdapter
+import com.costa.adapter.profilePostsList.ProfilePostsLinearAdapter
 import com.costa.beans.rest.MyProfilePostsOut
 import com.costa.beans.rest.ProfileOut
 import com.costa.instagrammo.R
@@ -29,12 +29,11 @@ import retrofit2.Response
 class ProfileFragment : Fragment() {
 
     private lateinit var listener: ProfileFragmentInterface
-    //private lateinit var linearLayoutManager: LinearLayoutManager
-    //private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var profilo : ProfileOut
 
     companion object{
-        val instance:ProfileFragment= ProfileFragment()
+        val instance: ProfileFragment =
+            ProfileFragment()
 
     }
 
@@ -43,15 +42,12 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        //linearLayoutManager = LinearLayoutManager(context)
-        //gridLayoutManager = GridLayoutManager(context, 3)
 
         if (context is ProfileFragmentInterface) {
             listener = context
@@ -149,7 +145,10 @@ class ProfileFragment : Fragment() {
         rv_posts_profilo_linear.apply {
             val layoutManager = LinearLayoutManager(context)
             rv_posts_profilo_linear.layoutManager = layoutManager
-            rv_posts_profilo_linear.adapter = ProfilePostsLinearAdapter(payload)
+            rv_posts_profilo_linear.adapter =
+                ProfilePostsLinearAdapter(
+                    payload
+                )
         }
     }
 
@@ -157,7 +156,10 @@ class ProfileFragment : Fragment() {
         rv_posts_profilo_gred.apply {
             val layoutManager = GridLayoutManager(context, 3)
             rv_posts_profilo_gred.layoutManager = layoutManager
-            rv_posts_profilo_gred.adapter = ProfilePostsGridAdapter(payload)
+            rv_posts_profilo_gred.adapter =
+                ProfilePostsGridAdapter(
+                    payload
+                )
         }
     }
 
@@ -165,14 +167,4 @@ class ProfileFragment : Fragment() {
     interface ProfileFragmentInterface {
         fun modifyProfilePressed(profile: ProfileOut)
     }
-
-    /*override fun refreshFragment() {
-        if (profileScrollView.scrolly != 0) {
-            profileScrollView.smoothScrollTo( 0, 0)
-        }else{
-            btn_modifica_profilo.isRefreshing = true
-            getPost()
-            getProfile()
-        }
-    }*/
 }

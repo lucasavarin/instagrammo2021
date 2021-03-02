@@ -1,4 +1,4 @@
-package com.costa.adapter
+package com.costa.adapter.profilePostsList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -21,7 +21,9 @@ class ProfilePostsLinearAdapter (private val posts: List<MyProfilePostsOut>) :
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_profile_post_linear, parent, false)
 
-        return ProfilePostsLinearViewHolder(view)
+        return ProfilePostsLinearViewHolder(
+            view
+        )
     }
 
     // Replace the contents of a view (invoked by the layout manager)

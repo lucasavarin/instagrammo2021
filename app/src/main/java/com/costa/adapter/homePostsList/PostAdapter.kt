@@ -1,4 +1,4 @@
-package com.costa.adapter
+package com.costa.adapter.homePostsList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -28,7 +28,6 @@ class PostAdapter(private val posts: List<PostOut>) :
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val item = posts[position]
         holder.bindPost(item)
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -1,21 +1,19 @@
-package com.costa.views
+package com.costa.views.main.home
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.costa.adapter.PostAdapter
-import com.costa.adapter.FollowersListAdapter
+import com.costa.adapter.homePostsList.PostAdapter
+import com.costa.adapter.homeFollowersList.FollowersListAdapter
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
 import com.costa.servizi.ApiClient.userId
 import com.costa.servizi.FollowersResponse
 import com.costa.servizi.PostsResponse
-import com.costa.utils.prefs
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +27,8 @@ import retrofit2.Response
  */
 class HomeFragment : Fragment() {
     companion object{
-        val instance:HomeFragment= HomeFragment()
+        val instance: HomeFragment =
+            HomeFragment()
 
     }
 
@@ -51,7 +50,8 @@ class HomeFragment : Fragment() {
 
                     val layoutManagerPosts = LinearLayoutManager(context)
                     rv_post.layoutManager = layoutManagerPosts
-                    rv_post.adapter = PostAdapter(response.body()!!.payload!!)
+                    rv_post.adapter =
+                        PostAdapter(response.body()!!.payload!!)
                 }
             }
 
@@ -75,7 +75,10 @@ class HomeFragment : Fragment() {
 
                     val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                     recycleHorizontal.layoutManager = layoutManager
-                    recycleHorizontal.adapter = FollowersListAdapter(response.body()!!.payload!!)
+                    recycleHorizontal.adapter =
+                        FollowersListAdapter(
+                            response.body()!!.payload!!
+                        )
                 }
             }
 

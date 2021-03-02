@@ -1,6 +1,6 @@
-package com.costa.beans
+package com.costa.beans.rest
 
-import java.util.*
+import com.costa.beans.rest.ProfileOut
 
 
 data class PostOut(

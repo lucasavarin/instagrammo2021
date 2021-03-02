@@ -1,4 +1,4 @@
-package com.costa.adapter
+package com.costa.adapter.addpost
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

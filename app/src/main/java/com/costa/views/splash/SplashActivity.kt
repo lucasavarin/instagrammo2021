@@ -1,11 +1,11 @@
-package com.costa.instagrammo
+package com.costa.views.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.costa.views.HomeFragment
-import kotlinx.android.synthetic.main.activity_splash.*
+import com.costa.instagrammo.R
+import com.costa.views.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 

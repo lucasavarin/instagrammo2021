@@ -1,4 +1,4 @@
-package com.costa.beans
+package com.costa.beans.rest
 
 class FollowerOut(
     var id: Int,

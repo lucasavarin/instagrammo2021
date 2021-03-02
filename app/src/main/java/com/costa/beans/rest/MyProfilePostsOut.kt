@@ -1,6 +1,6 @@
-package com.costa.beans
+package com.costa.beans.rest
 
-data class MyPosts(
+data class MyProfilePostsOut(
     val postId: String,
     val title: String,
     val picture: String,

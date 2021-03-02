@@ -1,4 +1,4 @@
-package com.costa.views
+package com.costa.views.main.addpost
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import com.costa.adapter.AddPostsGridAdAdapter
+import com.costa.adapter.addpost.AddPostsGridAdAdapter
 import com.costa.beans.rest.PicSumImageOut
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
@@ -20,7 +20,8 @@ import retrofit2.Response
 
 class AddFragment : Fragment() {
     companion object {
-        var instance: AddFragment = AddFragment()
+        var instance: AddFragment =
+            AddFragment()
 
     }
 
@@ -65,9 +66,10 @@ class AddFragment : Fragment() {
         rv_add_post.apply {
             val layoutManager = GridLayoutManager(context, 3)
             rv_add_post.layoutManager = layoutManager
-            rv_add_post.adapter = AddPostsGridAdAdapter(payload) { image ->
-                listener.onClickImage(image)
-            }
+            rv_add_post.adapter =
+                AddPostsGridAdAdapter(payload) { image ->
+                    listener.onClickImage(image)
+                }
         }
     }
 

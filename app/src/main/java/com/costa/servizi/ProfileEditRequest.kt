@@ -1,6 +1,5 @@
 package com.costa.servizi
 
-import com.costa.beans.Profile
 import com.google.gson.annotations.SerializedName
 
 data class ProfileEditRequest(

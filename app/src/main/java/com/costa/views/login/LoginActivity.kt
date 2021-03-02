@@ -1,9 +1,10 @@
-package com.costa.instagrammo
+package com.costa.views.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.costa.views.main.MainActivity
 import com.costa.instagrammo.R.layout.activity_login
 import com.costa.servizi.ApiClient
 import com.costa.servizi.ApiClient.authToken

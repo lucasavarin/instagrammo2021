@@ -1,4 +1,4 @@
-package com.costa.views
+package com.costa.views.main.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,8 @@ import com.costa.instagrammo.R
 
 class SearchFragment : Fragment() {
     companion object{
-        val instance:SearchFragment= SearchFragment()
+        val instance: SearchFragment =
+            SearchFragment()
 
     }
     override fun onCreateView(

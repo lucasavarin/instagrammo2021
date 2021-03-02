@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    tools:context="com.costa.views.EditProfileFragment">
+    tools:context="com.costa.views.main.profile.EditProfileFragment">
 <com.costa.components.CastomHeader
     android:id="@+id/header_add_post_step_2"
     app:title="Modifica Profilo"
@@ -86,6 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/transparent"
+            android:importantForAutofill="noExcludeDescendants"
             android:hint="@string/nome_utente"
             android:imeOptions="actionDone"
             android:inputType="textPersonName"
@@ -113,6 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/transparent"
+            android:importantForAutofill="noExcludeDescendants"
             android:hint="@string/descrizione"
             android:imeOptions="actionDone"
             android:inputType="textPersonName"

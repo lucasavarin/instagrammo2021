@@ -1,5 +1,6 @@
-package com.costa.beans
+package com.costa.beans.rest
 
+import com.costa.beans.business.PicSumImage
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -23,8 +24,17 @@ data class PicSumImageOut (
     @SerializedName("download_url")
     val download_url: String?){
 
-    fun toPicSumImage():PicSumImage{
-        var image:PicSumImage= PicSumImage(id=id!!, author = author!!, width = width!!,height = height!!, url =url!!,download_url = download_url!!, imageFormated = "" )
+    fun toPicSumImage(): PicSumImage {
+        var image: PicSumImage =
+            PicSumImage(
+                id = id!!,
+                author = author!!,
+                width = width!!,
+                height = height!!,
+                url = url!!,
+                download_url = download_url!!,
+                imageFormated = ""
+            )
         return image
     }
 }

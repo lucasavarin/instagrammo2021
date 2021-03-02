@@ -1,4 +1,4 @@
-package com.costa.adapter
+package com.costa.adapter.addpost
 
 import android.util.Log
 import android.view.View

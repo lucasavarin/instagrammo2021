@@ -1,4 +1,4 @@
-package com.costa.beans
+package com.costa.beans.business
 
 data class PicSumImage(
     var id: String,

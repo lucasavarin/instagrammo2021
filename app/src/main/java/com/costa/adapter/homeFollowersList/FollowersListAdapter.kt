@@ -1,4 +1,4 @@
-package com.costa.adapter
+package com.costa.adapter.homeFollowersList
 
 import android.view.LayoutInflater
 import android.view.View

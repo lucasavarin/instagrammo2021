@@ -1,4 +1,6 @@
-package com.costa.beans
+package com.costa.beans.rest
+
+import com.costa.beans.business.Profile
 
 data class ProfileOut(
     var profileId: Int,
@@ -8,5 +10,12 @@ data class ProfileOut(
     var followersNumber: Int,
     var postsNumber: Int
 ){
-    fun toProfile()=Profile(profileId, name, description, picture, followersNumber,postsNumber)
+    fun toProfile()= Profile(
+        profileId,
+        name,
+        description,
+        picture,
+        followersNumber,
+        postsNumber
+    )
 }
