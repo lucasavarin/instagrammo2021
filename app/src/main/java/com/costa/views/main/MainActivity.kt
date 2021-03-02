@@ -2,10 +2,8 @@ package com.costa.instagrammo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentTransaction
-import com.costa.beans.PicSumImage
-import com.costa.beans.PicSumImageOut
-import com.costa.beans.ProfileOut
+import com.costa.beans.business.PicSumImage
+import com.costa.beans.rest.ProfileOut
 import com.costa.utils.addFragment
 import com.costa.utils.removeFragment
 import com.costa.utils.replaceFragment

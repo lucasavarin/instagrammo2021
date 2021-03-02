@@ -4,8 +4,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.costa.beans.PicSumImage
-import com.costa.beans.PicSumImageOut
+import com.costa.beans.business.PicSumImage
+import com.costa.beans.rest.PicSumImageOut
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_add_post_grid.view.*
 

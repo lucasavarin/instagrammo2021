@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.costa.beans.PicSumImage
+import com.costa.beans.business.PicSumImage
 import com.costa.instagrammo.R
 import com.costa.servizi.AddPostRequestRest
 import com.costa.servizi.ApiClient

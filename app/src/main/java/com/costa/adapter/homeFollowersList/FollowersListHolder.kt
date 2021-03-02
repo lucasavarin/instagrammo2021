@@ -1,10 +1,9 @@
 package com.costa.adapter
 
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.costa.beans.FollowerOut
+import com.costa.beans.rest.FollowerOut
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.follow_item.view.*

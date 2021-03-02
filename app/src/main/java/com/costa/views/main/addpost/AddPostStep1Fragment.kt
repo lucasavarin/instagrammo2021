@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.costa.beans.PicSumImage
-import com.costa.beans.PicSumImageOut
+import com.costa.beans.business.PicSumImage
 import com.costa.instagrammo.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_add_post_step_1.*
-import kotlinx.android.synthetic.main.item_profile_post_grid.view.*
 
 class AddPostStep1Fragment : Fragment() {
     companion object {

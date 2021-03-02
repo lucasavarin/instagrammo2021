@@ -3,7 +3,7 @@ package com.costa.adapter
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.costa.beans.PostOut
+import com.costa.beans.rest.PostOut
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.item_post_home.view.*
@@ -13,7 +13,7 @@ class PostViewHolder(private var v: View) : RecyclerView.ViewHolder(v), View.OnC
 
 private lateinit var post: PostOut
 
-    fun bindPost(postOut:PostOut){
+    fun bindPost(postOut: PostOut){
         post=postOut
         Picasso.get()
             .load(post.profile.picture)

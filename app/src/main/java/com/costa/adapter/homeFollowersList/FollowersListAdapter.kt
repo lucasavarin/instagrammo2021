@@ -3,9 +3,8 @@ package com.costa.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.costa.beans.FollowerOut
+import com.costa.beans.rest.FollowerOut
 import com.costa.instagrammo.R
 
 class FollowersListAdapter(private val followers: List<FollowerOut>) :

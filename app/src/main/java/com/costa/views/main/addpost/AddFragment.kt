@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.costa.adapter.AddPostsGridAdAdapter
-import com.costa.beans.PicSumImageOut
+import com.costa.beans.rest.PicSumImageOut
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
 import kotlinx.android.synthetic.main.fragment_add.*
 import android.util.Log
-import com.costa.beans.PicSumImage
+import com.costa.beans.business.PicSumImage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

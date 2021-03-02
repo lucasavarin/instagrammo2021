@@ -1,39 +1,27 @@
 package com.costa.views
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.GridLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.costa.`interface`.ApiInterface
-import com.costa.adapter.FollowersListAdapter
-import com.costa.adapter.PostAdapter
 import com.costa.adapter.ProfilePostsGridAdapter
 import com.costa.adapter.ProfilePostsLinearAdapter
-import com.costa.beans.MyPosts
-import com.costa.beans.Profile
-import com.costa.beans.ProfileOut
+import com.costa.beans.rest.MyProfilePostsOut
+import com.costa.beans.rest.ProfileOut
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
 import com.costa.servizi.ApiClient.userId
 import com.costa.servizi.MyPostsResponce
-import com.costa.servizi.PostsResponse
 import com.costa.servizi.ProfileResponse
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
-import kotlinx.android.synthetic.main.fragment_edit_profile.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.item_post_home.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -156,7 +144,7 @@ class ProfileFragment : Fragment() {
 
     }
 
-    fun linearRecycleView(payload: List<MyPosts>) {
+    fun linearRecycleView(payload: List<MyProfilePostsOut>) {
         rv_posts_profilo_linear.visibility = View.GONE
         rv_posts_profilo_linear.apply {
             val layoutManager = LinearLayoutManager(context)
@@ -165,7 +153,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    fun gredRecycleView(payload: List<MyPosts>) {
+    fun gredRecycleView(payload: List<MyProfilePostsOut>) {
         rv_posts_profilo_gred.apply {
             val layoutManager = GridLayoutManager(context, 3)
             rv_posts_profilo_gred.layoutManager = layoutManager
