@@ -1,7 +1,7 @@
 package com.example.instagrammo.environment.networking
 
 import com.example.instagrammo.prefs
-import com.example.instagrammo.utils.Constant.BASEURL
+import com.example.instagrammo.utils.Constant.CONST_BASEURL
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -37,7 +37,7 @@ object ApiClient {
         val gson = GsonBuilder().create()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASEURL)
+            .baseUrl(CONST_BASEURL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

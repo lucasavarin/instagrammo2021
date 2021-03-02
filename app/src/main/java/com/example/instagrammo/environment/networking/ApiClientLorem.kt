@@ -1,6 +1,6 @@
 package com.example.instagrammo.environment.networking
 
-import com.example.instagrammo.utils.Constant.BASEURL_LOREM
+import com.example.instagrammo.utils.Constant.CONST_BASEURL_LOREM
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -36,7 +36,7 @@ object ApiClientLorem {
         val gson = GsonBuilder().setLenient().create()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASEURL_LOREM)
+            .baseUrl(CONST_BASEURL_LOREM)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

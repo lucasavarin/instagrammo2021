@@ -63,7 +63,6 @@ class AddPostFragment: Fragment() {
                 is DataState.Error ->  {}
                 is DataState.Loading -> { }
                 is DataState.Success -> {
-
                     listenerImage.onImagePostsListener(this)
                     Log.i("debug",dataState.data.toString())
                 }
