@@ -11,8 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import bean.business.ProfileBean
 import bean.rest.PostResponse
+import bean.rest.Profile
+import bean.rest.ProfileResponse
 import com.example.instagrammo.R
+import com.squareup.picasso.Picasso
 import interfaces.ButtonEditProfileListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -21,12 +25,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import utils.api.ApiClient
+import utils.extensions.CircleTransformation
 import utils.extensions.prefs
 import java.util.*
 
 class ProfileFragment : Fragment() {
 
     private var listenerButtonEdit: ButtonEditProfileListener? = null
+
+    lateinit var profilo: ProfileBean
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +46,7 @@ class ProfileFragment : Fragment() {
         editButton.setOnClickListener {
             listenerButtonEdit?.onClickListenerEditButtonProfile(true)
         }
+        callDatasProfile()
         callPostProfile()
     }
 
@@ -51,6 +59,24 @@ class ProfileFragment : Fragment() {
         if (context is ButtonEditProfileListener) {
             listenerButtonEdit = context
         }
+    }
+
+    fun callDatasProfile(){
+        ApiClient.getClient.getProfile(prefs.profileId!!).enqueue(object: Callback<ProfileResponse>{
+            override fun onResponse(
+                call: Call<ProfileResponse>,
+                response: Response<ProfileResponse>
+            ) {
+                Picasso.get().load(response.body()!!.payload!![0].picture).transform(CircleTransformation()).into(profileImage)
+                post.text = response.body()!!.payload!![0].postsNumber.toString()
+                follower.text = response.body()!!.payload!![0].followersNumber.toString()
+                name.text = response.body()!!.payload!![0].name
+                description.text = response.body()!!.payload!![0].description
+            }
+            override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+                println("Chiamata non eseguita, postProfilo non presi!!!! $t")
+            }
+        })
     }
 
     fun callPostProfile(){
@@ -78,7 +104,7 @@ class ProfileFragment : Fragment() {
                 Log.i("info", response.body()!!.result.toString())
             }
             override fun onFailure(call: Call<PostResponse>, t: Throwable) {
-                println("Chiamata non eseguita!!!! $t")
+                println("Chiamata non eseguita, postProfilo non presi!!!! $t")
             }
         })
     }

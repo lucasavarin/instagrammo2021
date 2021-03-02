@@ -23,7 +23,7 @@ interface ApiInterface {
     @GET
     fun getImage(@Url url: String): Call<ResponseBody>
 
-    @GET("profiles.php/{profileId}")
+    @GET("profile.php/{profileId}")
     fun getProfile(
             @Path("profileId") profileId : String
     ): Call<ProfileResponse>
