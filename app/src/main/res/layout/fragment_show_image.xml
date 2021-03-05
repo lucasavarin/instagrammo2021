@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
+        android:background="@drawable/custom_button"
         android:layout_marginBottom="20dp"
         android:src="@drawable/ic_baseline_arrow_forward_24"
         app:layout_constraintBottom_toBottomOf="parent"

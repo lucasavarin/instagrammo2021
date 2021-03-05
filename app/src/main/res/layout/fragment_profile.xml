@@ -86,7 +86,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:background="@drawable/custom_button_login"
+        android:background="@drawable/custom_button"
         android:minHeight="0dp"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
