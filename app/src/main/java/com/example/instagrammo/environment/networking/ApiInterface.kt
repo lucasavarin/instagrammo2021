@@ -3,11 +3,11 @@ package com.example.instagrammo.environment.networking
 import com.example.instagrammo.beans.rest.auth.AuthRequest
 import com.example.instagrammo.beans.rest.auth.AuthResponse
 import com.example.instagrammo.beans.rest.follower.FollowersResponse
-import com.example.instagrammo.beans.rest.lorem.LoremRest
 import com.example.instagrammo.beans.rest.post.AddPostRequest
 import com.example.instagrammo.beans.rest.post.AddPostResponse
 import com.example.instagrammo.beans.rest.post.NumberPosts
 import com.example.instagrammo.beans.rest.post.PostsResponse
+import com.example.instagrammo.beans.rest.post.profilepost.PostsProfileResponse
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileResponse
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
 import com.example.instagrammo.beans.rest.profile.ProfileResponse
@@ -32,6 +32,12 @@ interface ApiInterface {
     @GET("posts.php")
     fun getPosts(
     ) : Call<PostsResponse>
+
+    @GET("posts.php/{profileId}")
+    fun getPostsProfile(
+        @Path("profileId") profileId: String
+    ) : Call<PostsProfileResponse>
+
 
     @GET
     fun getImage(@Url url: String): Call<ResponseBody>

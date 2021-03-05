@@ -13,6 +13,8 @@ sealed class MainStateEvent {
 
     object GetPostsEvent : MainStateEvent()
 
+    object GetPostsProfileEvent : MainStateEvent()
+
     object GetFollowersEvent : MainStateEvent()
 
     object GetProfileEvent : MainStateEvent()
@@ -22,6 +24,7 @@ sealed class MainStateEvent {
     class PostAddPicture(val idProfile: String, val postRequest: AddPostRequest) : MainStateEvent()
 
     object GetNumberPost : MainStateEvent()
+
 
     class GetLoremImageEvent(val id: String, val width: String, val height: String)
         : MainStateEvent()

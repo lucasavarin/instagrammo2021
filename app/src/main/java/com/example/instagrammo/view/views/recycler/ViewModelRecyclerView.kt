@@ -7,7 +7,7 @@ class ViewModelRecyclerView() {
 
     private val viewModel = MainViewModel()
 
-    val dataState = viewModel.dataStatePost
+    val dataState = viewModel.dataStatePostProfile
 
-    val data = viewModel.setStateEvent(MainStateEvent.GetPostsEvent)
+    val data = viewModel.setStateEvent(MainStateEvent.GetPostsProfileEvent)
 }

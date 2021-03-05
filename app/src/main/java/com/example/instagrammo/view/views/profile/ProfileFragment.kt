@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.post.PostBean
+import com.example.instagrammo.beans.business.post.PostProfileBean
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.utils.adapter.PagerAdapter
@@ -27,7 +28,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var itemsProfile: ProfileBean
 
-    private lateinit var itemsPost: List<PostBean>
+    private lateinit var itemsPost: List<PostProfileBean>
 
     private var listenerButtonEdit: ButtonEditProfileListener? = null
 
@@ -50,7 +51,7 @@ class ProfileFragment : Fragment() {
 
     private fun getData() {
         viewModel.setStateEvent(MainStateEvent.GetProfileEvent)
-        viewModel.setStateEvent(MainStateEvent.GetPostsEvent)
+        viewModel.setStateEvent(MainStateEvent.GetPostsProfileEvent)
     }
 
     private fun setObservable() {
@@ -69,7 +70,7 @@ class ProfileFragment : Fragment() {
                 }
             })
 
-        viewModel.dataStatePost.observe(viewLifecycleOwner, Observer { dataStatePosts ->
+        viewModel.dataStatePostProfile.observe(viewLifecycleOwner, Observer { dataStatePosts ->
                 when (dataStatePosts) {
                     is DataState.Error -> {
                     }
@@ -81,8 +82,6 @@ class ProfileFragment : Fragment() {
                     }
                 }
             })
-
-
 
         /*
         ApiClient.GetClient.getProfile(prefs.rememberIdProfile)
@@ -127,7 +126,10 @@ class ProfileFragment : Fragment() {
     }
 
     private fun populateDataView() {
-        Picasso.get().load(R.drawable.bird).resize(1000,1000).transform(CircleTransform()).into(requireView().profileImage)
+        if (itemsProfile.picture.isNullOrBlank())
+            Picasso.get().load(R.drawable.bird).resize(1000,1000).transform(CircleTransform()).into(requireView().profileImage)
+        else
+            Picasso.get().load(itemsProfile.picture).resize(1000,1000).transform(CircleTransform()).into(requireView().profileImage)
         requireView().postsNumber.text = itemsProfile.postsNumber
         requireView().followersNumber.text = itemsProfile.followersNumber
         requireView().name.text = itemsProfile.name

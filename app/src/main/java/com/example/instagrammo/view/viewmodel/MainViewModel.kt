@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.example.instagrammo.beans.business.followers.FollowerBean
 import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
+import com.example.instagrammo.beans.business.post.PostProfileBean
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.beans.rest.lorem.LoremRest
 import com.example.instagrammo.beans.rest.post.NumberPosts
@@ -19,6 +20,8 @@ class MainViewModel() : ViewModel() {
     private val _dataStateAuth: MutableLiveData<DataState<Boolean>> = MutableLiveData()
 
     private val _dataStatePosts: MutableLiveData<DataState<List<PostBean>>> = MutableLiveData()
+
+    private val _dataStatePostsProfile: MutableLiveData<DataState<List<PostProfileBean>>> = MutableLiveData()
 
     private val _dataStateFollowers: MutableLiveData<DataState<List<FollowerBean>>> = MutableLiveData()
 
@@ -36,6 +39,9 @@ class MainViewModel() : ViewModel() {
 
     val dataStatePost: LiveData<DataState<List<PostBean>>>
         get() = _dataStatePosts
+
+    val dataStatePostProfile: LiveData<DataState<List<PostProfileBean>>>
+        get() = _dataStatePostsProfile
 
     val dataStateAuth : LiveData<DataState<Boolean>>
         get() = _dataStateAuth
@@ -115,6 +121,12 @@ class MainViewModel() : ViewModel() {
                 is MainStateEvent.GetNumberPost -> {
                     mainRepository.getNumberPost()
                         .onEach { dataStateNumberPosts -> _dataStateNumberPosts.value = dataStateNumberPosts}
+                        .launchIn(viewModelScope)
+                }
+
+                is MainStateEvent.GetPostsProfileEvent -> {
+                    mainRepository.getPostsProfile()
+                        .onEach { dataStatePostProfile -> _dataStatePostsProfile.value = dataStatePostProfile}
                         .launchIn(viewModelScope)
                 }
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.post.PostBean
+import com.example.instagrammo.beans.business.post.PostProfileBean
 import com.example.instagrammo.utils.listener.OnPostItemClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_grid3x.view.*
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.item_grid4x.view.*
 
 class ItemGridRecyclerViewAdapter(
     private val mContext: Context,
-    private val mValues: List<PostBean>,
+    private val mValues: List<PostProfileBean>,
     private val mListener: OnPostItemClickListener?
     ) : RecyclerView.Adapter<ItemGridRecyclerViewAdapter.ViewHolder>(){
 
@@ -43,10 +44,10 @@ class ItemGridRecyclerViewAdapter(
 
             val item = mValues[position]
 
-            Picasso.get().load(item.picture).resize(100,100).into(holder.itemImage)
+            Picasso.get().load(item.picture).resize(500,500).into(holder.itemImage)
 
         }
-
+//////
         inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
             val itemImage = mView.item_image_grid4x
 

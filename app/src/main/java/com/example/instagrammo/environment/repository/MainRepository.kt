@@ -4,6 +4,7 @@ import com.example.instagrammo.beans.rest.auth.AuthRequest
 import com.example.instagrammo.beans.business.followers.FollowerBean
 import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.post.PostBean
+import com.example.instagrammo.beans.business.post.PostProfileBean
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.beans.rest.lorem.LoremRest
@@ -29,6 +30,8 @@ interface MainRepository {
     fun postAddPost(idProfile: String, post: AddPostRequest) : Flow<DataState<Boolean>>
 
     fun getNumberPost() : Flow<DataState<NumberPosts>>
+
+    fun getPostsProfile() : Flow<DataState<List<PostProfileBean>>>
 
 
 

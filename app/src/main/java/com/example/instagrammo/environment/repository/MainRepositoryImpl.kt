@@ -3,11 +3,14 @@ package com.example.instagrammo.environment.repository
 import com.example.instagrammo.beans.rest.auth.AuthRequest
 import com.example.instagrammo.beans.business.followers.FollowerBean
 import com.example.instagrammo.beans.business.post.PostBean
+import com.example.instagrammo.beans.business.post.PostProfileBean
+import com.example.instagrammo.beans.business.post.PostProfileBean.Companion.convert
 import com.example.instagrammo.beans.rest.profile.edit.EditProfileRequest
 import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.beans.rest.lorem.LoremRest
 import com.example.instagrammo.beans.rest.post.AddPostRequest
 import com.example.instagrammo.beans.rest.post.NumberPosts
+import com.example.instagrammo.beans.rest.post.profilepost.PostsProfileRest
 import com.example.instagrammo.prefs
 import com.example.instagrammo.environment.networking.ApiClient
 import com.example.instagrammo.environment.networking.ApiClientLorem
@@ -172,6 +175,25 @@ class MainRepositoryImpl():
             }
         }
     }
+
+    override fun getPostsProfile(): Flow<DataState<List<PostProfileBean>>> {
+        return flow {
+            emit(DataState.Loading)
+            try {
+                val response = apiService.getPostsProfile(prefs.idProfile)
+                val responseExcuted = withContext(Dispatchers.IO) { response.execute() }
+
+                if (responseExcuted.isSuccessful)
+                    if (responseExcuted.body()?.result != null) {
+                        val data = responseExcuted.body()!!.payload!!.map { post -> PostProfileBean.convert(post) }
+                        emit(DataState.Success(data))
+                    }
+            } catch (e: Exception) {
+                emit(DataState.Error(e))
+            }
+        }
+    }
+
 
 /*
     override fun getPictureLorem(id: String, width: String, height: String): Flow<DataState<LoremBean>> {
