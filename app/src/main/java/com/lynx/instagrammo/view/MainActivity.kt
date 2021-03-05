@@ -97,6 +97,7 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
         replaceFragment(ShowImageFragment.newInstance(item), R.id.fragmentConainer)
     }
 
+
     override fun goToAddPost(item: PicsumImageRest) {
         addFragment(AddPostFragment.newInstace(item), R.id.fragmentConainer)
     }
@@ -141,6 +142,8 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
                             isVisible = true
                         }
                         ForegroundService.startService(this@MainActivity, input.toString())
+                        prefs.oldPosts = newPostsNumber
+                    }else{
                         prefs.oldPosts = newPostsNumber
                     }
                 }
