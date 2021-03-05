@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import com.example.instagrammo.environment.database.DatabaseHelper
 import com.example.instagrammo.utils.Constant.CONST_CHANNEL_ID
 import com.example.instagrammo.utils.Constant.CONST_CHANNEL_NAME
 import com.example.instagrammo.utils.SharePrefs
@@ -14,15 +15,21 @@ val prefs : SharePrefs by lazy {
     InstagrammoApplication.prefs!!
 }
 
+val dbHelper  : DatabaseHelper by lazy{
+    InstagrammoApplication.dbHelper!!
+}
+
 class InstagrammoApplication : Application() {
 
     companion object {
         var prefs : SharePrefs? = null
+        var dbHelper : DatabaseHelper? = null
     }
 
     override fun onCreate(){
         prefs = SharePrefs(applicationContext)
         createNotificationChannel()
+        dbHelper = DatabaseHelper(applicationContext)
         super.onCreate()
     }
 

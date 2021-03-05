@@ -50,9 +50,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun getData() {
-        viewModel.setStateEvent(MainStateEvent.GetPostsEvent)
 
         viewModel.setStateEvent(MainStateEvent.GetFollowersEvent)
+        viewModel.setStateEvent(MainStateEvent.GetPostsEvent)
     }
 
     private fun setObservable() {
