@@ -11,13 +11,14 @@ class PostListViewHolder(private var v : View): RecyclerView.ViewHolder(v) {
 
     lateinit private var posts: Post
 
+    //bindPost
     fun bindPost(posts :Post){
         this.posts = posts
-        v.username_text.text = posts.profile.name
+        v.username_text.text = posts.profile?.name
         v.description_text.text = posts.title
         Picasso
             .get()
-            .load(posts.profile.picture)
+            .load(posts.profile?.picture)
             .transform(CircleTransform())
             .into(v.user_photo_image)
         Picasso

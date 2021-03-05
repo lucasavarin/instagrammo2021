@@ -1,13 +1,9 @@
 package com.lynx.instagrammo.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.lynx.instagrammo.*
-import com.lynx.instagrammo.addFragment
 import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.bean.Profile
 import com.lynx.instagrammo.beanRest.PicsumImageRest
@@ -23,15 +19,12 @@ import com.lynx.instagrammo.view.notification.NotificationsFragment
 import com.lynx.instagrammo.view.profile.ProfileFragment
 import com.lynx.instagrammo.view.search.SearchFragment
 import com.lynx.instagrammo.view.service.ForegroundService
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_follower_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
-/* toDO cambiare il nome dell'activity in BaseActivity */
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface, EditFragment.EditFragmenInterface, HomeFragment.HomeFragmentInterface, AddFragment.AddFragmentInterface, ShowImageFragment.ShowImageFragmentInterface, AddPostFragment.AddPostFragmentInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {

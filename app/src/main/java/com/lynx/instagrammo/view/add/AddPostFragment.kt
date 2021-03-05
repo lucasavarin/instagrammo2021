@@ -22,68 +22,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AddPostFragment : Fragment() {
-    lateinit private var listener: AddPostFragmentInterface
 
     var title: String = ""
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_post, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        edit_back_button.setOnClickListener {
-            listener.backToShowImage()
-        }
-
-        Picasso
-            .get()
-            .load(itemPicture!!.download_url)
-            .transform(CircleTransform())
-            .into(image_new_post)
-
-
-
-        btn_add_new_post.setOnClickListener {
-            title = description_new_post.text.toString()
-            ApiClient.GetClient.addPost(
-                prefs.userId, AddPostRequest(
-                    profileId = prefs.userId,
-                    title = title,
-                    picture = transformPicture(itemPicture!!)
-            )
-            ).enqueue(object : Callback<Boolean> {
-                override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                    Toast.makeText(context, "POST SALVATO", Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                    Log.i("ERROR", "errore nella chiamata addPost")
-//                    Toast.makeText(context, "ERRORE NELLA CHIAMATA", Toast.LENGTH_SHORT).show()
-                }
-
-            })
-
-            listener.addPostAndExit()
-        }
-
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is AddPostFragmentInterface)
-            listener = context
-    }
-
-
+    lateinit var callAddPost: Call<Boolean>
+    lateinit var listener: AddPostFragmentInterface
 
     companion object {
-
         var itemPicture: PicsumImageRest? = null
         val newInstance: AddPostFragment = AddPostFragment()
 
@@ -93,9 +37,64 @@ class AddPostFragment : Fragment() {
         }
     }
 
-    interface AddPostFragmentInterface {
-        fun addPostAndExit()
-        fun backToShowImage()
+    //onCreateView
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_add_post, container, false)
+    }
+
+    //onViewCreated
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        edit_back_button.setOnClickListener {
+            listener.backToShowImage()
+        }
+
+        Picasso
+                .get()
+                .load(itemPicture!!.download_url)
+                .transform(CircleTransform())
+                .into(image_new_post)
+
+        btn_add_new_post.setOnClickListener {
+            title = description_new_post.text.toString()
+            addPost()
+            listener.addPostAndExit()
+        }
+
+    }
+
+    //onAttach
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is AddPostFragmentInterface)
+            listener = context
+    }
+
+    //Call add post
+    fun addPost() {
+        callAddPost = ApiClient.GetClient.addPost(prefs.userId, AddPostRequest(
+                profileId = prefs.userId,
+                title = title,
+                picture = transformPicture(itemPicture!!)
+        ))
+
+        callAddPost.enqueue(object : Callback<Boolean> {
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                Toast.makeText(context, "POST SALVATO", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Log.i("ERROR", "errore nella chiamata addPost")
+//                    Toast.makeText(context, "ERRORE NELLA CHIAMATA", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
 
     fun transformPicture(image: PicsumImageRest): String {
@@ -107,11 +106,18 @@ class AddPostFragment : Fragment() {
                 result = result + "/" + "500"
             } else if (!result.isNullOrBlank()) {
                 result = result + "/" + it
-            }else{
+            } else {
                 result = it
             }
         }
         Log.i("RESULT :", result)
         return result
     }
+
+    interface AddPostFragmentInterface {
+        fun addPostAndExit()
+        fun backToShowImage()
+    }
+
+
 }

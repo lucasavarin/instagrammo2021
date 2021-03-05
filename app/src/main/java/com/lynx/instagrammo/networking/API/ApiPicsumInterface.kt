@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface ApiPicsumInterface {
 
     @GET("/v2/list")
-    fun getImage(@Query("page") page : Int,
-                 @Query("limit") limit : Int): Call<Array<PicsumImageRest>>
+    fun getImage(@Query("page") page: Int,
+                 @Query("limit") limit: Int): Call<Array<PicsumImageRest>>
 
 }

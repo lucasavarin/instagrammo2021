@@ -1,10 +1,8 @@
 package com.lynx.instagrammo.view.recyclerView
 
-import android.R
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.beanRest.PicsumImageRest
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_mypost_img_grid.view.*
@@ -13,7 +11,8 @@ import kotlinx.android.synthetic.main.item_mypost_img_grid.view.*
 class AddGridViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
     lateinit var image: PicsumImageRest
 
-    fun bindGridImage(image: PicsumImageRest, callback :(item: PicsumImageRest, position: Int)-> Unit) {
+    //bindGridImage
+    fun bindGridImage(image: PicsumImageRest, callback: (item: PicsumImageRest, position: Int) -> Unit) {
         this.image = image
 
         Picasso
@@ -35,7 +34,7 @@ class AddGridViewHolder(private var v: View) : RecyclerView.ViewHolder(v) {
                 result = result + "/" + "500"
             } else if (!result.isNullOrBlank()) {
                 result = result + "/" + it
-            }else{
+            } else {
                 result = it
             }
         }

@@ -20,6 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class EditFragment : Fragment() {
+
     var imageIdEdited: String = ""
     var nameEdited: String = ""
     var profileId: String = ""
@@ -28,8 +29,13 @@ class EditFragment : Fragment() {
     var nameHint: String = ""
     var descriptionHint: String = ""
     var pictureHint: String = ""
-    private lateinit var listener: EditFragmenInterface
+    lateinit var listener: EditFragmenInterface
 
+    companion object {
+        val newInstance: EditFragment = EditFragment()
+    }
+
+    //onCreateView
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -38,10 +44,9 @@ class EditFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_edit, container, false)
     }
 
+    //onViewCreated
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         getHint()
 
         edit_back_button.setOnClickListener {
@@ -50,30 +55,14 @@ class EditFragment : Fragment() {
         }
 
         save_edit_profile.setOnClickListener {
-
             imageIdEdited = edit_id_image.text.toString()
             nameEdited = editTxt_name.text.toString()
             profileId = prefs.userId
             descriptionEdited = editTxt_description.text.toString()
 
             if (checkEditProfile(nameEdited, descriptionEdited, profileId)) {
-
                 pathLoremPicsum = "https://picsum.photos/id/$imageIdEdited/200/300"
-                ApiClient.GetClient.putEditProfile(prefs.userId, ProfileRequest(
-                        profileId,
-                        nameEdited,
-                        descriptionEdited,
-                        pathLoremPicsum
-                )).enqueue(object : Callback<Boolean> {
-                    override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-
-                    }
-
-                    override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                        Log.i("CALL FAIL", "chiamata upload errata")
-                    }
-
-                })
+                putEditProfile()
             }
             listener.saveAndExit()
         }
@@ -90,15 +79,32 @@ class EditFragment : Fragment() {
         }
     }
 
+    //onAttach
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if(context is EditFragmenInterface)
             listener = context
     }
 
-    companion object {
-        val newInstance: EditFragment = EditFragment()
+    fun putEditProfile(){
+        ApiClient.GetClient.putEditProfile(prefs.userId, ProfileRequest(
+                profileId,
+                nameEdited,
+                descriptionEdited,
+                pathLoremPicsum
+        )).enqueue(object : Callback<Boolean> {
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Log.i("CALL FAIL", "chiamata upload errata")
+            }
+
+        })
+
     }
+
 
     fun checkEditProfile(nameEdited: String, descriptionEdited: String, pathLoremPicsum: String): Boolean {
         if (nameEdited.isNullOrBlank()) {
@@ -120,7 +126,6 @@ class EditFragment : Fragment() {
          nameHint = args.getString("name").toString()
          descriptionHint = args.getString("description").toString()
          pictureHint = args.getString("picture").toString()
-
     }
 
     fun getHint(){
