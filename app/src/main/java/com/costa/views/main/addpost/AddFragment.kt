@@ -2,21 +2,24 @@ package com.costa.views.main.addpost
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.costa.adapter.addpost.AddPostsGridAdAdapter
+import com.costa.beans.business.PicSumImage
 import com.costa.beans.rest.PicSumImageOut
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
 import kotlinx.android.synthetic.main.fragment_add.*
-import android.util.Log
-import com.costa.beans.business.PicSumImage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class AddFragment : Fragment() {
     companion object {
@@ -25,12 +28,15 @@ class AddFragment : Fragment() {
 
     }
 
+    var poststoHolder = mutableListOf<PicSumImageOut>()
+    val LIMIT = 30
+    var page: Int = 0
     lateinit var listener: AddFragmentInterface
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_add, container, false)
 
 
@@ -43,33 +49,60 @@ class AddFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
-        ApiClient.getImageClient.getPictures().enqueue(object : Callback<Array<PicSumImageOut>> {
-            override fun onFailure(call: Call<Array<PicSumImageOut>>, t: Throwable) {
-                Log.i("ERRORE: ", "onFailure")
+        var adapter = AddPostsGridAdAdapter(poststoHolder) { image ->
+            listener.onClickImage(image)
+        }
 
+        rv_add_post.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    callImages(adapter)
+
+                }
             }
-
-            override fun onResponse(
-                call: Call<Array<PicSumImageOut>>,
-                response: Response<Array<PicSumImageOut>>
-            ) {
-                gredRecycleView(response.body()!!.toList())
-            }
-
-
         })
+        callImages(adapter)
+
     }
 
-    fun gredRecycleView(payload: List<PicSumImageOut>) {
+    fun callImages(adapter: AddPostsGridAdAdapter) {
+        page++
+        ApiClient.getImageClient.getPictures(page, LIMIT)
+            .enqueue(object : Callback<Array<PicSumImageOut>> {
+                override fun onFailure(call: Call<Array<PicSumImageOut>>, t: Throwable) {
+                    Log.i("ERRORE: ", "onFailure")
 
+                }
+
+                override fun onResponse(
+                    call: Call<Array<PicSumImageOut>>,
+                    response: Response<Array<PicSumImageOut>>
+                ) {
+                    poststoHolder.addAll(response.body()!!.toMutableList())
+                    adapter.notifyDataSetChanged()
+                    gredRecycleView(adapter)
+                    if (poststoHolder.size > 30) {
+                        rv_add_post.scrollToPosition(poststoHolder.size - 42)
+                    }
+                }
+
+
+            })
+    }
+
+    fun gredRecycleView(adapter: AddPostsGridAdAdapter) {
+
+
+        
         rv_add_post.apply {
             val layoutManager = GridLayoutManager(context, 3)
             rv_add_post.layoutManager = layoutManager
-            rv_add_post.adapter =
-                AddPostsGridAdAdapter(payload) { image ->
-                    listener.onClickImage(image)
-                }
+            rv_add_post.adapter = adapter
+
+
         }
     }
 
