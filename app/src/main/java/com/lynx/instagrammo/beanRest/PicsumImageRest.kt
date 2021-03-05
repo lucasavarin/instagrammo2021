@@ -2,6 +2,7 @@ package com.lynx.instagrammo.beanRest
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.lynx.instagrammo.bean.converter.interfaces.RestModel
 
 data class PicsumImageRest(
         @Expose
@@ -22,4 +23,4 @@ data class PicsumImageRest(
         @Expose
         @SerializedName("download_url")
         val download_url: String
-)
+) : RestModel

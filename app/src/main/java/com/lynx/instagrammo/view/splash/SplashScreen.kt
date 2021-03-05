@@ -8,6 +8,7 @@ import com.lynx.instagrammo.R
 import com.lynx.instagrammo.view.login.LoginActivity
 
 class SplashScreen : AppCompatActivity() {
+    //onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)

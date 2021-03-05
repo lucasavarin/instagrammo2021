@@ -1,6 +1,6 @@
 package com.lynx.instagrammo.beanRest
 
-import com.lynx.instagrammo.bean.Profile
+import com.lynx.instagrammo.bean.converter.interfaces.RestModel
 
 data class PostRest(
         val profileId: String,
@@ -8,5 +8,5 @@ data class PostRest(
         val title: String,
         val picture: String,
         val uploadTime: String,
-        val profile: Profile
-)
+        val profile: ProfileRest?
+) : RestModel

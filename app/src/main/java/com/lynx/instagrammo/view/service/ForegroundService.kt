@@ -7,17 +7,11 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.os.Handler
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.lynx.instagrammo.R
-import com.lynx.instagrammo.networking.API.ApiClient
-import com.lynx.instagrammo.networking.NumberPostsResponse
-import com.lynx.instagrammo.view.MainActivity
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.lynx.instagrammo.view.login.LoginActivity
 
 class ForegroundService : Service() {
 
@@ -34,9 +28,9 @@ class ForegroundService : Service() {
             val stopServiceIntent = Intent(context, ForegroundService::class.java)
             context.stopService(stopServiceIntent)
         }
-
     }
 
+    //onCreate
     override fun onCreate() {
         super.onCreate()
         crateNotificationChannel()
@@ -46,11 +40,12 @@ class ForegroundService : Service() {
         return null
     }
 
+    //onStartCommand
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
         val input = intent!!.getStringExtra("inputExtra")
         crateNotificationChannel()
-        val notificationIntent = Intent(this, MainActivity::class.java)
+        val notificationIntent = Intent(this, LoginActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
 
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)

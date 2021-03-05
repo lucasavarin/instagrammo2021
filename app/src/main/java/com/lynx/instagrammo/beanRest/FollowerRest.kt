@@ -1,6 +1,10 @@
 package com.lynx.instagrammo.beanRest
 
-data class FollowerRest(val id: String,
-                        val name: String,
-                        val description: String,
-                        val picture: String)
+import com.lynx.instagrammo.bean.converter.interfaces.RestModel
+
+data class FollowerRest(
+        val id: String,
+        val name: String,
+        val description: String,
+        val picture: String
+) : RestModel

@@ -4,20 +4,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lynx.instagrammo.R
-import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.bean.Post
 
-class NotificationListAdapter(private val posts : List<Post> /*, private var callback :(item: Post, position: Int)-> Unit*/) : RecyclerView.Adapter<NotificationListViewHolder>() {
+class NotificationListAdapter(private val posts: List<Post> /*, private var callback :(item: Post, position: Int)-> Unit*/) : RecyclerView.Adapter<NotificationListViewHolder>() {
+    //onCreateViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationListViewHolder {
         val inflatedView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_notification , parent, false)
+                .inflate(R.layout.item_notification, parent, false)
         return NotificationListViewHolder(inflatedView)
     }
 
+    //onBindViewHolder
     override fun onBindViewHolder(holder: NotificationListViewHolder, position: Int) {
         val item = posts[position]
         holder.bindNotification(item/*, callback*/)
     }
 
+    //getItemCount
     override fun getItemCount(): Int = posts.size
 }

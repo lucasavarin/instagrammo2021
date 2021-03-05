@@ -13,6 +13,8 @@ import com.google.android.material.tabs.TabLayout
 import com.lynx.instagrammo.R
 import com.lynx.instagrammo.bean.MyPost
 import com.lynx.instagrammo.bean.Profile
+import com.lynx.instagrammo.bean.converter.MyPostConverter
+import com.lynx.instagrammo.bean.converter.ProfileConverter
 import com.lynx.instagrammo.networking.API.ApiClient
 import com.lynx.instagrammo.networking.MyPostsResponse
 import com.lynx.instagrammo.networking.ProfileResponse
@@ -30,32 +32,32 @@ import retrofit2.Response
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var listener: ProfileFragmentInterface
-    private lateinit var profile: Profile
+
     var args = Bundle()
     var posts: List<MyPost> = mutableListOf()
+    private lateinit var listener: ProfileFragmentInterface
+    private lateinit var profile: Profile
+    private lateinit var callSingleProfile: Call<ProfileResponse>
+    private lateinit var callSinglePost: Call<MyPostsResponse>
 
+    companion object {
+        val newInstance: ProfileFragment = ProfileFragment()
+    }
+
+    //onCreateView
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
 
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if(context is ProfileFragmentInterface){
-            listener = context
-        }
-    }
-
+    //onViewCreated
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
 
         edit_profile_btn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
-                args.putString("name",profile.name)
+                args.putString("name", profile.name)
                 args.putString("description", profile.description)
                 args.putString("picture", profile.picture)
                 EditFragment.newInstance.putArguments(args)
@@ -70,7 +72,6 @@ class ProfileFragment : Fragment() {
                 } else if (tab!!.position == 1) {
                     recycler_profileImg_list.visibility = View.VISIBLE
                 }
-    //            onScrollTab()
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -90,14 +91,30 @@ class ProfileFragment : Fragment() {
         callGetSinglePost()
     }
 
+    //onAttach
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ProfileFragmentInterface) {
+            listener = context
+        }
+    }
 
-    private fun callGetSingleProfile() {
-        ApiClient.GetClient.getSingleProfile(prefs.userId).enqueue(object : Callback<ProfileResponse> {
+    //onDestroy
+    override fun onDestroy() {
+        super.onDestroy()
+        callSingleProfile.cancel()
+        callSinglePost.cancel()
+    }
+
+    //Call get single profile
+    fun callGetSingleProfile() {
+        callSingleProfile = ApiClient.GetClient.getSingleProfile(prefs.userId)
+        callSingleProfile.enqueue(object : Callback<ProfileResponse> {
 
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
 
                 if (response.isSuccessful) {
-                    profile = response.body()!!.payload!![0]
+                    profile = ProfileConverter.restToBusiness(response.body()!!.payload!![0])
                     profile_name_text.text = response.body()!!.payload!![0].name
                     profile_description_text.text = response.body()!!.payload!![0].description
                     followers_count_text.text = response.body()!!.payload!![0].followersNumber
@@ -113,13 +130,15 @@ class ProfileFragment : Fragment() {
         })
     }
 
-
+    //Call get single post
     private fun callGetSinglePost() {
-        ApiClient.GetClient.getMyPosts(prefs.userId).enqueue(object : Callback<MyPostsResponse> {
+        callSinglePost = ApiClient.GetClient.getMyPosts(prefs.userId)
+
+        callSinglePost.enqueue(object : Callback<MyPostsResponse> {
             override fun onResponse(call: Call<MyPostsResponse>, response: Response<MyPostsResponse>) {
-                posts = response.body()!!.payload!!
-                gridLayoutManager(response.body()!!.payload!!.asReversed())
-                linearLayoutManager(response.body()!!.payload!!.asReversed())
+                posts = MyPostConverter.restToBusiness(response.body()!!.payload!!)
+                gridLayoutManager(posts)
+                linearLayoutManager(posts)
             }
 
             override fun onFailure(call: Call<MyPostsResponse>, t: Throwable) {
@@ -129,7 +148,8 @@ class ProfileFragment : Fragment() {
         })
     }
 
-
+    // Layout Manager
+    // MY POST Grid
     private fun gridLayoutManager(payload: List<MyPost>) {
         recycler_profileImg_grid.apply {
             val gridLayoutManager = GridLayoutManager(context, 3)
@@ -138,6 +158,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    //MY POST Linear
     private fun linearLayoutManager(payload: List<MyPost>) {
         recycler_profileImg_list.visibility = View.GONE
         recycler_profileImg_list.apply {
@@ -147,22 +168,10 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    interface ProfileFragmentInterface{
+    interface ProfileFragmentInterface {
         fun modifyProfilePressed(profile: Profile)
     }
 
-    companion object {
-        val newInstance: ProfileFragment = ProfileFragment()
-    }
 
-/*fun onScrollTab() {
-    recycler_profileImg_list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-            super.onScrolled(recyclerView, dx, dy)
-            if (dy > 0)
-                tab_button_layout.visibility = View.INVISIBLE
-        }
-    })
-}*/
 }
 
