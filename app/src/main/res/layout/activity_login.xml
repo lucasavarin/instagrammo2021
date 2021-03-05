@@ -111,7 +111,7 @@
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="14dp"
         android:maxHeight="@dimen/default40"
-        android:textColor="@color/royalBlueDark"
+        android:textColor="@color/disabled"
         android:text="@string/accedi"
         android:theme="@style/confirm_button_style"
         app:layout_constraintBottom_toBottomOf="parent"

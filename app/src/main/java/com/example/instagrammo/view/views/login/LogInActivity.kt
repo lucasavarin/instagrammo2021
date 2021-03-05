@@ -80,11 +80,13 @@ class LogInActivity : BaseActivity() {
                 if(!s.isNullOrBlank()) {
                     userAvailable = true
                     btnAccess.isEnabled = passwordAvailable
+                    btnAccess.setTextColor(getColorStateList(R.color.royalBlueDark))
                 }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 btnAccess.isEnabled = false
+                btnAccess.setTextColor(getColorStateList(R.color.disabled))
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -97,16 +99,17 @@ class LogInActivity : BaseActivity() {
                 if(!s.isNullOrBlank()) {
                     passwordAvailable = true
                     btnAccess.isEnabled = userAvailable
+                    btnAccess.setTextColor(getColorStateList(R.color.royalBlueDark))
                 }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 btnAccess.isEnabled = false
+                btnAccess.setTextColor(getColorStateList(R.color.disabled))
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
-
         })
 
     }
