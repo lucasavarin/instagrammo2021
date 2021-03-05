@@ -8,9 +8,9 @@
         <aapt:attr name="android:fillColor">
             <gradient
                 android:angle="270"
-                android:startColor="@color/backgroud_color_start"
-                android:centerColor="@color/backgroud_color_center"
-                android:endColor="@color/backgroud_color_end"
+                android:startColor="@color/gray_dark"
+                android:centerColor="@color/purple"
+                android:endColor="@color/gray_dark"
                 android:endX="199.08"
                 android:endY="647.68"
                 android:startX="180"
