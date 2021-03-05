@@ -2,18 +2,14 @@ package com.example.instagrammo.fragment.secondFragment
 
 import android.content.Context
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import com.example.instagrammo.InterfaceApp
 import com.example.instagrammo.R
-import com.example.instagrammo.fragment.ProfileFragment
+import com.example.instagrammo.interfaces.InterfaceBack
 import com.example.instagrammo.network.ApiClient
 import com.example.instagrammo.request.EditProfileRequest
 import com.example.instagrammo.response.PayloadProfile
@@ -28,7 +24,7 @@ import retrofit2.Response
 
 
 class ModifyProfileFragment : Fragment() {
-    private  var listner : InterfaceApp? = null
+    private  var listner : InterfaceBack? = null
     private var posts: List<PayloadProfile> = mutableListOf()
 
     override fun onCreateView(
@@ -72,16 +68,16 @@ class ModifyProfileFragment : Fragment() {
             })
         }
         customViewController.setOnBackPressedListner {
-            listner?.backToProfile()
+            listner?.back(this)
         }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is InterfaceApp) {
+        if (context is InterfaceBack) {
             listner = context
         } else {
-            throw RuntimeException("$context must implement InterfaceApp")
+            throw RuntimeException("$context must implement InterfaceBack")
         }
     }
 
@@ -110,13 +106,6 @@ class ModifyProfileFragment : Fragment() {
             })
     }
 
-    private fun closefragment() {
-        val fragmentManager = activity!!.supportFragmentManager
-        fragmentManager.beginTransaction().apply {
-            remove(ModifyProfileFragment.newInstance)
-            commit()
-        }
-    }
 
     companion object {
         var newInstance: ModifyProfileFragment = ModifyProfileFragment()

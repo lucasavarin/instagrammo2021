@@ -1,5 +1,6 @@
 package com.example.instagrammo.fragment.secondFragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.instagrammo.R
 import com.example.instagrammo.fragment.HomeFragment
+import com.example.instagrammo.interfaces.InterfaceBack
 import com.example.instagrammo.network.ApiClient
 import com.example.instagrammo.request.AddPostReq
 import com.example.instagrammo.response.PictureResponse
@@ -16,6 +18,7 @@ import com.example.instagrammo.view.CircleTransformation
 import com.example.instagrammo.view.prefs
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.conferm_post.*
+import kotlinx.android.synthetic.main.conferm_post.customViewController
 import retrofit2.Callback
 import kotlinx.android.synthetic.main.conferm_post.view.*
 import retrofit2.Call
@@ -23,7 +26,7 @@ import retrofit2.Response
 
 
 class ConfirmPostFragment : Fragment() {
-
+    private  var listner : InterfaceBack? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +43,9 @@ class ConfirmPostFragment : Fragment() {
 
         conferma_button.setOnClickListener {
             confirmPost()
+        }
+        customViewController.setOnBackPressedListner {
+            listner?.back(this)
         }
     }
 
@@ -64,6 +70,15 @@ class ConfirmPostFragment : Fragment() {
         })
 
     }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is InterfaceBack) {
+            listner = context
+        } else {
+            throw RuntimeException("$context must implement InterfaceBack")
+        }
+    }
+
 
 
     companion object {

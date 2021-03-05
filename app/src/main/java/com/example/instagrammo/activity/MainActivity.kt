@@ -10,18 +10,16 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.example.instagrammo.fragment.*
-import com.example.instagrammo.fragment.secondFragment.ModifyProfileFragment
+import com.example.instagrammo.interfaces.InterfaceBack
 import com.example.instagrammo.network.ApiClient
 import com.example.instagrammo.response.PostNumberResponse
 import com.example.instagrammo.service.ForegroundService
-import com.example.instagrammo.view.prefs
-import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Callback
 import kotlinx.android.synthetic.main.main_activity.*
 import retrofit2.Call
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), InterfaceApp {
+class MainActivity : AppCompatActivity(), InterfaceBack {
 
     val handler = Handler()
     val run = object : Runnable {
@@ -75,11 +73,12 @@ class MainActivity : AppCompatActivity(), InterfaceApp {
 
                     post_number = response.body()?.payload!!.toInt()
                     ForegroundService.startService(
-                        this@MainActivity, post_number.toString() )
+                        this@MainActivity, post_number.toString()
+                    )
 
-                        if (post_number != 0) {
-                            navigation.setCount(0, post_number.toString())
-                        }
+                    if (post_number != 0) {
+                        navigation.setCount(0, post_number.toString())
+                    }
 
                 }
 
@@ -89,16 +88,17 @@ class MainActivity : AppCompatActivity(), InterfaceApp {
     }
 
 
-    override fun backToProfile() {
+    override fun back(fragment: Fragment) {
+        supportFragmentManager.popBackStackImmediate()
         supportFragmentManager.beginTransaction().apply {
-            remove(ModifyProfileFragment.newInstance)
+            remove(fragment)
             commit()
+
         }
+
+
     }
-
-
 }
-
 
 fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
     val fragmentTransaction = beginTransaction()
