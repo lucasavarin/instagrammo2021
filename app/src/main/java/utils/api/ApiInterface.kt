@@ -18,12 +18,16 @@ interface ApiInterface {
     fun getFollowers(@Path("profiloUtente") profiloUtente: String): Call<FollowerResponse>
 
     @GET("posts.php/{profiloUtente}")
-    fun getPosts(@Path("profiloUtente")profiloUtente : String): Call<PostResponse>
+    fun posts(@Path("profiloUtente")profiloUtente : String): Call<PostResponse>
+
+    @GET("posts.php")
+    fun getPostsHome(
+    ) : Call<PostResponse>
 
     @GET
     fun getImage(@Url url: String): Call<ResponseBody>
 
-    @GET("profile.php/{profileId}")
+    @GET("profiles.php/{profileId}")
     fun getProfile(
             @Path("profileId") profileId : String
     ): Call<ProfileResponse>

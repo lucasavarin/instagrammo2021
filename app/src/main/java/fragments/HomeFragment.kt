@@ -2,7 +2,6 @@ package fragments
 
 import utils.api.ApiClient
 import adapters.FollowerAdapter
-import adapters.ItemPostRecyclerViewAdapter
 import adapters.PostsAdapter
 import android.os.Bundle
 import android.util.Log
@@ -60,7 +59,7 @@ class HomeFragment : Fragment() {
     }
 
     fun callPost(){
-        ApiClient.getClient.getPosts(prefs.profileId!!).enqueue(object:  Callback<PostResponse>{
+        ApiClient.getClient.getPostsHome().enqueue(object:  Callback<PostResponse>{
             override fun onResponse(
                 call: Call<PostResponse>,
                 response: Response<PostResponse>

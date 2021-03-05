@@ -11,29 +11,22 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import bean.business.ProfileBean
 import bean.rest.PostResponse
-import bean.rest.Profile
 import bean.rest.ProfileResponse
 import com.example.instagrammo.R
 import com.squareup.picasso.Picasso
 import interfaces.ButtonEditProfileListener
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import utils.api.ApiClient
 import utils.extensions.CircleTransformation
 import utils.extensions.prefs
-import java.util.*
 
 class ProfileFragment : Fragment() {
 
     private var listenerButtonEdit: ButtonEditProfileListener? = null
-
-    lateinit var profilo: ProfileBean
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -80,7 +73,7 @@ class ProfileFragment : Fragment() {
     }
 
     fun callPostProfile(){
-        ApiClient.getClient.getPosts(prefs.profileId!!).enqueue(object: Callback<PostResponse> {
+        ApiClient.getClient.posts(prefs.profileId!!).enqueue(object: Callback<PostResponse> {
             override fun onResponse(
                 call: Call<PostResponse>,
                 response: Response<PostResponse>

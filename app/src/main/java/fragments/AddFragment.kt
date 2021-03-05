@@ -8,13 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import bean.rest.PostResponse
 import com.example.instagrammo.R
 import kotlinx.android.synthetic.main.fragment_add.*
-import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_profile.gridRecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,7 +37,7 @@ class AddFragment: Fragment() {
     }
 
     fun callAdd(){
-        ApiClient.getClient.getPosts(prefs.profileId!!).enqueue(object: Callback<PostResponse> {
+        ApiClient.getClient.posts(prefs.profileId!!).enqueue(object: Callback<PostResponse> {
             override fun onResponse(
                 call: Call<PostResponse>,
                 response: Response<PostResponse>
