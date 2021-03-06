@@ -4,6 +4,7 @@ import utils.api.ApiClient
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagrammo.R
 import kotlinx.android.synthetic.main.activity_main.*

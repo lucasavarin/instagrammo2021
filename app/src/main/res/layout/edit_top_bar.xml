@@ -24,6 +24,7 @@
         android:layout_height="match_parent"
         android:padding="10dp"
         android:text="TextView"
+        android:gravity="center"
         android:textColor="@color/color_primary_dark"
         android:fontFamily="@font/algerian_regular"
         android:textAlignment="center"
