@@ -1,4 +1,4 @@
-package com.costa.views.main
+package com.costa.views.main.loader
 /*
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

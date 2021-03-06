@@ -1,5 +1,7 @@
 package com.costa.views.main
 
+import android.app.Dialog
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import com.costa.utils.addFragment
 import com.costa.utils.prefs
 import com.costa.utils.removeFragment
 import com.costa.utils.replaceFragment
+import com.costa.views.login.LoginActivity
 import com.costa.views.main.addpost.AddFragment
 import com.costa.views.main.addpost.AddPostStep1Fragment
 import com.costa.views.main.addpost.AddPostStep2Fragment
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        MainActivity.NetworkTask(this).execute()
 
         bottom_nav.setOnClickListener {
             bottom_nav.isSelected = !bottom_nav.isSelected
@@ -151,7 +155,29 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
             loadingDialogFragment.dismissAllowingStateLoss()
         }*/
 
+    }
 
+    class NetworkTask(var activity: MainActivity) : AsyncTask<Void, Void, Void>(){
+
+        var dialog = Dialog(activity,android.R.style.Theme_Material_Light_NoActionBar)
+
+        override fun onPreExecute() {
+            val view = activity.layoutInflater.inflate(R.layout.loading_fragment,null)
+            dialog.setContentView(view)
+            dialog.setCancelable(false)
+            dialog.show()
+            super.onPreExecute()
+        }
+
+        override fun doInBackground(vararg p0: Void?): Void? {
+            Thread.sleep(5000)
+            return null
+        }
+
+        override fun onPostExecute(result: Void?) {
+            super.onPostExecute(result)
+            dialog.dismiss()
+        }
 
     }
 

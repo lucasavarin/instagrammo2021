@@ -1,6 +1,8 @@
 package com.costa.views.login
 
+import android.app.Dialog
 import android.content.Intent
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,14 +24,14 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var progressBar: ProgressBar
+   // private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_login)
         et_username.setText(prefs.username)
         cb_restaLoggato.isChecked = prefs.rememberUser
-        progressBar = findViewById(R.id.progressBar)
+       // progressBar = findViewById(R.id.progressBar)
 
         bt_login.setOnClickListener {
 
@@ -64,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
 
                     authToken = response.body()!!.authToken.toString()
                     userId = response.body()!!.profileId.toString()
-                    progressBar.visibility = View.VISIBLE
+                  //  progressBar.visibility = View.VISIBLE
 
                     prefs.rememberUser = cb_restaLoggato.isChecked
                     prefs.username = if (prefs.rememberUser) et_username.text.toString() else ""
