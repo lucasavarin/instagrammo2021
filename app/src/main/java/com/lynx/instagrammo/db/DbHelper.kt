@@ -41,12 +41,13 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, BATABASE_NAME, null
     fun insertData(post: Post) {
         val db = dbHelper.writableDatabase
         val cv = ContentValues()
-            cv.put(COLUMN_NAME_PROFILE_ID, post.profileId)
-            cv.put(COLUMN_NAME_POST_ID, post.postId)
-            cv.put(COLUMN_NAME_TITLE, post.title)
-            cv.put(COLUMN_NAME_PICTURE, post.picture)
-            cv.put(COLUMN_NAME_UPLOAD_TIME, post.uploadTime)
-        val result = db.insert(TABLE_NAME, null, cv)
+        cv.put(COLUMN_NAME_PROFILE_ID, post.profileId)
+        cv.put(COLUMN_NAME_POST_ID, post.postId)
+        cv.put(COLUMN_NAME_TITLE, post.title)
+        cv.put(COLUMN_NAME_PICTURE, post.picture)
+        cv.put(COLUMN_NAME_UPLOAD_TIME, post.uploadTime)
+        val result = db.insertWithOnConflict(TABLE_NAME, null, cv, SQLiteDatabase.CONFLICT_REPLACE)
+        db.close()
     }
 
     fun insertProfile(profile: Profile) {
@@ -58,7 +59,8 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, BATABASE_NAME, null
         cv.put(ProfileContract.ProfileEntry.COLUMN_NAME_PICTURE, profile.picture)
         cv.put(ProfileContract.ProfileEntry.COLUMN_NAME_FOLLOWERS_NUMBER, profile.followersNumber)
         cv.put(ProfileContract.ProfileEntry.COLUMN_NAME_POSTS_NUMBER, profile.postsNumber)
-        val result = db.insert(ProfileContract.ProfileEntry.TABLE_NAME, null, cv)
+        val result = db.insertWithOnConflict(ProfileContract.ProfileEntry.TABLE_NAME, null, cv, SQLiteDatabase.CONFLICT_REPLACE)
+        db.close()
     }
 
     fun readData(): MutableList<PostDB> {
@@ -66,8 +68,8 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, BATABASE_NAME, null
         val db = dbHelper.readableDatabase
         val query = "SELECT * from $TABLE_NAME"
         val result = db.rawQuery(query, null)
-        if(result.moveToFirst()){
-            do{
+        if (result.moveToFirst()) {
+            do {
                 val post = PostDB(
                         profileId = result.getString(result.getColumnIndex(COLUMN_NAME_PROFILE_ID)),
                         postId = result.getString(result.getColumnIndex(COLUMN_NAME_POST_ID)),
@@ -76,26 +78,52 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, BATABASE_NAME, null
                         uploadTime = result.getString(result.getColumnIndex(COLUMN_NAME_UPLOAD_TIME))
                 )
                 list.add(post)
-            }
-            while(result.moveToNext())
+            } while (result.moveToNext())
         }
+        db.close()
         return list
     }
 
-    fun readProfile(id: String): ProfileDB{
+    fun readProfile(): MutableList<ProfileDB> {
+        val list: MutableList<ProfileDB> = ArrayList()
         val db = dbHelper.readableDatabase
-        val query = "SELECT * from ${ProfileContract.ProfileEntry.TABLE_NAME} where ${ProfileContract.ProfileEntry.COLUMN_NAME_PROFILE_ID} == $id"
+        val query = "SELECT * from ${ProfileContract.ProfileEntry.TABLE_NAME}"
         val result = db.rawQuery(query, null)
-        return ProfileDB(
+        if (result.moveToFirst()) {
+            do {
+                val profile = ProfileDB(
                         profileId = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_PROFILE_ID)),
                         name = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_NAME)),
                         description = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_DESCRIPTION)),
                         picture = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_PICTURE)),
                         followersNumber = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_FOLLOWERS_NUMBER)),
                         postsNumber = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_POSTS_NUMBER)))
-
+                list.add(profile)
+            } while (result.moveToNext())
+        }
+        db.close()
+        return list
     }
 
-
+    fun readProfile(id: String): MutableList<ProfileDB>{
+        val list: MutableList<ProfileDB> = ArrayList()
+        val db = dbHelper.readableDatabase
+        val query = "SELECT * from ${ProfileContract.ProfileEntry.TABLE_NAME} where $id == ${ProfileContract.ProfileEntry.COLUMN_NAME_PROFILE_ID}"
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val profile = ProfileDB(
+                        profileId = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_PROFILE_ID)),
+                        name = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_NAME)),
+                        description = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_DESCRIPTION)),
+                        picture = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_PICTURE)),
+                        followersNumber = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_FOLLOWERS_NUMBER)),
+                        postsNumber = result.getString(result.getColumnIndex(ProfileContract.ProfileEntry.COLUMN_NAME_POSTS_NUMBER)))
+                list.add(profile)
+            } while (result.moveToNext())
+        }
+        db.close()
+        return list
+    }
 
 }

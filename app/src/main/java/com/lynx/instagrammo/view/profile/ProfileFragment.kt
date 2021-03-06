@@ -142,7 +142,7 @@ class ProfileFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<MyPostsResponse>, t: Throwable) {
-
+                
             }
 
         })

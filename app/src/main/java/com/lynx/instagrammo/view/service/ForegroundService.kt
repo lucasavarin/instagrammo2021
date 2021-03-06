@@ -11,7 +11,9 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.lynx.instagrammo.R
+import com.lynx.instagrammo.view.MainActivity
 import com.lynx.instagrammo.view.login.LoginActivity
+import com.lynx.instagrammo.view.notification.NotificationsFragment
 
 class ForegroundService : Service() {
 
@@ -45,7 +47,7 @@ class ForegroundService : Service() {
         super.onStartCommand(intent, flags, startId)
         val input = intent!!.getStringExtra("inputExtra")
         crateNotificationChannel()
-        val notificationIntent = Intent(this, LoginActivity::class.java)
+        val notificationIntent = Intent(this, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
 
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)

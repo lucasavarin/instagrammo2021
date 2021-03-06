@@ -13,6 +13,7 @@ import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.bean.Post
 import com.lynx.instagrammo.bean.converter.FollwerConverter
 import com.lynx.instagrammo.bean.converter.PostConverter
+import com.lynx.instagrammo.bean.converter.ProfileConverter
 import com.lynx.instagrammo.dbHelper
 import com.lynx.instagrammo.networking.API.ApiClient
 import com.lynx.instagrammo.networking.FollowerResponse
@@ -103,13 +104,14 @@ class HomeFragment : Fragment() {
                 if (!(response.body()!!.payload.isNullOrEmpty())) {
                     val posts = PostConverter.restToBusiness(response.body()?.payload!!)
                     posts.map{x-> dbHelper.insertData(x)}
+                    response.body()!!.payload!!.map { x -> dbHelper.insertProfile(ProfileConverter.restToBusiness(x.profile!!)) }
                     postLayoutManager(posts)
 
                 }
             }
 
             override fun onFailure(call: Call<PostResponse>, t: Throwable) {
-
+                postLayoutManager(joinPostProfile())
             }
 
         })
@@ -132,6 +134,13 @@ class HomeFragment : Fragment() {
                 Log.i("ERRORE", "Chiamata fallita")
             }
         })
+    }
+
+    fun joinPostProfile() : MutableList<Post>{
+        var postListDB = dbHelper.readData()
+        var postList = PostConverter.daoToBusiness(postListDB)
+        return postList.toMutableList()
+
     }
 
     interface HomeFragmentInterface {

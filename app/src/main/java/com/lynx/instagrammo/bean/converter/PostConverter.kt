@@ -5,6 +5,7 @@ import com.lynx.instagrammo.beanDao.PostDB
 import com.lynx.instagrammo.bean.converter.interfaces.DaoConverter
 import com.lynx.instagrammo.bean.converter.interfaces.RestConverter
 import com.lynx.instagrammo.beanRest.PostRest
+import com.lynx.instagrammo.dbHelper
 
 object PostConverter : RestConverter<PostRest, Post>, DaoConverter<PostDB, Post> {
 
@@ -15,7 +16,7 @@ object PostConverter : RestConverter<PostRest, Post>, DaoConverter<PostDB, Post>
             PostRest(businessModel.profileId, businessModel.postId, businessModel.title, businessModel.picture, businessModel.uploadTime, null)
 
     override fun daoToBusiness(daoModel: PostDB): Post =
-            Post(daoModel.profileId, daoModel.postId, daoModel.title, daoModel.picture, daoModel.uploadTime, null)
+            Post(daoModel.profileId, daoModel.postId, daoModel.title, daoModel.picture, daoModel.uploadTime, ProfileConverter.daoToBusiness(dbHelper.readProfile(daoModel.profileId)[0]))
 
     override fun businessToDao(businessModel: Post): PostDB =
             PostDB(businessModel.profileId, businessModel.postId, businessModel.title, businessModel.picture, businessModel.uploadTime)
