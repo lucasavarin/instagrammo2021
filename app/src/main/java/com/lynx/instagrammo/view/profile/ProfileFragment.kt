@@ -154,7 +154,7 @@ class ProfileFragment : Fragment() {
         recycler_profileImg_grid.apply {
             val gridLayoutManager = GridLayoutManager(context, 3)
             recycler_profileImg_grid.layoutManager = gridLayoutManager
-            recycler_profileImg_grid.adapter = ProfileGridAdapter(payload)
+            recycler_profileImg_grid.adapter = ProfileGridAdapter(payload.asReversed())
         }
     }
 
@@ -164,7 +164,7 @@ class ProfileFragment : Fragment() {
         recycler_profileImg_list.apply {
             val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             recycler_profileImg_list.layoutManager = linearLayoutManager
-            recycler_profileImg_list.adapter = ProfileListAdapter(payload)
+            recycler_profileImg_list.adapter = ProfileListAdapter(payload.asReversed())
         }
     }
 
