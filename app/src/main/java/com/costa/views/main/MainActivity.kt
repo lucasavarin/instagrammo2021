@@ -26,11 +26,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Observer
 
 
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface,
     EditProfileFragment.EditProfileFragmentInterface, AddFragment.AddFragmentInterface,
     AddPostStep1Fragment.AddPostStep1Interface, AddPostStep2Fragment.AddPostStep2Interface {
+
+    //private var progressDialog : Dialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,12 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
 
         bottom_nav.setOnClickListener {
             bottom_nav.isSelected = !bottom_nav.isSelected
+            /*bottom_nav.visibility = View.GONE
+            showProgress()
+            Handler().postDelayed({
+                hideProgress()
+                bottom_nav.visibility = View.VISIBLE
+            }, 5000)*/
         }
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_nav)
@@ -128,6 +137,19 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
                     }
                 })
             }.also { runnable=it }, 5000.toLong())
+
+
+        /*val loadingDialogFragment by lazy { LoadingDialogFragment() }
+
+        //Show Loader
+        if (!loadingDialogFragment.isAdded){
+            loadingDialogFragment.show(supportFragmentManager, "loader")
+        }
+
+        //Hide Loader
+        if (loadingDialogFragment.isAdded) {
+            loadingDialogFragment.dismissAllowingStateLoss()
+        }*/
 
 
 
