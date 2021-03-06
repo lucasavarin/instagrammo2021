@@ -1,5 +1,7 @@
 package com.costa.views.main
 
+import android.app.Dialog
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import com.costa.utils.addFragment
 import com.costa.utils.prefs
 import com.costa.utils.removeFragment
 import com.costa.utils.replaceFragment
+import com.costa.views.login.LoginActivity
 import com.costa.views.main.addpost.AddFragment
 import com.costa.views.main.addpost.AddPostStep1Fragment
 import com.costa.views.main.addpost.AddPostStep2Fragment
@@ -26,18 +29,28 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Observer
 
 
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface,
     EditProfileFragment.EditProfileFragmentInterface, AddFragment.AddFragmentInterface,
     AddPostStep1Fragment.AddPostStep1Interface, AddPostStep2Fragment.AddPostStep2Interface {
 
+    //private var progressDialog : Dialog? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        MainActivity.NetworkTask(this).execute()
 
         bottom_nav.setOnClickListener {
             bottom_nav.isSelected = !bottom_nav.isSelected
+            /*bottom_nav.visibility = View.GONE
+            showProgress()
+            Handler().postDelayed({
+                hideProgress()
+                bottom_nav.visibility = View.VISIBLE
+            }, 5000)*/
         }
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_nav)
@@ -130,6 +143,41 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
             }.also { runnable=it }, 5000.toLong())
 
 
+        /*val loadingDialogFragment by lazy { LoadingDialogFragment() }
+
+        //Show Loader
+        if (!loadingDialogFragment.isAdded){
+            loadingDialogFragment.show(supportFragmentManager, "loader")
+        }
+
+        //Hide Loader
+        if (loadingDialogFragment.isAdded) {
+            loadingDialogFragment.dismissAllowingStateLoss()
+        }*/
+
+    }
+
+    class NetworkTask(var activity: MainActivity) : AsyncTask<Void, Void, Void>(){
+
+        var dialog = Dialog(activity,android.R.style.Theme_Material_Light_NoActionBar)
+
+        override fun onPreExecute() {
+            val view = activity.layoutInflater.inflate(R.layout.loading_fragment,null)
+            dialog.setContentView(view)
+            dialog.setCancelable(false)
+            dialog.show()
+            super.onPreExecute()
+        }
+
+        override fun doInBackground(vararg p0: Void?): Void? {
+            Thread.sleep(5000)
+            return null
+        }
+
+        override fun onPostExecute(result: Void?) {
+            super.onPostExecute(result)
+            dialog.dismiss()
+        }
 
     }
 

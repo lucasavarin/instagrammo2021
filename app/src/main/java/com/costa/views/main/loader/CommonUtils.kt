@@ -1,9 +1,28 @@
-package com.costa.utils
-
+package com.costa.views.main.loader
+/*
+import android.app.Dialog
 import android.content.Context
-import com.costa.views.LoaderMain
+import android.graphics.Color
+import androidx.core.graphics.drawable.toDrawable
+import com.costa.instagrammo.R
 
-open class LoadingUtils {
+object CommonUtils {
+
+  fun showLoadingDialog(context: Context): Dialog {
+       val progressDialog = Dialog(context)
+
+       progressDialog.let {
+           it.show()
+           it.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+           it.setContentView(R.layout.loading_fragment)
+           it.setCancelable(false)
+           it.setCanceledOnTouchOutside(false)
+           return it
+       }
+   }
+}*/
+
+/*open class LoadingUtils {
     companion object {
         private var loaderMain: LoaderMain? = null
         fun showDialog(
@@ -38,7 +57,7 @@ open class LoadingUtils {
         }
 
     }
-}
+}*/
 
 // Per richiamare il Loader 👇
 // LoadingUitls.showDialog(context, isCancelable)
