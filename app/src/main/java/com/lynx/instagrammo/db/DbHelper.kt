@@ -105,7 +105,7 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, BATABASE_NAME, null
         return list
     }
 
-    fun readProfile(id: String): MutableList<ProfileDB>{
+    fun readProfile(id: String): ProfileDB{
         val list: MutableList<ProfileDB> = ArrayList()
         val db = dbHelper.readableDatabase
         val query = "SELECT * from ${ProfileContract.ProfileEntry.TABLE_NAME} where $id == ${ProfileContract.ProfileEntry.COLUMN_NAME_PROFILE_ID}"
@@ -123,7 +123,7 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, BATABASE_NAME, null
             } while (result.moveToNext())
         }
         db.close()
-        return list
+        return list[0]
     }
 
 }

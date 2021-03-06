@@ -16,7 +16,7 @@ object PostConverter : RestConverter<PostRest, Post>, DaoConverter<PostDB, Post>
             PostRest(businessModel.profileId, businessModel.postId, businessModel.title, businessModel.picture, businessModel.uploadTime, null)
 
     override fun daoToBusiness(daoModel: PostDB): Post =
-            Post(daoModel.profileId, daoModel.postId, daoModel.title, daoModel.picture, daoModel.uploadTime, ProfileConverter.daoToBusiness(dbHelper.readProfile(daoModel.profileId)[0]))
+            Post(daoModel.profileId, daoModel.postId, daoModel.title, daoModel.picture, daoModel.uploadTime, ProfileConverter.daoToBusiness(dbHelper.readProfile(daoModel.profileId)))
 
     override fun businessToDao(businessModel: Post): PostDB =
             PostDB(businessModel.profileId, businessModel.postId, businessModel.title, businessModel.picture, businessModel.uploadTime)

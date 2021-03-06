@@ -15,6 +15,7 @@ import com.lynx.instagrammo.bean.MyPost
 import com.lynx.instagrammo.bean.Profile
 import com.lynx.instagrammo.bean.converter.MyPostConverter
 import com.lynx.instagrammo.bean.converter.ProfileConverter
+import com.lynx.instagrammo.dbHelper
 import com.lynx.instagrammo.networking.API.ApiClient
 import com.lynx.instagrammo.networking.MyPostsResponse
 import com.lynx.instagrammo.networking.ProfileResponse
@@ -112,7 +113,6 @@ class ProfileFragment : Fragment() {
         callSingleProfile.enqueue(object : Callback<ProfileResponse> {
 
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
-
                 if (response.isSuccessful) {
                     profile = ProfileConverter.restToBusiness(response.body()!!.payload!![0])
                     profile_name_text.text = response.body()!!.payload!![0].name
@@ -125,7 +125,12 @@ class ProfileFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                Log.i("ONFALIURE", t.message)
+                var profileDB = dbHelper.readProfile(prefs.userId)
+                var profile = ProfileConverter.daoToBusiness(profileDB)
+                profile_name_text.text = profile.name
+                profile_description_text.text = profile.description
+                followers_count_text.text = profile.followersNumber
+                posts_count_text.text = profile.postsNumber
             }
         })
     }
@@ -142,7 +147,7 @@ class ProfileFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<MyPostsResponse>, t: Throwable) {
-                
+
             }
 
         })
