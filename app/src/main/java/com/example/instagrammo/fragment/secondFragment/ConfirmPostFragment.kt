@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import com.example.instagrammo.R
 import com.example.instagrammo.fragment.HomeFragment
@@ -31,9 +32,10 @@ class ConfirmPostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         val view: View = inflater.inflate(R.layout.conferm_post, container, false)
-        Picasso.get().load(image.download_url).transform(CircleTransformation())
-            .into(view.add_image)
+        Picasso.get().load(image.download_url).transform(CircleTransformation()).into(view.add_image)
         return view
 
     }

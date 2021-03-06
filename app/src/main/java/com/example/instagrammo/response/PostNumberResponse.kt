@@ -10,5 +10,5 @@ data class PostNumberResponse (
     val result: Boolean,
     @Expose
     @SerializedName("payload")
-    val payload: Int
+    val payload: String
 )

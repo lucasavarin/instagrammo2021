@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.instagrammo.R
@@ -32,6 +33,7 @@ class ModifyProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        activity!!.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         return inflater.inflate(R.layout.fragment_modify_profile, container, false)
         
     }
@@ -63,9 +65,11 @@ class ModifyProfileFragment : Fragment() {
 
                 override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                     Toast.makeText(context, "Modifiche Salvate", Toast.LENGTH_LONG).show()
-                }
 
+                }
             })
+            activity!!.supportFragmentManager.popBackStackImmediate()
+
         }
         customViewController.setOnBackPressedListner {
             listner?.back(this)

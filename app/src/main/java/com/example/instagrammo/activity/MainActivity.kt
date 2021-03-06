@@ -1,9 +1,14 @@
 package com.example.instagrammo
 
 
+import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -14,6 +19,7 @@ import com.example.instagrammo.interfaces.InterfaceBack
 import com.example.instagrammo.network.ApiClient
 import com.example.instagrammo.response.PostNumberResponse
 import com.example.instagrammo.service.ForegroundService
+import com.example.instagrammo.view.prefs
 import retrofit2.Callback
 import kotlinx.android.synthetic.main.main_activity.*
 import retrofit2.Call
@@ -21,21 +27,12 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), InterfaceBack {
 
-    val handler = Handler()
-    val run = object : Runnable {
-        override fun run() {
-            getNumberForService()
-            //handler.postDelayed(this, 5000)
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        handler.postDelayed(run, 5000)
-
-
+initService()
         navigation.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
         navigation.add(MeowBottomNavigation.Model(1, R.drawable.ic_search))
         navigation.add(MeowBottomNavigation.Model(2, R.drawable.ic_add))
@@ -55,38 +52,34 @@ class MainActivity : AppCompatActivity(), InterfaceBack {
                 else -> false
 
             }
+            calcPostNumber()
         }
     }
 
-    fun getNumberForService() {
-        var post_number = 0
-        ApiClient.getClient.getListPostNumber()
-            .enqueue(object : Callback<PostNumberResponse> {
-                override fun onFailure(call: Call<PostNumberResponse>, t: Throwable) {
-                    Log.i("info", t.message)
-                }
-
-                override fun onResponse(
-                    call: Call<PostNumberResponse>,
-                    response: Response<PostNumberResponse>
-                ) {
-
-                    post_number = response.body()?.payload!!.toInt()
-                    ForegroundService.startService(
-                        this@MainActivity, post_number.toString()
-                    )
-
-                    if (post_number != 0) {
-                        navigation.setCount(0, post_number.toString())
-                    }
-
-                }
 
 
-            })
+    private fun initService(){
+        val postNumberService = Intent(applicationContext, ForegroundService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(postNumberService)
+        }else{
+            startService(postNumberService)
+        }
 
     }
 
+    private fun calcPostNumber() {
+        Handler().postDelayed(object : Runnable {
+            override fun run() {
+                if (prefs.postNumber != 0) {
+                    navigation.setCount(0, prefs.postNumber.toString())
+                } else {
+
+                }
+                Handler().postDelayed(this, 5000)
+            }
+        }, 5000)
+    }
 
     override fun back(fragment: Fragment) {
         supportFragmentManager.popBackStackImmediate()
@@ -95,7 +88,12 @@ class MainActivity : AppCompatActivity(), InterfaceBack {
             commit()
 
         }
-
+        val inputManager: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(
+            currentFocus?.windowToken,
+            InputMethodManager.SHOW_FORCED
+        )
 
     }
 }
