@@ -1,5 +1,6 @@
 package com.costa.adapter.addpost
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,6 +8,10 @@ import com.costa.beans.business.PicSumImage
 
 import com.costa.beans.rest.PicSumImageOut
 import com.costa.instagrammo.R
+import com.costa.servizi.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AddPostsGridAdAdapter (private val posts: List<PicSumImageOut>, private val callback:(imageOut: PicSumImage)->Unit) :
     RecyclerView.Adapter<AddPostsGridViewHolder>() {
@@ -19,7 +24,7 @@ class AddPostsGridAdAdapter (private val posts: List<PicSumImageOut>, private va
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddPostsGridViewHolder {
-        // Create a new view, which defines the UI of the list item
+
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_add_post_grid, parent, false)
 
@@ -28,6 +33,7 @@ class AddPostsGridAdAdapter (private val posts: List<PicSumImageOut>, private va
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: AddPostsGridViewHolder, position: Int) {
+
        holder.bindImagePost(posts[position],callback)
     }
 
@@ -35,5 +41,5 @@ class AddPostsGridAdAdapter (private val posts: List<PicSumImageOut>, private va
     override fun getItemCount() = posts.size
 
 
-
 }
+

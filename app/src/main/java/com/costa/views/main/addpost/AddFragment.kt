@@ -28,6 +28,7 @@ class AddFragment : Fragment() {
 
     }
 
+    lateinit var callImage: Call<Array<PicSumImageOut>>
     var poststoHolder = mutableListOf<PicSumImageOut>()
     val LIMIT = 30
     var page: Int = 0
@@ -68,35 +69,39 @@ class AddFragment : Fragment() {
 
     }
 
+    override fun onDestroy() {
+        callImage.cancel()
+        super.onDestroy()
+    }
+
     fun callImages(adapter: AddPostsGridAdAdapter) {
         page++
-        ApiClient.getImageClient.getPictures(page, LIMIT)
-            .enqueue(object : Callback<Array<PicSumImageOut>> {
-                override fun onFailure(call: Call<Array<PicSumImageOut>>, t: Throwable) {
-                    Log.i("ERRORE: ", "onFailure")
+        callImage = ApiClient.getImageClient.getPictures(page, LIMIT)
+        callImage.enqueue(object : Callback<Array<PicSumImageOut>> {
+            override fun onFailure(call: Call<Array<PicSumImageOut>>, t: Throwable) {
+                Log.i("ERRORE: ", "onFailure")
 
+            }
+
+            override fun onResponse(
+                call: Call<Array<PicSumImageOut>>,
+                response: Response<Array<PicSumImageOut>>
+            ) {
+                poststoHolder.addAll(response.body()!!.toMutableList())
+                adapter.notifyDataSetChanged()
+                gredRecycleView(adapter)
+                if (poststoHolder.size > 30) {
+                    rv_add_post.scrollToPosition(poststoHolder.size - 42)
                 }
-
-                override fun onResponse(
-                    call: Call<Array<PicSumImageOut>>,
-                    response: Response<Array<PicSumImageOut>>
-                ) {
-                    poststoHolder.addAll(response.body()!!.toMutableList())
-                    adapter.notifyDataSetChanged()
-                    gredRecycleView(adapter)
-                    if (poststoHolder.size > 30) {
-                        rv_add_post.scrollToPosition(poststoHolder.size - 42)
-                    }
-                }
+            }
 
 
-            })
+        })
     }
 
     fun gredRecycleView(adapter: AddPostsGridAdAdapter) {
 
 
-        
         rv_add_post.apply {
             val layoutManager = GridLayoutManager(context, 3)
             rv_add_post.layoutManager = layoutManager

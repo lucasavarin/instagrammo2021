@@ -30,6 +30,8 @@ class ProfileFragment : Fragment() {
 
     private lateinit var listener: ProfileFragmentInterface
     private lateinit var profilo : ProfileOut
+    private lateinit var callProfile:Call<ProfileResponse>
+    private lateinit var callMyPosts:Call<MyPostsResponce>
 
     companion object{
         val instance: ProfileFragment =
@@ -85,7 +87,39 @@ class ProfileFragment : Fragment() {
             }
         })
 
-        ApiClient.getClient.getProfile(userId).enqueue(object : Callback<ProfileResponse> {
+        getProfile()
+        getMyPosts()
+    }
+
+    override fun onDestroy() {
+        callProfile.cancel()
+        callMyPosts.cancel()
+        super.onDestroy()
+    }
+
+    fun getMyPosts(){
+        callMyPosts=ApiClient.getClient.getMyPosts(userId)
+        callMyPosts.enqueue(object : Callback<MyPostsResponce> {
+
+            override fun onResponse(
+                call: Call<MyPostsResponce>,
+                response: Response<MyPostsResponce>
+            ) {
+                if (!response.body()!!.payload!!.isNullOrEmpty()) {
+
+                    linearRecycleView(response.body()!!.payload!!.reversed())
+                    gredRecycleView(response.body()!!.payload!!.reversed())
+                }
+            }
+
+            override fun onFailure(call: Call<MyPostsResponce>, t: Throwable) {
+
+            }
+        })
+    }
+    fun getProfile(){
+        callProfile=ApiClient.getClient.getProfile(userId)
+            callProfile.enqueue(object : Callback<ProfileResponse> {
 
             override fun onResponse(
                 call: Call<ProfileResponse>,
@@ -104,40 +138,10 @@ class ProfileFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                Toast.makeText(
-                    context,
-                    "non riusciamo a caricare le informazioni, riprova piu tardi",
-                    Toast.LENGTH_SHORT
-                ).show()
             }
 
 
         })
-
-
-        ApiClient.getClient.getMyPosts(userId).enqueue(object : Callback<MyPostsResponce> {
-
-            override fun onResponse(
-                call: Call<MyPostsResponce>,
-                response: Response<MyPostsResponce>
-            ) {
-                if (!response.body()!!.payload!!.isNullOrEmpty()) {
-
-                    linearRecycleView(response.body()!!.payload!!)
-                    gredRecycleView(response.body()!!.payload!!)
-                }
-            }
-
-            override fun onFailure(call: Call<MyPostsResponce>, t: Throwable) {
-                Toast.makeText(
-                    context,
-                    "non riusciamo a caricare le informazioni, riprova piu tardi",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
-
-
     }
 
     fun linearRecycleView(payload: List<MyProfilePostsOut>) {

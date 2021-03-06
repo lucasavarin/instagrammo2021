@@ -31,43 +31,31 @@ class HomeFragment : Fragment() {
             HomeFragment()
 
     }
-
+    lateinit var callFollowers:Call<FollowersResponse>
+    lateinit var callPosts:Call<PostsResponse>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        followers()
+        posts()
+    }
 
-        ApiClient.getClient.getPost().enqueue(object : Callback<PostsResponse> {
-
-            override fun onResponse(call: Call<PostsResponse>, response: Response<PostsResponse>) {
-                if (!response.body()!!.payload!!.isNullOrEmpty()) {
-
-
-                    val layoutManagerPosts = LinearLayoutManager(context)
-                    rv_post.layoutManager = layoutManagerPosts
-                    rv_post.adapter =
-                        PostAdapter(response.body()!!.payload!!)
-                }
-            }
-
-            override fun onFailure(call: Call<PostsResponse>, t: Throwable) {
-
-                Toast.makeText(
-                    this@HomeFragment.context,
-                    "i server non sono al momento disponibili",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+    override fun onDestroy() {
+        callFollowers.cancel()
+        callPosts.cancel()
+        super.onDestroy()
+    }
 
 
-        })
-
-        ApiClient.getClient.getFollowes(userId).enqueue(object : Callback<FollowersResponse> {
+    fun followers(){
+        callFollowers=ApiClient.getClient.getFollowes(userId)
+        callFollowers.enqueue(object : Callback<FollowersResponse> {
 
             override fun onResponse(call: Call<FollowersResponse>, response: Response<FollowersResponse>) {
                 if (!response.body()!!.payload!!.isNullOrEmpty()) {
@@ -84,33 +72,33 @@ class HomeFragment : Fragment() {
 
             override fun onFailure(call: Call<FollowersResponse>, t: Throwable) {
 
-                Toast.makeText(
-                    this@HomeFragment.context,
-                    "i server non sono al momento disponibili",
-                    Toast.LENGTH_SHORT
-                ).show()
             }
 
 
         })
+    }
+    fun posts(){
+        callPosts= ApiClient.getClient.getPost()
+        callPosts.enqueue(object : Callback<PostsResponse> {
 
-       /* fun getFollower() {
-            ApiClient.getClient.getFollowes(prefs!!.username).enqueue(object : Callback<FollowersResponse> {
-                override fun onFailure(call: Call<FollowersResponse>, t: Throwable) {
-                    println("accesso fallito")
+            override fun onResponse(call: Call<PostsResponse>, response: Response<PostsResponse>) {
+                if (!response.body()!!.payload!!.isNullOrEmpty()) {
+
+
+                    val layoutManagerPosts = LinearLayoutManager(context)
+                    rv_post.layoutManager = layoutManagerPosts
+                    rv_post.adapter =
+                        PostAdapter(response.body()!!.payload!!.reversed())
                 }
+            }
 
-                override fun onResponse(
-                    call: Call<FollowersResponse>,
-                    response: Response<FollowersResponse>
-                ) {
-                    followers = response.body()?.payload?.toMutableList()!!
+            override fun onFailure(call: Call<PostsResponse>, t: Throwable) {
 
-                    Log.i("info",response.body()?.result.toString())
-                }
-            })
-        } */
 
+            }
+
+
+        })
     }
 
 }
