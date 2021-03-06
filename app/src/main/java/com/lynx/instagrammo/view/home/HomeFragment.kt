@@ -13,6 +13,7 @@ import com.lynx.instagrammo.bean.Follower
 import com.lynx.instagrammo.bean.Post
 import com.lynx.instagrammo.bean.converter.FollwerConverter
 import com.lynx.instagrammo.bean.converter.PostConverter
+import com.lynx.instagrammo.dbHelper
 import com.lynx.instagrammo.networking.API.ApiClient
 import com.lynx.instagrammo.networking.FollowerResponse
 import com.lynx.instagrammo.networking.PostResponse
@@ -99,12 +100,15 @@ class HomeFragment : Fragment() {
 
         callPosts.enqueue(object : Callback<PostResponse> {
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
-                if (!(response.body()!!.payload.isNullOrEmpty()))
-                    postLayoutManager(PostConverter.restToBusiness(response.body()?.payload!!))
+                if (!(response.body()!!.payload.isNullOrEmpty())) {
+                    val posts = PostConverter.restToBusiness(response.body()?.payload!!)
+                    posts.map{x-> dbHelper.insertData(x)}
+                    postLayoutManager(posts)
+
+                }
             }
 
             override fun onFailure(call: Call<PostResponse>, t: Throwable) {
-                Log.i("ERRORE", "Chiamata fallita")
 
             }
 

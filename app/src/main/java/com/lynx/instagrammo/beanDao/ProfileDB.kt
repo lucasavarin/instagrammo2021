@@ -2,10 +2,11 @@ package com.lynx.instagrammo.beanDao
 
 import com.lynx.instagrammo.bean.converter.interfaces.DaoModel
 
-data class PostDB(
+data class ProfileDB(
         val profileId: String,
-        val postId: String,
-        val title: String,
+        val name: String,
+        val description: String,
         val picture: String,
-        val uploadTime: String
-) : DaoModel
+        val followersNumber: String,
+        val postsNumber: String
+) :DaoModel
