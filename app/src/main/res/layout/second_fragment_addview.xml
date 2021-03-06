@@ -3,13 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient"
+
+    >
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgToAdd"
         android:layout_height="350dp"
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:gravity="center_horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -17,7 +21,8 @@
         android:paddingHorizontal="70dp"
         android:paddingVertical="70dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"
+         />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editDescrizioneImmagine"
@@ -26,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@id/imgToAdd"
         android:textSize="20dp"
         android:text="@string/descrizione"
+        android:textColor="@color/purple_200"
         app:layout_constraintLeft_toLeftOf="@id/imgToAdd"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -46,6 +52,9 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="@+id/imgToAdd"
         android:text="@string/conferma"
+        android:textColor="@color/orange"
+        android:backgroundTint="@color/cardview_shadow_end_color"
+
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

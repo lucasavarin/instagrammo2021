@@ -33,9 +33,8 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navView"
-        android:layout_width="400dp"
-        android:layout_height="68dp"
-        android:layout_gravity="bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/cardview_shadow_end_color"
         app:itemIconTint="@color/purple_200"
         app:itemTextColor="@color/purple_200"

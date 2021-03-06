@@ -28,6 +28,7 @@
         app:layout_constraintLeft_toRightOf="@id/imgEditProfile"
         app:layout_constraintTop_toTopOf="@id/imgEditProfile"
         android:text="@string/id_immagine"
+        android:textColor="@color/purple_200"
         android:textSize="15dp"
         android:layout_margin="20dp"
         />
@@ -49,6 +50,7 @@
         app:layout_constraintTop_toBottomOf="@id/imgEditProfile"
         app:layout_constraintStart_toStartOf="@id/imgEditProfile"
         android:text="@string/nome_profilo"
+        android:textColor="@color/purple_200"
         android:textSize="15dp"
         android:layout_marginTop="20dp"
         />
@@ -72,6 +74,7 @@
         app:layout_constraintTop_toBottomOf="@id/editName"
         app:layout_constraintStart_toStartOf="@id/imgEditProfile"
         android:text="@string/descrizione_profilo"
+        android:textColor="@color/purple_200"
         android:textSize="15dp"
         android:layout_marginTop="20dp"
         />
@@ -95,7 +98,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/cardview_shadow_end_color"
         android:text="@string/salva"
+        android:textColor="@color/orange"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/nomeProfilo"
