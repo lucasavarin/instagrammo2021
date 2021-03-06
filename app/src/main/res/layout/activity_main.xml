@@ -90,7 +90,7 @@
             android:fontFamily="serif"
             android:text="login"
             android:textColor="@color/orange"
-            android:backgroundTint="@color/cardview_shadow_end_color"
+            android:backgroundTint="#85082842"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.976"

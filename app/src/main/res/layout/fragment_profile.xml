@@ -79,7 +79,7 @@
         android:paddingHorizontal="30dp"
         android:text="@string/modifca_profilo"
         android:textColor="@color/orange"
-        android:backgroundTint="@color/cardview_shadow_end_color"
+        android:backgroundTint="#85082842"
         app:layout_constraintStart_toStartOf="@id/profileView"
         app:layout_constraintTop_toBottomOf="@+id/profileDescription" />
 

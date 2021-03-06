@@ -53,7 +53,7 @@
         app:layout_constraintStart_toStartOf="@+id/imgToAdd"
         android:text="@string/conferma"
         android:textColor="@color/orange"
-        android:backgroundTint="@color/cardview_shadow_end_color"
+        android:backgroundTint="#85082842"
 
         />
 
