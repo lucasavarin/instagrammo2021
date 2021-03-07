@@ -1,5 +1,7 @@
 package com.costa.beans.business
 
+import com.costa.`interface`.BusinessModel
+
 data class Profile(
        var profileId: Int,
        var name: String,
@@ -7,4 +9,4 @@ data class Profile(
        var picture: String,
        var followersNumber: Int,
        var postsNumber: Int
-)
+): BusinessModel

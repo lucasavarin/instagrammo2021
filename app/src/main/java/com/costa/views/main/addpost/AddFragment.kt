@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.costa.adapter.addpost.AddPostsGridAdAdapter
 import com.costa.beans.business.PicSumImage
+import com.costa.beans.converter.PicSumImageConverter
 import com.costa.beans.rest.PicSumImageOut
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
@@ -29,7 +30,7 @@ class AddFragment : Fragment() {
     }
 
     lateinit var callImage: Call<Array<PicSumImageOut>>
-    var poststoHolder = mutableListOf<PicSumImageOut>()
+    var poststoHolder = mutableListOf<PicSumImage>()
     val LIMIT = 30
     var page: Int = 0
     lateinit var listener: AddFragmentInterface
@@ -87,7 +88,7 @@ class AddFragment : Fragment() {
                 call: Call<Array<PicSumImageOut>>,
                 response: Response<Array<PicSumImageOut>>
             ) {
-                poststoHolder.addAll(response.body()!!.toMutableList())
+                poststoHolder.addAll(PicSumImageConverter.restToBusiness(response.body()!!.toMutableList()))
                 adapter.notifyDataSetChanged()
                 gredRecycleView(adapter)
                 if (poststoHolder.size > 30) {

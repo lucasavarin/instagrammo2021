@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.costa.adapter.homePostsList.PostAdapter
 import com.costa.adapter.homeFollowersList.FollowersListAdapter
+import com.costa.beans.converter.FollowerConverter
+import com.costa.beans.converter.PostConverter
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
 import com.costa.servizi.ApiClient.userId
@@ -65,7 +67,7 @@ class HomeFragment : Fragment() {
                     recycleHorizontal.layoutManager = layoutManager
                     recycleHorizontal.adapter =
                         FollowersListAdapter(
-                            response.body()!!.payload!!
+                            FollowerConverter.restToBusiness(response.body()!!.payload!!)
                         )
                 }
             }
@@ -88,7 +90,7 @@ class HomeFragment : Fragment() {
                     val layoutManagerPosts = LinearLayoutManager(context)
                     rv_post.layoutManager = layoutManagerPosts
                     rv_post.adapter =
-                        PostAdapter(response.body()!!.payload!!.reversed())
+                        PostAdapter(PostConverter.restToBusiness(response.body()!!.payload!!).reversed())
                 }
             }
 

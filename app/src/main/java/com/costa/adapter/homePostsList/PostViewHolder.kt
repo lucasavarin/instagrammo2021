@@ -3,6 +3,7 @@ package com.costa.adapter.homePostsList
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.costa.beans.business.Post
 import com.costa.beans.rest.PostOut
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
@@ -11,12 +12,12 @@ import kotlinx.android.synthetic.main.item_post_home.view.*
 class PostViewHolder(private var v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
 
 
-private lateinit var post: PostOut
+private lateinit var post: Post
 
-    fun bindPost(postOut: PostOut){
+    fun bindPost(postOut: Post){
         post=postOut
         Picasso.get()
-            .load(post.profile.picture)
+            .load(post.profile!!.picture)
             .transform(CropCircleTransformation())
             .into(v.img_profilo)
         Picasso.get()
@@ -25,7 +26,7 @@ private lateinit var post: PostOut
             .centerCrop()
             .into(v.img_post)
 
-        v.tv_nome_Profilo.text=post.profile.name
+        v.tv_nome_Profilo.text=post.profile!!.name
         v.tv_description.text=post.title
         v.tv_data.text=post.uploadTime
 

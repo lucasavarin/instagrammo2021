@@ -1,5 +1,6 @@
 package com.costa.beans.rest
 
+import com.costa.`interface`.RestModel
 import com.costa.beans.rest.ProfileOut
 
 
@@ -10,8 +11,4 @@ data class PostOut(
     val picture: String,
     val uploadTime: String,
     val profile: ProfileOut
-) {
-    /*fun toPost(): Post {
-        return Post(profileId, postId, title, picture, uploadTime, profile.toProfile())
-    }*/
-}
+): RestModel

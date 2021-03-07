@@ -3,6 +3,7 @@ package com.costa.adapter.profilePostsGrid
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.costa.beans.business.MyProfilePost
 import com.costa.beans.rest.MyProfilePostsOut
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_profile_post_grid.view.*
@@ -10,9 +11,9 @@ import kotlinx.android.synthetic.main.item_profile_post_grid.view.*
 class ProfilePostsGridViewHolder (private var v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
 
 
-    private lateinit var post: MyProfilePostsOut
+    private lateinit var post: MyProfilePost
 
-    fun bindProfilePost(myPost: MyProfilePostsOut){
+    fun bindProfilePost(myPost: MyProfilePost){
         post=myPost
 
         Picasso.get()
