@@ -15,7 +15,7 @@ class PostListHolder(v: View) : RecyclerView.ViewHolder(v) {
     fun bindPost(post: Post) {
         this.post= post
         if (post.profile?.picture != null){
-            Picasso.get().load(post.profile?.picture).transform(CircleTransform()).into(view.imgProfileView)
+            Picasso.get().load(post.profile.picture).transform(CircleTransform()).into(view.imgProfileView)
         }
         Picasso.get().load(post.picture).into(view.imgPostView)
         view.txtPost_view.text = post.profile?.name

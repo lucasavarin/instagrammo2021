@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 println("success response-----------> " + response.body().toString())
-                prefs.rememberUsername = if (prefs!!.rememberMe) userNameEditText.text.toString() else ""
+                prefs.rememberUsername = if (prefs.rememberMe) userNameEditText.text.toString() else ""
                 prefs.rememberIdProfile = response.body()?.profileId.toString()
                 ApiClient.rememberToken = response.body()?.authToken.toString()
                 val intent = Intent(this@MainActivity, HomeActivity::class.java)

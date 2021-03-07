@@ -10,15 +10,10 @@ import androidx.fragment.app.Fragment
 import com.lynxspa.instagrammo.retrofit.Profile
 import kotlinx.android.synthetic.main.fragment_profile.*
 
- class HomeActivity: AppCompatActivity(), ProfileFragment.ProfileInterfaceFragment, ModificaProfiloFragment.BackToProfile {
+ class HomeActivity: AppCompatActivity(), ProfileFragment.ProfileInterfaceFragment, ModificaProfiloFragment.BackToProfile, AddFragment.ImageInterfaceFragment{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        //btn esegue al click
-        btnEditProfile.setOnClickListener {
-
-        }
-
 
         addFragment(HomeFragment.makeIstance(),R.id.fragmentContainer)
 
@@ -48,7 +43,6 @@ import kotlinx.android.synthetic.main.fragment_profile.*
             }
         }
     }
-     //
      inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
          val fragmentTransaction = beginTransaction()
          fragmentTransaction.func()
@@ -72,5 +66,9 @@ import kotlinx.android.synthetic.main.fragment_profile.*
              remove(ModificaProfiloFragment.makeIstance())
              commit()
          }
+     }
+
+     override fun imageAddFragment() {
+         addFragment(ImageAddFragment.makeIstance(),R.id.fragmentContainer)
      }
  }
