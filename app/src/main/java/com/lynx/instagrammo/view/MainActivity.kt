@@ -25,6 +25,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/*************************************/
+/**----------BASE DI FERRO----------**/
+/**---------------------------------**/
+/**----designed for lynx academy----**/
+/**---------course 2020/21----------**/
+/**---------------------------------**/
+/**--------Ferrillo Daniele---------**/
+/**---------Di Biase Rocco----------**/
+/*************************************/
+
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface, EditFragment.EditFragmenInterface, HomeFragment.HomeFragmentInterface, AddFragment.AddFragmentInterface, ShowImageFragment.ShowImageFragmentInterface, AddPostFragment.AddPostFragmentInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -136,7 +146,7 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
                         }
                         ForegroundService.startService(this@MainActivity, input.toString())
                         prefs.oldPosts = newPostsNumber
-                    }else{
+                    } else {
                         prefs.oldPosts = newPostsNumber
                     }
                 }
