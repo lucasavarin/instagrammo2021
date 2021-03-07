@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    android:paddingHorizontal="100dp"
     tools:context="com.costa.views.splash.SplashActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
