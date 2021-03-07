@@ -111,6 +111,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                if(!callPosts.isCanceled)
                 postLayoutManager(joinPostProfile())
             }
 

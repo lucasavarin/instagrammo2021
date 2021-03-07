@@ -126,11 +126,14 @@ class ProfileFragment : Fragment() {
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
                 var profileDB = dbHelper.readProfile(prefs.userId)
-                var profile = ProfileConverter.daoToBusiness(profileDB)
-                profile_name_text.text = profile.name
-                profile_description_text.text = profile.description
-                followers_count_text.text = profile.followersNumber
-                posts_count_text.text = profile.postsNumber
+                    var profile = ProfileConverter.daoToBusiness(profileDB)
+                if (!callSingleProfile.isCanceled) {
+                    profile_image.setImageResource(R.drawable.no_signal)
+                    profile_name_text.text = profile.name
+                    profile_description_text.text = profile.description
+                    followers_count_text.text = profile.followersNumber
+                    posts_count_text.text = profile.postsNumber
+                }
             }
         })
     }
