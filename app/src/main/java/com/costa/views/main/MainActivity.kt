@@ -14,7 +14,6 @@ import com.costa.utils.addFragment
 import com.costa.utils.prefs
 import com.costa.utils.removeFragment
 import com.costa.utils.replaceFragment
-import com.costa.views.login.LoginActivity
 import com.costa.views.main.addpost.AddFragment
 import com.costa.views.main.addpost.AddPostStep1Fragment
 import com.costa.views.main.addpost.AddPostStep2Fragment
@@ -29,28 +28,22 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.Observer
 
 
 class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterface,
     EditProfileFragment.EditProfileFragmentInterface, AddFragment.AddFragmentInterface,
     AddPostStep1Fragment.AddPostStep1Interface, AddPostStep2Fragment.AddPostStep2Interface {
 
-    //private var progressDialog : Dialog? = null
+    private var progressDialog : Dialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        MainActivity.NetworkTask(this).execute()
+        NetworkTask(this).execute()
 
         bottom_nav.setOnClickListener {
             bottom_nav.isSelected = !bottom_nav.isSelected
-            /*bottom_nav.visibility = View.GONE
-            showProgress()
-            Handler().postDelayed({
-                hideProgress()
-                bottom_nav.visibility = View.VISIBLE
-            }, 5000)*/
+
         }
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_nav)
@@ -157,7 +150,7 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
 
     }
 
-    class NetworkTask(var activity: MainActivity) : AsyncTask<Void, Void, Void>(){
+   class NetworkTask(var activity: MainActivity) : AsyncTask<Void, Void, Void>(){
 
         var dialog = Dialog(activity,android.R.style.Theme_Material_Light_NoActionBar)
 
