@@ -58,7 +58,10 @@ class ItemPostRecyclerViewAdapter(
             Picasso.get().load(item.picture).into(holder.postImage)
         } else {
 
-            Picasso.get().load(item.profile?.picture!!).resize(500, 450).transform(CircleTransform()).into(holder.profileImage)
+            if (item.profile?.picture!!.isNullOrBlank())
+                Picasso.get().load(R.drawable.user).resize(500, 450).transform(CircleTransform()).into(holder.profileImage)
+            else
+                Picasso.get().load(item.profile?.picture!!).resize(500, 450).transform(CircleTransform()).into(holder.profileImage)
             holder.profileName.text = item.profile?.name
             Picasso.get().load(item.picture).resize(880,700).into(holder.postImage)
             holder.titlePost.text = item.title

@@ -17,4 +17,6 @@ interface ApiInterfaceLorem {
         @Path("width") width : String,
         @Path("height") height : String
     ) : Call<LoremRest>
+
+
 }

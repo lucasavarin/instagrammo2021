@@ -12,6 +12,8 @@ class SharePrefs (context: Context){
     private val NUMBER_POST = "number_post"
     private val FIRST_TIME_LOG = "first_time_log"
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
+    val prefsDel = prefs.edit().remove(NUMBER_POST)
+    val prefsDelfirstLog = prefs.edit().remove(FIRST_TIME_LOG)
 
     var rememberMe: Boolean
         get() = prefs.getBoolean(REMEMBER_ME, false)

@@ -72,7 +72,7 @@ class AddNewPostFragment : Fragment(){
     private fun backButtonListener(){
         //bottone back nell header
         view?.topBarBackComponent?.setOnPressedListener{
-            listener.addFragment()
+            listener.addFragmentListener()
             listener.removeFragmentListener(this)
         }
     }

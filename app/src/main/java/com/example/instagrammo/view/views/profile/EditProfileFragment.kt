@@ -1,10 +1,12 @@
 package com.example.instagrammo.view.views.profile
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.instagrammo.R
@@ -137,6 +139,7 @@ class EditProfileFragment : Fragment() {
         //bottone back nell header
         view?.topBarBackComponent?.setOnPressedListener{
             listener.removeFragmentListener(this)
+            this.hideKeyboard()
         }
     }
 
@@ -152,6 +155,12 @@ class EditProfileFragment : Fragment() {
     private fun populateDataView() {
         Picasso.get().load(R.drawable.bird).resize(1000, 1000).transform(CircleTransform())
             .into(view?.profileImage)
+
+        if (itemProfile.picture.isNullOrBlank())
+            Picasso.get().load(R.drawable.bird).resize(1000,1000).transform(CircleTransform()).into(requireView().profileImage)
+        else
+            Picasso.get().load(itemProfile.picture).resize(1000,1000).transform(CircleTransform()).into(requireView().profileImage)
+
         view?.IdImmagine?.text = itemProfile.profileId?.toEditable()
         view?.NomeProfilo?.text = itemProfile.name?.toEditable()
         view?.Descrizione?.text = itemProfile.description?.toEditable()
@@ -160,6 +169,16 @@ class EditProfileFragment : Fragment() {
          mView.name.text = itemsProfile.name
          mView.description.text = itemsProfile.description*/
     }
+
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 
     companion object {
         var newInstance: EditProfileFragment = EditProfileFragment()

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.instagrammo.R
@@ -34,6 +35,7 @@ class ConfirmNewPostFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        getActivity()?.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
         return inflater.inflate(R.layout.fragment_confirm_add_post, container, false)
     }
 

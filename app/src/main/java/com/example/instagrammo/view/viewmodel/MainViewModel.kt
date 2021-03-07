@@ -12,6 +12,7 @@ import com.example.instagrammo.environment.repository.MainRepositoryImpl
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import okhttp3.ResponseBody
 
 class MainViewModel() : ViewModel() {
 
@@ -36,6 +37,8 @@ class MainViewModel() : ViewModel() {
     private val _dataStateAddPost: MutableLiveData<DataState<Boolean>> = MutableLiveData()
 
     private val _dataStateNumberPosts: MutableLiveData<DataState<NumberPosts>> = MutableLiveData()
+
+    private val _dataStateImage: MutableLiveData<DataState<ResponseBody>> = MutableLiveData()
 
     val dataStatePost: LiveData<DataState<List<PostBean>>>
         get() = _dataStatePosts
@@ -66,6 +69,9 @@ class MainViewModel() : ViewModel() {
 
     val dataStateNumberPosts : LiveData<DataState<NumberPosts>>
         get() = _dataStateNumberPosts
+
+    val dataStateImage : LiveData<DataState<ResponseBody>>
+        get() = _dataStateImage
 
 
     fun setStateEvent(mainStateEvent: MainStateEvent) {
@@ -127,6 +133,12 @@ class MainViewModel() : ViewModel() {
                 is MainStateEvent.GetPostsProfileEvent -> {
                     mainRepository.getPostsProfile()
                         .onEach { dataStatePostProfile -> _dataStatePostsProfile.value = dataStatePostProfile}
+                        .launchIn(viewModelScope)
+                }
+
+                is MainStateEvent.GetImageEvent -> {
+                    mainRepository.getImage(mainStateEvent.url)
+                        .onEach { dataStateImage -> _dataStateImage.value = dataStateImage}
                         .launchIn(viewModelScope)
                 }
 

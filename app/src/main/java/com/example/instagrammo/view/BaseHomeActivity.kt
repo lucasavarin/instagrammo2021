@@ -1,19 +1,28 @@
 package com.example.instagrammo.view
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.notification.NotificationArguments
 import com.example.instagrammo.beans.business.post.PostBean
+import com.example.instagrammo.environment.networking.ApiClient
 import com.example.instagrammo.prefs
 import com.example.instagrammo.service.NotificationService
-import com.example.instagrammo.utils.Constant.CONST_NOTIFICATION_DATA
+import com.example.instagrammo.utils.CircleTransform
+import com.example.instagrammo.utils.listener.HeaderBackListener
 import com.example.instagrammo.utils.listener.OnPostItemClickListener
+import com.example.instagrammo.view.notifications.NotificationPost
 import com.example.instagrammo.view.viewmodel.DataState
 import com.example.instagrammo.view.viewmodel.MainStateEvent
 import com.example.instagrammo.view.viewmodel.MainViewModel
@@ -25,11 +34,17 @@ import com.example.instagrammo.view.views.follow.FollowFragment
 import com.example.instagrammo.view.views.home.HomeFragment
 import com.example.instagrammo.view.views.profile.ButtonEditProfileListener
 import com.example.instagrammo.view.views.profile.EditProfileFragment
-import com.example.instagrammo.utils.listener.HeaderBackListener
 import com.example.instagrammo.view.views.profile.ProfileFragment
 import com.example.instagrammo.view.views.search.SearchFragment
 import com.example.instagrammo.views.BaseActivity
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.activity_basehome.*
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class BaseHomeActivity : BaseActivity(),
     OnPostItemClickListener, ButtonEditProfileListener, HeaderBackListener,
@@ -39,11 +54,13 @@ class BaseHomeActivity : BaseActivity(),
 
     var previewGapNumberNotification : Int = 0
 
-    private val mInterval = 20000
+    private val mInterval = 5000
 
     private val mHandler: Handler = Handler()
 
     private lateinit var itemsPost : List<PostBean>
+
+    private lateinit var image : ResponseBody
 
     private var mStatusChecker: Runnable = object : Runnable {
         override fun run() {
@@ -55,10 +72,12 @@ class BaseHomeActivity : BaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basehome)
-
+        addFragment(HomeFragment.newInstance, R.id.fragment_container)
         bottomMenuNavigationManager()
         startRepeatingTask()
-        setObserver()
+        setObserverNumberPost()
+        startForeground()
+        //sendOnChannel1()
     }
 
 
@@ -93,17 +112,7 @@ class BaseHomeActivity : BaseActivity(),
     }
 
 
-    private fun setObserver() {
-        viewModel.dataStatePost.observe(this, Observer { dataState ->
-            when(dataState) {
-                is DataState.Error ->  { }
-                is DataState.Loading -> { }
-                is DataState.Success -> {
-                    itemsPost = dataState.data
-                    startNotificationService()
-                }
-            }
-        })
+    private fun setObserverNumberPost() {
         viewModel.dataStateNumberPosts.observe(this, Observer {  dataState ->
             when(dataState) {
                 is DataState.Error ->  {}
@@ -118,11 +127,24 @@ class BaseHomeActivity : BaseActivity(),
                         previewGapNumberNotification = dataState.data.payload - (dataState.data.payload - prefs.numberPosts)
                         prefs.numberPosts = dataState.data.payload
                         viewModel.setStateEvent(MainStateEvent.GetPostsEvent)
+                        setObserverPost()
                     }
                 }
             }
         })
+    }
 
+    private fun setObserverPost(){
+        viewModel.dataStatePost.observe(this, Observer { dataState ->
+            when(dataState) {
+                is DataState.Error ->  { }
+                is DataState.Loading -> { }
+                is DataState.Success -> {
+                    itemsPost = dataState.data
+                    startNotificationPost()
+                }
+            }
+        })
 
     }
 
@@ -136,19 +158,6 @@ class BaseHomeActivity : BaseActivity(),
 
     private fun stopRepeatingTask() {
         mHandler.removeCallbacks(mStatusChecker)
-    }
-
-    private fun buildDataNotification() : ArrayList<NotificationArguments> {
-        val sizePosts = itemsPost.size -1
-        val notificationList : ArrayList<NotificationArguments> = ArrayList()
-
-        for ( i in sizePosts downTo previewGapNumberNotification step 1) {
-            notificationList.add(
-                NotificationArguments(itemsPost[i].profile.name!!, itemsPost[i].title, itemsPost[i].profile.picture!!))
-        }
-        /*notificationList.add(
-            NotificationArguments(itemsPost[1].profile.name!!, itemsPost[1].title, itemsPost[1].profile.picture!!))*/
-        return notificationList
     }
 
     override fun onPictureProfileItemListener(string: String) {
@@ -186,16 +195,6 @@ class BaseHomeActivity : BaseActivity(),
         replaceFragment(AddFragment.newInstance, R.id.fragment_container)
     }
 
-    private fun startNotificationService() {
-        val intent = Intent(applicationContext, NotificationService.newInstance::class.java)
-        val bundle = Bundle()
-
-        bundle.putParcelableArrayList(CONST_NOTIFICATION_DATA, buildDataNotification())
-        intent.putExtras(bundle)
-
-        startService(intent)
-    }
-
     private fun stopNotificationService() {
         stopService(Intent(this, NotificationService.newInstance::class.java))
     }
@@ -205,14 +204,95 @@ class BaseHomeActivity : BaseActivity(),
         stopRepeatingTask()
     }
 
-    override fun addFragment() {
+    override fun addFragmentListener() {
         addFragment(AddFragment.newInstance, R.id.fragment_container)
     }
 
-    override fun onStart() {
-        addFragment(HomeFragment.newInstance, R.id.fragment_container)
-        super.onStart()
+
+    private fun startNotificationPost() {
+        val notificationIntent = Intent(this, BaseHomeActivity::class.java)
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        buildDataNotification().forEach {
+            val notificationPost = NotificationPost(notificationIntent, this)
+                .buildNotificationPost(it.nameProfile!!, it.description!!, it.iconProfile!!)
+            notificationManager.notify(1, notificationPost)
+/*
+            val pendingIntent: PendingIntent =
+                PendingIntent.getActivity(
+                    this,
+                    0,
+                    notificationIntent,
+                    0
+                )
+
+            val notificationPost = NotificationCompat.Builder(this, Constant.CONST_CHANNEL_ID_1)
+                .setContentTitle(it.nameProfile!!)
+                .setContentText(it.description!!)
+                .setSmallIcon(R.mipmap.logo0)
+                .setLargeIcon(it.iconProfile!!)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_SOCIAL)
+                .setGroup(Constant.CONST_GROUP_APP_NOTIFICATION)
+                .setContentIntent(pendingIntent)
+                .build()
+            notificationManager.notify(1, notificationPost)
+
+ */
+        }
     }
+
+    private fun startForeground() {
+        startService(Intent(this, NotificationService.newInstance::class.java))
+    }
+
+    private fun buildDataNotification() : ArrayList<NotificationArguments> {
+        val sizePosts = itemsPost.size -1
+        val notificationList : ArrayList<NotificationArguments> = ArrayList()
+
+        for ( i in sizePosts downTo previewGapNumberNotification step 1) {
+
+            var picture : Bitmap? = ContextCompat.getDrawable(this,R.drawable.user)!!.toBitmap()
+/*
+            viewModel.setStateEvent(MainStateEvent.GetImageEvent(url))
+            setObserverImage()
+
+            ApiClient.GetClient.getImage(url).enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    picture = ContextCompat.getDrawable(this@BaseHomeActivity,R.drawable.user)!!.toBitmap()
+                    Log.i("debug", "ERRORE")
+                }
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    picture = BitmapFactory.decodeStream(response.body()?.byteStream())
+                    Log.i("debug", "ci sono")
+                }
+            })
+*/
+
+            Picasso.get()
+                .load(itemsPost[i].picture)
+                .resize(200,200)
+                .transform(CircleTransform())
+                .into(object : Target {
+                    override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+                    }
+
+                    override fun onBitmapFailed(e: java.lang.Exception?, errorDrawable: Drawable?) {
+                    }
+
+                    override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+                        if (bitmap != null) {
+                            picture = bitmap
+                        }
+                    }
+
+                })
+            notificationList.add(
+                NotificationArguments(itemsPost[i].profile.name!!, itemsPost[i].title, picture))
+        }
+        return notificationList
+    }
+
 
     companion object {
         var newInstance : BaseActivity = BaseHomeActivity()

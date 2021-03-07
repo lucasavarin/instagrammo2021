@@ -52,8 +52,6 @@ class ItemPostsProfileRecyclerViewAdapte (
             holder.datePost.visibility = View.GONE
             holder.lineSeparator.visibility = View.VISIBLE
             Picasso.get().load(item.picture).centerInside().resize(400,400).into(holder.postImage)
-
-
         }
 
     }

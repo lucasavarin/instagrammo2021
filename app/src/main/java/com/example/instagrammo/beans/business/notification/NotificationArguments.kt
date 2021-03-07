@@ -1,25 +1,26 @@
 package com.example.instagrammo.beans.business.notification
 
+import android.graphics.Bitmap
 import android.os.Parcel
 import android.os.Parcelable
 import java.io.Serializable
 
 data class NotificationArguments(
-    var nameProfile : String,
-    var description : String,
-    var iconProfile: String
+    var nameProfile : String?,
+    var description : String?,
+    var iconProfile: Bitmap?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readParcelable(Bitmap::class.java.classLoader)
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(nameProfile)
         parcel.writeString(description)
-        parcel.writeString(iconProfile)
+        parcel.writeParcelable(iconProfile, flags)
     }
 
     override fun describeContents(): Int {

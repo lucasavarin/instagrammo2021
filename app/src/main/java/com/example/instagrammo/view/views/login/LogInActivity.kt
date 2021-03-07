@@ -2,10 +2,15 @@ package com.example.instagrammo.view.views.login
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.Observer
 import com.example.instagrammo.R
 import com.example.instagrammo.prefs
@@ -28,7 +33,6 @@ class LogInActivity : BaseActivity() {
         btnAccess.isEnabled = false
         setListener()
         loadUsername()
-
     }
 
     private fun loadUsername() {

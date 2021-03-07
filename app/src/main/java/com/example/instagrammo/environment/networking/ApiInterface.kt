@@ -38,7 +38,6 @@ interface ApiInterface {
         @Path("profileId") profileId: String
     ) : Call<PostsProfileResponse>
 
-
     @GET
     fun getImage(@Url url: String): Call<ResponseBody>
 

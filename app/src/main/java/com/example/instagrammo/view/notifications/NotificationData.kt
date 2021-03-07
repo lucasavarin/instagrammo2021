@@ -1,4 +1,4 @@
-package com.example.instagrammo.service
+package com.example.instagrammo.view.notifications
 
 import com.example.instagrammo.beans.business.notification.NotificationArguments
 

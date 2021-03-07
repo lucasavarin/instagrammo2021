@@ -25,6 +25,9 @@ sealed class MainStateEvent {
 
     object GetNumberPost : MainStateEvent()
 
+    class GetImageEvent(val url: String) : MainStateEvent()
+
+
 
     class GetLoremImageEvent(val id: String, val width: String, val height: String)
         : MainStateEvent()

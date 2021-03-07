@@ -9,6 +9,7 @@ import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.notification.NotificationArguments
 import com.example.instagrammo.utils.CircleTransform
 import com.example.instagrammo.utils.Constant.CONST_CHANNEL_ID
+import com.example.instagrammo.utils.Constant.CONST_CHANNEL_NAME
 import com.example.instagrammo.utils.Constant.CONST_GROUP_APP_NOTIFICATION
 import com.example.instagrammo.utils.Constant.CONST_NOTIFICATION_DATA
 import com.example.instagrammo.view.BaseHomeActivity
@@ -20,14 +21,12 @@ class NotificationService : Service(){
 
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        intent?.extras?.getParcelableArrayList<NotificationArguments>(CONST_NOTIFICATION_DATA)
-            ?.forEach { data ->
-            displayNotification(data.nameProfile, data.description, data.iconProfile)
-        }
+
+        displayChannel1()
         return START_NOT_STICKY
     }
 
-    private fun displayNotification(title: String, description : String, iconProfile: String) {
+    private fun displayChannel1() {
         val notidicationId = 1
         val notificationIntent = Intent(this, BaseHomeActivity::class.java)
         val pendingIntent: PendingIntent =
@@ -35,16 +34,11 @@ class NotificationService : Service(){
                 this,
                 0,
                 notificationIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT)
-
-        Picasso.get().load(iconProfile).resize(200,200).transform(CircleTransform())
+                0)
 
         val notification = NotificationCompat.Builder(this, CONST_CHANNEL_ID )
-            .setContentTitle(title)
-            .setContentText(description)
+            .setContentTitle(CONST_CHANNEL_NAME)
             .setSmallIcon(R.mipmap.logo0)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setGroup(CONST_GROUP_APP_NOTIFICATION)
             .setContentIntent(pendingIntent)
             .build()
         startForeground(notidicationId, notification)

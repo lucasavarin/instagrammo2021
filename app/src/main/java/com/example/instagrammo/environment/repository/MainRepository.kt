@@ -1,5 +1,6 @@
 package com.example.instagrammo.environment.repository
 
+import android.graphics.Bitmap
 import com.example.instagrammo.beans.rest.auth.AuthRequest
 import com.example.instagrammo.beans.business.followers.FollowerBean
 import com.example.instagrammo.beans.business.lorem.LoremBean
@@ -12,6 +13,7 @@ import com.example.instagrammo.beans.rest.post.AddPostRequest
 import com.example.instagrammo.beans.rest.post.NumberPosts
 import com.example.instagrammo.view.viewmodel.DataState
 import kotlinx.coroutines.flow.Flow
+import okhttp3.ResponseBody
 
 interface MainRepository {
 
@@ -32,6 +34,8 @@ interface MainRepository {
     fun getNumberPost() : Flow<DataState<NumberPosts>>
 
     fun getPostsProfile() : Flow<DataState<List<PostProfileBean>>>
+
+    fun getImage(url : String) : Flow<DataState<ResponseBody>>
 
 
 

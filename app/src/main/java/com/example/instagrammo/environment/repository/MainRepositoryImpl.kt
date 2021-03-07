@@ -1,5 +1,6 @@
 package com.example.instagrammo.environment.repository
 
+import android.graphics.Bitmap
 import com.example.instagrammo.beans.rest.auth.AuthRequest
 import com.example.instagrammo.beans.business.followers.FollowerBean
 import com.example.instagrammo.beans.business.post.PostBean
@@ -19,6 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
+import okhttp3.ResponseBody
 import java.io.IOException
 import java.lang.Exception
 
@@ -188,6 +190,24 @@ class MainRepositoryImpl():
                         val data = responseExcuted.body()!!.payload!!.map { post -> PostProfileBean.convert(post) }
                         emit(DataState.Success(data))
                     }
+            } catch (e: Exception) {
+                emit(DataState.Error(e))
+            }
+        }
+    }
+
+    override fun getImage(url: String): Flow<DataState<ResponseBody>> {
+        return flow {
+            emit(DataState.Loading)
+            try {
+
+                val response = ApiClient.GetClient.getImage(url)
+                val responseExecuted = withContext(Dispatchers.IO) { response.execute() }
+
+                if (responseExecuted.isSuccessful){
+                    val data = responseExecuted.body()!!
+                    emit(DataState.Success(data))
+                }
             } catch (e: Exception) {
                 emit(DataState.Error(e))
             }
