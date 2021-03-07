@@ -11,6 +11,8 @@ import com.example.instagrammo.beans.business.profile.ProfileBean
 import com.example.instagrammo.beans.rest.lorem.LoremRest
 import com.example.instagrammo.beans.rest.post.AddPostRequest
 import com.example.instagrammo.beans.rest.post.NumberPosts
+import com.example.instagrammo.dbHelper
+import com.example.instagrammo.environment.database.DatabaseHelper
 import com.example.instagrammo.beans.rest.post.profilepost.PostsProfileRest
 import com.example.instagrammo.prefs
 import com.example.instagrammo.environment.networking.ApiClient
@@ -26,6 +28,8 @@ import java.lang.Exception
 
 class MainRepositoryImpl():
     MainRepository {
+
+
 
     companion object {
         fun newInstance(): MainRepositoryImpl =
@@ -61,12 +65,40 @@ class MainRepositoryImpl():
                 val response = apiService.getPosts()
                 val responseExcuted = withContext(Dispatchers.IO) { response.execute() }
 
-                if (responseExcuted.isSuccessful)
+                if (responseExcuted.isSuccessful) {
                     if (responseExcuted.body()?.result != null) {
-                        val data = responseExcuted.body()!!.payload!!.map { post -> PostBean.convert(post) }
+
+                        val data = responseExcuted.body()!!.payload!!.map { post ->
+                            PostBean.convert(post)}
+                        //TODO: metti i dati su database
+                        /*responseExcuted.body()!!.payload!!.forEach() {
+                            dbHelper.addPost(
+                                it.postId!!,
+                                it.profileId!!,
+                                it.title!!,
+                                it.uploadTime!!,
+                                it.picture!!,
+                                it.profile!!.profileId!!
+                            )
+                        }*/
                         emit(DataState.Success(data))
+                        }
                     }
-            } catch (e: Exception) {
+                //TODO: prendere da database
+                /*else {
+                      val postArray : Array<String> = dbHelper.getPost()
+                        var posts : MutableList<PostBean> = mutableListOf()
+                        postArray.forEach {
+                        var campiPost = it.split(",")
+                            campiPost[5].toa.forEach {
+                                var campiProfile = it.split(",")
+                            }
+                        var p = PostBean(campi[0], campi[1], campi[2], campi[3], campi[4], campi[5])
+                        posts.add(p)
+                    }
+                    emit(DataState.Success(posts))
+                    }*/
+                } catch (e: Exception) {
                 emit(DataState.Error(e))
             }
         }
@@ -82,9 +114,30 @@ class MainRepositoryImpl():
 
                 if (responseExcuted.isSuccessful)
                     if (responseExcuted.body()?.result != null) {
-                        val data = responseExcuted.body()!!.payload!!.map { follower -> FollowerBean.convert(follower) }
+                        val data = responseExcuted.body()!!.payload!!.map { follower -> FollowerBean.convert(follower)
+                       }
+                        //TODO: metti i dati su database
+                        /*responseExcuted.body()!!.payload!!.forEach() {
+                            dbHelper.addFollower(
+                                it.id!!,
+                                it.name!!,
+                                it.description!!,
+                                it.picture!!
+                            )
+                        }*/
                         emit(DataState.Success(data))
                     }
+                    //TODO: prendere da database
+                    /*else{
+                            val followersArray : Array<String> = dbHelper.getFollower()
+                            var followers : MutableList<FollowerBean> = mutableListOf()
+                            followersArray.forEach {
+                                var campi = it.split(",")
+                                var f = FollowerBean(campi[0], campi[1], campi[2], campi[3])
+                                followers.add(f)
+                            }
+                            emit(DataState.Success(followers))
+                    }*/
             } catch (e: Exception) {
                 emit(DataState.Error(e))
             }
