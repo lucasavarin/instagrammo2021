@@ -13,7 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AddPostsGridAdAdapter (private val posts: List<PicSumImageOut>, private val callback:(imageOut: PicSumImage)->Unit) :
+class AddPostsGridAdAdapter (private val posts: List<PicSumImage>, private val callback:(imageOut: PicSumImage)->Unit) :
     RecyclerView.Adapter<AddPostsGridViewHolder>() {
 
     /**

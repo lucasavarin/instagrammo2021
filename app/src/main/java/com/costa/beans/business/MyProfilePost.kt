@@ -2,11 +2,9 @@ package com.costa.beans.business
 
 import com.costa.`interface`.BusinessModel
 
-class Post(
-    val profileId: String,
+class MyProfilePost (
     val postId: String,
     val title: String,
     val picture: String,
-    val uploadTime: String,
-    val profile: Profile?
-) : BusinessModel
+    val uploadTime: String
+): BusinessModel

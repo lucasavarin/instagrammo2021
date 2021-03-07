@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.costa.beans.business.PicSumImage
+import com.costa.beans.business.Profile
 import com.costa.beans.rest.ProfileOut
 import com.costa.instagrammo.R
 import com.costa.servizi.ApiClient
@@ -174,7 +175,7 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileFragmentInterfa
 
     }
 
-    override fun modifyProfilePressed(profile: ProfileOut) {
+    override fun modifyProfilePressed(profile: Profile) {
         var bundle = Bundle()
         bundle.putString("nome", profile.name)
         bundle.putString("description", profile.description)

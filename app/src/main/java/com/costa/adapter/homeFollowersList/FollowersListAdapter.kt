@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.costa.beans.business.Follower
 import com.costa.beans.rest.FollowerOut
 import com.costa.instagrammo.R
 
-class FollowersListAdapter(private val followers: List<FollowerOut>) :
+class FollowersListAdapter(private val followers: List<Follower>) :
     RecyclerView.Adapter<FollowersListHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowersListHolder {
@@ -20,7 +21,7 @@ class FollowersListAdapter(private val followers: List<FollowerOut>) :
 
 
     override fun onBindViewHolder(holder: FollowersListHolder, position: Int) {
-        holder.bindFollower(followers.get(position))
+        holder.bindFollower(followers[position])
 
     }
 

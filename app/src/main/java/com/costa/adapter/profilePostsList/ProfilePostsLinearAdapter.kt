@@ -3,10 +3,11 @@ package com.costa.adapter.profilePostsList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.costa.beans.business.MyProfilePost
 import com.costa.beans.rest.MyProfilePostsOut
 import com.costa.instagrammo.R
 
-class ProfilePostsLinearAdapter (private val posts: List<MyProfilePostsOut>) :
+class ProfilePostsLinearAdapter (private val posts: List<MyProfilePost>) :
     RecyclerView.Adapter<ProfilePostsLinearViewHolder>() {
 
     /**

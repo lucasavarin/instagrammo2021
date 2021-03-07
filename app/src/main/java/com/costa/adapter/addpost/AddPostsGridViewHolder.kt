@@ -15,8 +15,8 @@ class AddPostsGridViewHolder (private var v: View) : RecyclerView.ViewHolder(v),
 
     private lateinit var imageBean: PicSumImage
 
-    fun bindImagePost(image: PicSumImageOut, callback:(imageOut: PicSumImage)->Unit){
-        imageBean=image.toPicSumImage()
+    fun bindImagePost(image: PicSumImage, callback:(imageOut: PicSumImage)->Unit){
+        imageBean=image
         imageBean.imageFormated=trasformPath(image)
 
         Picasso.get()
@@ -31,10 +31,10 @@ class AddPostsGridViewHolder (private var v: View) : RecyclerView.ViewHolder(v),
         Toast.makeText(v!!.context,imageBean.toString(), Toast.LENGTH_LONG).show()
     }
 
-    fun trasformPath(image: PicSumImageOut): String {
+    fun trasformPath(image: PicSumImage): String {
         val picsumUrl: List<String>
         var result: String = ""
-        picsumUrl = image.download_url!!.split("/")
+        picsumUrl = image.download_url.split("/")
         picsumUrl.forEach {
             if (picsumUrl[5].equals(it) || picsumUrl[6].equals(it)) {
                 result = result + "/" + "500"
