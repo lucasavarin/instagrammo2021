@@ -32,10 +32,6 @@ class LoginActivity : AppCompatActivity() {
 
             val request = AuthRequest(username.toString(), password.toString())
 
-            /*if(remind_me == true){
-                et_username.text = prefs.username.toEditable()
-            }*/
-
             ApiClient.getClient.doAuth(request).enqueue(object : Callback<AuthResponse> {
 
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {

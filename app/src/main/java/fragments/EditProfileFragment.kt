@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import bean.business.ProfileBean
 import bean.rest.ProfileRequest
+import bean.rest.ProfileResponse
 import com.example.instagrammo.R
+import com.squareup.picasso.Picasso
 import interfaces.ButtonBackToProfile
 import interfaces.ButtonEditProfileListener
 import kotlinx.android.synthetic.main.edit_top_bar.*
@@ -20,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import utils.extensions.CircleTransformation
 import utils.extensions.prefs
 
 class EditProfileFragment : Fragment(){
@@ -65,12 +68,6 @@ class EditProfileFragment : Fragment(){
             throw RuntimeException("$context must implement ButtonBackToProfile")
         }
     }
-
-    /*private fun buttonsListener(){
-        top_bar_edit_profile.setOnBackEditProfileListener{
-            //remove fragment
-        }
-    }*/
 
     companion object {
         var newInstance: EditProfileFragment = EditProfileFragment()

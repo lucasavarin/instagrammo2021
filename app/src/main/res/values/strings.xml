@@ -14,10 +14,10 @@
     <string name="profile">Profile</string>
     <string name="post">post</string>
     <string name="amici">amici</string>
-    <string name="id_immagine">id_immagine</string>
-    <string name="nome_profilo">nome_profilo</string>
+    <string name="id_immagine">Id immagine</string>
+    <string name="nome_profilo">Nome profilo</string>
     <string name="btn_salva">btn_salva</string>
     <string name="salva">Salva</string>
-    <string name="descrizione_profilo">descrizione_profilo</string>
+    <string name="descrizione_profilo">Descrizione profilo</string>
     <string name="modifica_profilo">Modifica Profilo</string>
 </resources>
