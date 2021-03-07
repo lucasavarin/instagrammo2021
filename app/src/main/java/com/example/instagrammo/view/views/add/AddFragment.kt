@@ -52,7 +52,7 @@ class AddFragment : Fragment(){
         val recyclerView = view?.recycler_add_grid_view
         if (recyclerView is RecyclerView) {
             recyclerView.apply{
-                layoutManager = GridLayoutManager(context, 3)
+                layoutManager = GridLayoutManager(context, 4)
                 adapter = ItemLoremRecyclerViewAdapter(this.context, listaLorem, listenerImage)
             }
         }

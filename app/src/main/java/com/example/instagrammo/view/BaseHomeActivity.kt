@@ -2,7 +2,6 @@ package com.example.instagrammo.view
 
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
@@ -16,7 +15,6 @@ import com.example.instagrammo.R
 import com.example.instagrammo.beans.business.lorem.LoremBean
 import com.example.instagrammo.beans.business.notification.NotificationArguments
 import com.example.instagrammo.beans.business.post.PostBean
-import com.example.instagrammo.environment.networking.ApiClient
 import com.example.instagrammo.prefs
 import com.example.instagrammo.service.NotificationService
 import com.example.instagrammo.utils.CircleTransform
@@ -40,11 +38,6 @@ import com.example.instagrammo.views.BaseActivity
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.activity_basehome.*
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 
 class BaseHomeActivity : BaseActivity(),
     OnPostItemClickListener, ButtonEditProfileListener, HeaderBackListener,
@@ -59,8 +52,6 @@ class BaseHomeActivity : BaseActivity(),
     private val mHandler: Handler = Handler()
 
     private lateinit var itemsPost : List<PostBean>
-
-    private lateinit var image : ResponseBody
 
     private var mStatusChecker: Runnable = object : Runnable {
         override fun run() {
@@ -77,9 +68,7 @@ class BaseHomeActivity : BaseActivity(),
         startRepeatingTask()
         setObserverNumberPost()
         startForeground()
-        //sendOnChannel1()
     }
-
 
     private fun bottomMenuNavigationManager(){
 
@@ -276,10 +265,8 @@ class BaseHomeActivity : BaseActivity(),
                 .into(object : Target {
                     override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
                     }
-
                     override fun onBitmapFailed(e: java.lang.Exception?, errorDrawable: Drawable?) {
                     }
-
                     override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                         if (bitmap != null) {
                             picture = bitmap
@@ -292,7 +279,6 @@ class BaseHomeActivity : BaseActivity(),
         }
         return notificationList
     }
-
 
     companion object {
         var newInstance : BaseActivity = BaseHomeActivity()

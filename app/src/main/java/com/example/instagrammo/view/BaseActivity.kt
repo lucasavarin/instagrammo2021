@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.components.dialogs.LoadingDialog
 import com.example.instagrammo.view.views.add.AddFragment
 
-
 abstract class BaseActivity() : AppCompatActivity() {
 
     val loading = LoadingDialog(this)
@@ -41,7 +40,6 @@ abstract class BaseActivity() : AppCompatActivity() {
     fun AppCompatActivity.popBackStack() {
         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
-
 
     protected fun loadingShow() {
         loading.start()

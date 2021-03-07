@@ -7,15 +7,23 @@
     android:clickable="true"
     android:focusable="true"
     >
-
+<!--
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_add_grid_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constramsonintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_grid3x" />
+
+-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_add_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.views.profile.ProfileFragment"
         tools:listitem="@layout/item_grid3x" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

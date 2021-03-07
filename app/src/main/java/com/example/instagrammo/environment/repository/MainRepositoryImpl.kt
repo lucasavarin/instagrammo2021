@@ -26,10 +26,7 @@ import okhttp3.ResponseBody
 import java.io.IOException
 import java.lang.Exception
 
-class MainRepositoryImpl():
-    MainRepository {
-
-
+class MainRepositoryImpl: MainRepository {
 
     companion object {
         fun newInstance(): MainRepositoryImpl =
@@ -69,32 +66,26 @@ class MainRepositoryImpl():
                     if (responseExcuted.body()?.result != null) {
 
                         val data = responseExcuted.body()!!.payload!!.map { post ->
-                            PostBean.convert(post)}
-                        //TODO: metti i dati su database
-                        /*responseExcuted.body()!!.payload!!.forEach() {
-                            dbHelper.addPost(
-                                it.postId!!,
-                                it.profileId!!,
-                                it.title!!,
-                                it.uploadTime!!,
-                                it.picture!!,
-                                it.profile!!.profileId!!
-                            )
+                            PostBean.convert(post)
+                        }
+                        /*
+                        data.forEach {
+                            dbHelper.addPost(it)
                         }*/
                         emit(DataState.Success(data))
                         }
                     }
                 //TODO: prendere da database
-                /*else {
+               /* else {
                       val postArray : Array<String> = dbHelper.getPost()
                         var posts : MutableList<PostBean> = mutableListOf()
                         postArray.forEach {
                         var campiPost = it.split(",")
-                            campiPost[5].toa.forEach {
-                                var campiProfile = it.split(",")
+                            campiPost[5].forEach {
+                                //var campiProfile = it.split(",")
                             }
-                        var p = PostBean(campi[0], campi[1], campi[2], campi[3], campi[4], campi[5])
-                        posts.add(p)
+                        //var p = PostBean(campiPost[0], campiPost[1], campiPost[2], campiPost[3], campiPost[4], campiPost[5])
+                        //posts.add(p)
                     }
                     emit(DataState.Success(posts))
                     }*/

@@ -35,9 +35,9 @@ class ItemFollowRecyclerViewAdapter(
         val item = mValues[position]
         holder.nameFollowerText.text = item.name
         if (item.picture.isBlank())
-            Picasso.get().load(R.drawable.user).resize(500, 450).transform(CircleTransform()).into(holder.imageProfile)
+            Picasso.get().load(R.drawable.user).resize(225, 175).transform(CircleTransform()).into(holder.imageProfile)
         else
-            Picasso.get().load(item.picture).resize(200,200).transform(CircleTransform()).into(holder.imageProfile)
+            Picasso.get().load(item.picture).resize(225,175).transform(CircleTransform()).into(holder.imageProfile)
 
 
     }
