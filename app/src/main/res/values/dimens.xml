@@ -9,6 +9,7 @@
     <dimen name="postText_margin">2dp</dimen>
     <dimen name="postFollower_margin">1dp</dimen>
     <dimen name="iconTextMid_margin">5dp</dimen>
+    <dimen name="mid_large_margin_soft">35dp</dimen>
     <dimen name="mid_large_margin">40dp</dimen>
     <dimen name="margin_from_other_textInputLayout">50dp</dimen>
     <dimen name="margin_logo">70dp</dimen>
